@@ -89,13 +89,7 @@
       left: 0;
       z-index: 999;
     }
-    nav.menu a {
-      margin: 10px 0;
-      font-size: 22px;
-         font-weight: 600;
-      color: #333;
-      text-decoration: none;
-    }
+    
     nav.menu a:hover {
       color: #ffffff;
     }
@@ -104,6 +98,41 @@
       .center-links {
         display: none;
       }
+      nav.menu a {
+  display: block;
+  font-size: 22px;
+   text-decoration: none;      /* ❌ usunięcie podkreślenia */
+  font-weight: 600;           /* ✅ lekko pogrubiona czcionka */
+  transition: letter-spacing 0.3s ease, color 0.3s;
+  font-family: 'Fredoka', sans-serif; /* lub inna używana czcionka */
+  margin: 10px 0;
+  color: #000;
+  transition: letter-spacing 0.3s ease;
+}
+
+/* Choinkowy efekt – rosnący letter-spacing */
+nav.menu a:nth-child(1) {
+  letter-spacing: 2px;
+}
+nav.menu a:nth-child(2) {
+  letter-spacing: 4px;
+}
+nav.menu a:nth-child(3) {
+  letter-spacing: 10px;
+}
+nav.menu a:nth-child(4) {
+  letter-spacing: 10px;
+}
+nav.menu a:nth-child(5) {
+  letter-spacing: 30px;
+}
+nav.menu a:nth-child(6) {
+  letter-spacing: 4px;
+}
+nav.menu a:hover {
+  color: white;
+  letter-spacing: calc(1.2 * var(--base-spacing, 10px));
+}
       .hamburger {
         display: flex;
       }
@@ -440,14 +469,25 @@ background-color: rgb(255, 255, 255);
 
     }
 
-     h3 {
-       font-size: 20px;
-       color: rgb(0, 0, 0);
-       margin-bottom: 4px;
-  background: linear-gradient(90deg, #ffffff, #f7c403);
- 
-  text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.164);
-    }
+    h3 {
+  font-size: 20px;
+  color: black;
+  background: linear-gradient(90deg, #fff, #f7c403);
+  border-radius: 38px;
+  padding: 30px 290px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  margin-bottom: 35px;
+}
+
+@media (max-width: 768px) {
+  h3 {
+    padding: 20px 30px; /* zmniejsz padding */
+    font-size: 18px;     /* opcjonalnie mniejszy font */
+    text-align: center;  /* upewnij się, że tekst jest wyśrodkowany */
+  }
+}
+
 h5 {
        font-size: 21px;
        color: rgb(0, 0, 0);
@@ -878,7 +918,7 @@ From concept to finished video</p>
     <h2>Contact me</h2>
     <p>Write: <a href="mailto:kontakt@animacja.pl">kontakt@animacja.pl</a></p>
     <p>Call: <a href="tel:+48726123456">+48 726 123 456</a></p>
-    <h3><br>Connect with us via:<br></h3>
+    <h3>Connect with us via:<br></h3>
     
     <div style="margin-top: 20px;">
       <a href="https://facebook.com/" target="_blank"><img src="fb icon2.png" alt="Facebook" class="social-icon"></a>
