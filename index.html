@@ -16,6 +16,9 @@
       font-family: 'Roboto', sans-serif;
       background: #fff;
       overflow-x: hidden;
+        margin: 0;
+  padding: 0;
+  height: 100%;
     }
 
     /* HEADER */
@@ -284,7 +287,7 @@ img {
      .video-hero {
       position: relstickyative;
       width: 100%;
-      height: 90vh;
+      height: 60vh;
       overflow: hidden;
         padding: 0;            /* usuwa wewnętrzne odstępy */
   margin: 0;    
@@ -294,7 +297,7 @@ img {
      }
     .video-hero .video-wrapper {
   height: 300px;
-  background-color: #eee;
+  background-color: #ffffff;
   align-items: center;
 
 }
@@ -333,6 +336,49 @@ img {
   border-radius: 50%; /* eliptyczny kształt */
 }
 
+@media (max-width: 768px) {
+  .video-section--checiny {
+    margin-top: 20px;
+    margin-bottom: 20px;
+ 
+    height: 100vh;
+     position: relative;
+  width: 100%;
+
+  overflow: hidden;
+  }
+}
+
+/* Dla dużych ekranów */
+@media (min-width: 1024px) {
+  .video-section--checiny {
+    margin-top: 4px;
+    margin-bottom: 80;
+height: 60vh;
+      width: 100%;
+
+    object-fit: cover;
+background-color: rgb(255, 255, 255);
+  }
+
+  .video-section--checiny video {
+    top: 30px;
+    min-width: 50%;
+    min-height: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+  }
+
+  .video-section--checiny .video-overlay {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    top: 20%;
+    transform: translateY(-50%);
+  }
+}
     .overlay-text {
   position: absolute;
   top: 20%;                /* zmień na np. 20% dla innej pozycji */
@@ -358,7 +404,32 @@ img {
 }
 
 .see-more-btn:hover {
-  background: #444;
+  background: #000000;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 9px;
+  padding: 12px 16px;
+  font-size: 80px;
+  background-color: #f7c403;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  transition: opacity 0.7s ease;
+}
+
+.nav.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: top 0.3s ease;
+  z-index: 999;
 }
 
    h2 {
@@ -489,6 +560,37 @@ padding: 0 40px;
       font-weight: 500;
       color: #333;
     }
+  @media (max-width: 768px){
+.grid-2x2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap:20px;
+      max-width: 1000px;
+    margin: 120px auto 0 auto;
+     justify-items: center; /* centrowanie elementów w siatce */
+padding: 0 40px;
+    }
+    .grid-item {
+      background: rgb(255, 255, 255);
+      padding: 15px;
+      border-radius: 39px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+       text-align: center;
+    }
+    .grid-item:hover {
+      transform: translateY(-5px);
+    }
+    .grid-item img {
+      width: 100%;
+      border-radius: 39px;
+    }
+    .grid-item .desc {
+      margin-top: 10px;
+      font-weight: 500;
+      color: #333;
+    }}
 
     /* KONTAKT */
     #kontakt {
@@ -707,7 +809,7 @@ Subtle motion that adds depth <br>- Background Animations</div>
 
   <!-- LOGA FIRM -->
   <section style="padding: 60px 20px; text-align: center; background: #fff;">
-    <h2 style="margin-bottom: 40px;">Zaufali nam</h2>
+    <h2 style="margin-bottom: 40px;">Brands that trusted us</h2>
     <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
     <a href="https://firma1.pl" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1" style="height: 100px;"></a>
     <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"  draggable="false" style="height: 120px;"></a>
@@ -723,12 +825,14 @@ Subtle motion that adds depth <br>- Background Animations</div>
 
 
     <!-- DODATKOWE WIDEO -->
-  <section class="video-section">
+  <section class="video-section video-section--checiny">
     <video src="View-of-Checiny.mp4" autoplay muted loop></video>
     <div class="video-overlay">
       <h1>Samuel Studio <br>in action</h1>
     </div>
   </section>
+
+
 
   <!-- OPINIE -->
   <section style="background: #fff; padding: 80px 20px; text-align: center;">
@@ -754,6 +858,7 @@ Subtle motion that adds depth <br>- Background Animations</div>
       </div>
     </div>
     <button class="see-more-btn">See More</button>
+
   </section>
 
   <!-- WIDEO Z NAPISAMI -->
@@ -766,6 +871,7 @@ From concept to finished video</p>
     </div>
   </section>
 
+
   <!-- KONTAKT -->
   <section id="kontakt">
     <div style="margin-bottom: 30px;">
@@ -773,12 +879,14 @@ From concept to finished video</p>
     <p>Write: <a href="mailto:kontakt@animacja.pl">kontakt@animacja.pl</a></p>
     <p>Call: <a href="tel:+48726123456">+48 726 123 456</a></p>
     <h3><br>Connect with us via:<br></h3>
+    
     <div style="margin-top: 20px;">
       <a href="https://facebook.com/" target="_blank"><img src="fb icon2.png" alt="Facebook" class="social-icon"></a>
       <a href="https://instagram.com/" target="_blank"><img src="insta icon2.png" alt="Instagram" class="social-icon"></a>
       <a href="https://youtube.com/" target="_blank"><img src="yt icon2.png" alt="YouTube" class="social-icon"></a>
     </div>
   </section>
+        <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
 
   <!-- STOPKA -->
  <footer style="background: #333; color: #fff; padding: 60px 20px; text-align: center;">
@@ -819,6 +927,39 @@ From concept to finished video</p>
   </script>
       <script>
   document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+  let lastScrollTop = 0;
+  const nav.menu = document.querySelector('.nav.menu');
+
+  window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // Scrolling down
+      nav.menu.style.top = "-100px"; // ukryj navbar
+    } else {
+      // Scrolling up
+      nav.menu.style.top = "0"; // pokaż navbar
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // bezpieczeństwo dla iOS
+  });
 </script>
 </body>
 </html>
