@@ -945,20 +945,20 @@ From concept to finished video</p>
 </script>
 <script>
   let lastScrollTop = 0;
-  const nav.menu = document.querySelector('.nav.menu');
+  const navMenu = document.querySelector('.nav.menu');
 
   window.addEventListener('scroll', () => {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
-      // Scrolling down
-      nav.menu.style.top = "-100px"; // ukryj navbar
-    } else {
-      // Scrolling up
-      nav.menu.style.top = "0"; // pokaż navbar
+      // przewijanie w dół – ukryj
+      navMenu.style.top = "-100px";
+    } else if (scrollTop < lastScrollTop) {
+      // przewijanie w górę – pokaż
+      navMenu.style.top = "0";
     }
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // bezpieczeństwo dla iOS
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
 </script>
 </body>
