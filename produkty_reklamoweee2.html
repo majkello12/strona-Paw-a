@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produkty Reklamowe</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4208/4208394.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #f5f2f2, #fdfafa, #ffffff);
+      color: white;
+      margin: 0;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 1rem;
+      color: black;
+      position: relative;
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .center-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+      font-weight: 600;
+      align-items: center;
+    }
+
+    .center-links a {
+      color: #0528c2;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .center-links a:hover {
+      color: #000000;
+    }
+
+  .hamburger {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 60;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: #000;
+      border-radius: 3px;
+      transition: all 0.4s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 50vh;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 3rem 2rem;
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+      transform: translateX(-100%);
+      transition: transform 0.4s ease-in-out;
+      z-index: 40;
+    }
+
+    .mobile-menu.show {
+      display: block;
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      display: block;
+      margin-bottom: 1.5rem;
+      color: #222;
+      font-size: 1.2rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .mobile-menu a:hover {
+      color: #d32f2f;
+    }
+
+    @media (max-width: 768px) {
+      .center-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    .show {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .center-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      header {
+        justify-content: flex-start;
+      }
+      .center-links a:first-child {
+        display: block;
+        margin-left: 1rem;
+      }
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      max-width: 1200px;
+      margin: 4rem auto;
+    }
+
+    .product-item {
+      position: relative;
+    }
+
+    .product-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .product-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    .product-buttons {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .product-buttons button,
+    .product-buttons a {
+      padding: 6px 12px;
+      border-radius: 9999px;
+      background-color: #3b82f6;
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+
+    .product-buttons button:hover,
+    .product-buttons a:hover {
+      opacity: 0.8;
+    }
+
+    .btn-animate {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn-animate:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+  .swiper-pagination {
+  margin-top: 2px;
+  position: relative;
+}
+
+.product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 1200px;
+      margin: 4rem auto;
+      border: 6px solid white;
+      gap: 0;
+    }
+    .product-item {
+      border: 3px solid white;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .product-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .product-grid img:hover {
+      transform: scale(1.02);
+    }
+    .product-buttons {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+    .product-buttons button {
+      padding: 6px 12px;
+
+      border-radius: 9999px;
+      transition: background 0.3s;
+    }
+    .product-buttons button:first-child {
+      background-color: #3b82f6;
+      color: white;
+    }
+    .product-buttons button:last-child {
+      background-color: white;
+      color: #3b82f6;
+    }
+    .product-buttons button:hover {
+      opacity: 0.8;
+    }
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+<section class="relative w-full max-w-4xl mx-auto px-4 sm:px-6">
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="block md:hidden absolute top-4 left-8 z-50">
+  <img src="logogsk2.png" alt="Logo" class="w-6 scale-90">
+</a>
+  <div class="center-links">
+    <a href="/"><img src="logogsk2.png" alt="Logo" class="w-8 inline-block"></a>
+    <a href="https://sapl/work">PRACE</a>
+    <a href="https://sao.pl/work">GRAFIKA</a>
+    <a href="https://spl/work">MUZYKA</a>
+    <a href="https://sampl/about">O MNIE</a>
+    <a href="https://s.pl/contact">KONTAKT</a>
+  </div>
+<div class="hamburger" onclick="toggleMenu(this)">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+</nav>
+</header>
+<nav id="mobileMenu" class="mobile-menu">
+  <a href="https://sapl/work">PRACE</a>
+  <a href="https://sao.pl/work">GRAFIKA</a>
+  <a href="https://spl/work">MUZYKA</a>
+  <a href="https://sampl/about">O MNIE</a>
+  <a href="https://s.pl/contact">KONTAKT</a>
+</nav
+
+<!-- SLIDER -->
+<div class="swiper mySwiper mt-10 max-w-2xl mx-auto rounded-2xl	 overflow-hidden scale-90">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="animacja sgk gif kopia.gif" alt="Zdjęcie 1" class="w-full"></div>
+    <div class="swiper-slide"><img src="animacja sgk logo22.gif" alt="Zdjęcie 2" class="w-full"></div>
+    <div class="swiper-slide"><img src="kobu-agency-csJt89dL9pE-unsplash.jpg" alt="Zdjęcie 3" class="w-full"></div>
+    <div class="swiper-slide"><img src="jazmin-quaynor-bm9zWKi_c9Y-unsplash.jpg" alt="Zdjęcie 4" class="w-full"></div>
+        <div class="swiper-slide"><img src="jazmin-quaynor-CXjp1ycr5Vw-unsplash.jpg" alt="Zdjęcie 4" class="w-full"></div>
+            <div class="swiper-slide"><img src="alex-shuper-zoiROwz_2IU-unsplash.jpg" alt="Zdjęcie 4" class="w-full"></div>
+                <div class="swiper-slide"><img src="javier-miranda-ltqIaLUc7fg-unsplash.jpg" alt="Zdjęcie 4" class="w-full"></div>
+                          <div class="swiper-slide"><img src="ben-kolde-Ajcipx1VDXI-unsplash.jpg" alt="Zdjęcie 4" class="w-full"></div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- KREATYWNA SEKCJA Z OBRAZEM -->
+<section class="relative mt-16">
+  <img src="tlokreatywne.png" alt="Kolaż kreatywny" class="w-full h-96 object-cover">
+  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 space-y-7">
+    <div class="bg-white bg-opacity-90 text-black text-center rounded-full px-8 py-6 shadow-xl btn-animate">
+      <p class="text-lg font-semibold">Pomysły rodzą sukces</p>
+    </div>
+    <div class="bg-blue-500 bg-opacity-90 text-black text-center rounded-full py-6 px-8 shadow-xl btn-animate">
+      <p class="text-lg font-semibold">Zainspiruj się z nami</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="relative">
+  <!-- Obrazek laptopa -->
+  <img src="laptop.jpg" alt="Reklama 1" class="w-full h-auto">
+
+  <!-- Wideo na środku laptopa -->
+  <div 
+    class="absolute" 
+    style="top: 26%; left: 33.15%; width: 38%; height: 40%; overflow: hidden; border-radius: 8px;">
+
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="w-full h-full object-cover">
+      <source src="stars.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje wideo.
+    </video>
+  </div>
+</section>
+
+
+<section class="relative">
+  <!-- Obrazek laptopa -->
+  <img src="laptop.jpg" alt="Reklama 1" class="w-full h-auto">
+
+  <!-- Wideo na środku laptopa -->
+  <div 
+    class="absolute" 
+    style="top: 26%; left: 33.15%; width: 38%; height: 40%; overflow: hidden; border-radius: 8px;">
+
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="w-full h-full object-cover">
+      <source src="video1.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje wideo.
+    </video>
+  </div>
+</section>
+
+<section class="relative">
+  <!-- Obrazek laptopa -->
+  <img src="laptop.jpg" alt="Reklama 1" class="w-full h-auto">
+
+  <!-- Wideo na środku laptopa -->
+  <div 
+    class="absolute" 
+    style="top: 26%; left: 33.15%; width: 38%; height: 40%; overflow: hidden; border-radius: 8px;">
+
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      class="w-full h-full object-cover">
+      <source src="video2.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje wideo.
+    </video>
+  </div>
+</section>
+
+
+  <section class="product-grid">
+    <div class="product-item">
+      <img src="app1.jpg" alt="Reklama 1">
+    </div>
+    <div class="product-item">
+      <img src="app2.jpg" alt="Reklama 2">
+    </div>
+    <div class="product-item">
+        <div class="product-description">Nowoczesne opakowanie produktu</div>
+  <a href="http://www.kuklik.com.pl/" target="_blank" rel="noopener noreferrer">
+      <img src="app3.jpg" alt="Reklama 3">
+     
+    </a>
+
+    </div>
+    <div class="product-item">
+      <img src="app4.jpg" alt="Reklama 4">
+    </div>
+    <div class="product-item">
+      <img src="Martini plakat.png" alt="Reklama 5">
+      <div class="product-buttons">
+        <button>Informacje</button>
+        <button>Kup teraz</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <img src="app6.jpg" alt="Reklama 6">
+      <div class="product-buttons">
+        <button>Informacje</button>
+        <button>Kup teraz</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="product-grid">
+    <div class="product-item">
+      <img src="appp1.png" alt="Reklama 1">
+    </div>
+    <div class="product-item">
+      <img src="appp2.jpg" alt="Reklama 2">
+    </div>
+    <div class="product-item">
+        <div class="product-description">Nowoczesne opakowanie produktu</div>
+  <a href="http://www.kuklik.com.pl/" target="_blank" rel="noopener noreferrer">
+      <img src="appp3.jpg" alt="Reklama 3">
+     
+  </a>
+
+    </div>
+    <div class="product-item">
+      <img src="appp4.jpg" alt="Reklama 4">
+    </div>
+    <div class="product-item">
+      <img src="appp5.jpg" alt="Reklama 5">
+      <div class="product-buttons">
+        <button>Informacje</button>
+        <button>Kup teraz</button>
+      </div>
+    </div>
+    <div class="product-item">
+      <img src="app6.jpg" alt="Reklama 6">
+      <div class="product-buttons">
+        <button>Informacje</button>
+        <button>Kup teraz</button>
+      </div>
+    </div>
+  </section>
+
+<!-- PRODUKTY -->
+<section class="product-grid">
+  <div class="product-item"><img src="Jest miodzio.png" alt="Reklama 1"></div>
+  <div class="product-item"><img src="korona model.png" alt="Reklama 2"></div>
+  <div class="product-item">
+    <a href="http://www.kuklik.com.pl/" target="_blank"><img src="app3.jpg" alt="Reklama 3"></a>
+  </div>
+  <div class="product-item"><img src="app4.jpg" alt="Reklama 4"></div>
+  <div class="product-item">
+    <img src="app5.jpg" alt="Reklama 5">
+    <div class="product-buttons">
+      <button class="btn-animate">Informacje</button>
+      <button class="btn-animate">Kup teraz</button>
+    </div>
+  </div>
+  <div class="product-item">
+    <img src="litery szum2.png" alt="Reklama 6">
+    <div class="product-buttons">
+      <button class="btn-animate">Informacje</button>
+      <button class="btn-animate">Kup teraz</button>
+    </div>
+  </div>
+</section>
+
+<!-- ZAUFALI NAM -->
+<section class="py-16 bg-white text-black text-center">
+  <h2 class="text-2xl font-bold mb-8">Zaufali nam</h2>
+  <div class="flex flex-wrap justify-center gap-8 items-center">
+    <img src="logobw2.svg" alt="Logo" class="max-h-16 sm:max-h-20 md:max-h-20">
+    <img src="GSK logo — kopia.png" alt="Logo" class="max-h-16 sm:max-h-29 md:max-h-32">
+    <img src="LOGO-UwCM-a-300x164.png" alt="Logo" class="max-h-16 sm:max-h-20 md:max-h-26">
+    <img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Logo" class="max-h-16 sm:max-h-20 md:max-h-32">
+  </div>
+</section>
+
+<!-- TEKST MOTYWACYJNY -->
+<section class="bg-white text-black text-center py-20">
+  <p class="text-xl max-w-3xl mx-auto">
+    Ze mną Twoje pomysły będą mogły ożyć,<br>
+    bo wchodzę w każdy projekt na całego. <br>
+    <br><br>
+    <br>Czy chcesz spróbować?
+    Popracujmy nad tym razem.
+  </p>
+</section>
+
+<!-- STOPKA NOWOCZESNA -->
+<footer class="bg-gray-900 text-gray-400 text-center py-12">
+  <div class="mb-4">
+    <a href="#" class="mx-2 hover:text-white">Facebook</a>
+    <a href="#" class="mx-2 hover:text-white">Instagram</a>
+    <a href="#" class="mx-2 hover:text-white">LinkedIn</a>
+  </div>
+  <p>&copy; 2025 Kreatywna Agencja – Wszystkie prawa zastrzeżone.</p>
+</footer>
+
+<!-- POWRÓT NA GÓRĘ -->
+<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-600">⬆️</button>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+<script>
+  const toggleMenu = () => {
+    document.getElementById('mobileMenu').classList.toggle('show');
+  }
+  const swiper = new Swiper(".mySwiper", {
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 2200,
+    },
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+  });
+</script>
+  const video = document.getElementById('laptop-video');
+  const button = document.getElementById('switch-video');
+
+  const videoSources = ['video1.mp4', 'video2.mp4', 'video3.mp4']; // dodaj więcej jeśli chcesz
+  let current = 0;
+
+  
+  button.addEventListener('click', () => {
+    current = (current + 1) % videoSources.length;
+    video.src = videoSources[current];
+    video.load();
+    video.play();
+  });
+</script>
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    menu.classList.toggle('show');
+  });
+</script>
+<script>
+  function toggleMenu(button) {
+    button.classList.toggle('open'); // efekt krzyża
+    document.getElementById('mobileMenu').classList.toggle('show'); // pokazuje/ukrywa menu
+  }
+</script>
+
+
+</body>
+</html>
