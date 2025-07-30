@@ -270,7 +270,7 @@ img {
       background: #eeb702;
       color: rgb(29, 29, 29);
       border: nonblacke;
-      border-radius: 25px;
+      border-radius: 55px;
       font-size: 27px;
       font-weight: 500;
       margin: 10px;
@@ -352,14 +352,11 @@ img {
 
 @media (max-width: 768px) {
   .video-section--checiny {
-    margin-top: 20px;
-    margin-bottom: 20px;
- 
-    height: 100vh;
-     position: relative;
-  width: 100%;
-
-  overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100vw; /* lub np. height: 100vh; jeśli chcesz pełną wysokość widoku */
+    object-fit: cover;
+    overflow: hidden;
   }
 }
 
@@ -368,7 +365,7 @@ img {
   .video-section--checiny {
     margin-top: 4px;
     margin-bottom: 80;
-height: 60vh;
+height: 100vh;
       width: 100%;
 
     object-fit: cover;
@@ -378,8 +375,8 @@ background-color: rgb(255, 255, 255);
   .video-section--checiny video {
     top: 30px;
     min-width: 50%;
-    min-height: 10%;
     left: 50%;
+    height: 100vh;
     transform: translateX(-50%);
     position: absolute;
   }
@@ -519,6 +516,12 @@ padding: 20px 10px;
        margin-top: 90px;
       }
 
+          .h9 {
+       font-size: 32px;
+       color: rgb(0, 0, 0);
+       margin-bottom: 84px;
+       margin-top: 10px;
+      }
    
     .yellow-section {
       background: #eeb702;
@@ -656,6 +659,9 @@ padding: 0 40px;
   margin: 0 10px;
   transition: transform 0.3s ease, filter 0.3s ease;
 }
+a {
+  display: inline-block;
+}
 
 .social-icon:hover {
   transform: scale(1.1);
@@ -731,7 +737,7 @@ footer a:hover {
     <a href="https://samuelstudio.pl/contact">Kontakt</a>
     <a href="https://samuelstudio.pl/blog">Blog</a>
     <a href="https://samuelstudio.pl/christian-animation">Animacja Chrześcijańska</a>
-    <a href="index.html" title="English version" class="lang-switch">
+    <a href="indexen.html" title="English version" class="lang-switch">
   <img src="uk.svg" alt="English" style="width:35px; vertical-align:middle;"></a>
     </div>
 
@@ -758,8 +764,8 @@ footer a:hover {
     <video src="Samuel-Studio-Reel-2024.mp4" autoplay muted loop></video>
     <div class="video-overlay">
       <h1>Trafiaj skuteczniej do swojej publiczności</h1>
-      <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">Zobacz moje animacje w akcji</button>
-      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">Dlaczego Samuel Studio</button>
+      <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">Zobacz moje animacje <br>w akcji</button>
+      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">Dlaczego <br>Samuel Studio?</button>
     </div>
   </section>
 
@@ -770,7 +776,7 @@ footer a:hover {
     <div class="ellipse-video">
       <video src="question-mark.mp4" autoplay muted loop></video>
     </div>
-    <h5>Masz coś ważnego do pokazania, <br> ale nie wiesz, jak zrobić to skutecznie?</h5>
+    <div class="h9">Masz coś ważnego do pokazania, <br> ale nie wiesz, jak zrobić to skutecznie?</div>
     <div class="grid-2x2">
       <div class="grid-item" onclick="location.href='https://link1.pl'">
         <img src="ANIMATED-ICON-LOGO.gif.webp" alt="Animacja reklamowa">
@@ -797,12 +803,12 @@ footer a:hover {
  <section class="white-section">
   <div class="top-row">
     <div class="text-col">
-      <h2><br></r>Nazywam się Paweł Pauksztełło, <br>założyciel studia Samuel Studio.</h2>
-      <p>
+      <h2><br>Nazywam się Paweł Pauksztełło, <br>założyciel studia Samuel Studio.</h2>
+    <h6>
         <br>Pomagam przyciągać uwagę i jasno przekazywać Twoje przesłanie.
         <br>
         Zobacz moje portfolio i przekonaj się, jak działają moje animacje w praktyce.
-      </p>
+    </h>
     </div>
     <div class="video-col">
       <video src="Pawel-Pauksztello-Samuel-Studio-Owner-Founder.mp4" autoplay muted loop playsinline></video>
@@ -812,7 +818,8 @@ footer a:hover {
 
   <div class="text-col" style="margin-top: -50px;">
     <h2><br>Nikt nie chce być ignorowany.</h2>
-    <p>Dobrze zaprojektowana animacja przyciąga uwagę, angażuje odbiorców i sprawia, że Twoje przesłanie jest niezapomniane.<br></p>
+    <p>Dobrze zaprojektowana animacja przyciąga uwagę, angażuje odbiorców 
+      i sprawia, że Twoje przesłanie jest niezapomniane.<br></h>
   </div><br>
 </section>
 
@@ -824,7 +831,7 @@ footer a:hover {
   <section class="video-section">
     <video src="St-Thomas-Apostol-animated-cover-1.mp4" autoplay muted loop></video>
     <div class="video-overlay">
-      <h1>Zobacz moje animacje w akcji </h1>
+      <h1>Zobacz moje animacje <br>w akcji </h1>
     </div>
   </section>
 
@@ -843,7 +850,7 @@ footer a:hover {
   <section class="video-section">
     <video src="stars.mp4" autoplay muted loop></video>
     <div class="video-overlay">
-      <h1>Zobacz moje animacje w akcji </h1>
+      <h1>Zobacz moje animacje <br>w akcji </h1>
        <h4><br><br><br><br><br><br>Oferuję kreatywne rozwiązania dopasowane do potrzeb Twojej firmy. </h4>
        <div class="h7">
 <br>- Spraw, by Twoja marka zapadła w pamięć i się wyróżniała <br>- Animowane logotypy

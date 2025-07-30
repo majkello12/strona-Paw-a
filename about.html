@@ -235,6 +235,46 @@ img {
 }
 }
 
+
+.gif-section {
+  display: grid;
+  grid-template-columns: repeat(2, auto); /* 2 kolumny */
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: rgb(255, 255, 255); /* opcjonalne tło */
+}
+
+.gif-section img {
+  width: 290px; /* lub inna wartość */
+  height: auto;
+}
+
+
+@media (max-width: 600px) {
+  .gif-section {
+    grid-template-columns: 1fr; /* 1 kolumna */
+  }
+
+  .gif-section img {
+    width: 60%; /* możesz dostosować */
+    margin: 0 auto;
+  }
+}
+
+.gif-crop {
+  width: 288px;
+  height: 260px;  /* przycięta wysokość */
+
+}
+
+.gif-crop img {
+  width: 100%;
+  height: auto;
+}
+
+
     /* WIDEO SEKCJA */
     .video-section {
       position: relative;
@@ -529,6 +569,7 @@ padding: 20px 10px;
        color: rgb(0, 0, 0);
        margin-bottom: 44px;
        margin-top: 59px;
+             text-align: center;
       }
 
    
@@ -830,7 +871,7 @@ marketing, or storytelling. <br>See examples of my work:<br><br><br><br><h4 styl
   <!-- BIALA SEKCJA -->
  <section class="white-section">
   <div class="top-row">
-    <div class="text-col">
+  
        <div class="h10">I also specialize in visualizing Christian themes, <br>helping churches and faith-based organizations share <br>
 their messages in a meaningful way. <br><br>Christian Animation<br>
 
@@ -844,7 +885,7 @@ their messages in a meaningful way. <br><br>Christian Animation<br>
   <!-- ŻÓŁTA Z TEKSTEM -->
   <section class="yellow-section">
     
-    <p style="max-width: 700px; margin-bottom: -100; margin-top: -110px; font-size: 1.7rem;">
+    <p style=" margin-bottom: -100; margin-top: -110px; font-size: 1.7rem;">
      <br>Outside of work, I spend time with my wife <br>and three sons. I’m also involved <br>
 in my parish as a lector and help <br>organize Worship events in my city.
 <br><br>
@@ -855,28 +896,19 @@ If you need an animation that makes <br>your message clear and engaging, <br>
   </section>
 
      <!-- DODATKOWE WIDEO -->
-  <section class="video-section">
-    <video src="stars.mp4" autoplay muted loop></video>
-    <div class="video-overlay">
-      <h1>See My Work in Action </h1>
-       <h4><br><br><br><br><br><br>I offer creative solutions for your business needs. </h4>
-       <div class="h7">
-<br>- Make your brand memorable and stand out <br>- Animated Logos
-<br>- Simplify complex topics and engage your audience <br>- Explainers
-<br>- Tell your story with motion <br>- Storytelling
-<br>- Enhance your video projects <br>- Animated elements for larger productions
-<br>Perfect for digital branding and social media <br>- Animated GIFs
-Grab attention and drive awareness <br>- Promotional Animations
-<br>- Eye - catching visual storytelling for your campaigns <br>- Animated Posters
-Subtle motion that adds depth <br>- Background Animations</div>
-    </div>
-  </section>
-  
+ <section class="video-section">
+  <video src="stars.mp4" autoplay muted loop></video>
+
+</section>
 
 
 
- 
-
+<section class="gif-section">
+  <img src="animacja sgk logo22.gif" alt="Animacja SGK Logo 1">
+  <img src="animacja sgk gif kopia.gif" alt="Animacja SGK Logo 2">
+  <img src="animacja sgk gif kopia.gif" alt="Animacja SGK Logo 3">
+  <img src="animacja sgk logo22.gif" alt="Animacja SGK Logo 1">
+</section>
 
 
 
@@ -891,24 +923,7 @@ Subtle motion that adds depth <br>- Background Animations</div>
     </div>
   </section>
 
-  <!-- OSTATNIE REALIZACJE -->
-  <section class="yellow-section" id="offer">
-    <h2 style="margin-bottom: 120px;">Recent Work</h2>
-    <div class="grid-2x2">
-      <div class="grid-item">
-        <video src="Trileas-Animated-Cover.mp4" autoplay muted loop></video>
-        <div class="desc">Trileas logo visualisation</div>
-      </div>
-      <div class="grid-item">
-        <video src="St-Thomas-Apostol-animated-cover-1.mp4" autoplay muted loop></video>
-        <div class="desc">St Thomas animation</div>
-      </div>
-    </div>
-    <button class="see-more-btn">See More</button>
-
-  </section>
-
-  
+   
 
 
         <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
