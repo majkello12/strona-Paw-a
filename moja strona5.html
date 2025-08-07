@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MGrafik z Kielc.</title>
+  <!-- Geomanist font inclusion -->
+  <link href="https://fonts.cdnfonts.com/css/geomanist" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    :root {
+      --neon-blue: #ffffff;
+      --neon-pink: #000000;
+      --black: #000;
+      --white: #fff;
+    }
+
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Geomanist', sans-serif;      scroll-behavior: smooth;
+      background: var(--white);
+      color: var(--black);
+    }
+
+   header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1px) saturate(150%);
+  -webkit-backdrop-filter: blur(1px) saturate(120%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transform: scale(1);
+}
+
+    header.transparent {
+      background: transparent;
+    }
+
+header.solid {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px) saturate(180%);
+  -webkit-backdrop-filter: blur(2px) saturate(180%);
+  transform: scale(1.01);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--neon-blue);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.logo:hover {
+  color: rgb(247, 61, 191);
+  text-shadow:
+    0 0 5px rgba(255, 150, 211, 0.5),
+    0 0 10px rgb(255, 0, 200),
+    0 0 20px rgb(255, 85, 241),
+    0 0 40px rgb(134, 9, 93);
+      animation: neonPulse 1.5s infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 20px #0ff,
+      0 0 40px #0ff;
+  }
+  50% {
+    text-shadow:
+      0 0 2px #0ff,
+      0 0 5px #0ff,
+      0 0 10px #0ff,
+      0 0 20px #0ff;
+  }
+}
+
+.logo:hover {
+  animation: neonPulse 1.5s infinite;
+}
+
+.hamburger {
+  width: 30px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  z-index: 2001;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hamburger span {
+  background: #000;
+  height: 4px;
+  width: 100%;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 100;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+ nav {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+}
+
+nav.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+    .hero {
+      height: 100vh;
+background: url('gora.png') no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--white);
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 80px;
+      margin: 0;
+      color: var(--white);
+      animation: pulse 3s infinite;
+      
+    }
+
+    .hero p {
+      font-size: 26px;
+      margin-top: 20px;
+        text-transform: uppercase; /* ← dodane */
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+        .section-image-text {
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: var(--white);
+      display: flex;
+        font-size: 60px;
+      align-items: center;
+      padding: 100px 20px;
+    }
+
+    .section-image-text .content {
+      max-width: 600px;
+      background: rgba(0,0,0,0.6);
+      padding: 40px;
+      border-radius: 20px;
+    }
+
+    .section-scroll-text {
+      background: var(--white);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+.section-scroll-text h2 {
+  font-size: 100px;
+  transition: all 0.4s ease-out;
+  transform: translateY(40px);
+  opacity: 100;
+  will-change: transform;
+}
+
+    .section-scroll-text h2.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+        .section-o-text {
+      background: var(--white);
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+.section-o-text h2 {
+  font-size: 100px;
+  opacity: 1;
+  transition: all 0.8s ease;
+  will-change: transform;
+}
+
+.section-o-text h2.visible {
+  opacity: 1;
+}
+
+       @media (max-width: 768px) {
+      .section-image-text {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .section-image-text .content {
+        margin-left: 0;
+      }
+
+      .about {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about img {
+        margin: 0 0 20px 0;
+      }
+    }
+
+        .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 100px 20px;
+      background: var(--white);
+    }
+
+    .portfolio img {
+      width: 100%;
+      border-radius: 8px;
+      transition: transform 0.4s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .portfolio img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.2);
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 100px 20px;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .about img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin-right: 40px;
+    }
+
+    .about .text {
+      max-width: 600px;
+    }
+
+    /* Stopka - styl linków */
+footer a {
+  text-decoration: none;
+  
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+footer a:hover {
+  color: #f7c403;
+}
+.footer-links {
+ 
+  display: flex;
+  flex-direction: column;    
+  justify-content: center;
+  gap: 15px 30px;          
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.footer-links a {
+   font-size: 25px;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+  white-space: nowrap;      
+}
+
+.footer-links a:hover {
+  color: #f7c403;
+}
+
+   /* KONTAKT */
+    #kontakt {
+      background: #f9f9f9;
+      padding: 100px 20px;
+      text-align: center;
+    }
+    #kontakt h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    #kontakt p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    #kontakt a {
+  text-decoration: none;           
+  color: #333;                  
+  transition: color 0.3s ease;   
+}
+
+#kontakt a:hover {
+  color: #eeb702;                
+}
+   .social-icon {
+  width: 40px;
+  margin: 0 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+a {
+  display: inline-block;
+}
+
+.social-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+
+  </style>
+</head>
+<body>
+
+   <header>
+    <div class="logo transparent">MGrafik</div>
+<div class="hamburger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<nav id="mobile-menu">
+  <a href="#hero">www design</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#about">About Me</a>
+  <a href="#contact">Contact</a>
+</nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <h1>Grafik z Kielc</h1>
+    <p>Grafiki, tworzenie stron, pasjonat technologii</p>
+  </section>
+
+  <!-- Pozostałe sekcje pozostają bez zmian -->
+
+    <section class="section-scroll-text">
+    <h2 id="scroll-text">Tworzę nowoczesne, responsywne i unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
+  </section>
+
+
+  <section class="section-image-text">
+    <div class="content">
+      <h2>Zróbmy razem dobry projekt!</h2>
+      <p>Od pomysłu, przez projekt graficzny, po wdrożenie – oferuję kompleksowe podejście, które gwarantuje efektowny i skuteczny rezultat. Skontaktuj się, a razem stworzymy coś unikalnego!</p>
+    </div>
+  </section>
+  
+
+ 
+
+  <section class="portfolio" id="portfolio">
+    <img src="appp1.png" alt="Grafika 1">
+    <img src="obwarzanek1.png" alt="Grafika 2">
+    <img src="Jest miodzio.png" alt="Grafika 3">
+    <img src="korona model.png" alt="Grafika 4">
+    <img src="litery szum2.png" alt="Grafika 5">
+    <img src="napis 3 dddd.png" alt="Grafika 6">
+    <img src="Martini plakat.png" alt="Grafika 7">
+    <img src="Plakat Papaya.png" alt="Grafika 8">
+  </section>
+
+
+<section class="section-o-text">
+  <h2 id="scroll-text-horizontal">
+    Tworzę nowoczesne, responsywne i unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.
+  </h2>
+</section>
+
+  <section class="about" id="about">
+    <img src="gora.png" alt="Moje zdjęcie">
+    <div class="text">
+      <h2>Coś o mnie</h2>
+      <p>Nazywam się Michał, jestem grafikiem i web developerem z Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze. Cenię sobie kontakt z klientem i indywidualne podejście do każdego projektu.</p>
+    </div>
+        <img src="gora.png" alt="Moje zdjęcie">
+    <div class="text">
+      <h2>Oryginalne strony internetowe</h2>
+      <p>Nazywam się Michał, jestem grafikiem i web developerem z Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze. Cenię sobie kontakt z klientem i indywidualne podejście do każdego projektu.</p>
+    </div>
+    <img src="gora.png" alt="Moje zdjęcie">
+    <div class="text">
+      <h2>Grafiki pozwalające Ci się wyróżnić</h2>
+      <p>Nazywam się Michał, jestem grafikiem i web developerem z Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze. Cenię sobie kontakt z klientem i indywidualne podejście do każdego projektu.</p>
+    </div>
+
+  </section>
+
+  
+  <section class="section-image-text">
+    <div class="content">
+      <h2>Zróbmy razem dobry projekt!</h2>
+      <p>Od pomysłu, przez projekt graficzny, po wdrożenie – oferuję kompleksowe podejście, które gwarantuje efektowny i skuteczny rezultat. Skontaktuj się, a razem stworzymy coś unikalnego!</p>
+    </div>
+  </section>
+
+    <!-- KONTAKT -->
+  <section id="kontakt">
+    <div style="margin-bottom: -30px;">
+    <h2 style="margin-bottom: 30px;">Kontakt</h2>
+    <p>Napisz: <a href="mailto:kontakt@animacja.pl">michalbarangrafik@gmail.com</a></p>
+    <p>Zadzwoń: <a href="tel:+48693733366">+48 883 492 015</a></p>
+        <h3 style="margin-top: 40px;">Połącz się przez:</h3>
+    
+    <div style="margin-top: 50px;">
+      <a href="https://facebook.com/pawelpauksztello" target="_blank"><img src="fb icon2.png" alt="Facebook" class="social-icon"></a>
+      <a href="https://instagram.com/samuel_studio.pl/" target="_blank"><img src="insta icon2.png" alt="Instagram" class="social-icon"></a>
+      <a href="https://youtube.com/@SamuelStudio_" target="_blank"><img src="yt icon2.png" alt="YouTube" class="social-icon"></a>
+    </div>
+  </section>
+        <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+
+  <!-- STOPKA -->
+ <footer style="background: #333; color: #fff; padding: 60px 20px; text-align: center;">
+  <div style="margin-bottom: 30px;">
+    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px;">
+      <img src="yt icon2.png" alt="YouTube" style="height: 40px; vertical-align: middle;">
+      <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj mój kanał yt</span>
+    </a>
+    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px;">
+      <img src="yt icon2.png" alt="YouTube" style="height: 40px; vertical-align: middle;">
+      <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj kanał Explainers in Animation</span>
+    </a>
+  </div>
+
+  <div style="margin-bottom: 30px;">
+
+
+  <footer class="footer">
+  <div class="footer-links">
+    <a href="https://samuelstudio.pl" style="margin: 0 15px;">STRONA GŁÓWNA</a>
+    <a href="https://samuelstudio.pl/work" style="margin: 0 15px;">Prace</a>
+    <a href="https://samuelstudio.pl/about" style="margin: 0 15px;">O Mnie</a>
+    <a href="https://samuelstudio.pl/contact" style="margin: 0 15px;">Kontakt</a>
+    <a href="https://samuelstudio.pl/blog" style="margin: 0 15px;">Blog</a>
+        <a href="index.html" title="English version" class="lang-switch">
+  <img src="ukflag.svg" alt="English" style="width:35px; vertical-align:middle;"></a>
+  </div>
+
+<footer>
+<br>
+  <div style="font-size: 0.9rem;">&copy; Copyright by me 2025</div>
+</footer>
+
+  <script>
+const menu = document.getElementById('mobile-menu');
+const hamburger = document.querySelector('.hamburger');
+
+function toggleMenu() {
+  menu.classList.toggle('show');           // pokazuje/ukrywa menu
+  hamburger.classList.toggle('active');    // animuje ikonę
+}
+
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    menu.classList.remove('show');
+    hamburger.classList.remove('active');
+  });
+});
+</script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p1CmW+fb47uIMBctjPMgH5+tHkpmxvVEj6xUap7NQKM0MN/nKgnZ0XrSsyJCDN7xC9zTKaFZ6u6Jfz5k1mlC2g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</body>
+</html>
