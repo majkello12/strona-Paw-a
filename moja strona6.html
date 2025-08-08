@@ -20,7 +20,10 @@
 
     * {
       box-sizing: border-box;
+            margin: 0;
+      padding: 0;
     }
+
 
     a {
   text-decoration: none;
@@ -51,7 +54,8 @@
     body, html {
       margin: 0;
       padding: 0;
-      font-family: 'Geomanist', sans-serif;      scroll-behavior: smooth;
+      font-family: 'Geomanist', sans-serif;      
+      scroll-behavior: smooth;
       background: var(--white);
       color: var(--black);
     }
@@ -267,19 +271,61 @@ background: url('gora.png') no-repeat center center / cover;
   backdrop-filter: blur(5px); /* opcjonalne dodatkowe rozmycie tła */
     }
 
-    .section-scroll-text {
-      background: var(--white);
-      padding: 100px 20px;
-      text-align: center;
-      
-    }
+  #scroll-text {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    #scroll-text img {
+.scroll-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.scroll-item.reverse {
+  flex-direction: row-reverse;
+}
+
+.scroll-item img {
+  flex: 1 1 300px;
   max-width: 100%;
   height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px; /* opcjonalnie – zaokrąglenie rogów */
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-content {
+  flex: 1 1 300px;
+}
+
+.scroll-content h3 {
+  margin-top: 0;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.scroll-content p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Responsywność dla telefonów */
+@media (max-width: 768px) {
+  .scroll-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .scroll-item.reverse {
+    flex-direction: column;
+  }
+
+  .scroll-content {
+    margin-top: 20px;
+  }
 }
 
 .section-scroll-text h2 {
@@ -296,6 +342,15 @@ background: url('gora.png') no-repeat center center / cover;
       transform: translateY(0);
     }
 
+.section-image-text .content:hover {
+  transform: scale(1.006);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+          border: 2px solid rgba(255, 255, 255, 0.664); /* biały obrys */
+  box-shadow: 0 0 20px rgb(255, 255, 255); /* blur po brzegach */
+
+}
 @media (max-width: 1024px) {
   .section-scroll-text h2 {
     font-size: 60px;
@@ -310,7 +365,9 @@ background: url('gora.png') no-repeat center center / cover;
 
 @media (max-width: 480px) {
   .section-scroll-text h2 {
-    font-size: 28px;
+    font-size: 48px;
+        flex-direction: column;
+        text-align: center;
   }
 }
 
@@ -339,6 +396,8 @@ background: url('gora.png') no-repeat center center / cover;
 .section-o-text h2.visible {
   opacity: 1;
 }
+
+
 
        @media (max-width: 768px) {
       .section-image-text {
@@ -425,6 +484,22 @@ background: url('gora.png') no-repeat center center / cover;
     }
 
 
+    footer {
+  background: linear-gradient(135deg, rgb(255, 255, 255), rgb(0, 255, 255), rgb(255, 0, 255));
+  animation: gradientMove 8s ease infinite;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  border-radius: 14px;
+  color: #ffffff;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 footer a {
   text-decoration: none;
   
@@ -530,6 +605,63 @@ footer a:hover {
       z-index: 0;
     }
 
+    .laptop-section {
+      width: 100vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .laptop-wrapper {
+      position: relative;
+      width: 100vw;
+    }
+
+    .laptop-image {
+      display: block;
+      width: 100vw;
+      height: auto;
+    }
+
+    .video-inside {
+      position: absolute;
+      top: 26.5%;
+      left: 32.99%;
+      width: 38.4%;
+      height: 39%;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    .video-inside video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+.laptop-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+    
+   .white-box {
+  background: rgba(245, 245, 245, 0.35);
+  padding: 20px;
+  border-radius: 25px;
+box-shadow: 
+  0 12px 40px rgba(0, 0, 0, 0.2),
+  0 0 0 9px rgba(255, 255, 255, 0.9);
+  margin-bottom: 30px;
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.white-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35); 
+}
   </style>
 </head>
 <body>
@@ -543,10 +675,10 @@ footer a:hover {
 </div>
 
 <nav id="mobile-menu">
-  <a href="#hero">www design</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#about">About Me</a>
-  <a href="#contact">Contact</a>
+  <a href="indexpl.html">www design</a>
+  <a href="indexpl.html">Portfolio</a>
+  <a href="indexpl.html">About Me</a>
+  <a href="indexpl.html">Contact</a>
 </nav>
   </header>
 
@@ -555,11 +687,30 @@ footer a:hover {
     <p>Grafiki, tworzenie stron, pasjonat technologii</p>
   </section>
 
-  <!-- Pozostałe sekcje pozostają bez zmian -->
 
+  
     <section class="section-scroll-text">
     <h2 id="scroll-text">Tworzę nowoczesne, responsywne i unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
   </section>
+  <!-- Pozostałe sekcje pozostają bez zmian -->
+
+<section id="scroll-text">
+  <div class="scroll-item" data-aos="fade-right">
+    <img src="appp1.png" alt="Opis zdjęcia">
+    <div class="scroll-content">
+      <h3>Oto zaprojektowane przeze mnie strony internetowe</h3>
+      <p>Wykonuję proejkty nowoczesne, dostosowane w pełni do klienta</p>
+    </div>
+  </div>
+
+  <div class="scroll-item reverse" data-aos="fade-left">
+    <img src="gora.png" alt="Opis zdjęcia">
+    <div class="scroll-content">
+      <h3>Chesz pracować ze mną</h3>
+      <p>W każde zadanie angażuję się w pełni! </p>
+    </div>
+  </div>
+</section>
 
 
   <section class="section-image-text">
@@ -613,6 +764,28 @@ footer a:hover {
     </div>
 
   </section>
+
+   <section class="laptop-section">
+    <div class="white-box">
+    <div class="laptop-wrapper">
+      <img src="laptop.jpg" alt="Laptop" class="laptop-image animowane-zdjecie">
+      <div class="video-inside">
+        <video src="video2.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </section>
+
+  <section class="laptop-section">
+    <div class="laptop-wrapper">
+      <img src="laptop.jpg" alt="Laptop" class="laptop-image">
+      <div class="video-inside">
+        <video src="video2.mp4" autoplay muted loop playsinline></video>
+      </div>
+    </div>
+  </section>
+
+
+
 
     <!-- WIDEO Z NAPISAMI -->
   <section class="video-section">
@@ -677,10 +850,10 @@ Od pomysłu do gotowego wideo</p>
   </div>
 
   <div style="margin-bottom: 30px;">
-    <a href="#hero" style="color:white; margin:0 15px; text-decoration:none;">www design</a>
-    <a href="#portfolio" style="color:white; margin:0 15px; text-decoration:none;">Portfolio</a>
-    <a href="#about" style="color:white; margin:0 15px; text-decoration:none;">About Me</a>
-    <a href="#contact" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    <a href="indexpl.html" style="color:white; margin:0 15px; text-decoration:none;">www design</a>
+    <a href="indexpl.html" style="color:white; margin:0 15px; text-decoration:none;">Portfolio</a>
+    <a href="indexpl.html" style="color:white; margin:0 15px; text-decoration:none;">About Me</a>
+    <a href="indexpl.html" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
     <a href="index.html" title="English version" class="lang-switch" style="margin-left:15px;">
       <img src="ukflag.svg" alt="English" style="width:35px; vertical-align:middle;">
     </a>
