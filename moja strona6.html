@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <title>MGrafik z Kielc.</title>
   <!-- Geomanist font inclusion -->
   <link href="https://fonts.cdnfonts.com/css/geomanist" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
   <style>
+    
     :root {
       --neon-blue: #ffffff;
       --neon-pink: #000000;
@@ -21,6 +24,28 @@
 
     a {
   text-decoration: none;
+}
+
+#kontakt .social-icon {
+  width: clamp(24px, 4vw, 36px);
+  height: auto;
+  max-height: 36px;
+  margin: 0 10px;
+  display: inline-block;
+  object-fit: contain;
+  vertical-align: middle;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#kontakt {
+  max-width: 900px;       /* ograniczenie szerokości na dużych ekranach */
+  margin: 0 auto;         /* automatyczne wyśrodkowanie w poziomie */
+  padding: 40px 20px;     /* wewnętrzne marginesy (góra/dół i lewo/prawo) */
+  text-align: center;     /* opcjonalnie – wyśrodkowanie tekstu */
+}
+#kontakt .social-icon:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2) drop-shadow(0 0 6px rgb(255, 0, 200));
 }
 
     body, html {
@@ -111,24 +136,54 @@ header.solid {
   flex-direction: column;
   justify-content: space-between;
 }
+
+
+
 .hamburger span {
   background: #ffffff;
   height: 4px;
   width: 100%;
   border-radius: 2px;
   transition: all 0.4s ease;
+
+}
+/* Neon efekt po najechaniu */
+.hamburger span:hover {
+  background: rgb(255, 255, 255);
+  box-shadow:
+    0 0 5px rgba(255, 150, 211, 0.5),
+    0 0 10px rgb(255, 0, 200),
+    0 0 20px rgb(250, 250, 250),
+    0 0 40px rgb(134, 9, 93);
+  animation: neonPulse 1.5s infinite;
+}
+
+/* Reakcja na cały obszar */
+.hamburger:hover span {
+  background: #83024d; /* np. neonowy róż */
+  transform: scaleX(1.1); /* delikatne wydłużenie */
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(60deg) translate(9px, 5px);
+    width: 110%;
+          box-shadow: 0 0 4px rgb(255, 255, 255);
 }
 
 .hamburger.active span:nth-child(2) {
   opacity: 100;
+    transform: translate(70px, 5px);
+
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-60deg) translate(9px, -5px);
+    width: 110%;
+          box-shadow: 0 0 4px rgb(255, 255, 255);
+}
+
+p, h2, h1, li {
+  word-break: keep-all;
 }
 
  nav {
@@ -147,8 +202,13 @@ header.solid {
   transition: all 0.4s ease;
 }
 
+nav a {
+  color: #000; 
+  text-decoration: none;
+}
+
 nav a:hover {
-  color: #d5afff; 
+  color: #701cdd; 
   text-decoration: none;
 }
 
@@ -201,15 +261,26 @@ background: url('gora.png') no-repeat center center / cover;
     .section-image-text .content {
       max-width: 600px;
       background: rgba(0,0,0,0.6);
+        align-items: center;
       padding: 40px;
       border-radius: 20px;
+  backdrop-filter: blur(5px); /* opcjonalne dodatkowe rozmycie tła */
     }
 
     .section-scroll-text {
       background: var(--white);
       padding: 100px 20px;
       text-align: center;
+      
     }
+
+    #scroll-text img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px; /* opcjonalnie – zaokrąglenie rogów */
+}
 
 .section-scroll-text h2 {
   font-size: 100px;
@@ -217,12 +288,32 @@ background: url('gora.png') no-repeat center center / cover;
   transform: translateY(40px);
   opacity: 100;
   will-change: transform;
+    font-size: clamp(28px, 6vw, 100px);
 }
 
     .section-scroll-text h2.visible {
       opacity: 1;
       transform: translateY(0);
     }
+
+@media (max-width: 1024px) {
+  .section-scroll-text h2 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-scroll-text h2 {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-scroll-text h2 {
+    font-size: 28px;
+  }
+}
+
 
         .section-o-text {
       background: var(--white);
@@ -253,11 +344,23 @@ background: url('gora.png') no-repeat center center / cover;
       .section-image-text {
         flex-direction: column;
         text-align: center;
+        
       }
 
       .section-image-text .content {
-        margin-left: 0;
-      }
+  transition: all 0.4s ease;
+          margin-left: 0;
+}
+
+.section-image-text .content:hover {
+  transform: scale(1.006);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+          border: 2px solid rgba(255, 255, 255, 0.664); /* biały obrys */
+  box-shadow: 0 0 20px rgb(255, 255, 255); /* blur po brzegach */
+
+}
 
       .about {
         flex-direction: column;
@@ -269,35 +372,49 @@ background: url('gora.png') no-repeat center center / cover;
       }
     }
 
-        .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      padding: 100px 20px;
-      background: var(--white);
-    }
+.portfolio {
+  display: grid;
+  gap: 30px;
+  padding: 50px 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1400px;
+  margin: 0 auto;
+}
 
-    .portfolio img {
-      width: 100%;
-      border-radius: 8px;
-      transition: transform 0.4s, box-shadow 0.3s;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
+.portfolio img {
+  display: block;        /* usuwa ewentualne odstępy poniżej obrazka */
+  max-width: 100%;       /* obrazek nigdy nie będzie szerszy niż ekran */
+  height: auto;          /* zachowanie proporcji */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.4s, box-shadow 0.3s;
+  object-fit: contain;   /* dopasowanie całego obrazu do kontenera */
+}
 
-    .portfolio img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 30px rgba(0,0,0,0.2);
-    }
+.portfolio img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 30px rgba(0,0,0,0.2);
+}
+/* Telefony */
+@media (max-width: 768px) {
+  .portfolio {
+    grid-template-columns: 1fr;
+  }
+}
 
-    .about {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 100px 20px;
-      align-items: center;
-      background: var(--white);
-    }
+/* Tablety */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .portfolio {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    .about img {
+/* Duże ekrany */
+@media (min-width: 1201px) {
+  .portfolio {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}    .about img {
       max-width: 300px;
       border-radius: 20px;
       margin-right: 40px;
@@ -315,8 +432,10 @@ footer a {
   font-size: 1.1rem;
   transition: color 0.3s ease;
 }
+
+
 footer a:hover {
-  color: #3d3d3d;
+  color: #000000;
 }
 .footer-links {
  
@@ -330,17 +449,17 @@ footer a:hover {
 
 .footer-links a {
    font-size: 25px;
-  color: #cccccc;
+  color: #ffffff;
   text-decoration: none;
   transition: color 0.3s;
   white-space: nowrap;      
 }
 
 .footer-links a:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
-   /* KONTAKT */
+    /* KONTAKT */
     #kontakt {
       background: #f9f9f9;
       padding: 100px 20px;
@@ -362,39 +481,54 @@ footer a:hover {
 }
 
 #kontakt a:hover {
-  color: #e943ff;                
+  color: #eeb702;                
 }
-   .social-icon {
-  width: 40px;
-  margin: 0 10px;
-  transition: transform 0.3s ease, filter 0.3s ease;
+.social-icon {
+  width: 36px;
+  height: auto;
+  max-height: 36px;
+  object-fit: contain;
 }
-a {
-  display: inline-block;
+
+/* Na większych ekranach jeszcze delikatniejsze */
+@media (min-width: 1200px) {
+  .social-icon {
+    width: 32px;
+    height: 32px;
+  }
 }
+
+/* Na mniejszych ekranach większe */
+@media (max-width: 480px) {
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 
 .social-icon:hover {
   transform: scale(1.1);
   filter: brightness(1.2);
 }
 
-.scroll-top-btn {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 15px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: none;
-  z-index: 2000;
-}
-.scroll-top-btn.show {
-  display: block;
-} 
-
+   /* WIDEO SEKCJA */
+    .video-section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .video-section video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
 
   </style>
 </head>
@@ -450,11 +584,11 @@ a {
   </section>
 
 
-<section class="section-o-text">
-  <h2 id="scroll-text-horizontal">
-    Tworzę nowoczesne, responsywne i unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.
-  </h2>
-</section>
+    <section class="section-scroll-text">
+    <h2 id="scroll-text">Tworzę nowoczesne, responsywne i unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
+  </section>
+
+
 
   <section class="about" id="about">
     <img src="gora.png" alt="Moje zdjęcie">
@@ -465,16 +599,30 @@ a {
         <img src="gora.png" alt="Moje zdjęcie">
     <div class="text">
       <h2>Oryginalne strony internetowe</h2>
-      <p>Nazywam się Michał, jestem grafikiem i web developerem z Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze. Cenię sobie kontakt z klientem i indywidualne podejście do każdego projektu.</p>
+      <p>Tworzymy strony, które przyciągają uwagę od pierwszego wejrzenia. Każdy projekt to indywidualne podejście, 
+        nietypowe układy i nowoczesne efekty animacji. Twoja strona będzie nie tylko 
+        funkcjonalna, 
+        ale i zapamiętywalna. 
+        Zaskocz swoich klientów czymś wyjątkowym.
+</p>
     </div>
     <img src="gora.png" alt="Moje zdjęcie">
     <div class="text">
       <h2>Grafiki pozwalające Ci się wyróżnić</h2>
-      <p>Nazywam się Michał, jestem grafikiem i web developerem z Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze. Cenię sobie kontakt z klientem i indywidualne podejście do każdego projektu.</p>
+      <p>Dobrze zaprojektowana grafika to więcej niż estetyka — to Twoja tożsamość. Tworzymy projekty, które komunikują wartości marki i przyciągają wzrok. Dzięki unikalnym formom i kolorom zbudujesz rozpoznawalność. Wyróżnij się na tle konkurencji już od pierwszego kliknięcia.</p>
     </div>
 
   </section>
 
+    <!-- WIDEO Z NAPISAMI -->
+  <section class="video-section">
+    <video src="View-of-Checiny.mp4" autoplay muted loop></video>
+    <div class="video-overlay">
+      <h1>Animacje, które działają</h1>
+      <p style="font-size: 1.5rem;">Pomagamy firmom komunikować się skuteczniej.<br>
+Od pomysłu do gotowego wideo</p>
+    </div>
+  </section>
   
   <section class="section-image-text">
     <div class="content">
@@ -483,50 +631,62 @@ a {
     </div>
   </section>
 
-    <!-- KONTAKT -->
-  <section id="kontakt">
-    <div style="margin-bottom: -30px;">
-    <h2 style="margin-bottom: 30px;">Kontakt</h2>
-    <p>Napisz: <a href="mailto:kontakt@animacja.pl">michalbarangrafik@gmail.com</a></p>
-    <p>Zadzwoń: <a href="tel:+48693733366">+48 883 492 015</a></p>
-        <h3 style="margin-top: 40px;">Połącz się przez:</h3>
-    
-    <div style="margin-top: 50px;">
-      <a href="https://facebook.com/pawelpauksztello" target="_blank"><img src="fb icon2.png" alt="Facebook" class="social-icon"></a>
-      <a href="https://instagram.com/samuel_studio.pl/" target="_blank"><img src="insta icon2.png" alt="Instagram" class="social-icon"></a>
-      <a href="https://youtube.com/@SamuelStudio_" target="_blank"><img src="yt icon2.png" alt="YouTube" class="social-icon"></a>
-    </div>
-  </section>
-        <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
+  <!-- KONTAKT -->
+<section id="kontakt">
+  <h2 style="margin-bottom: 30px;">Kontakt</h2>
+  <p>Napisz: <a href="mailto:kontakt@animacja.pl">kontakt@animacja.pl</a></p>
+  <p>Zadzwoń: <a href="tel:+48726123456">+48 726 123 456</a></p>
 
-  <!-- STOPKA -->
- <footer style="background: #333; color: #fff; padding: 60px 20px; text-align: center;">
+  <h3 style="margin-top: 40px;">Połącz się przez:</h3>
+
+  <div class="social-container">
+    <a href="moja strona5.html" target="_blank">
+      <img src="fb icon2.png" alt="Facebook" class="social-icon">
+    </a>
+    <a href="moja strona6.html" target="_blank">
+      <img src="insta icon2.png" alt="Instagram" class="social-icon">
+    </a>
+    <a href="https://youtube.com/@SamuelStudio_" target="_blank">
+      <img src="yt icon2.png" alt="YouTube" class="social-icon">
+    </a>
+  </div>
+</section>
+
+
+ <!-- STOPKA -->
+<footer style="
+  background: linear-gradient(135deg, rgb(255, 0, 255), rgb(0, 255, 255));
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 0 20px rgb(255, 255, 255);
+  border-radius: 14px;
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+">
   <div style="margin-bottom: 30px;">
-    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px;">
+    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px; text-decoration:none; color:white;">
       <img src="yt icon2.png" alt="YouTube" style="height: 40px; vertical-align: middle;">
       <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj mój kanał yt</span>
     </a>
-    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px;">
+    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px; text-decoration:none; color:white;">
       <img src="yt icon2.png" alt="YouTube" style="height: 40px; vertical-align: middle;">
-      <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj kanał </span>
+      <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj kanał</span>
     </a>
   </div>
 
   <div style="margin-bottom: 30px;">
-
-
-  <footer class="footer">
-  <div class="footer-links">
-  <a href="#hero">www design</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#about">About Me</a>
-  <a href="#contact">Contact</a>
-        <a href="index.html" title="English version" class="lang-switch">
-  <img src="ukflag.svg" alt="English" style="width:35px; vertical-align:middle;"></a>
+    <a href="#hero" style="color:white; margin:0 15px; text-decoration:none;">www design</a>
+    <a href="#portfolio" style="color:white; margin:0 15px; text-decoration:none;">Portfolio</a>
+    <a href="#about" style="color:white; margin:0 15px; text-decoration:none;">About Me</a>
+    <a href="#contact" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    <a href="index.html" title="English version" class="lang-switch" style="margin-left:15px;">
+      <img src="ukflag.svg" alt="English" style="width:35px; vertical-align:middle;">
+    </a>
   </div>
 
-<br>
-  <div style="font-size: 0.9rem;">&copy; Copyright by me 2025</div>
+  <div style="font-size: 0.9rem; opacity: 0.8; color:rgb(0, 0, 0)">&copy; Copyright by me 2025</div>
 </footer>
 
   <script>
@@ -547,20 +707,21 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
 
 
 </script>
-  <script>
-const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 300) {
-    scrollTopBtn.classList.add("show");
-  } else {
-    scrollTopBtn.classList.remove("show");
-  }
-});
+<script>
+  // Funkcja poprawiająca "sieroty"
+  const fixWidows = (selector) => {
+    document.querySelectorAll(selector).forEach(el => {
+      el.innerHTML = el.innerHTML.replace(/ (\w{1,2})(?=[\s.,!?])/g, '&nbsp;$1');
+    });
+  };
 
-scrollTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+  // Popraw w elementach tekstowych
+  fixWidows('p, h1, h2, h3, h4, h5, h6, li, span, a, button, label');
+
+  // Popraw także <title>
+  document.title = document.title.replace(/ (\w{1,2})(?=[\s.,!?]|$)/g, '\u00A0$1');
+</script>
 
 </body>
 </html>
