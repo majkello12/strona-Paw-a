@@ -76,7 +76,7 @@
     nav#mobile-menu a:hover{ background:var(--muted) }
 
     .hero{
-      height:92vh;min-height:560px;padding:110px 20px 40px;margin-top:0;
+      height:92vh;min-height:560px;padding:110px 20px 40px;margin-top:10;
       background:url('gora.png') center/cover no-repeat;color:var(--bg);
       display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
     }
@@ -85,12 +85,15 @@
       transform-origin:center;animation:fadeUp .7s ease both;
     }
     @keyframes fadeUp{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
-    .hero h1{ font-size:clamp(28px,6vw,64px);margin:0 }
-    .hero p{ margin-top:12px;font-weight:700;text-transform:uppercase }
+    .hero h1{ font-size:clamp(78px,6vw,74px);margin:0;   line-height: 1.1 }
+    .hero p{ font-size:clamp(18px,6vw,24px);margin-top:12px;font-weight:400;text-transform:uppercase }
 
     .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(90px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
-
+.intro h2 {
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
         @media(max-width:600px){
                 .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(60px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }}
@@ -99,7 +102,7 @@
     .card{ width:100%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform .33s ease,box-shadow .33s ease;border:1px solid rgba(0,0,0,0.04);opacity:0;transform:translateY(10px);animation:cardIn .5s ease forwards }
     .card:nth-child(1){ animation-delay:.08s } .card:nth-child(2){ animation-delay:.16s } .card:nth-child(3){ animation-delay:.24s } .card:nth-child(4){ animation-delay:.32s }
     @keyframes cardIn{ to{opacity:1;transform:none} }
-    .card:hover{ transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.12) }
+    .card:hover{ transform:translateY(80px) scale(3);box-shadow:0 4px 20px rgba(0, 0, 0, 0.329) }
     .card img{ width:100%;height:220px;object-fit:cover }
     .card .card-body{ padding:16px }
     .card h3{ margin:0 0 8px;font-size:18px }
@@ -109,14 +112,45 @@
     @media(min-width:1201px){ .portfolio{ grid-template-columns: repeat(4, 1fr) } }
 
     .gallery-slider{ max-width:var(--max-width);margin:20px auto;padding:10px;position:relative;overflow:hidden;border-radius:12px }
-    .slides{ position:relative;height:360px;}
+    .slides{ position:relative;height:480px;}
     .slide{ position:absolute;inset:0;opacity:0;transition:opacity .9s ease;display:flex;align-items:center;justify-content:center }
-    .slide img{ width:100%;height:100%;object-fit:cover;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,0.12) }
+    .slide img{ object-fit:cover;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,0.12); 
+    height: 100%;
+    width: auto;            
+    object-fit: contain;    
+    max-width: 100%;   }
     .slide.active{ opacity:1;z-index:2 }
+
+    .gallery-slider:hover{ transform:scale(1.009);}
 
     .laptop-section{ max-width:1100px;margin:36px auto;padding:20px;display:flex;justify-content:center;align-items:center;animation:fadeUp .7s ease both }
     .laptop-card{ width:100%;position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.84));box-shadow:0 16px 60px rgba(0,0,0,0.10);border:1px solid rgba(0,0,0,0.05) }
     .laptop-card .mockup{ width:100%;display:block;height:auto }
+    .laptop-text {
+  text-align: left;        /* wyrównanie do lewej */
+  max-width: 300px;        /* żeby na dużych ekranach nie było za szerokie */
+}
+
+.laptop-text h2 {
+  font-size: clamp(1rem, 4vw, 1.6rem);
+  margin: 0;
+}
+
+.laptop-text h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 10px 0 0;
+}
+
+@media (max-width: 768px) {
+  .laptop-section {
+    flex-direction: column; /* elementy jeden pod drugim */
+    text-align: center;     /* możesz też ustawić left, jeśli chcesz */
+  }
+  .laptop-text {
+    text-align: center; /* jeśli ma być do lewej na małym ekranie */
+    max-width: 100%;
+  }
+}
 .video-inside {
   position: absolute;
   top: 26%;
@@ -162,9 +196,21 @@
     .contact-card:hover{ transform:translateY(-6px) }
     .social-container{ display:flex; gap:18px; justify-content:center; margin-top:18px; flex-wrap:wrap }
     .social-icon{ width:48px; height:auto; transition: transform .2s ease, filter .2s ease }
-    .social-icon:hover{ transform: scale(1.08); filter:brightness(1.08) }
+    .social-icon:hover{ transform: scale(1.3); filter:brightness(1.4) }
 
-    footer{ padding:36px 20px;margin:0 auto 40px;max-width:var(--max-width); color:#000000;overflow:hidden; background:linear-gradient(10deg,var(--neon-pink),var(--neon-cyan),rgba(255, 255, 255, 0.664));border-radius:10px;background-size:300% 300%;animation:footerGradient 9s ease infinite;box-shadow:0 20px 80px rgba(0, 0, 0, 0.267) }
+
+    footer {
+  background: linear-gradient(
+    120deg,
+    #a782ff, /* róż */
+    #4169e1   /* niebieski */
+  );
+}
+
+    footer{ padding:36px 20px;margin:0 auto 40px;max-width:var(--max-width); 
+        color:#000000;overflow:hidden;
+;border-radius:10px;background-size:300% 300%;
+        animation:footerGradient 9s ease infinite;box-shadow:0 20px 80px rgba(0, 0, 0, 0.267) }
     @keyframes footerGradient{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
     .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:18px }
     .footer-links a{ color:#000000;font-weight:500 }
@@ -178,6 +224,26 @@
 .video-inside{ top:26%; left:33%; width:38.4%; height:40% }
       .hero{ padding:100px 14px 30px }
     }
+
+    .side-scroll {
+  transition: transform 0.3s ease;
+  will-change: transform;
+}
+
+.contact-card img {
+  transition: opacity 0.4s ease;
+}
+.contact-card img.hover {
+  position: absolute;
+
+  opacity: 0;
+}
+.contact-card:hover img.hover {
+  opacity: 1;
+}
+.contact-card:hover img.default {
+  opacity: 0;
+}
   </style>
 </head>
 <body>
@@ -200,12 +266,12 @@
   <section class="hero" id="hero">
     <div class="inner">
       <h1>Grafik z&nbsp;Kielc</h1>
-      <p>Grafiki · tworzenie stron · pasjonat technologii</p>
+      <p>Grafiki · tworzenie stron · pasja do technologii</p>
     </div>
   </section>
 
   <section class="intro">
-    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
+    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb</h2>
   </section>
 
   <section id="portfolio" class="portfolio" aria-label="portfolio">
@@ -251,11 +317,17 @@
     </div>
   </section>
 
-    <section class="intro">
-    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
-  </section>
+<section class="intro">
+  <h2 class="side-scroll">
+    Inspiruję się światem, aby tworzyć projekty pełne mocy, kreatywności i&nbsp;unikalnych rozwiązań.
+  </h2>
+</section>
 
   <section class="laptop-section">
+      <div class="laptop-text">
+    <h2>Lekcje z programów graficznych,</h2>
+    <h3>PS, Ai, Blender</h3>
+  </div>
     <div class="laptop-card">
       <img src="laptop.jpg" alt="Mockup laptop" class="mockup">
       <div class="video-inside">
@@ -290,13 +362,28 @@
       </div>
 
       <div class="about-card">
-        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" alt="Grafiki wyróżniające">
+        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" alt="Grafiki, które Cię wyróżnią">
         <div>
-          <h3>Grafiki wyróżniające</h3>
+          <h3>Grafiki, które Cię wyróżnią</h3>
           <p class="muted">Unikalne formy i&nbsp;kolory — buduj rozpoznawalność marki.</p>
         </div>
       </div>
-    </div>
+
+    <div class="about-card">
+  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Kreatywne projekty">
+  <div>
+    <h3>Kreatywne projekty</h3>
+    <p class="muted">Łączę estetykę z funkcjonalnością, tworząc wyjątkowe doświadczenia wizualne.</p>
+  </div>
+</div>
+
+<div class="about-card">
+  <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80" alt="Nowoczesne technologie">
+  <div>
+    <h3>Nowoczesne technologie</h3>
+    <p class="muted">Wykorzystuję najnowsze narzędzia, aby zapewnić stylowy i nowoczesny efekt.</p>
+  </div>
+</div>
   </section>
 
   <section id="kontakt">
@@ -304,16 +391,19 @@
     <p>Masz pomysł? Napisz lub zadzwoń — chętnie pomogę w&nbsp;realizacji projektu.</p>
 
     <div class="contact-row">
-<a class="contact-card" href="mailto:michalbarangrafik@gmail.com">
-  <img src="ikonamail.svg" alt="Ikona e-mail" width="40" height="40">
+<a class="contact-card" href="mailto:michalbarangrafik@gmail.com" style="position:relative">
+  <img src="ikonamail.svg" class="default" alt="Ikona e-mail" width="40" height="40">
+  <img src="ikonamail2.svg" class="hover" alt="Ikona e-mail hover" width="40" height="40">
   <div>
     <div style="font-weight:800">michalbarangrafik@gmail.com</div>
     <div class="muted" style="font-size:13px">Wyślij wiadomość</div>
   </div>
 </a>
 
-<a class="contact-card" href="tel:+48883492015">
-  <img src="ikonacall.svg" alt="Ikona telefonu" width="40" height="40">
+
+<a class="contact-card" href="tel:+48883492015" style="position:relative">
+  <img src="ikonacall.svg" class="default" alt="Ikona call" width="40" height="40">
+  <img src="ikonacall2.svg" class="hover" alt="Ikona e-mail hover" width="40" height="40">
   <div>
     <div style="font-weight:800">+48 883 492 015</div>
     <div class="muted" style="font-size:13px">Zadzwoń</div>
@@ -328,7 +418,7 @@
       <a href="moja strona6.html" target="_blank" rel="noreferrer">
         <img src="insta icon2.png" alt="Instagram" class="social-icon">
       </a>
-      <a href="https://youtube.com/@SamuelStudio_" target="_blank" rel="noreferrer">
+      <a href="https://youtube.com/@Micha%C5%82Grafik90" target="_blank" rel="noreferrer">
         <img src="yt icon2.png" alt="YouTube" class="social-icon">
       </a>
     </div>
@@ -343,7 +433,7 @@
     </div>
 
     <div style="text-align:center;margin-bottom:14px">
-      <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.12)">
+      <a href="https://youtube.com/@Micha%C5%82Grafik90" target="_blank" style="display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border-radius:10px;border:1px solid rgba(255, 255, 255, 0)">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#FF0000"/><path d="M9.5 7.5l6 4-6 4v-8z" fill="#fff"/></svg>
         <span style="font-weight:700">Subskrybuj mój kanał yt</span>
       </a>
@@ -352,60 +442,102 @@
     <div class="copyright">&copy; Copyright by me 2025</div>
   </footer>
 
-  <script>
-    function toggleMenu(){
-      const menu = document.getElementById('mobile-menu');
-      const hamb = document.getElementById('hamb');
-      menu.classList.toggle('show');
-      hamb.classList.toggle('active');
-      const shown = menu.classList.contains('show');
-      menu.setAttribute('aria-hidden', (!shown).toString());
-    }
+<script>
+function toggleMenu() {
+  const menu = document.getElementById('mobile-menu');
+  const hamb = document.getElementById('hamb');
+  menu.classList.toggle('show');
+  hamb.classList.toggle('active');
+  const shown = menu.classList.contains('show');
+  menu.setAttribute('aria-hidden', (!shown).toString());
+}
 
-    document.querySelectorAll('#mobile-menu a').forEach(a=>{
-      a.addEventListener('click', ()=> {
-        document.getElementById('mobile-menu').classList.remove('show');
-        document.getElementById('hamb').classList.remove('active');
-        document.getElementById('mobile-menu').setAttribute('aria-hidden','true');
-      });
-    });
+document.querySelectorAll('#mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.remove('show');
+    document.getElementById('hamb').classList.remove('active');
+    document.getElementById('mobile-menu').setAttribute('aria-hidden', 'true');
+  });
+});
+
+document.querySelectorAll('video[autoplay]').forEach(v => {
+  v.muted = true;
+  v.play().catch(() => {});
+});
+
+// Zapobiega "wiszącym spójnikom" w tekstach
+(function noWidows() {
+  const selectors = 'h1,h2,h3,h4,p,li,blockquote,button,a,span,label';
+  document.querySelectorAll(selectors).forEach(el => {
+    if (el.children.length === 0) {
+      let text = el.innerHTML.trim();
+      text = text.replace(/\s+$/, '');
+      text = text.replace(/ (\S{1,2})$/g, '&nbsp;$1');
+      el.innerHTML = text;
+    }
+  });
+})();
+
+// Efekt przesuwania w intro
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.intro h2').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const offset = (window.innerHeight / 2 - rect.top) * 0.05;
+    el.style.transform = `translateY(${offset}px)`;
+  });
+});
 
     document.querySelectorAll('video[autoplay]').forEach(v=>{
       v.muted = true;
       v.play().catch(()=>{});
     });
 
-    (function noWidows(){
-      const selectors = 'h1,h2,h3,h4,p,li,blockquote,button,a,span,label';
-      document.querySelectorAll(selectors).forEach(el=>{
-        if(el.children.length === 0){
-          let text = el.innerHTML.trim();
-          text = text.replace(/\s+$/,'');
-          text = text.replace(/ (\S{1,2})$/g, '&nbsp;$1');
-          el.innerHTML = text;
-        }
-      });
-    })();
+// Slider oparty na klasie .slide (prosty, niestylizowany)
+(function sliderInit() {
+  const slides = document.querySelectorAll('.slide');
+  let idx = 0;
+  if (!slides.length) return;
+  setInterval(() => {
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('active');
+  }, 3000);
+})();
 
-    (function sliderInit(){
-      const slides = document.querySelectorAll('.slide');
-      let idx = 0;
-      if(!slides.length) return;
-      setInterval(()=>{
-        slides[idx].classList.remove('active');
-        idx = (idx + 1) % slides.length;
-        slides[idx].classList.add('active');
-      }, 3000);
-    })();
+// Obsługa klawisza Escape
+(function focusClicks() {
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('mobile-menu').classList.remove('show');
+      document.getElementById('hamb').classList.remove('active');
+    }
+  });
+})();
 
-    (function focusClicks(){
-      document.addEventListener('keydown', e=>{
-        if(e.key === 'Escape'){
-          document.getElementById('mobile-menu').classList.remove('show');
-          document.getElementById('hamb').classList.remove('active');
-        }
-      });
-    })();
-  </script>
+// Efekt przesuwania w bok dla elementów .side-scroll
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.side-scroll').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const offset = (window.innerHeight / 2 - rect.top) * 0.05;
+    el.style.transform = `translateX(${offset}px)`;
+  });
+});
+
+// Inicjalizacja Swipera dla gallery-slider
+document.addEventListener('DOMContentLoaded', () => {
+  if (typeof Swiper !== 'undefined') {
+    new Swiper('.gallery-slider', {
+      loop: true,
+      autoplay: { delay: 3000 },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      centeredSlides: true,
+      slidesPerView: 'auto'
+    });
+  }
+});
+</script>
 </body>
 </html>
