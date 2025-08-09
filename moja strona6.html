@@ -90,23 +90,22 @@
 
     .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(90px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
-.intro h2 {
-  transition: transform 0.3s ease;
-  will-change: transform;
-}
+
         @media(max-width:600px){
                 .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(60px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }}
 
     .portfolio{ max-width:var(--max-width);margin:32px auto;padding:28px 20px;display:grid;gap:24px;grid-template-columns:1fr;justify-items:center }
-    .card{ width:100%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform .33s ease,box-shadow .33s ease;border:1px solid rgba(0,0,0,0.04);opacity:0;transform:translateY(10px);animation:cardIn .5s ease forwards }
+    .card{ width:100%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));
+      border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform .33s ease,box-shadow .33s ease;border:1px solid rgba(0,0,0,0.04);
+      opacity:0;transform:translateY(10px);animation:cardIn .5s ease forwards }
     .card:nth-child(1){ animation-delay:.08s } .card:nth-child(2){ animation-delay:.16s } .card:nth-child(3){ animation-delay:.24s } .card:nth-child(4){ animation-delay:.32s }
     @keyframes cardIn{ to{opacity:1;transform:none} }
-    .card:hover{ transform:translateY(80px) scale(3);box-shadow:0 4px 20px rgba(0, 0, 0, 0.329) }
+    .card:hover{ transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.12) }
     .card img{ width:100%;height:220px;object-fit:cover }
     .card .card-body{ padding:16px }
-    .card h3{ margin:0 0 8px;font-size:18px }
-    .card p{ margin:0;color:rgba(0,0,0,0.72) }
+    .card h3{ margin:0 0 8px;font-size:18px;   text-align: center; }
+    .card p{ margin:0;color:rgba(0,0,0,0.72);  text-align: center; }
 
     @media(min-width:769px){ .portfolio{ grid-template-columns: repeat(2, 1fr) } }
     @media(min-width:1201px){ .portfolio{ grid-template-columns: repeat(4, 1fr) } }
@@ -114,7 +113,7 @@
     .gallery-slider{ max-width:var(--max-width);margin:20px auto;padding:10px;position:relative;overflow:hidden;border-radius:12px }
     .slides{ position:relative;height:480px;}
     .slide{ position:absolute;inset:0;opacity:0;transition:opacity .9s ease;display:flex;align-items:center;justify-content:center }
-    .slide img{ object-fit:cover;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,0.12); 
+    .slide img{ object-fit:cover;border-radius:20px;box-shadow:0 12px 40px rgba(0,0,0,0.12); 
     height: 100%;
     width: auto;            
     object-fit: contain;    
@@ -126,19 +125,14 @@
     .laptop-section{ max-width:1100px;margin:36px auto;padding:20px;display:flex;justify-content:center;align-items:center;animation:fadeUp .7s ease both }
     .laptop-card{ width:100%;position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.84));box-shadow:0 16px 60px rgba(0,0,0,0.10);border:1px solid rgba(0,0,0,0.05) }
     .laptop-card .mockup{ width:100%;display:block;height:auto }
-    .laptop-text {
-  text-align: left;        /* wyrównanie do lewej */
-  max-width: 300px;        /* żeby na dużych ekranach nie było za szerokie */
-}
-
-.laptop-text h2 {
+    .laptop-text h2 {
   font-size: clamp(1rem, 4vw, 1.6rem);
-  margin: 0;
+  margin: 0;   text-align: center;
 }
 
 .laptop-text h3 {
   font-size: clamp(1.5rem, 3vw, 2rem);
-  margin: 10px 0 0;
+  margin: 10px 0 0;   text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -196,7 +190,7 @@
     .contact-card:hover{ transform:translateY(-6px) }
     .social-container{ display:flex; gap:18px; justify-content:center; margin-top:18px; flex-wrap:wrap }
     .social-icon{ width:48px; height:auto; transition: transform .2s ease, filter .2s ease }
-    .social-icon:hover{ transform: scale(1.3); filter:brightness(1.4) }
+    .social-icon:hover{ transform: scale(1.2); filter:brightness(1.08) }
 
 
     footer {
@@ -266,12 +260,12 @@
   <section class="hero" id="hero">
     <div class="inner">
       <h1>Grafik z&nbsp;Kielc</h1>
-      <p>Grafiki · tworzenie stron · pasja do technologii</p>
+      <p>Grafika · tworzenie stron · pasja do technologii</p>
     </div>
   </section>
 
   <section class="intro">
-    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb</h2>
+    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
   </section>
 
   <section id="portfolio" class="portfolio" aria-label="portfolio">
@@ -317,15 +311,13 @@
     </div>
   </section>
 
-<section class="intro">
-  <h2 class="side-scroll">
-    Inspiruję się światem, aby tworzyć projekty pełne mocy, kreatywności i&nbsp;unikalnych rozwiązań.
-  </h2>
-</section>
+    <section class="intro">
+    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
+  </section>
 
   <section class="laptop-section">
       <div class="laptop-text">
-    <h2>Lekcje z programów graficznych,</h2>
+    <h2>Prowadzę lekcje z&nbsp;programów graficznych:</h2>
     <h3>PS, Ai, Blender</h3>
   </div>
     <div class="laptop-card">
@@ -339,7 +331,7 @@
   <section class="section-image-text">
     <div class="content">
       <h2>Zróbmy razem dobry projekt!</h2>
-      <p>Od pomysłu, przez projekt graficzny, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i skuteczny rezultat.</p>
+      <p>Od pomysłu, przez projekt graficzny, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i&nbsp;skuteczny rezultat.</p>
     </div>
   </section>
 
@@ -348,16 +340,16 @@
       <img src="gora.png" alt="Moje zdjęcie" class="about-photo">
       <div class="about-text">
         <h2>Coś&nbsp;o&nbsp;mnie</h2>
-        <p>Nazywam się Michał, jestem grafikiem i web developerem z&nbsp;Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z&nbsp;użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze.</p>
+        <p>Nazywam się Michał, jestem grafikiem i&nbsp;web developerem z&nbsp;Kielc. Z&nbsp;pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z&nbsp;użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w&nbsp;obsłudze.</p>
       </div>
     </div>
 
-    <div class="about-cards">
+      <div class="about-cards">
       <div class="about-card">
         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Oryginalne strony internetowe">
         <div>
           <h3>Oryginalne strony internetowe</h3>
-          <p class="muted">Projekty które przyciągają uwagę — nietypowe układy i efekty animacji.</p>
+          <p class="muted">Projekty które przyciągają uwagę — nietypowe układy i&nbsp;efekty animacji.</p>
         </div>
       </div>
 
@@ -373,7 +365,7 @@
   <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Kreatywne projekty">
   <div>
     <h3>Kreatywne projekty</h3>
-    <p class="muted">Łączę estetykę z funkcjonalnością, tworząc wyjątkowe doświadczenia wizualne.</p>
+    <p class="muted">Łączę estetykę z&nbsp;funkcjonalnością, tworząc wyjątkowe doświadczenia wizualne.</p>
   </div>
 </div>
 
@@ -381,7 +373,7 @@
   <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80" alt="Nowoczesne technologie">
   <div>
     <h3>Nowoczesne technologie</h3>
-    <p class="muted">Wykorzystuję najnowsze narzędzia, aby zapewnić stylowy i nowoczesny efekt.</p>
+    <p class="muted">Wykorzystuję najnowsze narzędzia, aby zapewnić stylowy i&nbsp;nowoczesny efekt.</p>
   </div>
 </div>
   </section>
@@ -418,7 +410,7 @@
       <a href="moja strona6.html" target="_blank" rel="noreferrer">
         <img src="insta icon2.png" alt="Instagram" class="social-icon">
       </a>
-      <a href="https://youtube.com/@Micha%C5%82Grafik90" target="_blank" rel="noreferrer">
+      <a href="https://youtube.com/@SamuelStudio_" target="_blank" rel="noreferrer">
         <img src="yt icon2.png" alt="YouTube" class="social-icon">
       </a>
     </div>
@@ -442,102 +434,60 @@
     <div class="copyright">&copy; Copyright by me 2025</div>
   </footer>
 
-<script>
-function toggleMenu() {
-  const menu = document.getElementById('mobile-menu');
-  const hamb = document.getElementById('hamb');
-  menu.classList.toggle('show');
-  hamb.classList.toggle('active');
-  const shown = menu.classList.contains('show');
-  menu.setAttribute('aria-hidden', (!shown).toString());
-}
-
-document.querySelectorAll('#mobile-menu a').forEach(a => {
-  a.addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.remove('show');
-    document.getElementById('hamb').classList.remove('active');
-    document.getElementById('mobile-menu').setAttribute('aria-hidden', 'true');
-  });
-});
-
-document.querySelectorAll('video[autoplay]').forEach(v => {
-  v.muted = true;
-  v.play().catch(() => {});
-});
-
-// Zapobiega "wiszącym spójnikom" w tekstach
-(function noWidows() {
-  const selectors = 'h1,h2,h3,h4,p,li,blockquote,button,a,span,label';
-  document.querySelectorAll(selectors).forEach(el => {
-    if (el.children.length === 0) {
-      let text = el.innerHTML.trim();
-      text = text.replace(/\s+$/, '');
-      text = text.replace(/ (\S{1,2})$/g, '&nbsp;$1');
-      el.innerHTML = text;
+  <script>
+    function toggleMenu(){
+      const menu = document.getElementById('mobile-menu');
+      const hamb = document.getElementById('hamb');
+      menu.classList.toggle('show');
+      hamb.classList.toggle('active');
+      const shown = menu.classList.contains('show');
+      menu.setAttribute('aria-hidden', (!shown).toString());
     }
-  });
-})();
 
-// Efekt przesuwania w intro
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.intro h2').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const offset = (window.innerHeight / 2 - rect.top) * 0.05;
-    el.style.transform = `translateY(${offset}px)`;
-  });
-});
+    document.querySelectorAll('#mobile-menu a').forEach(a=>{
+      a.addEventListener('click', ()=> {
+        document.getElementById('mobile-menu').classList.remove('show');
+        document.getElementById('hamb').classList.remove('active');
+        document.getElementById('mobile-menu').setAttribute('aria-hidden','true');
+      });
+    });
 
     document.querySelectorAll('video[autoplay]').forEach(v=>{
       v.muted = true;
       v.play().catch(()=>{});
     });
 
-// Slider oparty na klasie .slide (prosty, niestylizowany)
-(function sliderInit() {
-  const slides = document.querySelectorAll('.slide');
-  let idx = 0;
-  if (!slides.length) return;
-  setInterval(() => {
-    slides[idx].classList.remove('active');
-    idx = (idx + 1) % slides.length;
-    slides[idx].classList.add('active');
-  }, 3000);
-})();
+    (function noWidows(){
+      const selectors = 'h1,h2,h3,h4,p,li,blockquote,button,a,span,label';
+      document.querySelectorAll(selectors).forEach(el=>{
+        if(el.children.length === 0){
+          let text = el.innerHTML.trim();
+          text = text.replace(/\s+$/,'');
+          text = text.replace(/ (\S{1,2})$/g, '&nbsp;$1');
+          el.innerHTML = text;
+        }
+      });
+    })();
 
-// Obsługa klawisza Escape
-(function focusClicks() {
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.getElementById('mobile-menu').classList.remove('show');
-      document.getElementById('hamb').classList.remove('active');
-    }
-  });
-})();
+    (function sliderInit(){
+      const slides = document.querySelectorAll('.slide');
+      let idx = 0;
+      if(!slides.length) return;
+      setInterval(()=>{
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      }, 3000);
+    })();
 
-// Efekt przesuwania w bok dla elementów .side-scroll
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.side-scroll').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    const offset = (window.innerHeight / 2 - rect.top) * 0.05;
-    el.style.transform = `translateX(${offset}px)`;
-  });
-});
-
-// Inicjalizacja Swipera dla gallery-slider
-document.addEventListener('DOMContentLoaded', () => {
-  if (typeof Swiper !== 'undefined') {
-    new Swiper('.gallery-slider', {
-      loop: true,
-      autoplay: { delay: 3000 },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      centeredSlides: true,
-      slidesPerView: 'auto'
-    });
-  }
-});
-</script>
+    (function focusClicks(){
+      document.addEventListener('keydown', e=>{
+        if(e.key === 'Escape'){
+          document.getElementById('mobile-menu').classList.remove('show');
+          document.getElementById('hamb').classList.remove('active');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
