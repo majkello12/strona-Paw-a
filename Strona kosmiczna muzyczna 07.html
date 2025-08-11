@@ -12,6 +12,7 @@ body {
   color: white;
   background: black;
   overflow-x: hidden;
+    letter-spacing: 0.08em; /* 0.05em = delikatny odstęp */
 }
 body::before {
   content: "";
@@ -158,7 +159,7 @@ header a:hover { background: rgba(0, 255, 255, 0.623); }
 /* TITLE */
 .title {
   text-align: center;
-  font-size: 3em;
+  font-size: clamp(1.8em, 6vw, 3em); /* min 1.8em, rośnie do max 3em */
   margin: -20px 0;
   font-family: 'Audiowide', sans-serif;
   animation: pulse 6s infinite;
@@ -191,7 +192,6 @@ header a:hover { background: rgba(0, 255, 255, 0.623); }
   transform: scale(1.05);
 }
 
-/* VIDEO SECTION */
 .video-section {
   display: flex;
   justify-content: center;
@@ -200,7 +200,7 @@ header a:hover { background: rgba(0, 255, 255, 0.623); }
   margin-bottom: 50px;
 }
 .video-section video {
-  width: 80%;
+  width: 100%;
   border-radius: 12px;
   box-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
@@ -234,9 +234,153 @@ footer {
   margin-top: 40px;
   font-size: 0.9em;
 }
+
+.floating-graphic {
+  position: absolute;
+  top: 520px; /* ustaw wysokość na stronie gdzie ma się pojawić */
+  left: 50%;
+  transform: translateX(-90%);
+  z-index: 0; /* pod wideo */
+  animation: floatGraphic 10s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+.floating-graphic {
+  position: absolute;
+  top: 2250px; /* ustaw wysokość na stronie gdzie ma się pojawić */
+  left: 50%;
+  transform: translateX(-90%);
+  z-index: 0; /* pod wideo */
+  animation: floatGraphic 10s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.8;
+  }
+}
+
+.floating-graphic img {
+  width: 300px; /* dopasuj rozmiar */
+  height: auto;
+}
+
+@keyframes floatGraphic {
+  0%   { transform: translateX(-50%) translateY(0px); }
+  50%  { transform: translateX(-50%) translateY(-40px); }
+  100% { transform: translateX(-50%) translateY(0px); }
+}
+
+.cosmic-texts {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  position: relative;
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2em;
+  text-align: center;
+  overflow: hidden;
+    margin-top: -370px;    /* 50px odstępu nad sekcją */
+  margin-bottom: -400px; /* 30px odstępu pod sekcją */
+}
+
+@media (max-width: 768px) {
+  .cosmic-texts {
+    font-size: 1.2em;
+  }
+}
+
+.text-line {
+  position: absolute;
+  opacity: 0;
+  letter-spacing: 0.08em;
+  filter: blur(10px);
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+  transition: opacity 0.8s ease, letter-spacing 3s ease, filter 0.8s ease;
+  width: 100%;
+}
+.text-line.active {
+  opacity: 1;
+  letter-spacing: 0.8em;
+  filter: blur(0);
+  text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff66cc;
+}
+
+.image-carousel {
+  position: relative;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  width: 100%;          /* zajmuje 100% szerokości rodzica (np. body) */
+  max-width: 1600px;    /* maksymalna szerokość karuzeli */
+  margin: 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  user-select: none;
+  box-sizing: border-box;
+  padding: 0 10px;      /* opcjonalne wewnętrzne marginesy */
+}
+
+.carousel-wrapper {
+  width: 100%;          /* 100% szerokości karuzeli */
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9; /* wymusza proporcje 16:9 */
+  background: transparent;
+  max-height: 90vh;     /* max wysokość, żeby nie wyszło za duże na bardzo wysokich ekranach */
+}
+
+.carousel-wrapper video,
+.carousel-wrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;          /* pełna szerokość kontenera */
+  height: 100%;         /* pełna wysokość kontenera */
+  object-fit: contain;  /* zachowuje proporcje i dopasowuje */
+  background: transparent;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.carousel-wrapper .active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-btn {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: #0ff;
+  font-size: 2em;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 0px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.carousel-btn:hover {
+  background-color: rgba(39, 126, 255, 0.8);
+}
+
+@media (max-width: 480px) {
+  .image-carousel {
+    width: 95vw;        /* na małych ekranach prawie 100% szerokości */
+  }
+}
 </style>
 </head>
 <body>
+
+  <div class="floating-graphic">
+  <img src="statek1.png" alt="Dekoracja">
+</div>
 
   <div class="top-bar">
     <header>
@@ -288,20 +432,45 @@ footer {
   <section id="o-mnie" class="about">
     <h2>O mnie</h2>
     <p>
-      Cześć! Nazywam się Michał. Tworzę muzykę, która zabiera słuchaczy w kosmiczną podróż — miksuję elektronikę z gitarowym brzmieniem, tworząc unikalne brzmienia i dźwiękowe pejzaże pełne emocji. Współpracuję z artystami z różnych gatunków,
-      od hip-hopu po poezję śpiewaną i rock, pomagając im znaleźć swoje unikalne brzmienie. Prowadzę także warsztaty, na których uczę produkcji muzycznej,
-      aranżacji i miksu. W wolnym czasie eksploruję nowe technologie oraz zajmuję się tworzeniem brzmień na wirtualnych (i nie tylko) syntezatorach.
+      Cześć! Nazywam się Michał. Tworzę muzykę, która zabierze słuchaczy w&nbsp;kosmiczną podróż — miksuję elektronikę z&nbsp;gitarowym brzmieniem, tworząc unikalne brzmienia i&nbsp;dźwiękowe pejzaże pełne emocji. Współpracuję z&nbsp;artystami z&nbsp;różnych gatunków,
+      od hip-hopu po poezję śpiewaną i&nbsp;rock, pomagając im znaleźć swoje unikalne brzmienie. Prowadzę także warsztaty, na&nbsp;których uczę produkcji muzycznej,
+      aranżacji i&nbsp;miksu. W&nbsp;wolnym czasie eksploruję nowe technologie oraz zajmuję się tworzeniem brzmień na wirtualnych (i&nbsp;nie tylko) syntezatorach.
     </p>
   </section>
+
+<section class="cosmic-texts">
+  <div class="text-line">2025 rok</div>
+  <div class="text-line">To rok dużych zmian</div>
+  <div class="text-line">I innowacji</div>
+  <div class="text-line">Przechodzimy</div>
+  <div class="text-line">do kolejnej</div>
+  <div class="text-line">ważnej epoki</div>
+  <div class="text-line">W dziejach ludzkości</div>
+</section>
+
 
   <section id="co-dalej" class="next">
     <h2><br><br>Co dalej?</h2>
     <p>
-      W 2025 roku planuję wydanie nowego albumu inspirowanego podróżami międzygwiezdnymi, z udziałem gościnnych wokalistów z całego świata.
-      Pojawią się także koncerty w formie immersyjnych pokazów audiowizualnych, łączących muzykę na żywo z mappingiem 3D i efektami świetlnymi.
-      Dodatkowo planuję otworzyć kanał edukacyjny online, aby dzielić się wiedzą z pasjonatami muzyki.
+      W 2025 roku planuję wydanie autorskiego albumu o&nbsp;współczesnym świecie coraz bardziej zdominowanym przez A.I.
+      Pojawią się także koncerty w formie pokazów audiowizualnych, łączących muzykę na żywo z efektami 3D i&nbsp;świetlnymi.
+      Dodatkowo planuję otworzyć kanał edukacyjny online, aby&nbsp;dzielić się wiedzą z&nbsp;pasjonatami muzyki.
     </p>
   </section>
+
+<section class="image-carousel">
+  <button class="carousel-btn prev-btn">&#8592;</button>
+  <div class="carousel-wrapper">
+<video autoplay muted loop playsinline>
+  <source src="stttt.mp4" type="video/mp4">
+  Twoja przeglądarka nie obsługuje tego formatu wideo.
+</video>
+    <img src="przezr.png" alt="Obraz 1" class="carousel-image">
+    <img src="haleye.gif" alt="Obraz 2" class="carousel-image">
+    <img src="shot0008.png" alt="Obraz 3" class="carousel-image">
+  </div>
+  <button class="carousel-btn next-btn">&#8594;</button>
+</section>
 
   <footer>
     © 2025 Michał Baran Music – Wszystkie prawa zastrzeżone
@@ -344,5 +513,100 @@ hamburger.addEventListener('click', openMenu);
 closeBtn.addEventListener('click', closeMenu);
 overlay.addEventListener('click', closeMenu);</script>
 
+<script>const texts = document.querySelectorAll('.text-line');
+let current = 0;
+const displayTime = 3000; // czas wyświetlania każdego tekstu (3s)
+const fadeTime = 800; // czas zanikania/pojawiania (0.8s)
+
+function showText(index) {
+  texts.forEach((text, i) => {
+    if (i === index) {
+      text.classList.add('active');
+    } else {
+      text.classList.remove('active');
+    }
+  });
+}
+
+function cycleTexts() {
+  showText(current);
+  setTimeout(() => {
+    // po czasie wyświetlania, przygotuj kolejny
+    current = (current + 1) % texts.length;
+    cycleTexts();
+  }, displayTime);
+}
+
+// start animacji po załadowaniu
+window.onload = () => {
+  cycleTexts();
+};
+</script>
+
+<script>
+(() => {
+  const images = document.querySelectorAll('.carousel-image');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.toggle('active', i === index);
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+
+  // Start showing first image
+  showImage(currentIndex);
+})();
+</script>
+
+<script>
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const items = document.querySelectorAll('.carousel-wrapper > video, .carousel-wrapper > img');
+  let currentIndex = 0;
+
+  function showItem(index) {
+    items.forEach((item, i) => {
+      if(i === index) {
+        item.classList.add('active');
+        if(item.tagName === 'VIDEO') {
+          item.play();
+        }
+      } else {
+        if(item.tagName === 'VIDEO') {
+          item.pause();
+          item.currentTime = 0;
+        }
+        item.classList.remove('active');
+      }
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + items.length) % items.length;
+    showItem(currentIndex);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % items.length;
+    showItem(currentIndex);
+  });
+
+  // Na start pokazujemy pierwszy element
+  showItem(currentIndex);
+</script>
 </body>
+
 </html>
