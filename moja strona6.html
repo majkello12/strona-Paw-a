@@ -81,12 +81,25 @@
       display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
     }
     .hero .inner{
-      max-width:1100px;padding:36px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.08)));
+      max-width:1100px;padding:36px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0, 0, 0, 0));
       transform-origin:center;animation:fadeUp .7s ease both;
     }
     @keyframes fadeUp{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
-    .hero h1{ font-size:clamp(78px,6vw,74px);margin:0;   line-height: 1.1 }
-    .hero p{ font-size:clamp(18px,6vw,24px);margin-top:12px;font-weight:400;text-transform:uppercase }
+.hero h1 {
+  font-size: clamp(78px, 6vw, 74px);
+  margin: 0;
+  line-height: 1.1;
+  animation: pulseText 5s ease-in-out infinite;
+}
+
+@keyframes pulseText {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* lekko większe, np. 3% */
+  }
+}    .hero p{ font-size:clamp(18px,6vw,24px);margin-top:12px;font-weight:400;text-transform:uppercase }
 
     .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(90px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
@@ -163,9 +176,38 @@
   object-fit: cover; /* dopasowanie wypełniające */
   display: block;
 }
-    .section-image-text{ display:flex;align-items:center;justify-content:center;padding:40px 20px;background:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;color:var(--bg);border-radius:19px;margin:18px 20px }
-    .section-image-text .content{ max-width:900px;background:rgba(0,0,0,0.45);padding:28px;border-radius:12px;color:#fff;animation:fadeUp .7s both }
+.section-image-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: url('tło side image.png') center/cover no-repeat;
+  animation: bgMove 4s linear infinite alternate;
+  color: var(--bg);
+  border-radius: 19px;
+  margin: 18px 20px;
+}
 
+@keyframes bgMove {
+  0% {
+    background-position: 10% 0%;
+  }
+  100% {
+    background-position: 100% 277.32%; /* poprawiłem 1773.2% na 177.32% */
+  }
+}
+
+.section-image-text .content {
+  max-width: 900px;
+  background: rgba(0, 0, 0, 0);
+  padding: 28px;
+  border-radius: 12px;
+  color: white;
+  animation: fadeUp .7s both;
+  text-shadow:
+    0 0 6px black,
+    0 0 6px black;
+}
     #about{ max-width:var(--max-width);margin:40px auto;padding:20px; display:grid; grid-template-columns: 1fr; gap:20px }
     .about-row{ display:flex;gap:20px;align-items:center;flex-wrap:wrap }
     .about-photo{ width:220px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08) }
@@ -328,12 +370,15 @@
     </div>
   </section>
 
-  <section class="section-image-text">
-    <div class="content">
+<section class="section-image-text">
+  <div class="content">
+
+    <span class="main-text">
       <h2>Zróbmy razem dobry projekt!</h2>
       <p>Od pomysłu, przez projekt graficzny, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i&nbsp;skuteczny rezultat.</p>
-    </div>
-  </section>
+    </span>
+  </div>
+</section>
 
   <section id="about">
     <div class="about-row">
@@ -346,7 +391,7 @@
 
       <div class="about-cards">
       <div class="about-card">
-        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Oryginalne strony internetowe">
+        <img src="lapp1.png" alt="Oryginalne strony internetowe">
         <div>
           <h3>Oryginalne strony internetowe</h3>
           <p class="muted">Projekty które przyciągają uwagę — nietypowe układy i&nbsp;efekty animacji.</p>
