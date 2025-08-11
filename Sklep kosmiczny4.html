@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sklep - Michał Baran Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Audiowide&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+  font-family: 'Orbitron', sans-serif;
+        color: white;
+        background: black;
+        overflow-x: hidden;
+    }
+
+    /* ANIMOWANE GWIAZDY */
+    body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: starsBg 120s linear infinite;
+  z-index: -2;
+  background-attachment: fixed;
+}
+@keyframes starsBg {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
+
+    /* GÓRNE MENU */
+    .top-bar {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+    }
+    .top-bar a {
+        color: white;
+        border: 2px solid #00f0ff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        background: black;
+        font-family: 'Audiowide', sans-serif;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .top-bar a:hover {
+        transform: scale(1.1);
+        background: rgba(0, 240, 255, 0.1);
+    }
+
+    /* TYTUŁ */
+    .title {
+        text-align: center;
+        font-size: 3em;
+        font-family: 'Audiowide', sans-serif;
+        margin-top: 20px;
+        animation: pulse 6s infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.125); }
+    }
+
+    /* PRODUKTY */
+    .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 40px;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .product {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 238, 255, 0.575);
+        transition: transform 0.3s ease;
+    }
+    .product img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+    .product h3 {
+        margin-bottom: 10px;
+        font-family: 'Audiowide', sans-serif;
+    }
+    .product:hover {
+        transform: scale(1.05);
+    }
+    .product button {
+        background: #00f0ff;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .product button:hover {
+        transform: scale(1.1);
+        background: #00c0cc;
+    }
+
+    /* STOPKA */
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: rgba(0,0,0,0.8);
+        font-size: 0.9em;
+        border-top: 1px solid #00f0ff;
+    }
+</style>
+</head>
+<body>
+
+<!-- MENU -->
+<div class="top-bar">
+    <a href="Strona kosmiczna muzyczna 07.html">Strona Główna</a>
+    <a href="kontakt.html">Kontakt</a>
+</div>
+
+<!-- TYTUŁ -->
+<h1 class="title">Sklep</h1>
+
+<!-- PRODUKTY -->
+<div class="products">
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d" alt="Szkolenie">
+        <h3>Szkolenie Muzyczne</h3>
+        <p>Profesjonalne szkolenie z produkcji muzyki oraz nauka gry na instrumentach</p>
+        <button>Kup teraz</button>
+    </div>
+    <div class="product">
+        <img src="syntetyk okładka.png" alt="Utwór">
+        <h3>Utwór Muzyczny</h3>
+        <p>Ekskluzywny utwór w formacie WAV/MP3.</p>
+        <button>Kup teraz</button>
+    </div>
+    <div class="product">
+        <img src="ai sounds okładka.png" alt="Płyta CD">
+        <h3>Płyta CD</h3>
+        <p>Limitowana edycja płyty w kosmicznym stylu.</p>
+        <button>Kup teraz</button>
+    </div>
+    <div class="product">
+        <img src="keagan-henman-XYtuOYfIg_M-unsplash.jpg" alt="Merch">
+        <h3>Merch</h3>
+        <p>Koszulka z motywem kosmicznym.</p>
+        <button>Kup teraz</button>
+    </div>
+    <div class="product">
+        <img src="winyl.jpg" alt="Winyl">
+        <h3>Winyl</h3>
+        <p>Ekskluzywne wydanie na płycie winylowej.</p>
+        <button>Kup teraz</button>
+    </div>
+    <div class="product">
+        <img src="okładkaaa.png" alt="Okładka">
+        <h3>Projekt Okładki</h3>
+        <p>Unikalny projekt okładki płyty.</p>
+        <button>Kup teraz</button>
+    </div>
+</div>
+
+<!-- STOPKA -->
+<footer>
+    <p>Kontakt: michalbaranmusic@gmail.com | © 2025 Kosmiczny Sklep</p>
+</footer>
+
+</body>
+</html>
