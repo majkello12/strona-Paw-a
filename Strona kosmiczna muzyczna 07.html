@@ -294,6 +294,19 @@ footer {
   }
 }
 
+.mobile-br {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .mobile-br {
+    display: inline-block;
+    width: 100%; /* wymusza łamanie linii */
+    height: 0;
+  }
+}
+
+
 .text-line {
   position: absolute;
   opacity: 0;
@@ -309,6 +322,14 @@ footer {
   filter: blur(0);
   text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff66cc;
 }
+
+@media (max-width: 768px) {
+.text-line.active {
+  opacity: 1;
+  letter-spacing: 0.4em;
+  filter: blur(0);
+  text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff66cc;
+}}
 
 .image-carousel {
   position: relative;
@@ -442,12 +463,12 @@ footer {
 
 <section class="cosmic-texts">
   <div class="text-line">2025 rok</div>
-  <div class="text-line">To rok dużych zmian</div>
-  <div class="text-line">I innowacji technologicznych</div>
+  <div class="text-line">To rok <span class="mobile-br"></span>dużych zmian</div>
+  <div class="text-line">I innowacji <span class="mobile-br"></span>technologicznych</div>
   <div class="text-line">Przechodzimy</div>
   <div class="text-line">do kolejnej</div>
   <div class="text-line">ważnej epoki</div>
-  <div class="text-line">W dziejach ludzkości</div>
+  <div class="text-line">W dziejach <span class="mobile-br"></span>ludzkości</div>
 </section>
 
 
