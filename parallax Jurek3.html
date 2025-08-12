@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallax + Stopniowe ładowanie</title>
+<style>
+    body {
+        margin: 0;
+        height: 200vh; /* żeby było co scrollować */
+    background-color: #111;
+    background-image: url('papier1.png'); /* ścieżka do Twojego patternu */
+    background-repeat: repeat; /* powtarzaj w poziomie i pionie */
+    background-position: top left; /* opcjonalnie ustawienie startowe */
+    background-size: auto; /* lub np. background-size: 50px 50px; jeśli chcesz skalować pattern */
+    overflow-x: hidden;
+        font-family: sans-serif;
+    }
+
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0; /* usuń margines */
+}
+    .layer {
+        position: absolute;
+        transition: opacity 0.8s ease;
+        opacity: 0;
+    }
+
+    .layer img {
+        display: block;
+        width: 100%; /* szerokość kontrolowana w JS przez data-width */
+    }
+
+    .layer.show {
+        opacity: 1;
+    }
+#logo-container {
+  width: 90%;
+  text-align: center;
+  margin: 40px 0 -400px 0; /* mniejszy margines góra i dół */
+}
+
+
+#logo {
+  width: 300px; /* dopasuj wielkość logo */
+  animation: scaleLogo 6s ease-in-out infinite;
+  transform-origin: center center;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes scaleLogo {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+</style>
+</head>
+<body>
+<div id="logo-container">
+  <img src="logogwaruu.png" alt="Logo" id="logo" />
+</div>
+<div class="parallax-container">
+    <div class="layer" data-speed="3" data-width="1200" data-x="-20" data-y="-0" data-z="1"><img src="img1.png" alt="Warstwa 1"></div>
+    <div class="layer" data-speed="6" data-width="1500" data-x="-5" data-y="-0" data-z="3"><img src="img2.png" alt="Warstwa 2"></div>
+    <div class="layer" data-speed="9" data-width="600" data-x="45" data-y="80" data-z="1"><img src="img3.png" alt="Warstwa 3"></div>
+    <div class="layer" data-speed="12" data-width="700" data-x="20" data-y="40" data-z="2"><img src="img4.png" alt="Warstwa 4"></div>
+</div>
+
+<script>
+    const layers = document.querySelectorAll(".layer");
+
+    // Ustawienie początkowej pozycji, rozmiaru i z-index z atrybutów data
+    layers.forEach(layer => {
+        const w = layer.dataset.width;
+        const x = layer.dataset.x;
+        const y = layer.dataset.y;
+        const z = layer.dataset.z || 0;
+
+        layer.style.width = w + "px";
+        layer.style.left = "50%";
+        layer.style.top = "50%";
+        layer.style.zIndex = z;
+        layer.style.transform = `translate(calc(${x}% - 50%), calc(${y}% - 50%))`;
+    });
+
+    // Stopniowe pokazywanie po załadowaniu
+    window.addEventListener("load", () => {
+        layers.forEach((layer, index) => {
+            setTimeout(() => {
+                layer.classList.add("show");
+            }, index * 500);
+        });
+    });
+
+    // Efekt parallax przy scrollu
+    window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+        layers.forEach(layer => {
+            const speed = parseFloat(layer.dataset.speed);
+            const x = layer.dataset.x;
+            const y = layer.dataset.y;
+            layer.style.transform = `translate(calc(${x}% - 50%), calc(${y}% - 50% + ${scrollTop / speed}px))`;
+        });
+    });
+</script>
+
+</body>
+</html>
