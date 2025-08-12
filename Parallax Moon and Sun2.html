@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parallax Moon & Sun</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    height: 300vh;
+    background: black;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* Gwiezdne tło */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: url("tło side image.png") repeat;
+    background-size: 500px 500px;
+    transform: rotate(60deg);
+    animation: moveStars 60s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes moveStars {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 1000px; }
+  }
+
+  .scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: visible;
+  }
+
+  /* Słońce */
+  .sun {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at center, #ffec85, #ff9b00);
+    border-radius: 50%;
+    box-shadow: 0 0 60px 30px rgba(255, 200, 0, 0.6),
+                0 0 120px 60px rgba(255, 170, 0, 0.4),
+                0 0 200px 100px rgba(255, 140, 0, 0.2);
+    transform: translate(-50%, 0);
+    z-index: 1;
+  }
+
+  /* Księżyc */
+  .moon {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 650px;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Ziemia */
+  .earth {
+    position: absolute;
+    bottom: -80%;
+    left: 50%;
+    width: 650px;
+    transform: translate(-50%, 0);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+/* Domyślnie napisy po bokach, absolutnie */
+.text-left, .text-right {
+  position: absolute;
+  bottom: 20%;
+  font-size: 2rem;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+  white-space: nowrap;
+}
+.text-left {
+  right: 79%;
+  text-align: right;
+}
+.text-right {
+  left: 79%;
+  text-align: left;
+}
+
+/* Mobile: przenosimy napisy pod Moon, obok siebie */
+@media (max-width: 768px) {
+  /* ukrywamy oryginalne absolutne napisy */
+  .text-left, .text-right {
+    position: static;
+    bottom: auto;
+    font-size: 1.5rem;
+    white-space: normal;
+    text-shadow: 0 0 6px rgba(0,0,0,0.7);
+  }
+  .texts-mobile {
+    position: absolute;
+    bottom: 5%;  /* trochę pod Moon */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 650px;
+    color: white;
+  }
+}
+  /* Mobile adjustments */
+  @media (max-width: 768px) {
+    .sun {
+      width: 40vw; /* skaluje się do szerokości okna */
+      height: 40vw;
+      top: 25%;
+    }
+    .moon {
+      width: 90vw;
+      bottom: 5%;
+    }
+    .earth {
+      width: 90vw;
+      bottom: -50%;
+    }
+
+  }
+</style>
+</head>
+<body>
+
+<div class="scene">
+  <div class="sun"></div>
+  <img src="mooon.png" alt="Moon" class="moon">
+
+  <!-- kontener na napisy na mobile -->
+  <div class="texts-mobile">
+    <div class="text-left">WSCHÓD</div>
+    <div class="text-right">ZACHÓD</div>
+  </div>
+</div>
+
+<div class="scene2">
+  <img src="earth.png" alt="Earth" class="earth">
+</div>
+
+<script>
+  const sun = document.querySelector(".sun");
+  const moon = document.querySelector(".moon");
+  const earth = document.querySelector(".earth");
+  const textLeft = document.querySelector(".text-left");
+  const textRight = document.querySelector(".text-right");
+
+  window.addEventListener("scroll", () => {
+    let scrollY = window.scrollY;
+
+    // Skala dla efektu głębi
+    let sunScale = 1 + scrollY * 0.0003;
+    let moonScale = 1 + scrollY * 0.0006;
+
+    // Sun parallax
+    sun.style.transform = `translate(-50%, ${scrollY * 0.2}px) scale(${sunScale})`;
+
+    // Moon parallax
+    moon.style.transform = `translate(-50%, ${scrollY * -0.1}px) scale(${moonScale})`;
+
+    // Napisy poruszają się razem z księżycem
+    textLeft.style.transform = `translate(-50%, ${scrollY * -0.1}px)`;
+    textRight.style.transform = `translate(-50%, ${scrollY * -0.1}px)`;
+
+    // Earth parallax
+    const earthOffsetStart = window.innerHeight * 0.5;
+    let earthScroll = Math.max(0, scrollY - earthOffsetStart);
+    let earthScale = 1 + earthScroll * 0.0004;
+    earth.style.transform = `translate(-50%, ${earthScroll * -0.08}px) scale(${earthScale})`;
+  });
+</script>
+
+</body>
+</html>

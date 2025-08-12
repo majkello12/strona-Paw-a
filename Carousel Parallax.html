@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galeria Parallax</title>
+</head>
+<style>
+
+.carousel-slider img {
+  width: 28vw;
+  height: 50vw;
+  max-width: 290px;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+              0 3px 6px rgba(0, 0, 0, 0.23);
+  object-position: 25% 50%;
+  transition: object-position 1s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.carousel .carousel-slider {
+  display: grid;
+  height: 600px;
+  place-items: center;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 20px);
+  gap: 20px;
+  scroll-behavior: smooth;
+}
+
+.carousel {
+  max-width: 1100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+main {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  background: black;
+  overflow-x: hidden;
+    letter-spacing: 0.08em; /* 0.05em = delikatny odstęp */
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: starsBg 120s linear infinite;
+  z-index: -2;
+  background-attachment: fixed;
+}
+@keyframes starsBg {
+  from { background-position: 0 0; }
+  to { background-position: -10000px 5000px; }
+}
+
+.last-active + .carousel-slide {
+  transform: scale(1.4) !important;
+}
+
+.last-active + .carousel-slide img {
+  object-position: 50% 50%;
+}
+
+.carousel-slide {
+  transition: transform 1s ease-in-out;
+}
+
+    /* GÓRNE MENU */
+    .top-bar {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+    }
+    .top-bar a {
+        color: white;
+        border: 2px solid #00f0ff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        background: black;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+    .top-bar a {
+        color: white;
+        border: 2px solid #00f0ff;
+        padding: 10px 20px;
+          display: flex;
+  align-items: center;
+    text-align: center;
+          text-decoration: none;
+        border-radius: 55px;
+        background: black;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }}
+
+    .top-bar a:hover {
+        transform: scale(1.1);
+        background: rgba(16, 234, 250, 0.432);
+    }
+
+    /* TYTUŁ */
+    .title {
+        text-align: center;
+        font-size: 3em;
+        margin-top: 20px;
+                margin-bottom: -100px;
+        animation: pulse 6s infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.125); }
+    }
+
+</style>
+<body>
+
+  <!-- MENU -->
+<div class="top-bar">
+    <a href="Strona kosmiczna muzyczna 07.html">Strona Główna</a>
+    <a href="kontakt.html">Kontakt</a>
+</div>
+
+<!-- TYTUŁ -->
+<h1 class="title">Galeria</h1>
+
+  <main>
+    <section class="carousel">
+      <div class="carousel-slider">
+        <figure class="carousel-slide"><img src="lapp1.png" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="syntetyk okładka.png" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="shot0008.png" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="korona model.png" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="marmur blender.png" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="grafiki 3d napiss.png" alt="img1"></figure>
+
+       </div>
+    </section>
+  </main>
+
+  <script>
+const carousel = document.querySelector(".carousel");
+const carouselSlider = document.querySelector(".carousel-slider");
+
+const animationConfig = {
+  time: 500,
+  visibleSlides: 3
+};
+
+let currentIndex = 0;
+let carouselSlides;
+
+const mod = (n, m) => ((n % m) + m) % m;
+
+const generateCarousel = () => {
+  carouselSlides = document.querySelectorAll(".carousel-slide");
+  const totalSlides = carouselSlides.length;
+
+  if (totalSlides <= animationConfig.visibleSlides) return;
+
+  // Dodaj kopie slajdów na końcu
+  for (let i = 0; i < animationConfig.visibleSlides; i++) {
+    carouselSlider.append(carouselSlides[i].cloneNode(true));
+  }
+
+  // Dodaj kopię ostatniego slajdu na początek
+  carouselSlider.prepend(carouselSlides[totalSlides - 1].cloneNode(true));
+
+  // Pobierz slajdy ponownie po dodaniu kopii
+  carouselSlides = document.querySelectorAll(".carousel-slide");
+
+  addImageClickListeners();
+  anim(0);
+};
+
+const anim = (ms = animationConfig.time) => {
+  const totalSlides = carouselSlides.length;
+  const cMod = mod(currentIndex, totalSlides);
+
+  carouselSlider.style.transitionDuration = `${ms}ms`;
+  const slideWidth = 100 / animationConfig.visibleSlides;
+  carouselSlider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+  carouselSlides.forEach((elSlide, i) => {
+    const isActive = cMod === i;
+    if ((currentIndex <= -1 || currentIndex >= totalSlides) && isActive) {
+      elSlide.style.transform = "scale(1)";
+      return;
+    }
+    elSlide.classList.toggle("last-active", isActive);
+  });
+};
+
+const prev = () => {
+  currentIndex--;
+  anim();
+};
+
+const next = () => {
+  currentIndex++;
+  anim();
+};
+
+const goto = (index) => {
+  if (index === currentIndex) return;
+  if (index < currentIndex) {
+    prev();
+  } else {
+    next();
+  }
+};
+
+const addImageClickListeners = () => {
+  const allImages = document.querySelectorAll(".carousel-slide img");
+  allImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+      goto(index);
+    });
+  });
+};
+
+carouselSlider.addEventListener("transitionend", () => {
+  const totalSlides = carouselSlides.length - animationConfig.visibleSlides;
+
+  if (currentIndex < 0) {
+    currentIndex = totalSlides - 1;
+    anim(0);
+  }
+  if (currentIndex >= totalSlides) {
+    currentIndex = 0;
+    anim(0);
+  }
+});
+
+generateCarousel();
+
+
+  </script>
+</body>
+</html>

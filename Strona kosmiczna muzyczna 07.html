@@ -235,40 +235,7 @@ footer {
   font-size: 0.9em;
 }
 
-.floating-graphic {
-  position: absolute;
-  top: 520px; /* ustaw wysokość na stronie gdzie ma się pojawić */
-  left: 50%;
-  transform: translateX(-90%);
-  z-index: 0; /* pod wideo */
-  animation: floatGraphic 10s ease-in-out infinite;
-  pointer-events: none;
-  opacity: 0.8;
-}
 
-@media (max-width: 768px) {
-.floating-graphic {
-  position: absolute;
-  top: 2250px; /* ustaw wysokość na stronie gdzie ma się pojawić */
-  left: 50%;
-  transform: translateX(-90%);
-  z-index: 0; /* pod wideo */
-  animation: floatGraphic 10s ease-in-out infinite;
-  pointer-events: none;
-  opacity: 0.8;
-  }
-}
-
-.floating-graphic img {
-  width: 300px; /* dopasuj rozmiar */
-  height: auto;
-}
-
-@keyframes floatGraphic {
-  0%   { transform: translateX(-50%) translateY(0px); }
-  50%  { transform: translateX(-50%) translateY(-40px); }
-  100% { transform: translateX(-50%) translateY(0px); }
-}
 
 .cosmic-texts {
   min-height: 100vh;
@@ -315,7 +282,9 @@ footer {
   text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
   transition: opacity 0.8s ease, letter-spacing 3s ease, filter 0.8s ease;
   width: 100%;
+  white-space: nowrap;  
 }
+
 .text-line.active {
   opacity: 1;
   letter-spacing: 0.8em;
@@ -345,6 +314,9 @@ footer {
   user-select: none;
   box-sizing: border-box;
   padding: 0 10px;      /* opcjonalne wewnętrzne marginesy */
+
+
+
 }
 
 .carousel-wrapper {
@@ -383,33 +355,48 @@ footer {
   font-size: 2em;
   cursor: pointer;
   padding: 8px 14px;
-  border-radius: 0px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
   user-select: none;
+    position: a; 
 }
 
 .carousel-btn:hover {
   background-color: rgba(39, 126, 255, 0.8);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .image-carousel {
-    width: 95vw;        /* na małych ekranach prawie 100% szerokości */
+    flex-direction: column; /* karuzela nad przyciskami */
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* grupujemy przyciski w jeden wiersz */
+  .carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 200px; /* szerokość obszaru z przyciskami */
+  }
+
+  .carousel-btn {
+    font-size: 1.8em; /* rozmiar strzałek na mobile */
+    padding: 6px 12px;
   }
 }
+
+
 </style>
 </head>
 <body>
 
-  <div class="floating-graphic">
-  <img src="statek1.png" alt="Dekoracja">
-</div>
 
   <div class="top-bar">
     <header>
       <a href="#muzyka">Muzyka</a>
       <a href="Sklep kosmiczny4.html">Sklep</a>
-      <a href="#produkcja">Produkcja</a>
+      <a href="Carousel Parallax.html">Produkcja</a>
     </header>
     <div class="hamburger" onclick="toggleMenu(this)">
       <div></div><div></div><div></div>
@@ -422,8 +409,9 @@ footer {
   <button class="close-btn">&times;</button>
   <a href="#">Strona Główna</a>
   <a href="Sklep kosmiczny4.html">Sklep</a>
-  <a href="#">Portfolio</a>
-  <a href="#">Kontakt</a>
+  <a href="Carousel Parallax.html">Portfolio</a>
+    <a href="Carousel Parallax.html">Montaż wideo</a>
+  <a href="Parallax Moon and Sun2.html">Kontakt</a>
 </div>
   </nav>
 
@@ -456,19 +444,19 @@ footer {
     <h2>O mnie</h2>
     <p>
       Cześć! Nazywam się Michał. Tworzę muzykę, która zabierze słuchaczy w&nbsp;kosmiczną podróż — miksuję elektronikę z&nbsp;gitarowym brzmieniem, tworząc unikalne brzmienia i&nbsp;dźwiękowe pejzaże pełne emocji. Współpracuję z&nbsp;artystami z&nbsp;różnych gatunków,
-      od hip-hopu po poezję śpiewaną i&nbsp;rock, pomagając im znaleźć swoje unikalne brzmienie. Prowadzę także warsztaty, na&nbsp;których uczę produkcji muzycznej,
+      od popu, po poezję śpiewaną i&nbsp;rock, pomagając im znaleźć swoje unikalne brzmienie. Prowadzę także warsztaty, na&nbsp;których uczę produkcji muzycznej,
       aranżacji i&nbsp;miksu. W&nbsp;wolnym czasie eksploruję nowe technologie oraz zajmuję się tworzeniem brzmień na wirtualnych (i&nbsp;nie tylko) syntezatorach.
     </p>
   </section>
 
 <section class="cosmic-texts">
   <div class="text-line">2025 rok</div>
-  <div class="text-line">To rok <span class="mobile-br"></span>dużych zmian</div>
-  <div class="text-line">I innowacji <span class="mobile-br"></span>technologicznych</div>
+  <div class="text-line">To rok dużych zmian</div>
+  <div class="text-line">I innowacji technologicznych</div>
   <div class="text-line">Przechodzimy</div>
   <div class="text-line">do kolejnej</div>
   <div class="text-line">ważnej epoki</div>
-  <div class="text-line">W dziejach <span class="mobile-br"></span>ludzkości</div>
+  <div class="text-line">W dziejach ludzkości</div>
 </section>
 
 
@@ -476,23 +464,26 @@ footer {
     <h2><br><br>Co dalej?</h2>
     <p>
       W 2025 roku planuję wydanie autorskiego albumu o&nbsp;współczesnym świecie coraz bardziej zdominowanym przez A.I.
-      Pojawią się także koncerty w formie pokazów audiowizualnych, łączących muzykę na żywo z efektami 3D i&nbsp;świetlnymi.
+      Pojawią się także koncerty w formie pokazów audiowizualnych, łączących muzykę na żywo z&nbsp;efektami 3D i&nbsp;świetlnymi.
       Dodatkowo planuję otworzyć kanał edukacyjny online, aby&nbsp;dzielić się wiedzą z&nbsp;pasjonatami muzyki.
     </p>
   </section>
 
 <section class="image-carousel">
-  <button class="carousel-btn prev-btn">&#8592;</button>
   <div class="carousel-wrapper">
-<video autoplay muted loop playsinline>
-  <source src="stttt.mp4" type="video/mp4">
-  Twoja przeglądarka nie obsługuje tego formatu wideo.
-</video>
+    <video autoplay muted loop playsinline>
+      <source src="stttt.mp4" type="video/mp4">
+      Twoja przeglądarka nie obsługuje tego formatu wideo.
+    </video>
     <img src="przezr.png" alt="Obraz 1" class="carousel-image">
     <img src="haleye.gif" alt="Obraz 2" class="carousel-image">
     <img src="shot0008.png" alt="Obraz 3" class="carousel-image">
   </div>
-  <button class="carousel-btn next-btn">&#8594;</button>
+
+  <div class="carousel-controls">
+    <button class="carousel-btn prev-btn">&#8592;</button>
+    <button class="carousel-btn next-btn">&#8594;</button>
+  </div>
 </section>
 
   <footer>

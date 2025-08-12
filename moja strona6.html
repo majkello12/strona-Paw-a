@@ -77,7 +77,7 @@
 
     .hero{
       height:92vh;min-height:560px;padding:110px 20px 40px;margin-top:10;
-      background:url('gora.png') center/cover no-repeat;color:var(--bg);
+      background:url('gora2.png') center/cover no-repeat;color:var(--bg);
       display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
     }
     .hero .inner{
@@ -186,6 +186,9 @@
   color: var(--bg);
   border-radius: 19px;
   margin: 18px 20px;
+  flex-direction: column; /* tekst pod obrazkiem */
+  text-align: center;     /* wyśrodkowanie tekstu */
+  gap: 12px;
 }
 
 @keyframes bgMove {
@@ -205,17 +208,43 @@
   color: white;
   animation: fadeUp .7s both;
   text-shadow:
-    0 0 6px black,
-    0 0 6px black;
+    0 0 6px rgb(0, 0, 0),
+    0 0 6px rgb(0, 0, 0);
 }
     #about{ max-width:var(--max-width);margin:40px auto;padding:20px; display:grid; grid-template-columns: 1fr; gap:20px }
-    .about-row{ display:flex;gap:20px;align-items:center;flex-wrap:wrap }
-    .about-photo{ width:220px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08) }
+    .about-row{ display:flex;gap:20px;align-items:center;flex-wrap:wrap 
+      display: flex;
+  flex-direction: column;
+  align-items: center;    
+  text-align: center;   
+  gap: 12px;}
+
+    .about-photo{ width:220px;border-radius:12px;
+     margin: 0 auto; box-shadow:0 10px 30px rgba(0,0,0,0.08) }
     .about-text{ flex:1; min-width:260px;padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92)); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.04) }
     .about-text h2{ margin:0 0 8px }
     .about-cards{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-top:18px }
-    .about-card{ padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86)); box-shadow:0 8px 26px rgba(0,0,0,0.06); display:flex;gap:12px;align-items:center }
-    .about-card img{ width:56px;height:56px;border-radius:8px;object-fit:cover }
+.about-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));
+  box-shadow: 0 8px 26px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  text-align: center;  
+  gap: 12px;
+}
+
+.about-card img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+    align-items: center;    
+  flex-direction: column;
+
+}
 
 #kontakt {
   max-width: 1100px;
@@ -354,7 +383,7 @@
   </section>
 
     <section class="intro">
-    <h2>Tworzę nowoczesne, responsywne i&nbsp;unikalne projekty graficzne oraz strony internetowe dostosowane do Twoich potrzeb.</h2>
+    <h2>Inspiruję się światem, aby&nbsp;tworzyć projekty pełne mocy, kreatywności i&nbsp;unikalnych rozwiązań.</h2>
   </section>
 
   <section class="laptop-section">
@@ -382,7 +411,7 @@
 
   <section id="about">
     <div class="about-row">
-      <img src="gora.png" alt="Moje zdjęcie" class="about-photo">
+      <img src="gora1.png" alt="Moje zdjęcie" class="about-photo">
       <div class="about-text">
         <h2>Coś&nbsp;o&nbsp;mnie</h2>
         <p>Nazywam się Michał, jestem grafikiem i&nbsp;web developerem z&nbsp;Kielc. Z&nbsp;pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z&nbsp;użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w&nbsp;obsłudze.</p>
