@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fotografia - Anna Nowak</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Style+Script&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: white;
+        color: #333;
+    }
+
+    /* Pasek menu */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 20px 40px;
+        border-bottom: 1px solid #eee;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    .logo {
+        flex: 1;
+        text-align: center;
+    }
+    .logo img {
+        height: 60px;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    nav a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+    nav a:hover {
+        color: #c89f94;
+    }
+    .social a {
+        font-size: 18px;
+        color: #d3a462;
+        transition: opacity 0.3s;
+    }
+    .social a:hover {
+        opacity: 0.7;
+    }
+
+    /* Hamburger */
+    .hamburger {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+        
+    }
+    .mobile-menu {
+        display: none;
+        flex-direction: column;
+        background: white;
+        padding: 40px;
+        border-top: 1px solid #eee;
+            transition: max-height 0.94s ease;
+    }
+    .mobile-menu a {
+        padding: 10px 0;
+                text-decoration: none;
+                        color: #5706ec;
+
+                        font-size: 16px;
+
+    }
+
+    /* Slideshow */
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100dvh; /* dynamiczna wysokość na mobile */
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* dopasowanie obrazu bez deformacji */
+}
+
+/* Dopasowanie na mniejszych ekranach */
+@media (max-width: 780px) {
+    .about h2 {
+        font-size: 28px;
+    }
+    .about p {
+        font-size: 16px;
+    }
+    .slideshow-container {
+        height: 70vh; /* trochę niższe na telefonach, żeby tekst był widoczny */
+    }
+}
+
+    /* Sekcja o fotografii */
+    .about {
+        text-align: center;
+        padding: 60px 20px;
+        max-width: 900px;
+        margin: auto;
+    }
+    .about h2 {
+  font-family: 'Style Script' ;
+        font-size: 36px;
+        color: #d3a462;
+        margin-bottom: 20px;
+        letter-spacing: 0.11rem;
+          text-shadow: 0.7px 0.5px 0px rgb(0, 0, 0);
+    }
+    .about p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    /* Albumy */
+    .albums {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+
+@media (max-width: 480px) {
+    .albums {
+        grid-template-columns: 1fr;
+    }
+}
+    .album {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .album img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+    .album:hover img {
+        transform: scale(1.1);
+    }
+    .album-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background: #d3a462;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        font-size: 18px;
+  letter-spacing: 0.1rem;
+    }
+
+    /* Stopka */
+    footer {
+        background: #d3a462;
+        padding: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+    footer a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        margin: 0 5px;
+    }
+
+    /* Responsywność */
+    @media (max-width: 768px) {
+        nav {
+            display: none;
+        }
+        .hamburger {
+            display: block;
+        }
+        .albums {
+            grid-template-columns: 1fr;
+        }
+        .logo img {
+            height: 50px;
+        }
+    }
+
+#loader {
+  position: fixed;
+  top: 0; /* pełny ekran */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;   /* wyśrodkowanie w pionie */
+  justify-content: center; /* wyśrodkowanie w poziomie */
+  z-index: 9999;
+  transition: transform 1s ease-in-out;
+}
+
+#loader svg {
+  max-width: 80%;
+  max-height: 80%;
+}
+
+#loader.slide-down {
+  transform: translateY(100%);
+}
+
+#loader path {
+  stroke: rgb(0, 0, 0);
+  fill: transparent;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.carousel-slider img {
+  width: 28vw;
+  height: 50vw;
+  max-width: 290px;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+              0 3px 6px rgba(0, 0, 0, 0.308);
+  object-position: 25% 50%;
+  transition: object-position 1s ease-in-out, transform 0.5s ease-in-out;
+  
+}
+
+.carousel .carousel-slider {
+  display: grid;
+  height: 600px;
+  place-items: center;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 20px);
+  gap: 20px;
+  scroll-behavior: smooth;
+  
+}
+
+.carousel {
+  max-width: 1100px;
+  width: 100%;
+  overflow: hidden;
+  margin: 50px auto;
+    margin-top: 40px;  /* odstęp nad sekcją */
+  margin-bottom: 150px; /* odstęp pod sekcją */
+}
+
+main {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.last-active + .carousel-slide {
+  transform: scale(1.4) !important;
+}
+
+.last-active + .carousel-slide img {
+  object-position: 50% 50%;
+}
+
+.carousel-slide {
+  transition: transform 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .carousel-slider img {
+    width: 40vw;
+    height: 70vw;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div id="loader">
+<?xml version="1.0" encoding="UTF-8"?><svg id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 631.02 108.72"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;}</style></defs><path class="cls-1" d="M3.6,88.25C34.23,71.5,47.52,32.11,64.03,2.11c.97-1.71,1.78-2.52,2.08-.05,2.02,29.44,11.1,57.94,19.41,86.19C66.98,62.72,36.68,43.8,4.33,42.34c-8.97-.71.15,7.21,3.96,8.26,3.07,1.24,6.74,2,10.73,2.45,13.65,1.54,31-.49,41.24.97,11.36,1.35,25,1.46,33.89-6.31,15.82-18.14,11.45,37.48,11.25,41.45-1.8,31.37-29.81,19.41-28.81-2.94,3.39-23.02,31.28-19.33,44.99-32.66,26.41-24.8,21.66,25.65-.17,1.76"/><path class="cls-1" d="M138.46,47.17c-.9,11.73,15.78,16.67,21.2,6.7.35-.59.63-1.09.87-1.33,1-.88,1.56,3.05,1.89,3.79.29.79.38,1.81,1.11,2.2.62.12,1.39-2.31,2.56-4.25,2.48-4.75,8.09-8.19,12.56-4.37,2.5,2.11,3.05,5.91,5.19,8.45,4.63,5.95,12.81,1.52,16.9-2.67,1.26-1.13,1.65-1.09,1.84.11.9,6.27,4.22,30.05,5.19,36.76.52-27.1.11-58.5.24-86.92-.14,12.94.48,33.85-15.43,30.77-2.12-.38-4.05-1.78-2.61-3.62,7.48-7.71,53.38-6.17,64.49-5.18"/><path class="cls-1" d="M237.72,49.29c-5.96-2.56-13.25-1.05-17.6,4-.77.88-1.71,2.24-1.12,3.34.37.69,1.31,1.06,2.13,1.24,6.49,1.33,13.77-1.8,17.65-7.52.35-.47.91-1.4,1.22-1.6.26-.17.28.36.24,1.35-1.87,21.34,36.3,8.91,49.46,3.77"/><path class="cls-1" d="M344.38,15.07c.08,14.37,6,30.7,19.75,32.44,9.79,1.53,20.69-4.04,26.17-12.39,6.49-9.32,3.65-21.22-5.73-28.61-3.07-2.58-6.32-4.52-9.97-5.26-41.63-7.61-61.09,69.93-25.34,82.21,20.98,6.51,48.57-18.06,57.34-37.66-.65,6.04-.05,12.26,1.93,17.98.32.87.43.76.44-.12-.07-2.09.26-4.16.91-6.12,2.18-6.52,9.18-10.11,15.85-8.45l1.08.27c.95,0,1.91,0,2.84-.12,3.93-.35,6.16-4.06,5.14-6.04-.67-1.58-3.85-1.54-5.37-.28-4.12,3.22-3.28,10.19.13,13.65,3.7,4.18,9.48,2.6,13.3-.61,9.15-6.52,17.84-15.28,28.16-10.6,3.29,1.36,5.84,5.9,8.73,7.37,17.2,1.71,22.49-35.93,22.39-49.88"/><path class="cls-1" d="M496.94,83.95c-7.2-65.43-5.98-67.35,62.71-64.82"/><path class="cls-1" d="M510.52,29.37c6.19,6.01,5.64-6.09.28-.78"/><path class="cls-1" d="M510.98,41.15c-5.9,9.63,12.15,23.36,13.58,9.64"/><path class="cls-1" d="M534.02,41.23c-8.48,11.18,3.3,27.66,9.14,16.9,1.61-3.82,2.53-8.63.26-12.33-.79-1.15-2.08-1.74-1.98-1.83,5.18,1.04,11.52,2.81,16.3,1.43"/><path class="cls-1" d="M558.97,54.75c28.24-32.42,13.17-10.58,31.5-3.89,13.51,1.48,27.06-3.64,40.51-4.85"/></svg></div>
+
+<header>
+    <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <nav>
+        <a href="#oferta">Oferta</a>
+        <a href="#portfolio">Portfolio</a>
+                <a href="#portfolio">O mnie</a>
+    </nav>
+    <div class="logo">
+        <img src="loooogoo.png" alt="logo">
+    </div>
+    <nav>
+        <a href="#opinie">Opinie</a>
+        <a href="#kontakt">Kontakt</a>
+        <div class="social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#oferta">Oferta</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#opinie">Opinie</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+    <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+</div>
+
+<!-- Slideshow -->
+<div class="slideshow-container">
+    <div class="slide"><img src="jeremy-wong-weddings-464ps_nOflw-unsplash.jpg" alt="slub"></div>
+    <div class="slide"><img src="brittney-weng-Yy1tmz_G3uQ-unsplash.jpg" alt="krajobraz"></div>
+    <div class="slide"><img src="la-so-vk4vjTNVrTg-unsplash.jpg" alt="krajobraz"></div>
+    <div class="slide"><img src="peter-thomas-RSicVrLNMxs-unsplash.jpg" alt="krajobraz"></div>
+    <div class="slide"><img src="andy-holmes-oi3UuspyK4k-unsplash.jpg" alt="krajobraz"></div>
+    <div class="slide"><img src="jack-ward-rknrvCrfS1k-unsplash.jpg" alt="krajobraz"></div>
+    <div class="slide"><img src="hisu-lee-FTW8ADj5igs-unsplash.jpg" alt="natura"></div>
+    <div class="slide"><img src="foto-pettine-IfjHaIoAoqE-unsplash.jpg" alt="panna młoda"></div>
+    <div class="slide"><img src="sandy-millar-8vaQKYnawHw-unsplash.jpg" alt="plaża"></div>
+    <div class="slide"><img src="alvin-mahmudov-NSVJAAXOYHs-unsplash.jpg" alt="dziecko"></div>
+    <div class="slide"><img src="roman-melnychuk-KIVqJrp1y1M-unsplash.jpg" alt="ceremonia"></div>
+    <div class="slide"><img src="ivan-rohovchenko-9VwX8GLnjOA-unsplash.jpg" alt="zachód słońca"></div>
+</div>
+
+<!-- Sekcja o fotografii -->
+<section class="about" id="oferta">
+    <h2>Fotografia to moja pasja</h2>
+    <p>Uwielbiam zatrzymywać w kadrze emocje, chwile i piękno, które nas otacza.  
+    Każda sesja to wyjątkowa historia – Twoja historia.  
+    Dlaczego warto mnie wybrać? Bo pracuję z sercem, dbam o każdy detal, a Twoje wspomnienia zasługują na najpiękniejszą oprawę.</p>
+</section>
+
+<!-- Albumy -->
+<section class="albums" id="portfolio">
+    <div class="album" onclick="window.location.href='slubne.html'">
+        <img src="luwadlin-bosman-P_HRPYpFTNA-unsplash.jpg" alt="slubne">
+        <div class="album-title">Zdjęcia ślubne</div>
+    </div>
+    <div class="album" onclick="window.location.href='plenery.html'">
+        <img src="foto-pettine-IfjHaIoAoqE-unsplash.jpg" alt="plenery">
+        <div class="album-title">Plenery</div>
+    </div>
+    <div class="album" onclick="window.location.href='chrzest.html'">
+        <img src="marek-pavlik-l-9Zg-QsPQE-unsplash.jpg" alt="chrzest">
+        <div class="album-title">Chrzest</div>
+    </div>
+    <div class="album" onclick="window.location.href='krajobrazy.html'">
+        <img src="photos-by-lanty-O38Id_cyV4M-unsplash.jpg" alt="krajobrazy">
+        <div class="album-title">Krajobrazy</div>
+    </div>
+</section>
+
+<!-- Sekcja o fotografii -->
+<section class="about" id="oferta">
+    <h2>Galeria z moich podróży</h2>
+    <p>Kocham wycieczki i podróże a na nich zatrzymywać wyjątkowe chwile na fotografiach.</p>
+</section>
+
+    <section class="carousel">
+      <div class="carousel-slider">
+        <figure class="carousel-slide"><img src="sofia-mv--aWdjUn4-unsplash.jpg" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="jack-ward-rknrvCrfS1k-unsplash.jpg" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="ivan-rohovchenko-9VwX8GLnjOA-unsplash.jpg" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="la-so-vk4vjTNVrTg-unsplash.jpg" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="q-a-tr-n-D2At0-d3Fsg-unsplash.jpg" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="andy-holmes-oi3UuspyK4k-unsplash.jpg" alt="img1"></figure>
+
+       </div>
+    </section>
+
+<!-- Stopka -->
+<footer id="kontakt">
+    <p>Telefon: <a href="tel:+48123456789">+48 123 456 789</a> | Email: <a href="mailto:kontakt@annanowak.pl">kontakt@annanowak.pl</a></p>
+    <p>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </p>
+</footer>
+
+
+<script>
+const paths = document.querySelectorAll('#loader svg path');
+const speed = 600; // px na sekundę
+let totalDelay = 0;
+
+// animacja rysowania po kolei
+paths.forEach((path) => {
+  const length = path.getTotalLength();
+  const duration = length / speed;
+
+  path.style.strokeDasharray = length;
+  path.style.strokeDashoffset = length;
+  path.style.animation = `draw ${duration}s ${totalDelay}s forwards linear`;
+
+  totalDelay += duration;
+});
+
+// po zakończeniu rysowania — zsuwanie w dół
+setTimeout(() => {
+  document.getElementById('loader').classList.add('slide-down');
+  setTimeout(() => {
+    document.getElementById('loader').remove();
+    document.body.style.overflow = 'auto';
+  }, 1000); // czas zsuwania
+}, totalDelay * 1000);
+</script>
+<script>
+let slideIndex = 0;
+showSlides();
+function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 6000);
+}
+
+function toggleMenu() {
+    const menu = document.getElementById("mobileMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+</script>
+
+<script>
+const carousel = document.querySelector(".carousel");
+const carouselSlider = document.querySelector(".carousel-slider");
+
+const animationConfig = {
+  time: 500,           // czas animacji w ms
+  visibleSlides: 3,    // ile slajdów widać
+  autoPlayDelay: 4000  // czas pomiędzy przesunięciami w ms
+};
+
+let currentIndex = 0;
+let carouselSlides;
+let autoPlayInterval;
+
+const mod = (n, m) => ((n % m) + m) % m;
+
+const generateCarousel = () => {
+  carouselSlides = document.querySelectorAll(".carousel-slide");
+  const totalSlides = carouselSlides.length;
+
+  if (totalSlides <= animationConfig.visibleSlides) return;
+
+  // dodaj kopie slajdów na końcu
+  for (let i = 0; i < animationConfig.visibleSlides; i++) {
+    carouselSlider.append(carouselSlides[i].cloneNode(true));
+  }
+
+  // dodaj kopię ostatniego slajdu na początek
+  carouselSlider.prepend(carouselSlides[totalSlides - 1].cloneNode(true));
+
+  // pobierz slajdy ponownie po dodaniu kopii
+  carouselSlides = document.querySelectorAll(".carousel-slide");
+
+  addImageClickListeners();
+  anim(0);
+  startAutoPlay(); // uruchom automatyczne przesuwanie
+};
+
+const anim = (ms = animationConfig.time) => {
+  const totalSlides = carouselSlides.length;
+  const cMod = mod(currentIndex, totalSlides);
+
+  carouselSlider.style.transitionDuration = `${ms}ms`;
+  const slideWidth = 100 / animationConfig.visibleSlides;
+  carouselSlider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+  carouselSlides.forEach((elSlide, i) => {
+    const isActive = cMod === i;
+    elSlide.classList.toggle("last-active", isActive);
+  });
+};
+
+const prev = () => {
+  currentIndex--;
+  anim();
+};
+
+const next = () => {
+  currentIndex++;
+  anim();
+};
+
+const goto = (index) => {
+  if (index === currentIndex) return;
+  if (index < currentIndex) {
+    prev();
+  } else {
+    next();
+  }
+};
+
+const addImageClickListeners = () => {
+  const allImages = document.querySelectorAll(".carousel-slide img");
+  allImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+      goto(index);
+    });
+  });
+};
+
+// zapętlenie po ostatnim slajdzie
+carouselSlider.addEventListener("transitionend", () => {
+  const totalSlides = carouselSlides.length - animationConfig.visibleSlides;
+
+  if (currentIndex < 0) {
+    currentIndex = totalSlides - 1;
+    anim(0);
+  }
+  if (currentIndex >= totalSlides) {
+    currentIndex = 0;
+    anim(0);
+  }
+});
+
+// automatyczne przesuwanie
+const startAutoPlay = () => {
+  autoPlayInterval = setInterval(() => {
+    next();
+  }, animationConfig.autoPlayDelay);
+};
+
+generateCarousel();
+</script>
+
+
+
+</body>
+</html>
