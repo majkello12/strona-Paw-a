@@ -32,10 +32,16 @@
     .logo {
         flex: 1;
         text-align: center;
+                                transition: transform 0.3s ease;
+
     }
     .logo img {
         height: 60px;
+
     }
+
+        .logo:hover{
+        transform: scale(1.1);}
     nav {
         display: flex;
         align-items: center;
@@ -48,7 +54,7 @@
         transition: color 0.3s;
     }
     nav a:hover {
-        color: #c89f94;
+        color: #000000;
     }
     .social a {
         font-size: 18px;
@@ -64,8 +70,26 @@
         display: none;
         font-size: 24px;
         cursor: pointer;
-        
+                transition: transform 0.5s ease;
+
     }
+
+    .hamburger:hover {
+              transform: scale(1.2);
+            }
+
+header nav a {
+    display: inline-block; /* potrzebne, żeby scale działało na cały link */
+    text-decoration: none;
+    font-size: 16px;
+    transition: transform 0.3s ease, color 0.3s ease;
+    padding: 5px 10px;
+}
+
+header nav a:hover {
+    transform: scale(1.1);
+}
+    
     .mobile-menu {
         display: none;
         flex-direction: column;
@@ -80,8 +104,13 @@
                         color: #5706ec;
 
                         font-size: 16px;
+                transition: transform 0.5s ease;
 
     }
+
+        .mobile-menu a:hover {
+              transform: scale(1.1);
+            }
 
     /* Slideshow */
 .slideshow-container {
@@ -121,6 +150,8 @@
         padding: 60px 20px;
         max-width: 900px;
         margin: auto;
+        transition: transform 0.3s ease;
+
     }
     .about h2 {
   font-family: 'Style Script' ;
@@ -128,8 +159,22 @@
         color: #d3a462;
         margin-bottom: 20px;
         letter-spacing: 0.11rem;
+
           text-shadow: 0.7px 0.5px 0px rgb(0, 0, 0);
+          
+                /*    text-shadow: 0.8px 0.5px 0px rgb(0, 0, 0);
+                              text-shadow: 0.9px 0.5px 0px rgb(0, 0, 0);
+                    text-shadow: 1.0px 0.5px 0px rgb(0, 0, 0);
+                              text-shadow: 0.7px 0.5px 0px rgb(0, 0, 0);
+                    text-shadow: 1.1px 0.5px 0px rgb(0, 0, 0);
+                                        text-shadow: 1.2px 0.5px 0px rgb(0, 0, 0);
+                              text-shadow: 1.3px 0.5px 0px rgb(0, 0, 0);
+                    text-shadow: 1.9px 0.5px 0px rgb(0, 0, 0);  */
     }
+
+            .about:hover{
+        transform: scale(1.01);}
+
     .about p {
         font-size: 18px;
         line-height: 1.6;
