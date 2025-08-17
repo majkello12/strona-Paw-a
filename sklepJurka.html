@@ -489,71 +489,66 @@
         .image-section img {max-width: 200px;}
     }
 
-    .frame-section {
-  height: 500px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-      background: url("papier11.png") no-repeat center/cover;
-    padding: 10px 2px;
-    flex-direction: column;  
-    min-height: 70vh;  
-  
+.frame-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolumny na dużych ekranach */
+  gap: 20px; /* odstęp między ramkami */
+  justify-items: center; /* wyśrodkowanie ramek w kolumnach */
+  padding: 40px;
 }
 
 .frame {
   width: 300px;
   height: 300px;
-  border: 15px solid #990707;
-background-color: #7777773f;
+  border: 9px solid #990707;
+  background-color: #7777773f;
   overflow: hidden;  
   position: relative;
-          transition: transform 0.2s;
+  transition: transform 0.2s;
+    aspect-ratio: 1 / 1; /* kwadrat */
 
 }
+
+
 .frame-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  top: 0;
-  left: 0;
-  transform: translateY(1px); 
-  transition: transform 0.1s linear; }
-
-
-  .frame-section :hover {
-    transform: scale(1.03);
-    text-shadow: 0 0 8px #fff;
+  transition: transform 0.1s linear;
 }
 
-  .frame-section .frame-text {
-    font-family: Noto Serif;
+.frame:hover {
+  transform: scale(1.03);
+}
+
+.frame-text {
+  font-family: Noto Serif;
   text-transform: uppercase;
-    font-size: clamp(26px, 4vw, 37px); 
-    color: #990707;
-    font-weight: 700;
-    margin-bottom: 40px; 
-    transition: transform 0.3s, text-shadow 0.3s;
+  font-size: clamp(26px, 4vw, 37px); 
+  color: #990707;
+  font-weight: 700;
+  margin-bottom: 40px; 
+  text-align: center;
+  transition: transform 0.3s, text-shadow 0.3s;
 }
 
+.frame-text:hover {
+  transform: scale(1.03);
+  text-shadow: 0 0 8px #fff;
+}
 
+/* Małe ekrany: pojedyncza kolumna */
 @media (max-width: 768px) {
-    .frame-section {
-        text-align: center; 
-    }
+  .frame-section {
+    grid-template-columns: 1fr; /* jedna kolumna */
+    gap: 30px; 
+  }
 
-    .image-section2 .section-text {
-        margin-bottom: 150px; 
-    }
+  .frame {
+    width: 90%; /* dopasowanie do ekranu */
+    height: auto;
+  }
 }
-
-.frame-section .frame-text:hover {
-    transform: scale(1.03);
-    text-shadow: 0 0 8px #fff;
-}
-
 .sekcja {
   position: relative;
   display: flex;
@@ -651,14 +646,11 @@ background-color: #7777773f;
         <span></span>
     </div>
     <nav id="nav-left">
-        <a href="sklepJurka.html">SKLEP</a>
-        <a href="#">O MNIE</a>
-
+        <a href="parallax Jurek3.html">STRONA</a>
     </nav>
     <img src="logogwaru.svg" alt="Logo" id="header-logo">
     <nav id="nav-right">
-        <a href="#">GALERIA</a>
-        <a href="#">KONTAKT</a>
+        <a href="#">GŁÓWNA</a>
     </nav>
 </header>
 
@@ -666,24 +658,6 @@ background-color: #7777773f;
   <img src="logogwaru.svg" alt="Logo" id="logo" />
 </div>
 
-
-<div class="parallax-container desktop">
-    <div class="layer" data-speed="2" data-width="1000" data-x="-40" data-y="-50" data-z="3"><img src="img1.png" alt="Warstwa 1"></div>
-    <div class="layer" data-speed="3" data-width="1300" data-x="-5" data-y="-50" data-z="3"><img src="img2.png" alt="Warstwa 2"></div>
-    <div class="layer" data-speed="6" data-width="400" data-x="45" data-y="-80" data-z="2"><img src="img3.png" alt="Warstwa 3"></div>
-    <div class="layer" data-speed="10" data-width="500" data-x="20" data-y="-120" data-z="1"><img src="img4.png" alt="Warstwa 4"></div>
-    <div class="layer" data-speed="12" data-width="460" data-x="79" data-y="-40" data-z="1"><img src="img5.png" alt="Warstwa 4"></div>
-        <div class="layer" data-speed="4" data-width="500" data-x="-60" data-y="-40" data-z="2"><img src="img6.png" alt="Warstwa 4"></div>
-</div>
-
-<div class="parallax-container mobile">
-    <div class="layer" data-speed="4" data-width="600" data-x="5" data-y="-120" data-z="1"><img src="img1.png" alt="Warstwa 1"></div>
-    <div class="layer" data-speed="3" data-width="700" data-x="-10" data-y="-80" data-z="3"><img src="img2.png" alt="Warstwa 2"></div>
-    <div class="layer" data-speed="4" data-width="300" data-x="45" data-y="-120" data-z="2"><img src="img3.png" alt="Warstwa 3"></div>
-    <div class="layer" data-speed="4" data-width="350" data-x="15" data-y="-160" data-z="4"><img src="img4.png" alt="Warstwa 4"></div>
-    <div class="layer" data-speed="2" data-width="330" data-x="-34" data-y="-70" data-z="2"><img src="img5.png" alt="Warstwa 4"></div>
-        <div class="layer" data-speed="3" data-width="400" data-x="25" data-y="-50" data-z="1"><img src="img6.png" alt="Warstwa 4"></div>
-</div>
 
 <div class="info-bar">
     <div class="scroll-wrapper">
@@ -704,44 +678,40 @@ background-color: #7777773f;
     </div>
 </div>
 
-<div class="video-section">
-  <video id="myVideo" src="Labirynt wideo.mp4" autoplay muted loop playsinline></video>    
-
-  <div class="video-controls">
-    <button class="video-btn" onclick="playPause()">
-      <img src="buttonplayGwaru.svg" alt="Play/Pause" width="40" height="40">
-    </button>
-
-    <button class="video-btn" onclick="muteUnmute()">
-      <img src="buttonmuteGwaru.svg" alt="Mute/Unmute" width="40" height="40">
-    </button>
-  </div>
-</div>
-
-<div class="image-section">
-    <div class="section-text">
-        Albumy muzyczne
-    </div>
-    <img src="obrazeksrodek.png" alt="Środkowy obrazek">
-</div>
-
-<div class="image-section2">
-    <div class="section-text">
-        Nowości
-    </div>
-    <img src="obrazeksrodek2.png" alt="Środkowy obrazek">
-</div>
 
 
 <section class="frame-section">
-        <div class="frame-text">
-        Nadchodzące koncerty
-    </div>
 
-  <div class="frame">
-    <img src="img5.png" alt="Obrazek w ramce" class="frame-image">
-  </div>
+<div class="frame">
+  <img src="sklep2.png" class="frame-image" data-speed="0.12">
+</div>
+<div class="frame">
+  <img src="sklep3.png" class="frame-image" data-speed="0.18">
+</div>
+<div class="frame">
+  <img src="sklep4.png" class="frame-image" data-speed="0.15">
+</div>
+<div class="frame">
+  <img src="sklep5.png" class="frame-image" data-speed="0.12">
+</div>
+<div class="frame">
+  <img src="sklep6.png" class="frame-image" data-speed="0.18">
+</div>
+<div class="frame">
+  <img src="sklep7.png" class="frame-image" data-speed="0.55">
+</div>
+<div class="frame">
+  <img src="sklep8.png" class="frame-image" data-speed="0.12">
+</div>
+<div class="frame">
+  <img src="sklep9.png" class="frame-image" data-speed="0.18">
+</div>
+<div class="frame">
+  <img src="sklep10.png" class="frame-image" data-speed="0.15">
+</div>
+    </div>
 </section>
+
 
 
 <section class="sekcja">
@@ -820,34 +790,35 @@ background-color: #7777773f;
     });
 </script>
 <script>
+const frames = document.querySelectorAll('.frame');
+
 window.addEventListener('scroll', () => {
-  const frame = document.querySelector('.frame');
-  const image = frame.querySelector('.frame-image');
+  frames.forEach(frame => {
+    const image = frame.querySelector('.frame-image');
+    const rect = frame.getBoundingClientRect();
+    const speed = 0.15; // prędkość przesunięcia
 
-  const rect = frame.getBoundingClientRect();
-  const speed = 0.3; 
+    // offset względem górnej krawędzi okna
+    const offset = rect.top * speed;
 
-
-  const offset = rect.top * speed;
-  image.style.transform = `translateY(${+offset}px)`;
+    image.style.transform = `translateY(${offset}px) scale(1)`; 
+  });
 });
 </script>
 
-<script>
-document.addEventListener("scroll", () => {
-  const logo = document.getElementById("header-logo");
-  const scrollTop = window.scrollY;             
-  const docHeight = document.body.scrollHeight;
-  const winHeight = window.innerHeight;        
-  const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
 
-  if (scrollPercent >= 10) {
-    logo.classList.add("visible");
-  } else {
-    logo.classList.remove("visible");
-  }
-});
-</script>
+<script>const frames = document.querySelectorAll('.frame');
+
+window.addEventListener('scroll', () => {
+  frames.forEach(frame => {
+    const image = frame.querySelector('.frame-image');
+    const rect = frame.getBoundingClientRect();
+    const speed = parseFloat(image.dataset.speed) || 0.15; // odczyt z data-speed
+
+    const offset = rect.top * speed;
+    image.style.transform = `translateY(${offset}px) scale(1)`;
+  });
+});</script>
 
 </body>
 </html>
