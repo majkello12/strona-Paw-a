@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Animacja w Kielcach</title>
+   <link rel="logoicon" type="image/png" sizes="32x32" href="logoicon32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="logoicon16x16.png">
+  <title>Samuel Studio</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
   <style>
@@ -12,43 +14,82 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #fff;
+
+    @font-face {
+  font-family: 'Nohemi';
+  src: url(Nohemi-Regular-BF6438cc579d934.woff) format('woff2'),
+    font-weight: normal;
+
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url(Satoshi-Regular.woff2) format('woff2'),
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+body {
+              font-family: 'Roboto', sans-serif;
+      letter-spacing: 1px;
+    background: #fff;
       overflow-x: hidden;
         margin: 0;
   padding: 0;
   height: 100%;
     }
 
-    /* HEADER */
-    header {
+
+
+header {
       background-color: #eeb702;
-      padding: 15px 30px;
+      padding: 0px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       position: sticky;
       top: 0;
+           margin: 0; 
       z-index: 1000;
-      border-bottom: 2px solid #ffffff;
-    }
+  transition: top 0.3s ease-in-out;
+}
 
-    .logo-container img {
-      height: 60px;
-    }
+header.hidden {
+  top: -150%; 
+}
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90%;        
+  overflow: visible;  
+  margin-top: 1cm;
+  margin-bottom: 1cm;
+}
+
+.logo-container img {
+  max-height: 30px;   
+  height: auto;
+  width: auto;        
+  display: block;  
+}
+
 
     .center-links {
       flex: 1;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 50px;
       flex-wrap: wrap;
     }
 
     .center-links a {
-      color: #333;
+      color: #000000;
       text-decoration: none;
       font-size: 22px;
       font-weight: 600;
@@ -57,87 +98,77 @@
     }
     .center-links a:hover {
       color: #ffffff;
+        transform: scale(1.05);
+
     }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      gap: 6px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      width: 30px;
-      height: 4px;
-      background: #333;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  cursor: pointer;
+  z-index: 1100;
+}
 
-    nav.menu {
-      display: none;
-      flex-direction: column;
-      background: #eeb702;
-      padding: 20px;
-      text-align: center;
-      width: 100%;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      z-index: 999;
-    }
-    
-    nav.menu a:hover {
+.hamburger span {
+  display: block;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.mobile-menu {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #eeb702;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: top 0.5s ease;
+  z-index: 1050;
+}
+
+.mobile-menu a {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  text-decoration: none;
+  color: #000;
+      font-weight: 600;
+      padding: 1px 6px;
+      transition: color 0.3s;
+}
+
+    .mobile-menu a:hover {
       color: #ffffff;
     }
 
-    @media (max-width: 768px) {
-      .center-links {
-        display: none;
-      }
-      nav.menu a {
-  display: block;
-  font-size: 22px;
-   text-decoration: none;     
-  font-weight: 600;         
-  transition: letter-spacing 0.3s ease, color 0.3s;
-  font-family: 'Fredoka', sans-serif; 
-  margin: 10px 0;
-  color: #000;
-  transition: letter-spacing 0.3s ease;
-}
 
-nav.menu a:nth-child(1) {
-  letter-spacing: 2px;
+
+@media (max-width: 768px) {
+  .center-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
 }
-nav.menu a:nth-child(2) {
-  letter-spacing: 4px;
-}
-nav.menu a:nth-child(3) {
-  letter-spacing: 10px;
-}
-nav.menu a:nth-child(4) {
-  letter-spacing: 10px;
-}
-nav.menu a:nth-child(5) {
-  letter-spacing: 40px;
-}
-nav.menu a:nth-child(6) {
-  letter-spacing: 4px;
-}
-nav.menu a:hover {
-  color: white;
-  letter-spacing: calc(1.2 * var(--base-spacing, 5px));
-}
-      .hamburger {
-        display: flex;
-      }
-      nav.menu.show {
-        display: flex;
-      }
 
 .break-desktop {
   display: none;
@@ -235,7 +266,6 @@ img {
 }
 }
 
-    /* WIDEO SEKCJA */
     .video-section {
       position: relative;
       width: 100%;
@@ -256,29 +286,29 @@ img {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding-top: 150px;
+      padding-top: 260px;
     }
     .video-overlay h1 {
-      font-size: 2rem;
-           margin-bottom: 20px;
+      font-size: 2.5rem;
+       letter-spacing: 2px;
+           margin-bottom: 90px;
            margin-top: -90px;
-      color: #ffffff;
-   
+      color: #eeb702;
     }
     .video-overlay .btn {
       padding: 12px 29px;
       background: #eeb702;
       color: rgb(29, 29, 29);
       border: nonblacke;
-      border-radius: 55px;
+      border-radius: 25px;
       font-size: 27px;
       font-weight: 500;
       margin: 10px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.1s;
     }
     .video-overlay .btn:hover {
-      background: #f7c403;
+      background: #ffffff;
     }
 
     @media (max-width: 768px) {
@@ -295,7 +325,6 @@ img {
     line-height: 1.4;
   }
 }
-
 
 
      .video-hero {
@@ -352,20 +381,22 @@ img {
 
 @media (max-width: 768px) {
   .video-section--checiny {
-    position: absolute;
-    width: 100%;
-    height: 100vw; /* lub np. height: 100vh; jeśli chcesz pełną wysokość widoku */
-    object-fit: cover;
-    overflow: hidden;
+    margin-top: 20px;
+    margin-bottom: 20px;
+ 
+    height: 100vh;
+     position: relative;
+  width: 100%;
+
+  overflow: hidden;
   }
 }
 
-/* Dla dużych ekranów */
 @media (min-width: 1024px) {
   .video-section--checiny {
     margin-top: 4px;
     margin-bottom: 80;
-height: 100vh;
+height: 60vh;
       width: 100%;
 
     object-fit: cover;
@@ -375,8 +406,8 @@ background-color: rgb(255, 255, 255);
   .video-section--checiny video {
     top: 30px;
     min-width: 50%;
+    min-height: 10%;
     left: 50%;
-    height: 100vh;
     transform: translateX(-50%);
     position: absolute;
   }
@@ -416,6 +447,8 @@ background-color: rgb(255, 255, 255);
 
 .see-more-btn:hover {
   background: #000000;
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
 }
 
 .scroll-top-btn {
@@ -432,6 +465,11 @@ background-color: rgb(255, 255, 255);
   display: none;
   z-index: 1000;
   transition: opacity 0.7s ease;
+}
+.scroll-top-btn:hover {
+  background: #f8bf23;
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
 }
 
 .nav.menu {
@@ -454,21 +492,10 @@ background-color: rgb(255, 255, 255);
     h3 {
   font-size: 20px;
   color: black;
-  background: linear-gradient(90deg, #fff, #f7c403);
   border-radius: 38px;
-  padding: 30px 290px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 
-  margin-bottom: 35px;
 }
 
-@media (max-width: 768px) {
-  h3 {
-    padding: 20px 30px; 
-    font-size: 18px;     
-    text-align: center; 
-  }
-}
 
 h5 {
        font-size: 21px;
@@ -516,15 +543,11 @@ padding: 20px 10px;
        margin-top: 90px;
       }
 
-          .h9 {
-       font-size: 32px;
-       color: rgb(0, 0, 0);
-       margin-bottom: 84px;
-       margin-top: 10px;
-      }
    
     .yellow-section {
-      background: #eeb702;
+              font-family: 'Roboto', sans-serif;
+
+background: #eeb702;
       padding: 160px 20px 60px;
       text-align: center;
       align-items: center;
@@ -540,21 +563,24 @@ padding: 20px 10px;
       margin: 10px;
       cursor: pointer;
       transition: background 0.3s;
+      
     }
     .video-overlay .btn:hover {
-      background: #f7c403;
+              font-family: 'Roboto', sans-serif;
+      background: #eeb702;
+        transform: scale(1.1);
+          transition: transform 0.3s ease;
     }
     .ellipse-video {
       position: absolute;
-      top: 1050px;
+      top: 740px;
       left: 50%;
       transform: translateX(-50%);
-      width: 350px;
+      width: 180px;
       height: 180px;
       overflow: hidden;
       border-radius: 90%/100%;
       z-index: 2;
-      box-shadow: 0 2px 9px rgba(0, 0, 0, 0.527);
     }
     .ellipse-video video {
       width: 100%;
@@ -563,9 +589,9 @@ padding: 20px 10px;
     }
     @media (max-width: 768px) {
   .ellipse-video {
-    width: 60%;
-    height: auto;
-    top: 680px; 
+    width: 50%;
+    height: 50%
+    top: 790px; 
   }
 }
     .grid-2x2 {
@@ -612,7 +638,7 @@ padding: 0 40px;
       background: rgb(255, 255, 255);
       padding: 15px;
       border-radius: 39px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.062);
       transition: transform 0.3s;
       cursor: pointer;
        text-align: center;
@@ -630,8 +656,9 @@ padding: 0 40px;
       color: #333;
     }}
 
-    /* KONTAKT */
     #kontakt {
+              font-family: 'Roboto', sans-serif;
+
       background: #f9f9f9;
       padding: 100px 20px;
       text-align: center;
@@ -688,307 +715,632 @@ a {
   }
 }
 
-/* Stopka - styl linków */
-footer a {
-  text-decoration: none;
-  
-  color: #ffffff;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
+.footer {
+  background: #eeb702;
+  color: #000000;
+  text-align: center;
+  padding: 30px 20px;
 }
-footer a:hover {
-  color: #f7c403;
+
+.footer-subscribe h3 {
+  margin-top: 0;       
+  margin-bottom: 15px; 
+  font-size: 22px;
+  font-weight: bold;
 }
-.footer-links {
- 
+
+.footer-buttons {
   display: flex;
-  flex-direction: column;    
   justify-content: center;
-  gap: 15px 30px;          
-  max-width: 600px;
-  margin: 0 auto 20px;
+  gap: 20px; 
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.footer-links a {
-   font-size: 25px;
-  color: #ccc;
+.subscribe-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+  padding: 10px 25px;
+  background: #ffffff;
+  color: #000000;
+  font-weight: bold;
   text-decoration: none;
-  transition: color 0.3s;
-  white-space: nowrap;      
+  border-radius: 120px;
+  transition: 0.3s;
 }
 
-.footer-links a:hover {
-  color: #f7c403;
+.subscribe-btn img {
+  width: 28px;
+  height: 28px;
 }
-  </style>
+
+.subscribe-btn:hover {
+  background: #000000;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.footer-nav {
+    margin: 15px 0;
+  }
+
+.footer-nav a {
+  margin: 0 15px;
+  color: #000000;
+  font-variant: small-caps;
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #fff;
+  }
+
+   @media (max-width: 700px) {
+
+
+  .footer-nav {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap; 
+}
+
+.footer-nav a {
+  margin: 0 10px;
+  color: #000000;
+  font-weight: bold;
+  font-size: clamp(12px, 4vw, 20px); 
+  text-decoration: none;
+  white-space: nowrap; 
+}}
+
+.footer-socials {
+  display: flex;             
+  justify-content: center;
+  align-items: flex-end;   
+  gap: 16px;
+  height: 40px;       
+}
+
+.footer-socials a {
+  display: flex;           
+  align-items: flex-end;   
+  justify-content: center;
+  height: 100%;           
+}
+
+.footer-socials a img {
+  width: 38px;
+  height: 32px;
+   max-height: 100%;       
+  width: auto;
+  margin: 0 16px;
+    fill: #ffffff;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-socials a:hover img {
+  transform: scale(1.2);
+ filter: brightness(0) saturate(100%);}
+
+ @media (max-width: 600px) {
+  .footer-socials {
+    gap: 3px;
+  }
+  .footer-socials a img {
+    width: 28px;
+    height: 24px;
+  }
+}
+
+
+.footer-bottom {
+  border-top: 1px solid #000000;
+  margin-top: 20px;
+  padding-top: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-bottom a {
+  color: #000000;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-bottom a:hover {
+  color: #000000;
+}    
+
+.opinie-carousel {
+  position: relative;
+  max-width: 500px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.opinie-track {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.opinia {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.opinia img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0);
+  border: none;
+  color: rgba(0, 0, 0, 0);
+  font-size: 24px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+      .text-section { 
+      max-width: 1200px; 
+      margin: auto; 
+      padding: 40px 20px; 
+      transition: transform 0.9s ease;
+    }
+
+
+
+    .text-section h2 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.text-section .separator {
+  width: 250px;            
+  height: 8px;            
+  background-color: #eeb702; 
+    margin-bottom: 18px;
+    margin-top: 18px;
+
+    text-align: left;
+  transform: scaleX(0);
+  transform-origin: center;
+  animation: drawLine 7s ease-in-out infinite;
+}
+
+@keyframes drawLine {
+  0% {
+    transform: scaleX(0);
+  }
+  25% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+  75% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+@media (max-width: 700px) {
+    .text-section h2 {
+  text-align: center;
+}
+
+.text-section .separator {
+   margin: 18px auto;
+  width: 250px;             
+  height: 8px;         
+}}
+
+.text-section p {
+  text-align: left;
+  max-width: 700px;
+        margin-bottom: 40px; 
+      color: #000000; 
+
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.text-section .highlight {
+  font-weight: bold;
+}
+
+.logo-carousel {
+  width: 570px; 
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  justify-content: center
+}
+
+.logo-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out; 
+}
+
+.logo-track a {
+  flex: 0 0 100%; 
+}
+
+.logo-track a img {
+      min-width: 200px;
+    max-width: 250px; 
+     object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .logo-track a img {
+    min-width: 150px;
+    max-width: 200px; 
+
+  }
+  .logo-carousel {
+    width: 100%;   
+  }
+}
+
+</style>
 </head>
 <body>
+   
 
-  <!-- HEADER -->
-  <header>
-    <div class="logo-container">
-      <img src="logogif.webp" alt="Logo" />
-    </div>
+<header>
+<div class="logo-container">
+  <img src="logosamuelstudio2025.svg" alt="Logo" style="width:120px; height:120px;" />
+</div>
 
-    <div class="center-links">
-    <a href="https://samuelstudio.pl">Strona Główna</a>
-    <a href="https://samuelstudio.pl/work">PRACE</a>
-    <a href="https://samuelstudio.pl/about">O mnie</a>
-    <a href="https://samuelstudio.pl/contact">Kontakt</a>
-    <a href="https://samuelstudio.pl/blog">Blog</a>
-    <a href="https://samuelstudio.pl/christian-animation">Animacja Chrześcijańska</a>
-    <a href="indexen.html" title="English version" class="lang-switch">
-  <img src="uk.svg" alt="English" style="width:35px; vertical-align:middle;"></a>
-    </div>
 
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
 
-    <nav id="menu" class="menu">
- <a href="https://samuelstudio.pl">Strona główna</a>
-    <a href="https://samuelstudio.pl/work">PRACE</a>
-    <a href="https://samuelstudio.pl/about">O mnie</a>
-    <a href="https://samuelstudio.pl/contact">Kontakt</a>
-    <a href="https://samuelstudio.pl/blog">Blog</a>
-    <a href="https://samuelstudio.pl/christian-animation">Animacja Chrześcijańska</a>
-    <a href="index.html" title="English version" class="lang-switch">
-  <img src="uk.svg" alt="English" style="width:35px; vertical-align:middle;"></a>
-    </nav>
-  </header>
+  <nav class="center-links">
+    <a href="https://samuelstudio.com">Strona główna</a>
+    <a href="https://samuelstudio.com/work">Prace</a>
+    <a href="about.html">O mnie</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="indexen.html" title="Angielska wersja" class="lang-switch">
+      <img src="ukflag.svg" alt="Angielska wersja" style="width:35px; vertical-align:middle;">
+    </a>
+  </nav>
 
-  <!-- SEKCJA WIDEO -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="https://samuelstudio.com">Strona główna</a>
+    <a href="https://samuelstudio.com/work">Prace</a>
+    <a href="about.html">O mnie</a>
+    <a href="contact.html">Kontakt</a>
+    <a href="indexen.html" title="Angielska wersja" class="lang-switch">
+      <img src="ukflag.svg" alt="Angielska wersja" style="width:35px; vertical-align:middle;">
+    </a>
+  </div>
+</header>
+
   <section class="video-section" id="video">
-    <video src="Samuel-Studio-Reel-2024.mp4" autoplay muted loop></video>
+    <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
     <div class="video-overlay">
-      <h1>Trafiaj skuteczniej do swojej publiczności</h1>
-      <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">Zobacz moje animacje <br>w akcji</button>
-      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">Dlaczego <br>Samuel Studio?</button>
+      <h1>Skuteczniej docieraj do swojej publiczności</h1>
+      <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">Zobacz, jak to działa</button>
+      <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">Sprawdź przykłady</button>
     </div>
   </section>
 
   
 
-  <!-- OFERTA -->
   <section class="yellow-section" id="oferta">
     <div class="ellipse-video">
       <video src="question-mark.mp4" autoplay muted loop></video>
     </div>
-    <div class="h9">Masz coś ważnego do pokazania, <br> ale nie wiesz, jak zrobić to skutecznie?</div>
+    <h5>Masz coś ważnego do pokazania,<br> ale nie wiesz, jak to zrobić skutecznie?</h5>
     <div class="grid-2x2">
       <div class="grid-item" onclick="location.href='https://link1.pl'">
         <img src="ANIMATED-ICON-LOGO.gif.webp" alt="Animacja reklamowa">
-        <div class="desc">Nie masz animowanego logo, które wyróżniłoby Twoją markę.</div>
+        <div class="desc">Nie masz animowanego logo, które wyróżni Twoją markę.</div>
       </div>
       <div class="grid-item" onclick="location.href='https://link2.pl'">
         <img src="Animated-Icon-Audience.gif.webp" alt="Animacja produktowa">
-        <div class="desc">Twoje prezentacje nie przyciągają uwagi odbiorców.</div>
+        <div class="desc">Twoje wykłady nie przyciągają uwagi odbiorców.</div>
       </div>
       
-      <div class="grid-item" onclick="location.href='https://link3.pl'">
-        <img src="Animated-Icon-Eye.gif.webp" alt="Spot reklamowy">
-        <div class="desc">Trudno Ci ciekawie wyjaśnić złożone tematy.</div>
-      </div>
-        <div class="grid-item" onclick="location.href='https://link3.pl'">
-        <img src="Animated-Icon-Attendance.gif.webp" alt="Spot reklamowy">
-        <div class="desc">Niska frekwencja na Twoich wydarzeniach sprawia, <br>że czujesz się niedoceniony.</div>
-      </div>
-  
-    </div>
-  </section>
+<div class="grid-item" onclick="location.href='https://link3.pl'">
+  <img src="Animated-Icon-Eye.gif.webp" alt="Spot reklamowy">
+  <div class="desc">Masz trudności z wyjaśnieniem skomplikowanych tematów w angażujący sposób.</div>
+</div>
+<div class="grid-item" onclick="location.href='https://link3.pl'">
+  <img src="Animated-Icon-Attendance.gif.webp" alt="Spot reklamowy">
+  <div class="desc">Niska frekwencja na Twoich wydarzeniach sprawia, że czujesz się niedoceniony.</div>
+</div>
 
-  <!-- BIALA SEKCJA -->
- <section class="white-section">
+</div>
+</section>
+
+<section class="white-section">
   <div class="top-row">
     <div class="text-col">
-      <h2><br>Nazywam się Paweł Pauksztełło, <br>założyciel studia Samuel Studio.</h2>
-    <h6>
-        <br>Pomagam przyciągać uwagę i jasno przekazywać Twoje przesłanie.
+      <h2><br></r>Nazywam się Paweł Pauksztełło, <br>założyciel Samuel Studio.</h2>
+      <p>
+        <br>Pomagam przyciągnąć uwagę i jasno przekazać Twój przekaz.
         <br>
         Zobacz moje portfolio i przekonaj się, jak działają moje animacje w praktyce.
-    </h>
+      </p>
     </div>
     <div class="video-col">
       <video src="Pawel-Pauksztello-Samuel-Studio-Owner-Founder.mp4" autoplay muted loop playsinline></video>
     </div>
   </div>
 
-
   <div class="text-col" style="margin-top: -50px;">
     <h2><br>Nikt nie chce być ignorowany.</h2>
-    <p>Dobrze zaprojektowana animacja przyciąga uwagę, angażuje odbiorców 
-      i sprawia, że Twoje przesłanie jest niezapomniane.<br></h>
+    <p>Starannie wykonana animacja przyciąga uwagę, angażuje odbiorców i sprawia, że Twój przekaz staje się niezapomniany.<br></p>
   </div><br>
 </section>
 
 
 
+
 </section>
 
-  <!-- DODATKOWE WIDEO -->
   <section class="video-section">
     <video src="St-Thomas-Apostol-animated-cover-1.mp4" autoplay muted loop></video>
     <div class="video-overlay">
-      <h1>Zobacz moje animacje <br>w akcji </h1>
+      <h2>Zobacz moje prace w akcji</h2>
     </div>
   </section>
 
 
 
-  <!-- ŻÓŁTA Z TEKSTEM -->
-  <section class="yellow-section">
-    <h4 style="font-size: 2rem;">Dlaczego Ja?
-</h4>
-    <p style="max-width: 700px; margin: 20px auto; font-size: 1.2rem;">
-     Tworzę animacje, które przyciągają uwagę, wyjaśniają złożone idee i wspierają budowanie marki.
-    </p>
-  </section>
+<section class="yellow-section">
+  <h4 style="font-size: 2rem;">Dlaczego Samuel Studio?</h4>
+  <p style="max-width: 700px; margin: 20px auto; font-size: 1.2rem;">
+    Tworzę animacje, które przyciągają uwagę, wyjaśniają skomplikowane idee i pomagają budować Twój wizerunek marki.
+  </p>
+</section>
 
-     <!-- DODATKOWE WIDEO -->
-  <section class="video-section">
-    <video src="stars.mp4" autoplay muted loop></video>
-    <div class="video-overlay">
-      <h1>Zobacz moje animacje <br>w akcji </h1>
-       <h4><br><br><br><br><br><br>Oferuję kreatywne rozwiązania dopasowane do potrzeb Twojej firmy. </h4>
-       <div class="h7">
-<br>- Spraw, by Twoja marka zapadła w pamięć i się wyróżniała <br>- Animowane logotypy
-<br>- Upraszczaj złożone tematy i angażuj odbiorców <br>- Filmy wyjaśniające (explainery)
-<br>- Opowiadaj historię za pomocą ruchu <br>- Animowane opowieści
+<section class="video-section">
+  <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
+  <div class="video-overlay">
+    <h4>Zobacz moje prace w akcji</h4>
+    <h4><br><br><br><br><br><br>Oferuję kreatywne rozwiązania dla potrzeb Twojego biznesu.</h4>
+    <div class="h7">
+<br>- Spraw, aby Twoja marka była zapamiętywana i wyróżniała się <br>- Animowane loga
+<br>- Upraszczaj skomplikowane tematy i angażuj odbiorców <br>- Explainer’y
+<br>- Opowiadaj swoją historię w ruchu <br>- Storytelling
 <br>- Wzbogacaj swoje projekty wideo <br>- Animowane elementy do większych produkcji
-<br>Idealne do brandingu cyfrowego i mediów społecznościowych <br>- Animowane GIF-y przyciągają uwagę i budują świadomość marki
-<br>- Animacje promocyjne
-<br>- Przyciągające wzrok opowieści wizualne do Twoich kampanii <br>- Animowane plakaty z subtelnym ruchem, który dodaje głębi 
-<br>- Animacje tła</div>
+<br>Idealne dla branding’u cyfrowego i mediów społecznościowych <br>- Animowane GIFy
+Przyciągaj uwagę i zwiększaj świadomość <br>- Animacje promocyjne
+<br>- Efektowne wizualne opowiadanie historii dla Twoich kampanii <br>- Animowane plakaty
+Subtelny ruch dodający głębi <br>- Animacje tła
     </div>
-  </section>
-  
-<section class="video-hero">
-  <div class="video-wrapper">
-  <video src="question-mark.mp4" autoplay muted loop playsinline></video>
   </div>
-  <div class="content">
-    <div class="h8">Question Mark</div>
+</section>
+  
+
+
+<section style="padding: 60px 20px; text-align: center; background: #fff; overflow: hidden;">
+  <section class="text-section">
+    
+<h2>Marki, które mi zaufały</h2>
+<div class="separator"></div>
+</section>
+  <div class="logo-carousel">
+    <div class="logo-track">
+      <a href="https://firma1.pl" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
+      <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"></a>
+      <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 4"></a>
+      <a href="https://facebook.com/Chrzescijanskie.Granie" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 5"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 6"></a>
+      <a href="https://firma7.pl" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
+      <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 8"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="FAMILY-FILM-LOGO-230x300.png.webp" alt="Firma 6"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="Redeemified_Logo-300x169.jpg.webp" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="30052508_10155961110891636_7592915301371484606_o-300x300.jpg" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+      <a href="https://firma1.pl" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
+      <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"></a>
+      <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 4"></a>
+      <a href="https://facebook.com/Chrzescijanskie.Granie" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 5"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 6"></a>
+      <a href="https://firma7.pl" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
+      <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 8"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="FAMILY-FILM-LOGO-230x300.png.webp" alt="Firma 6"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="Redeemified_Logo-300x169.jpg.webp" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="30052508_10155961110891636_7592915301371484606_o-300x300.jpg" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+    </div>
+  </div>
+</section>
+
+<section class="video-section video-section--checiny">
+  <video src="View-of-Checiny.mp4" autoplay muted loop></video>
+  <div class="video-overlay">
+    <h2>Samuel Studio <br>w akcji</h2>
   </div>
 </section>
 
 
 
-  <!-- LOGA FIRM -->
-  <section style="padding: 60px 20px; text-align: center; background: #fff;">
-    <h2 style="margin-bottom: 100px;">Firmy, które Mi zaufały:</h2>
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
-    <a href="https://firma1.pl" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1" style="height: 100px;"></a>
-    <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"  draggable="false" style="height: 120px;"></a>
-    <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3" style="height: 50px;"></a>
-    <a href="https://firma4.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 3" style="height: 70px;"></a>
-    <a href="https://firma5.pl" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 3" style="height: 70px;"></a>
-    <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 3" style="height: 90px;"></a>
-    <a href="https://firma7.pl" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 3" style="height: 100px;"></a>
-    <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 3" style="height: 100px;"></a>
-    </div>
+  
+  <section class="text-section">
+    
+  <h2>Opinie klientów</h2>
+  <div class="separator"></div>
   </section>
 
+<section style="padding: 60px 20px; text-align: center; background: #f9f9f9;">
 
-
-    <!-- DODATKOWE WIDEO -->
-  <section class="video-section video-section--checiny">
-    <video src="View-of-Checiny.mp4" autoplay muted loop></video>
-    <div class="video-overlay">
-      <h1>Samuel Studio <br>w akcji</h1>
+  <div class="opinie-carousel">
+    <div class="opinie-track">
+      <div class="opinia">
+        <a href="https://www.google.com/search?sca_esv=8e23599b05dcda53&sxsrf=AE3TifOD2Eq75ubp-mwDPJzIYybLXtVqyA:1756146450645&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzOrb8msZ41PbwrtZCXgAS73mjE7vfglHotkveeSsehsF7n7_aNLXU9IjqTLnhpaHW5JSmbdOg1DYPGlSgQCOhxcNAtRO-KOuuOkPuYQJFm4ohHkhAHIRomp2fd8_9H9ZoxMzlNyrArlXtvkRcJIipU9vtzrRDTqgBOBJl6btSzrmhvgorgupv84bQFF1BFBAzEanXtw&q=Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach+Opinie&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7R6JI_1RwpooYacCjMiXkLWjXwcJ5GZ9efbiggoACmyzoCnvCjaYFsjXLiywuJjMwc-ecctZwV1c6CML7HEQwVXORu_9OAavF2o0S8LgA5cNhM2SoQ1V1YH1w6ay8YerXoxUukSuXLEpL6u9iAvYA10DaEw&hl=pl-PL&sa=X&ved=2ahUKEwic3PSqy6aPAxVLFBAIHQvLBXIQ_4MLegQITBAN&biw=1920&bih=1039&dpr=1" target="_blank">
+          <img src="opinia1.jpeg" alt="Opinia 1">
+        </a>
+      </div>
+      <div class="opinia">
+        <a href="https://www.google.com/search?sca_esv=8e23599b05dcda53&sxsrf=AE3TifOD2Eq75ubp-mwDPJzIYybLXtVqyA:1756146450645&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzOrb8msZ41PbwrtZCXgAS73mjE7vfglHotkveeSsehsF7n7_aNLXU9IjqTLnhpaHW5JSmbdOg1DYPGlSgQCOhxcNAtRO-KOuuOkPuYQJFm4ohHkhAHIRomp2fd8_9H9ZoxMzlNyrArlXtvkRcJIipU9vtzrRDTqgBOBJl6btSzrmhvgorgupv84bQFF1BFBAzEanXtw&q=Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach+Opinie&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7R6JI_1RwpooYacCjMiXkLWjXwcJ5GZ9efbiggoACmyzoCnvCjaYFsjXLiywuJjMwc-ecctZwV1c6CML7HEQwVXORu_9OAavF2o0S8LgA5cNhM2SoQ1V1YH1w6ay8YerXoxUukSuXLEpL6u9iAvYA10DaEw&hl=pl-PL&sa=X&ved=2ahUKEwic3PSqy6aPAxVLFBAIHQvLBXIQ_4MLegQITBAN&biw=1920&bih=1039&dpr=1m" target="_blank">
+          <img src="opinia1.jpeg" alt="Opinia 2">
+        </a>
+      </div>
+      <div class="opinia">
+        <a href="https://www.google.com/search?sca_esv=8e23599b05dcda53&sxsrf=AE3TifOD2Eq75ubp-mwDPJzIYybLXtVqyA:1756146450645&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzOrb8msZ41PbwrtZCXgAS73mjE7vfglHotkveeSsehsF7n7_aNLXU9IjqTLnhpaHW5JSmbdOg1DYPGlSgQCOhxcNAtRO-KOuuOkPuYQJFm4ohHkhAHIRomp2fd8_9H9ZoxMzlNyrArlXtvkRcJIipU9vtzrRDTqgBOBJl6btSzrmhvgorgupv84bQFF1BFBAzEanXtw&q=Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach+Opinie&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7R6JI_1RwpooYacCjMiXkLWjXwcJ5GZ9efbiggoACmyzoCnvCjaYFsjXLiywuJjMwc-ecctZwV1c6CML7HEQwVXORu_9OAavF2o0S8LgA5cNhM2SoQ1V1YH1w6ay8YerXoxUukSuXLEpL6u9iAvYA10DaEw&hl=pl-PL&sa=X&ved=2ahUKEwic3PSqy6aPAxVLFBAIHQvLBXIQ_4MLegQITBAN&biw=1920&bih=1039&dpr=1" target="_blank">
+          <img src="opinia1.jpeg" alt="Opinia 3">
+        </a>
+      </div>
+      <div class="opinia">
+        <a href="https://www.google.com/search?sca_esv=8e23599b05dcda53&sxsrf=AE3TifOD2Eq75ubp-mwDPJzIYybLXtVqyA:1756146450645&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzOrb8msZ41PbwrtZCXgAS73mjE7vfglHotkveeSsehsF7n7_aNLXU9IjqTLnhpaHW5JSmbdOg1DYPGlSgQCOhxcNAtRO-KOuuOkPuYQJFm4ohHkhAHIRomp2fd8_9H9ZoxMzlNyrArlXtvkRcJIipU9vtzrRDTqgBOBJl6btSzrmhvgorgupv84bQFF1BFBAzEanXtw&q=Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach+Opinie&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7R6JI_1RwpooYacCjMiXkLWjXwcJ5GZ9efbiggoACmyzoCnvCjaYFsjXLiywuJjMwc-ecctZwV1c6CML7HEQwVXORu_9OAavF2o0S8LgA5cNhM2SoQ1V1YH1w6ay8YerXoxUukSuXLEpL6u9iAvYA10DaEw&hl=pl-PL&sa=X&ved=2ahUKEwic3PSqy6aPAxVLFBAIHQvLBXIQ_4MLegQITBAN&biw=1920&bih=1039&dpr=1" target="_blank">
+          <img src="opinia1.jpeg" alt="Opinia 4">
+        </a>
+      </div>
+      <div class="opinia">
+        <a href="https://www.google.com/search?sca_esv=8e23599b05dcda53&sxsrf=AE3TifOD2Eq75ubp-mwDPJzIYybLXtVqyA:1756146450645&uds=AOm0WdE2fekQnsyfYEw8JPYozOKzOrb8msZ41PbwrtZCXgAS73mjE7vfglHotkveeSsehsF7n7_aNLXU9IjqTLnhpaHW5JSmbdOg1DYPGlSgQCOhxcNAtRO-KOuuOkPuYQJFm4ohHkhAHIRomp2fd8_9H9ZoxMzlNyrArlXtvkRcJIipU9vtzrRDTqgBOBJl6btSzrmhvgorgupv84bQFF1BFBAzEanXtw&q=Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach+Opinie&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E7R6JI_1RwpooYacCjMiXkLWjXwcJ5GZ9efbiggoACmyzoCnvCjaYFsjXLiywuJjMwc-ecctZwV1c6CML7HEQwVXORu_9OAavF2o0S8LgA5cNhM2SoQ1V1YH1w6ay8YerXoxUukSuXLEpL6u9iAvYA10DaEw&hl=pl-PL&sa=X&ved=2ahUKEwic3PSqy6aPAxVLFBAIHQvLBXIQ_4MLegQITBAN&biw=1920&bih=1039&dpr=1" target="_blank">
+          <img src="opinia1.jpeg" alt="Opinia 5">
+        </a>
+      </div>
     </div>
-  </section>
 
+    <button class="arrow prev">&#10094;</button>
+    <button class="arrow next">&#10095;</button>
+  </div>
 
+  <button class="see-more-btn" 
+    onclick="window.location.href='https://www.google.com/maps/place//data=!4m3!3m2!1s0xac688efcb209881f:0x50fac03e7d6b27cb!12e1'">
+    Dodaj opinię
+  </button>
+</section>
 
-  <!-- OPINIE -->
-  <section style="background: #fff; padding: 80px 20px; text-align: center;">
-    <h5 style="font-size: 2rem; margin-bottom: 30px;">Opinie klientów</h5>
-    <div style="max-width: 800px; margin: 0 auto; display: grid; gap: 30px;">
-      <blockquote>"Świetna współpraca i efekt końcowy!" - Jan Kowalski ⭐⭐⭐⭐⭐</blockquote>
-      <blockquote>"Profesjonalnie, szybko i z pomysłem." - Anna Nowak ⭐⭐⭐⭐⭐</blockquote>
-      <blockquote>"Zdecydowanie polecam!" - Piotr Zieliński ⭐⭐⭐⭐⭐</blockquote>
-    </div>
-  </section>
-
-  <!-- OSTATNIE REALIZACJE -->
   <section class="yellow-section" id="offer">
-    <h2 style="margin-bottom: 120px;">Ostatnie projekty</h2>
+    <h2>Ostatnie realizacje</h2>
     <div class="grid-2x2">
       <div class="grid-item">
         <video src="Trileas-Animated-Cover.mp4" autoplay muted loop></video>
-        <div class="desc">Trileas <br>- wizualizacja logo</div>
+        <div class="desc">Trileas - wizualizacja logo</div>
       </div>
       <div class="grid-item">
         <video src="St-Thomas-Apostol-animated-cover-1.mp4" autoplay muted loop></video>
-        <div class="desc">Św.Tomasz <br>- animacja</div>
+        <div class="desc">Animacja o Świętym Tomaszu</div>
       </div>
     </div>
     <button class="see-more-btn">Zobacz więcej</button>
-
   </section>
 
-  <!-- WIDEO Z NAPISAMI -->
-  <section class="video-section">
-    <video src="The-Gospel-in-five-minutes-Cover.mp4" autoplay muted loop></video>
-    <div class="video-overlay">
-      <h1>Animacje, które działają</h1>
-      <p style="font-size: 1.5rem;">Pomagamy firmom komunikować się skuteczniej.<br>
-Od pomysłu do gotowego wideo</p>
-    </div>
-  </section>
+<section class="video-section">
+  <video src="The-Gospel-in-five-minutes-Cover.mp4" autoplay muted loop></video>
+  <div class="video-overlay">
+    <h2 style="color: black;">Animacje, które działają</h2>
+    <p style="font-size: 1.5rem;">Pomagamy firmom komunikować się skuteczniej.<br>
+    Od koncepcji po gotowy film</p>
+  </div>
+</section>
 
 
-  <!-- KONTAKT -->
+
+  <section class="text-section">
+  <h2>Gotowy, żeby zrobić coś extra?</h2>
+  <div class="separator"></div>
+<p>
+  Pracujmy razem i ożywmy Twoje pomysły. Skontaktuj się ze mną już dziś  
+  <span class="highlight">aby omówić Twój kolejny projekt.</span>
+</p>
+</section>
+
+  
   <section id="kontakt">
     <div style="margin-bottom: -30px;">
-    <h2 style="margin-bottom: 30px;">Kontakt</h2>
-    <p>Napisz: <a href="mailto:kontakt@animacja.pl">kontakt@animacja.pl</a></p>
-    <p>Zadzwoń: <a href="tel:+48726123456">+48 726 123 456</a></p>
-        <h3 style="margin-top: 40px;">Połącz się przez:</h3>
-    
-    <div style="margin-top: 50px;">
-              
-<a href="moja strona5.html" target="_blank"><img src="fb icon2.png" alt="Facebook" class="social-icon"></a>
-<a href="moja strona6.html" target="_blank"><img src="insta icon2.png" alt="Instagram" class="social-icon"></a>
-      <a href="Strona kosmiczna muzyczna 07.html" target="_blank"><img src="yt icon2.png" alt="YouTube" class="social-icon"></a>
-    </div>
+    <h2 style="margin-bottom: 30px;">Skontaktuj się ze mną</h2>
+    <p>mail: <a href="mailto:kontakt@animacja.pl">pawel@samuelstudio.pl</a></p>
+    <p>telefon: <a href="tel:+48693733366">+48 693 733 366</a></p>
   </section>
-        <button id="scrollTopBtn" class="scroll-top-btn">↑</button>
 
-  <!-- STOPKA -->
- <footer style="background: #333; color: #fff; padding: 60px 20px; text-align: center;">
-  <div style="margin-bottom: 30px;">
-    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px;">
-      <img src="yt icon2.png" alt="YouTube" style="height: 40px; vertical-align: middle;">
-      <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj kanał</span>
-    </a>
-    <a href="https://youtube.com/@SamuelStudio_" target="_blank" style="display: inline-block; margin: 0 20px;">
-      <img src="yt icon2.png" alt="YouTube" style="height: 40px; vertical-align: middle;">
-      <span style="margin-left: 10px; vertical-align: middle;">Subskrybuj kanał</span>
-    </a>
-  </div>
 
-  <div style="margin-bottom: 30px;">
 
 
   <footer class="footer">
-  <div class="footer-links">
-    <a href="https://samuelstudio.pl" style="margin: 0 15px;">STRONA GŁÓWNA</a>
-    <a href="https://samuelstudio.pl/work" style="margin: 0 15px;">PRACE</a>
-    <a href="https://samuelstudio.pl/about" style="margin: 0 15px;">O Mnie</a>
-    <a href="https://samuelstudio.pl/contact" style="margin: 0 15px;">Kontakt</a>
-    <a href="https://samuelstudio.pl/blog" style="margin: 0 15px;">Blog</a>
-    <a href="https://samuelstudio.pl/christian-animation" style="margin: 0 15px;">Animacja Chrześcijańska</a>
-        <a href="index.html" title="English version" class="lang-switch">
-  <img src="uk.svg" alt="English" style="width:35px; vertical-align:middle;"></a>
+  <div class="footer-subscribe">
+    <h3>KLIKNIJ I SUBSKRYBUJ</h3>
+    <div class="footer-buttons">
+      <a href="#" class="subscribe-btn">
+        <img src="samuelstudio icon.svg" alt="Animator 1"> 
+        YT Samuel Studio
+      </a>
+      <a href="#" class="subscribe-btn">
+        <img src="explainers icon.svg" alt="Animator 2"> 
+        YT Explainers in Animation</a>
+    </div>
   </div>
 
+  <nav class="footer-nav">
+    <a href="https://samuelstudio.com">Home</a>
+    <a href="https://samuelstudio.com/work">Prace</a>
+    <a href="about.html">O mnie</a>
+    <a href="contact.html">Kontakt</a>
+  </nav>
+
+  <div class="footer-socials">
+    <a href="https://www.linkedin.com" target="_blank">
+      <img src="linked icon.svg" alt="LinkedIn">
+    </a>
+    <a href="https://www.youtube.com" target="_blank">
+      <img src="yt icon.svg" alt="YouTube">
+    </a>
+    <a href="https://www.facebook.com" target="_blank">
+      <img src="fb icon.svg" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com" target="_blank">
+      <img src="insta icon.svg" alt="Instagram">
+    </a>
+    <a href="indexen.html" title="Angielska wersja" class="lang-switch">
+      <img src="ukflag.svg" alt="Angielska wersja" style="width:35px; vertical-align:middle;">
+    </a>
+  </div>
+
+  <div class="footer-bottom">
+    <a href="privacy.html">Polityka Prywatności</a>
+    <span>Copyright © 2025 | Użyteczne Animacje</span>
+  </div>
 </footer>
-<br>
-  <div style="font-size: 0.9rem;">&copy; Copyright by me 2025</div>
-</footer>
+
+
+<script>
+  const slider = document.getElementById('opinieSlider');
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % slider.children.length;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }, 4000);
+</script>
 
   <script>
     function toggleMenu() {
@@ -1027,15 +1379,124 @@ Od pomysłu do gotowego wideo</p>
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
-      // przewijanie w dół – ukryj
       navMenu.style.top = "-100px";
     } else if (scrollTop < lastScrollTop) {
-      // przewijanie w górę – pokaż
       navMenu.style.top = "0";
     }
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
 </script>
+<script>
+  const hoverVideos = document.querySelectorAll('video.hover-video');
+
+  hoverVideos.forEach(video => {
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+
+  
+
+
+</script>
+
+<script>const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+const closeBtn = document.getElementById("closeBtn");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  setTimeout(() => {
+    mobileMenu.style.top = mobileMenu.style.top === "0%" ? "-100%" : "0%";
+  }, 1); // 
+});
+
+closeBtn.addEventListener("click", () => {
+  hamburger.classList.remove("active");
+  mobileMenu.style.top = "-100%"; 
+});
+
+</script>
+
+<script>let lastScroll = 0;
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 40) {
+    header.classList.add("hidden");
+  } else {
+    header.classList.remove("hidden");
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+<script>
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (
+    (e.ctrlKey && (e.key === "s" || e.key === "u")) ||
+    (e.ctrlKey && e.shiftKey && e.key === "I")
+  ) {
+    e.preventDefault();
+  }
+});
+</script>
+<script>
+const track = document.querySelector('.opinie-track');
+const slides = document.querySelectorAll('.opinia');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let currentIndex = 0;
+
+function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  currentIndex = index;
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+setInterval(() => {
+  showSlide(currentIndex + 1);
+}, 5000);
+</script>
+
+<script>
+(function () {
+  const track = document.querySelector('.logo-track');
+  const slides = document.querySelectorAll('.logo-track a');
+  const total = slides.length;
+  let index = 0;
+
+  function goTo(i) {
+    index = (i + total) % total;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  let interval = setInterval(() => goTo(index + 1), 3000);
+
+  const carousel = document.querySelector('.logo-carousel');
+  carousel.addEventListener('mouseenter', () => clearInterval(interval));
+  carousel.addEventListener('mouseleave', () => {
+    interval = setInterval(() => goTo(index + 1), 3000);
+  });
+})();
+</script>
+
 </body>
 </html>
