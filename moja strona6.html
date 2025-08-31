@@ -58,23 +58,94 @@
       50%{ text-shadow:0 0 3px rgba(255,150,211,.25), 0 0 9px rgba(255,0,200,.15) }
     }
 
-    .hamburger{
-      width:36px;height:28px;display:grid;grid-auto-rows:1fr;gap:6px;cursor:pointer;
-    }
-    .hamburger span{height:4px;border-radius:3px;background:#fff;transition:all .36s cubic-bezier(.22,.9,.38,1)}
-    .hamburger.active span:nth-child(1){ transform: rotate(60deg) translate(8px,8px) }
-    .hamburger.active span:nth-child(2){ opacity:100; transform:translateX(142px) }
-    .hamburger.active span:nth-child(3){ transform: rotate(-60deg) translate(8px,-8px) }
+.hamburger {
+  width: 36px;
+  height: 28px;
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 1001; /* żeby zawsze było na wierzchu */
+  position: relative;
+}
 
-    nav#mobile-menu{
-      position:fixed;top:170px;right:80px;
-      background:rgba(255,255,255,0.98);padding:14px;border-radius:10px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);display:flex;flex-direction:column;gap:8px;
-      opacity:0;pointer-events:none;transform:translateY(-8px) scale(.98);transition:all .28s ease;
-    }
-    nav#mobile-menu.show{ opacity:1;pointer-events:auto;transform:translateY(0) scale(2) }
-    nav#mobile-menu a{ padding:8px 12px;border-radius:8px;font-weight:700;color:#000 }
-    nav#mobile-menu a:hover{ background:var(--muted) }
+.hamburger span {
+  height: 4px;
+  border-radius: 3px;
+  background: #fff;
+  transition: all .36s cubic-bezier(.22,.9,.38,1);
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(60deg) translate(8px,8px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(50px);
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-60deg) translate(8px,-8px);
+}
+
+nav#mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;       
+  height: 100vh;     
+  background: linear-gradient(
+    270deg, 
+    #8b3df2, 
+    #d15dff, 
+    #e091ff, 
+    #614ED9, 
+    #0B7ABF
+  );
+  background-size: 400% 400%; /* większy obszar do animacji */
+  animation: gradientMove 5s ease infinite;
+
+  padding: 40px 20px;
+  border-radius: 0;  
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;    
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: all .36s ease;
+  z-index: 1000;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+nav#mobile-menu.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+nav#mobile-menu a {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+nav#mobile-menu a:hover {
+  background: var(--muted, #000000);
+}
+
 
     .hero{
       height:92vh;min-height:560px;padding:110px 20px 40px;margin-top:10;
@@ -110,7 +181,13 @@
 }
         @media(max-width:600px){
                 .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
-    .intro h2{ font-size:clamp(60px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }}
+    .intro h2{ font-size:clamp(60px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
+  .hero h1 {
+  font-size: clamp(60px, 6vw, 74px);
+  margin: 0;
+  line-height: 1.1;
+  animation: pulseText 5s ease-in-out infinite;
+}}
 
     .portfolio{ max-width:var(--max-width);margin:32px auto;padding:28px 20px;display:grid;gap:24px;grid-template-columns:1fr;justify-items:center }
     .card{ width:100%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform .33s ease,box-shadow .33s ease;border:1px solid rgba(0,0,0,0.04);opacity:0;transform:translateY(10px);animation:cardIn .5s ease forwards }
@@ -241,11 +318,11 @@
   }
 
     footer{ padding:36px 20px;margin:0 auto 40px; 
-        color:#000000;overflow:hidden;;background-size:300% 300%;
+        color:#ffffff;overflow:hidden;;background-size:300% 300%;
         animation:footerGradient 9s ease infinite;box-shadow:0 20px 80px rgba(0, 0, 0, 0.267) }
     @keyframes footerGradient{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
     .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:18px }
-    .footer-links a{ color:#000000;font-weight:500 }
+    .footer-links a{ color:#ffffff;font-weight:500 }
     .copyright{ font-size:.95rem; color:#fff; opacity:.98; text-align:center }
 
     .muted{ color:rgba(0,0,0,0.62) }
@@ -276,6 +353,214 @@
 .contact-card:hover img.default {
   opacity: 0;
 }
+
+.carousel-slider img {
+  width: 28vw;
+  height: 50vw;
+  max-width: 290px;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+  0 3px 6px rgba(0, 0, 0, 0.308);
+  object-position: 25% 50%;
+  transition: object-position 1s ease-in-out, transform 0.5s ease-in-out;
+  
+}
+
+.carousel .carousel-slider {
+  display: grid;
+  height: 600px;
+  place-items: center;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 3) - 20px);
+  gap: 20px;
+  scroll-behavior: smooth;
+  
+}
+
+.carousel {
+  max-width: 1100px;
+  width: 100%;
+  overflow: hidden;
+  margin: 50px auto;
+    margin-top: 40px;  
+  margin-bottom: 150px; 
+}
+
+main {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+.last-active + .carousel-slide {
+  transform: scale(1.4) !important;
+}
+
+.last-active + .carousel-slide img {
+  object-position: 50% 50%;
+}
+
+.carousel-slide {
+  transition: transform 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .carousel-slider img {
+    width: 40vw;
+    height: 70vw;
+  }}
+
+  @media (max-width: 780px) {
+    .last h2 {
+        font-size: 28px;
+    }
+    .last p {
+        font-size: 16px;
+    }
+    .slideshow-container {
+        height: 70vh; 
+    }
+}
+
+    .last {
+        text-align: center;
+        padding: 60px 20px;
+        max-width: 900px;
+        margin: auto;
+        transition: transform 0.3s ease;
+
+    }
+    .last h2 {
+        margin-bottom: 20px;
+    }
+
+            .about:hover{
+        transform: scale(1.01);}
+
+    .last p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    .albums {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+
+        .waves {
+        text-align: center;}
+
+
+        #waves-header {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 300px;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+
+  .scene {
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    overflow: visible;
+  }
+
+  /* Słońce */
+  .sun {
+    position: absolute;
+    top: -500%;
+    left: 50%;
+    width: clamp(120px, 15vw, 220px);
+    height: clamp(120px, 15vw, 220px);
+    background: radial-gradient(circle at center, #ffec85, #ff9b00);
+    border-radius: 50%;
+    box-shadow: 0 0 60px 30px rgba(255, 200, 0, 0.6),
+                0 0 120px 60px rgba(255, 170, 0, 0.4),
+                0 0 200px 100px rgba(255, 140, 0, 0.2);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+
+  /* Ziemia */
+  .earth {
+    position: absolute;
+    bottom: -650%;
+    left: 50%;
+    width: clamp(40px, 40vw, 10px);
+    transform: translateX(-660%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Napisy */
+  .text-left, .text-right {
+    position: absolute;
+    bottom: 20%;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    color: rgb(0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .text-left {
+    left: 5vw;
+    text-align: left;
+  }
+
+  .text-right {
+    right: 5vw;
+    text-align: right;
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 600px) {
+    .scene {
+      height: 80vh;
+    }
+    .text-left, .text-right {
+      font-size: clamp(0.9rem, 4vw, 1.5rem);
+    }
+    @media (max-width: 600px) {
+  /* Większe Słońce i Księżyc */
+  .sun {
+    top: 205%; /* niżej żeby bliżej Księżyca */
+    width: clamp(180px, 35vw, 250px);
+    height: clamp(180px, 35vw, 250px);
+        display: none;
+
+  }
+
+  .moon {
+    bottom: 200%; /* wyżej żeby bliżej Słońca */
+    width: clamp(260px, 60vw, 400px);
+  }
+
+  /* Większa Ziemia */
+  .earth {
+    bottom: 400%;
+    width: clamp(560px, 60vw, 400px);
+  }
+
+  /* Napisy też trochę większe */
+  .text-left, .text-right {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+  }
+}
+  }
+
   </style>
 </head>
 <body>
@@ -290,7 +575,7 @@
     <nav id="mobile-menu" aria-hidden="true">
       <a href="#portfolio">Portfolio</a>
       <a href="#gallery">Prezentacja</a>
-      <a href="#about">About</a>
+      <a href="#about">O mnie</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </header>
@@ -373,7 +658,7 @@
   <section class="section-image-text">
     <div class="content">
       <h2>Zróbmy razem dobry projekt !</h2>
-      <p>Od pomysłu, przez projekt graficzny, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i skuteczny rezultat.</p>
+      <p>Od pomysłu, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i skuteczny rezultat.</p>
     </div>
   </section>
 
@@ -420,6 +705,40 @@
 </div>
   </section>
 
+
+  <section class="last" id="ostatnie">
+    <h2>Ostatnie realizacje:</h2>
+</section>
+
+    <section class="carousel">
+      <div class="carousel-slider">
+        <figure class="carousel-slide"><img src="app01.jpg" alt="strony internetowe"></figure>
+        <figure class="carousel-slide"><img src="appp1.png" alt="grafiki 3Dimg1"></figure>
+        <figure class="carousel-slide"><img src="appp4.jpg" alt="plakaty"></figure>
+        <figure class="carousel-slide"><img src="appp2.jpg" alt="grafiki"></figure>
+        <figure class="carousel-slide"><img src="Plakat Papaya.png" alt="img1"></figure>
+        <figure class="carousel-slide"><img src="Martini plakat.png" alt="img1"></figure>
+
+       </div>
+    </section>
+
+<section class="waves">  
+      <h2>Szalone interaktywne projekty?</h2>
+
+  <div id="waves-container">
+  </div>
+</section>
+
+
+<section class="waves">  
+      <h2>To tutaj</h2>
+
+
+</div>
+
+<div class="scene2">
+</div></section>
+
   <section id="kontakt">
     <h2>Kontakt</h2>
     <p>Masz pomysł? Napisz lub zadzwoń — chętnie pomogę w&nbsp;realizacji projektu.</p>
@@ -462,7 +781,7 @@
     <div class="footer-links">
       <a href="#portfolio">Portfolio</a>
       <a href="#gallery">Prezentacja</a>
-      <a href="#about">About</a>
+      <a href="#about">O mnie</a>
       <a href="index.html" title="English version"><img src="ukflag.svg" alt="English" style="width:28px"></a>
     </div>
 
@@ -572,6 +891,322 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+const carousel = document.querySelector(".carousel");
+const carouselSlider = document.querySelector(".carousel-slider");
+
+const animationConfig = {
+  time: 500,          
+  visibleSlides: 3,  
+  autoPlayDelay: 4000
+};
+
+let currentIndex = 0;
+let carouselSlides;
+let autoPlayInterval;
+
+const mod = (n, m) => ((n % m) + m) % m;
+
+const generateCarousel = () => {
+  carouselSlides = document.querySelectorAll(".carousel-slide");
+  const totalSlides = carouselSlides.length;
+
+  if (totalSlides <= animationConfig.visibleSlides) return;
+
+  for (let i = 0; i < animationConfig.visibleSlides; i++) {
+    carouselSlider.append(carouselSlides[i].cloneNode(true));
+  }
+
+  carouselSlider.prepend(carouselSlides[totalSlides - 1].cloneNode(true));
+
+  carouselSlides = document.querySelectorAll(".carousel-slide");
+
+  addImageClickListeners();
+  anim(0);
+  startAutoPlay(); 
+};
+
+const anim = (ms = animationConfig.time) => {
+  const totalSlides = carouselSlides.length;
+  const cMod = mod(currentIndex, totalSlides);
+
+  carouselSlider.style.transitionDuration = `${ms}ms`;
+  const slideWidth = 100 / animationConfig.visibleSlides;
+  carouselSlider.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+
+  carouselSlides.forEach((elSlide, i) => {
+    const isActive = cMod === i;
+    elSlide.classList.toggle("last-active", isActive);
+  });
+};
+
+const prev = () => {
+  currentIndex--;
+  anim();
+};
+
+const next = () => {
+  currentIndex++;
+  anim();
+};
+
+const goto = (index) => {
+  if (index === currentIndex) return;
+  if (index < currentIndex) {
+    prev();
+  } else {
+    next();
+  }
+};
+
+const addImageClickListeners = () => {
+  const allImages = document.querySelectorAll(".carousel-slide img");
+  allImages.forEach((image, index) => {
+    image.addEventListener("click", () => {
+      goto(index);
+    });
+  });
+};
+
+carouselSlider.addEventListener("transitionend", () => {
+  const totalSlides = carouselSlides.length - animationConfig.visibleSlides;
+
+  if (currentIndex < 0) {
+    currentIndex = totalSlides - 1;
+    anim(0);
+  }
+  if (currentIndex >= totalSlides) {
+    currentIndex = 0;
+    anim(0);
+  }
+});
+
+const startAutoPlay = () => {
+  autoPlayInterval = setInterval(() => {
+    next();
+  }, animationConfig.autoPlayDelay);
+};
+
+generateCarousel();
+
+
 </script>
+
+<script>
+  // --- Klasy Grad i Noise ---
+  class Grad {
+    constructor(x, y, z) { this.x = x; this.y = y; this.z = z; }
+    dot2(x, y) { return this.x * x + this.y * y; }
+  }
+
+  class Noise {
+    constructor(seed = 0) {
+      this.grad3 = [
+        new Grad(1,1,0), new Grad(-1,1,0), new Grad(1,-1,0), new Grad(-1,-1,0),
+        new Grad(1,0,1), new Grad(-1,0,1), new Grad(1,0,-1), new Grad(-1,0,-1),
+        new Grad(0,1,1), new Grad(0,-1,1), new Grad(0,1,-1), new Grad(0,-1,-1)
+      ];
+      this.p = [151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,103,30,
+        69,142,8,99,37,240,21,10,23,190,6,148,247,120,234,75,0,26,197,62,94,252,219,
+        203,117,35,11,32,57,177,33,88,237,149,56,87,174,20,125,136,171,168,68,175,74,
+        165,71,134,139,48,27,166,77,146,158,231,83,111,229,122,60,211,133,230,220,105,
+        92,41,55,46,245,40,244,102,143,54,65,25,63,161,1,216,80,73,209,76,132,187,208,
+        89,18,169,200,196,135,130,116,188,159,86,164,100,109,198,173,186,3,64,52,217,
+        226,250,124,123,5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,
+        182,189,28,42,223,183,170,213,119,248,152,2,44,154,163,70,221,153,101,155,167,
+        43,172,9,129,22,39,253,19,98,108,110,79,113,224,232,178,185,112,104,218,246,
+        97,228,251,34,242,193,238,210,144,12,191,179,162,241,81,51,145,235,249,14,239,
+        107,49,192,214,31,181,199,106,157,184,84,204,176,115,121,50,45,127,4,150,254,
+        138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180];
+      this.perm = new Array(512);
+      this.gradP = new Array(512);
+      this.seed(seed);
+    }
+    seed(seed) {
+      if (seed>0 && seed<1) seed*=65536;
+      seed = Math.floor(seed);
+      if(seed<256) seed|=seed<<8;
+      for(let i=0;i<256;i++){
+        let v = (i&1) ? (this.p[i]^(seed&255)) : (this.p[i]^((seed>>8)&255));
+        this.perm[i] = this.perm[i+256] = v;
+        this.gradP[i] = this.gradP[i+256] = this.grad3[v % 12];
+      }
+    }
+    fade(t){ return t*t*t*(t*(t*6-15)+10); }
+    lerp(a,b,t){ return (1-t)*a+t*b; }
+    perlin2(x,y){
+      let X=Math.floor(x),Y=Math.floor(y);
+      x-=X;y-=Y;X&=255;Y&=255;
+      const n00=this.gradP[X+this.perm[Y]].dot2(x,y);
+      const n01=this.gradP[X+this.perm[Y+1]].dot2(x,y-1);
+      const n10=this.gradP[X+1+this.perm[Y]].dot2(x-1,y);
+      const n11=this.gradP[X+1+this.perm[Y+1]].dot2(x-1,y-1);
+      const u=this.fade(x);
+      return this.lerp(this.lerp(n00,n10,u),this.lerp(n01,n11,u),this.fade(y));
+    }
+  }
+
+  // --- Konfiguracja fal ---
+  const config = {
+    lineColor: "#fff",
+    backgroundColor: "rgba(255,255,255,0.2)",
+    waveSpeedX: 0.05,
+    waveSpeedY: 0.01,
+    waveAmpX: 40,
+    waveAmpY: 20,
+    xGap: 12,
+    yGap: 36,
+    friction: 0.9,
+    tension: 0.016,
+    maxCursorMove: 120
+  };
+
+  // --- Canvas i logika ---
+  const container = document.getElementById("waves-container");
+  const canvas = document.createElement("canvas");
+  container.appendChild(canvas);
+  const ctx = canvas.getContext("2d");
+  const noise = new Noise(Math.random());
+
+  let bounding = { width: 0, height: 0 };
+  let lines = [];
+  let mouse = { x:-10, y:0, lx:0, ly:0, sx:0, sy:0, v:0, vs:0, a:0, set:false };
+
+  function setSize(){
+    bounding = container.getBoundingClientRect();
+    canvas.width = bounding.width;
+    canvas.height = bounding.height;
+  }
+
+  function setLines(){
+    const { width, height } = bounding;
+    lines = [];
+    const totalLines = Math.ceil((width+200)/config.xGap);
+    const totalPoints = Math.ceil((height+30)/config.yGap);
+    const xStart = (width - config.xGap * totalLines)/2;
+    const yStart = (height - config.yGap * totalPoints)/2;
+    for(let i=0;i<=totalLines;i++){
+      const pts=[];
+      for(let j=0;j<=totalPoints;j++){
+        pts.push({x:xStart+i*config.xGap, y:yStart+j*config.yGap, wave:{x:0,y:0}, cursor:{x:0,y:0,vx:0,vy:0}});
+      }
+      lines.push(pts);
+    }
+  }
+
+  function movePoints(time){
+    lines.forEach(pts=>{
+      pts.forEach(p=>{
+        const move = noise.perlin2((p.x+time*config.waveSpeedX)*0.002,(p.y+time*config.waveSpeedY)*0.0015)*12;
+        p.wave.x = Math.cos(move)*config.waveAmpX;
+        p.wave.y = Math.sin(move)*config.waveAmpY;
+        const dx=p.x-mouse.sx, dy=p.y-mouse.sy;
+        const dist = Math.hypot(dx,dy), l=Math.max(175,mouse.vs);
+        if(dist<l){
+          const s = 1 - dist/l;
+          const f = Math.cos(dist*0.001)*s;
+          p.cursor.vx += Math.cos(mouse.a)*f*l*mouse.vs*0.00065;
+          p.cursor.vy += Math.sin(mouse.a)*f*l*mouse.vs*0.00065;
+        }
+        p.cursor.vx += (0-p.cursor.x)*config.tension;
+        p.cursor.vy += (0-p.cursor.y)*config.tension;
+        p.cursor.vx*=config.friction;
+        p.cursor.vy*=config.friction;
+        p.cursor.x+=p.cursor.vx*2;
+        p.cursor.y+=p.cursor.vy*2;
+        p.cursor.x=Math.min(config.maxCursorMove, Math.max(-config.maxCursorMove, p.cursor.x));
+        p.cursor.y=Math.min(config.maxCursorMove, Math.max(-config.maxCursorMove, p.cursor.y));
+      });
+    });
+  }
+
+  function moved(p,withCursor=true){
+    return { x:Math.round((p.x+p.wave.x+(withCursor?p.cursor.x:0))*10)/10,
+             y:Math.round((p.y+p.wave.y+(withCursor?p.cursor.y:0))*10)/10 };
+  }
+
+  function drawLines(){
+    const { width, height } = bounding;
+    ctx.clearRect(0,0,width,height);
+    ctx.beginPath();
+    ctx.strokeStyle = "red";
+    lines.forEach(pts=>{
+      let p1 = moved(pts[0], false);
+      ctx.moveTo(p1.x,p1.y);
+      pts.forEach((p, idx)=>{
+        const isLast = idx===pts.length-1;
+        p1 = moved(p,!isLast);
+        const p2 = moved(pts[idx+1]||pts[pts.length-1],!isLast);
+        ctx.lineTo(p1.x,p1.y);
+        if(isLast) ctx.moveTo(p2.x,p2.y);
+      });
+    });
+    ctx.stroke();
+  }
+
+  function tick(t){
+    mouse.sx+=(mouse.x-mouse.sx)*0.1;
+    mouse.sy+=(mouse.y-mouse.sy)*0.1;
+    const dx=mouse.x-mouse.lx, dy=mouse.y-mouse.ly;
+    const d=Math.hypot(dx,dy);
+    mouse.v=d;
+    mouse.vs+=(d-mouse.vs)*0.1;
+    mouse.vs=Math.min(100,mouse.vs);
+    mouse.lx=mouse.x; mouse.ly=mouse.y;
+    mouse.a=Math.atan2(dy,dx);
+
+    movePoints(t);
+    drawLines();
+    requestAnimationFrame(tick);
+  }
+
+  function updateMouse(x,y){
+    mouse.x=x-bounding.left;
+    mouse.y=y-bounding.top;
+    if(!mouse.set){mouse.sx=mouse.x; mouse.sy=mouse.y; mouse.lx=mouse.x; mouse.ly=mouse.y; mouse.set=true;}
+  }
+
+  window.addEventListener("mousemove", e=>updateMouse(e.clientX,e.clientY));
+  window.addEventListener("touchmove", e=>updateMouse(e.touches[0].clientX,e.touches[0].clientY), {passive:false});
+  window.addEventListener("resize", ()=>{setSize(); setLines();});
+
+  setSize(); setLines();
+  requestAnimationFrame(tick);
+</script>
+
+<script>
+  const sun = document.querySelector(".sun");
+  const moon = document.querySelector(".moon");
+  const earth = document.querySelector(".earth");
+  const textLeft = document.querySelector(".text-left");
+  const textRight = document.querySelector(".text-right");
+
+  window.addEventListener("scroll", () => {
+    let scrollY = window.scrollY;
+
+    // Skala bazowa zależna od szerokości ekranu
+    let baseScale = window.innerWidth / 1920;
+
+    // Słońce
+    let sunScale = baseScale + scrollY * 0.0003;
+    sun.style.transform = `translate(-50%, ${scrollY * 0.2}px) scale(${sunScale})`;
+
+    // Księżyc
+    let moonScale = baseScale + scrollY * 0.0006;
+    moon.style.transform = `translate(-50%, ${scrollY * -0.1}px) scale(${moonScale})`;
+
+    // Napisy poruszają się razem z księżycem
+    textLeft.style.transform = `translateY(${scrollY * -0.1}px)`;
+    textRight.style.transform = `translateY(${scrollY * -0.1}px)`;
+
+    // --- Ziemia ---
+    const earthOffsetStart = window.innerHeight * 0.5; 
+    let earthScroll = Math.max(0, scrollY - earthOffsetStart);
+    let earthScale = baseScale + earthScroll * 0.0004;
+    earth.style.transform = `translate(-50%, ${earthScroll * -0.08}px) scale(${earthScale})`;
+  });
+</script>
+
 </body>
 </html>
