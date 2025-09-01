@@ -48,32 +48,6 @@ header {
   width: 100%;
 z-index: 1000;
   transition: top 0.4s ease; 
-
-}
-
-
-.logo-container {
-  display: flex;
-  align-items: center;  
-  justify-content: center;
-  overflow: visible;
-    margin: 0;
-    z-index: 1050;
-}
-
-.logo-container img {
- width: auto;
- display: block;
-   height: 90px;  
-  width: auto;
-}
-
-
-@media (max-width: 768px) {
-
-  .logo-container img {
-    max-height: 200px;
-  }
 }
 
     .center-links {
@@ -2083,6 +2057,278 @@ vertical-align: bottom;
     <span>Copyright © 2025 | Useful Animated Movie</span>
   </div>
 </footer>
+
+
+<script>
+  const slider = document.getElementById('opinieSlider');
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % slider.children.length;
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }, 4000);
+</script>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+    }
+    document.querySelectorAll('nav.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById("menu").classList.remove("show");
+      });
+    });
+
+  </script>
+      <script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+<script>
+  let lastScrollTop = 0;
+  const navMenu = document.querySelector('.nav.menu');
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      navMenu.style.top = "-100px";
+    } else if (scrollTop < lastScrollTop) {
+      navMenu.style.top = "0";
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
+</script>
+<script>
+  const hoverVideos = document.querySelectorAll('video.hover-video');
+
+  hoverVideos.forEach(video => {
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+  });
+</script>
+
+
+
+
+<script>const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+const closeBtn = document.getElementById("closeBtn");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  setTimeout(() => {
+    mobileMenu.style.top = mobileMenu.style.top === "0%" ? "-100%" : "0%";
+  }, 1); // 
+});
+
+closeBtn.addEventListener("click", () => {
+  hamburger.classList.remove("active");
+  mobileMenu.style.top = "-100%"; 
+});
+
+</script>
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > lastScroll && currentScroll > 80) {
+      header.style.top = "-100px";
+    } else {
+      header.style.top = "0";
+    }
+
+    lastScroll = currentScroll;
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (
+    (e.ctrlKey && (e.key === "s" || e.key === "u")) ||
+    (e.ctrlKey && e.shiftKey && e.key === "I")
+  ) {
+    e.preventDefault();
+  }
+});
+</script>
+<script>
+const track = document.querySelector('.opinie-track');
+const slides = document.querySelectorAll('.opinia');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+let currentIndex = 0;
+
+function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  if (index >= slides.length) index = 0;
+  currentIndex = index;
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+
+setInterval(() => {
+  showSlide(currentIndex + 1);
+}, 5000);
+</script>
+
+<script>
+window.onpageshow = function(event) {
+  if (event.persisted) { 
+    window.location.reload();
+  }
+};
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const slides = Array.from(document.querySelectorAll('.carousel-slide0'));
+  if (!slides.length) return;
+
+  let current = 0;
+  let autoplayInterval = null;
+  const INTERVAL_MS = 4000;
+
+  const prevBtn = document.querySelector('.nav.prev');
+  const nextBtn = document.querySelector('.nav.next');
+  const container = document.querySelector('.carousel-container0');
+
+  function showSlide(index) {
+    index = (index + slides.length) % slides.length;
+    slides.forEach((s, i) => s.classList.toggle('active', i === index));
+    current = index;
+  }
+
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayInterval = setInterval(() => showSlide(current + 1), INTERVAL_MS);
+  }
+
+  function stopAutoplay(){
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  }
+
+  prevBtn.addEventListener('click', () => {
+    showSlide(current - 1);
+    startAutoplay(); 
+  });
+  nextBtn.addEventListener('click', () => {
+    showSlide(current + 1);
+    startAutoplay(); 
+  });
+
+  container.addEventListener('mouseenter', stopAutoplay);
+  container.addEventListener('mouseleave', startAutoplay);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { showSlide(current - 1); startAutoplay(); }
+    if (e.key === 'ArrowRight') { showSlide(current + 1); startAutoplay(); }
+  });
+
+  showSlide(0);
+  startAutoplay();
+});
+</script>
+
+<script>
+document.querySelectorAll('.gallery-item').forEach(item => {
+  const video = item.querySelector('video');
+
+  item.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 768) {
+      video.play();
+    }
+  });
+
+  item.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 768) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+});
+
+if (window.innerWidth <= 768) {
+  const videos = document.querySelectorAll(".gallery-item video");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.play().catch(err => {
+          console.log("Autoplay blocked:", err);
+        });
+      } else {
+        entry.target.pause();
+        entry.target.currentTime = 0;
+      }
+    });
+  }, { threshold: 0.5 }); 
+  videos.forEach(video => {
+    video.muted = true; 
+    video.setAttribute("playsinline", "true"); 
+    video.setAttribute("autoplay", "true"); // 
+    observer.observe(video);
+  });
+}
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const text = document.querySelector(".animated-text");
+    const words = text.innerHTML.split(" "); // dzielimy po spacji
+    text.innerHTML = "";
+
+words.forEach((word, i) => {
+  const span = document.createElement("span");
+  span.textContent = word;
+  span.style.animationDelay = `${i * 0.13}s`;
+  text.appendChild(span);
+
+  if (i < words.length - 1) {
+    text.appendChild(document.createTextNode(" "));
+  }
+});
+  });
+</script>
 
 
 </body>
