@@ -2,13 +2,11 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="logoicon" type="image/png" sizes="32x32" href="logoicon32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logoicon16x16.png">
   <title>Samuel Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-  <style>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">  <style>
     * {
       margin: 0;
       padding: 0;
@@ -16,31 +14,26 @@
     }
 
 
-    @font-face {
-  font-family: 'Nohemi';
-  src: url(Nohemi-Regular-BF6438cc579d934.woff) format('woff2'),
-    font-weight: normal;
-
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Satoshi';
-  src: url(Satoshi-Regular.woff2) format('woff2'),
-  font-weight: normal;
-  font-style: normal;
-
-}
 
 body {
-  font-family: 'Roboto', sans-serif;
-  letter-spacing: 1px;
+   font-family: "Source Sans 3", sans-serif; 
+  letter-spacing: 0.4px;
+   font-weight: 400;
+  font-style: normal;
   background: #fff;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   height: 100%;
+  h, h3, h, .gallery-section h2, grid-item, .section-header h2, .text-section, text-section0, .separator, .separator0, .separator2, .text-section0, .reel-link, video-overlay2  {
+  margin-left: 62px; /* albo padding-left */
 }
+}
+
+@media (max-width: 768px) {
+    h, h3, h, .gallery-section h2, grid-item, .section-header h2, .text-section, text-section0, .separator, .separator0, .separator2, .text-section0, .reel-link, video-overlay2  {
+  margin-left: 12px; }}
+
 
 
 header {
@@ -50,16 +43,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  z-index: 1000;
-      top: 0; 
-  padding-top: env(safe-area-inset-top); 
+  position: fixed;
+  top: 0;
+  width: 100%;
+z-index: 1000;
   transition: top 0.4s ease; 
+
 }
 
-header.hidden {
-  top: calc(-100% - env(safe-area-inset-top));
-}
 
 .logo-container {
   display: flex;
@@ -67,12 +58,14 @@ header.hidden {
   justify-content: center;
   overflow: visible;
     margin: 0;
-  padding-top: env(safe-area-inset-top); 
+    z-index: 1050;
 }
 
 .logo-container img {
- min-height: 150px;   width: auto;
-  display: block;
+ width: auto;
+ display: block;
+   height: 90px;  
+  width: auto;
 }
 
 
@@ -95,8 +88,8 @@ header.hidden {
       color: #000000;
       text-decoration: none;
       font-size: 22px;
-      font-weight: 600;
-      padding: 1px 6px;
+      font-weight: 700;
+      padding: 1px 26px;
       transition: color 0.3s;
     }
     .center-links a:hover {
@@ -194,41 +187,6 @@ img {
   display: none;
 }
 
-.video-col {
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    width: 100%;
-    max-width: 1200px;      
-    margin: 0 auto;          
-    overflow: hidden;
-}
-
-.video-col video {
-    width: 100%;           
-    height: auto;          
-    max-height: 80vh;       
-    object-fit: cover;      
-    border-radius: 8px;     
-}
-.video-col2 {
-    display: flex;
-    justify-content: center; 
-    align-items: center;    
-    width: 100%;
-    max-width: 1200px;      
-    margin: 0 auto;          
-    overflow: hidden;
-}
-
-.video-col2 video {
-    width: 100%;            
-    height: auto;          
-    max-height: 80vh;        
-    object-fit: cover;      
-    border-radius: 8px;     
-}
-
 @media (max-width: 768px) {
   .line-break-sm {
     display: inline;
@@ -247,62 +205,6 @@ img {
   margin: 0 auto;
   flex-wrap: wrap; 
 }
-.top-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.text-col {
-  flex: 1 1 400px;
-}
-
-.text-col h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.text-col p {
-  font-size: 1.1rem;
-  color: #333;
-  text-align: center;
-}
-
-.video-col {
-  flex: 1 1 500px;
-    max-width: 500px;
-}
-
-.video-col video {
-  width: 100%;
-  border-radius: 20px;
-    max-width: 500px;
-
-}
-
-.video-col2 {
-    display: flex;
-    justify-content: center; 
-    align-items: center;    
-    width: 100%;
-    max-width: 1200px;      
-    margin: 0 auto;         
-    overflow: hidden;
-}
-
-.video-col2 video {
-    width: 100%;           
-    height: auto;           
-    max-height: 80vh;       
-    object-fit: cover;      
-    border-radius: 8px;     
-}
-
 .bottom-video {
   margin-top: 5px;
   max-width: 1000px;
@@ -310,18 +212,118 @@ img {
   margin-right: auto;
   
   }
-
 .bottom-video video {
   width: 10%;
   border-radius: 20px;
- 
+ }
 }
+
+.white-section {
+  background: #fff;
+  padding: 80px 20px;
+}
+
+.white-section .top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.white-section .text-col {
+  flex: 1;
+  margin-left: 80px;    
+}
+
+.white-section .text-col h2,
+.white-section .text-col p {
+  margin-bottom: 20px;
+}
+
+.white-section .video-col {
+  flex: 1;
+}
+
+.white-section .video-col video {
+  width: 120%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.video-col2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: -24px auto;
+  overflow: hidden;
+  margin-left: -40px;
+  margin-top: -40px; 
+  margin-bottom: -130px;
+}
+
+.video-col2 video {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+@media (max-width: 768px) {
+.video-col2 video {
+  width: 150%;
+  height: auto;
+  object-fit: cover;
+}}
+
+
+.white-section .text-col2 {
+  text-align: left;
+  max-width: 800px;
+  margin: -90px auto;  
+}
+
+.white-section .text-col2 h2,
+.white-section .text-col2 p {
+  margin-bottom: 20px;
+}
+
+.separator2 {
+  width: 180px;
+  height: 7px;
+  background-color: #f0bb1c;
+margin: 10px 0 30px 0; /* brak auto, przyklejony do lewej */
+  transform: scaleX(0);
+  transform-origin: center; /* ważne: animacja rysowania od lewej */
+  animation: drawLine 4s ease-in-out infinite;
+}
+@keyframes drawLine {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+
+
+@media (max-width: 768px) {
+  .white-section .top-row {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .white-section .text-col {
+    margin-left: 0; 
+  }
 }
 
     .video-section {
       position: relative;
       width: 100%;
-   height: 80ch;
+   height: 90ch;
 
       overflow: hidden;
     }
@@ -337,13 +339,13 @@ img {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding-top: 260px;
+      padding-top: 190px;
     }
     .video-overlay h1 {
-      font-size: 2.4rem;
-       letter-spacing: 1.7px;
+      font-size: 49px;
+       letter-spacing: 0px;
            margin-bottom: 100px;
-           margin-top: -140px;
+           margin-top: -70px;
       color: #f0bb1c;
     }
 
@@ -355,12 +357,10 @@ img {
     text-align: center;
       background: #f0bb1c;
       color: rgb(29, 29, 29);
-      border: nonblacke;
-      border-radius: 35px;
-      font-size: 27px;
+      border-radius: 65px;
+      font-size: 25px;
       font-weight: 500;
       font-family: 'Roboto', sans-serif;
-      background: #f0bb1c;
       transition: transform 0.4s ease;
       margin: 40px 15px 0 0;      
       cursor: pointer;
@@ -372,7 +372,7 @@ img {
   }
 
   .video-overlay h4 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .video-overlay .h7 {
@@ -450,8 +450,6 @@ animation: drawLine 5s ease-in-out infinite;}
     font-size: 1.8rem;
   }
     }
-
-
 
      .video-hero {
       position: relstickyative;
@@ -576,7 +574,7 @@ animation: drawLine 5s ease-in-out infinite;}
 
    h2 {
       color: #050505;
-       font-size: 36px;
+       font-size: 33px;
       margin-bottom: 30px;
         margin-top: -15px; 
 
@@ -590,15 +588,18 @@ animation: drawLine 5s ease-in-out infinite;}
 }
 
 
-h5 {
-    color: #050505;
-       font-size: 36px;
-      margin-bottom: 30px;
-        margin-top: -175px; 
-    }
+    h5 {
+  font-size: 20px;
+  color: black;
+  border-radius: 38px;
+        margin-bottom: 20px;
+
+
+
+}
     h6 {
-       font-size: 17px;
-        font-weight: 500;
+       font-size: 18px;
+        font-weight: 400;
        color: rgb(0, 0, 0);
           margin-bottom: 4px;
        margin-top: 9px;
@@ -623,7 +624,7 @@ padding: 20px 10px;
   .h7 {
     padding: 20px 9px; 
     font-size: 18px;    
-    text-align: center;  
+    text-align: left;  
     margin-top: 10px;
      margin-bottom: 84px;
   }
@@ -640,8 +641,7 @@ padding: 20px 10px;
 .yellow-section {
   font-family: 'Roboto', sans-serif;
   background: #f0bb1c;
-  padding: 160px 20px 60px;
-  text-align: center;
+  padding: 160px 7px 60px;
   align-items: center;
 }
 @media (max-width: 700px) {
@@ -652,6 +652,8 @@ padding: 20px 10px;
 
 .yellow-section h2 {
   margin-bottom: 80px; 
+    padding: 10px 80px 0px;
+
 }
 
 .yellow-section-bottom-text {
@@ -664,6 +666,8 @@ padding: 20px 10px;
 @media (max-width: 768px) {
   .yellow-section h2 {
     margin-bottom: 40px; 
+        padding: 10px 44px 0px;
+
   }
   
   .yellow-section-bottom-text {
@@ -675,7 +679,7 @@ padding: 20px 10px;
 
     .ellipse-video {
       position: absolute;
-      top: 710px;
+      top: 620px;
       left: 50%;
       transform: translateX(-50%);
       width: 200px;
@@ -693,7 +697,7 @@ padding: 20px 10px;
     @media (max-width: 768px) {
 
         .ellipse-video {
-      top: 720px;
+      top: 620px;
 
     }}
 
@@ -708,9 +712,9 @@ padding: 0 40px;
     }
     .grid-item {
       background: rgb(255, 255, 255);
-      padding: 15px;
+      padding: 12px;
       border-radius: 39px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.274);
       transition: transform 0.3s;
       cursor: pointer;
        text-align: center;
@@ -741,7 +745,7 @@ padding: 0 40px;
       background: rgb(255, 255, 255);
       padding: 15px;
       border-radius: 39px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.062);
+      box-shadow: 0 8px 5px rgba(0, 0, 0, 0.137);
       transition: transform 0.3s;
       cursor: pointer;
        text-align: center;
@@ -807,17 +811,6 @@ a {
 }
 
 
-@media (min-width: 769px) {
-  .top-row {
-    justify-content: center;
-    text-align: center;
-  }
-  .text-col h2,
-  .text-col p {
-    text-align: center;
-  }
-}
-
 .footer {
   background: #f0bb1c;
   color: #000000;
@@ -845,7 +838,7 @@ a {
   align-items: center;
   gap: 10px; 
   padding: 10px 25px;
-  background: #ffffff;
+border: 1px solid #000000;  background: #ffffff;
   color: #000000;
   font-weight: bold;
   text-decoration: none;
@@ -903,13 +896,15 @@ a {
   display: flex;             
   justify-content: center;
   align-items: flex-end;  
+  
   gap: 16px;
   height: 40px;           
 }
 
 .footer-socials a {
   display: flex;           
-  align-items: flex-end;   
+  align-items: flex-end;  
+   
   justify-content: center;
   height: 100%;            
 }
@@ -1009,7 +1004,7 @@ a {
 
 
     .text-section h2 {
-  text-align: center;
+  text-align: left;
   font-size: 2rem;
   margin-bottom: 10px;
 }
@@ -1020,9 +1015,7 @@ a {
   background-color: #f0bb1c;
     margin-bottom: 18px;
     margin-top: 18px;
-  align-items: center;
-  justify-content: space-between;
-  margin: 18px auto;   
+margin: 10px 0 30px 0; 
   transform: scaleX(0);
   transform-origin: center;
   animation: drawLine 7s ease-in-out infinite;
@@ -1048,11 +1041,10 @@ a {
 
 @media (max-width: 700px) {
     .text-section h2 {
-  text-align: center;
+  text-align: left;
 }
 
 .text-section .separator {
-   margin: 18px auto;
   width: 250px;             
   height: 8px;         
 }}
@@ -1073,7 +1065,7 @@ a {
 
 .logo-carousel {
   position: relative;
-  width: 100%;
+  width: auto;
   overflow: hidden;
 }
 
@@ -1146,120 +1138,142 @@ a {
 }
 
 .video-section2 {
-    position: relative;
-    width: 100%;
-    min-height: 75vh;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 130vh; /* wypełnia całą wysokość widoku */
+  overflow: hidden;
+  background: #000; /* na wypadek wolniejszego ładowania wideo */
+padding: 60px 20px 120px 80px; /* 120px od dołu */
 }
 
-.video-section2 video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-    z-index: 0;
+.video-container2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-@media (max-width: 760px) {
 
-.video-section2 {
-    min-height: 55vh;
-}}
+.video-container2 video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* wypełnia całą sekcję, zachowując proporcje */
+  display: block;
+}
 
 .video-overlay2 {
-    position: relative;
-        display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 140px;
+  width: 100%;
+  height: 100%;
+      padding: 40px 20px 80px 110px; /* mniejszy lewy padding */
 
-    z-index: 1;
-    text-align: center;
-    padding: 110px 20px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-        text-align: center; 
-    padding: 110px 20px;
-    color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;     /* po lewej */
+  text-align: left;
+  line-height: 2.2;
+  z-index: 2;
+  box-sizing: border-box; /* żeby padding nie psuł układu */
 }
-
-
-
 .video-overlay2 h4 {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-        justify-content: center;
-        text-align: center; 
-    list-style-type: none;
+  color: #f0bb1c;
+    padding: 0px 30px 20px 0px; /* tu: większy padding z lewej */
+
+  font-size: 1.9rem;
+  font-weight: 900;
+  margin-bottom: 25px;
 }
 
-.video-overlay2 .h7 {
-    max-width: 900px; 
-    font-size: 1.5rem;
-    line-height: 2;
-        justify-content: center;
-        text-align: center; 
-
+.video-overlay2 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.video-overlay2 .h7 ul {
-    padding-left: 20px;
-    list-style-type: none;
+.video-overlay2 li {
+  font-size: 1.8rem;
+  margin: 40px 0; /* margines między wierszami */
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeSlideIn 0.6s ease forwards;
 }
 
-@media (max-width: 1024px) {
-    .video-overlay2 h4 {
-        font-size: 1.6rem;
-    }
-    .video-overlay2 h5 {
-        font-size: 1.5rem;
-    }
-    .video-overlay2 .h7 {
-        font-size: 1rem;
-        max-width: 90%;
-    }
+.video-overlay2 li.white { color: #fff; }
+.video-overlay2 li.yellow { color: #f0bb1c; }
+
+.video-overlay2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.3s ease, font-weight 0.3s ease;
 }
+
+.video-overlay2 a:hover {
+  font-weight: bold;
+  transform: scale(1.05);
+  text-decoration: underline;
+}
+
+/* Animacja wprowadzania wierszy */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.video-overlay2 li:nth-child(1) { animation-delay: 0.2s; }
+.video-overlay2 li:nth-child(2) { animation-delay: 0.4s; }
+.video-overlay2 li:nth-child(3) { animation-delay: 0.6s; }
+.video-overlay2 li:nth-child(4) { animation-delay: 0.8s; }
+.video-overlay2 li:nth-child(5) { animation-delay: 1s; }
+.video-overlay2 li:nth-child(6) { animation-delay: 1.2s; }
+.video-overlay2 li:nth-child(7) { animation-delay: 1.4s; }
+.video-overlay2 li:nth-child(8) { animation-delay: 1.6s; }
 
 @media (max-width: 768px) {
-    .video-overlay2 {
-        padding: -40px 15px;
-    }
-    .video-overlay2 h4 {
-        font-size: 1.4rem;
-    }
-    .video-overlay2 h5 {
-        font-size: 1.3rem;
-    }
-    .video-overlay2 .h7 {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
+  .video-overlay2 {
+    padding: 40px 20px 80px 40px; /* mniejszy lewy padding */
+    margin-top: 80px; /* mniej od góry */
+  }
+
+  .video-overlay2 h4 {
+    font-size: 1.6rem; /* mniejszy nagłówek */
+    margin-bottom: 15px;
+  }
+
+  .video-overlay2 li {
+    font-size: 1.2rem; /* mniejsze punkty listy */
+    margin: 10px 0;
+    line-height: 1.6;
+  }
 }
 
 
 .yellow-section0{
   background: #f0bb1c;
-  text-align: center;
-  padding: 60px 20px;
+  text-align: left;
+  padding: 90px 20px;
   color: #000;
   display:flex;
   flex-direction:column;
-  align-items:center;
+  align-items: left;
 
 }
 
 .text-section0 h2 {
   font-size: 2.2rem;
-  margin: 0 0 10px 0;
   font-weight: 600;
-}
+    text-align: left;}
+
+
 .separator0 {
   width: 180px;
   height: 7px;
   background-color: #ffffff; 
-  margin: 10px auto 30px;
+  margin: 10px 0 30px 0;
+  
   transform: scaleX(0);
   transform-origin: center;
   animation: drawLine 4s ease-in-out infinite;
@@ -1296,7 +1310,7 @@ a {
 }
 
 .slide-text {
-  font-size: 1.05rem;
+  font-size: 1.905rem;
   margin: 0;
   font-weight: 500;
   max-width: 90%;
@@ -1318,7 +1332,7 @@ a {
 .see-more-btn2 {
   font-size: 20px;
   padding: 12px 32px;
-  background: rgb(0, 0, 0)
+  background: rgb(0, 0, 0);
   color: #f0bb1c;
   border: none;
   border-radius: 30px;
@@ -1333,7 +1347,7 @@ a {
 
 .nav {
   position: absolute;
-  top: 50%;
+  top: 65%;
   transform: translateY(-50%);
   background: rgba(0, 0, 0, 0);
   color: #000000;
@@ -1349,8 +1363,8 @@ a {
   z-index: 5;
 }
 .nav:active { transform: translateY(-50%) scale(1.98); }
-.nav.prev { left: -130px; }
-.nav.next { right: -130px; }
+.nav.prev { left: -19px; }
+.nav.next { right: -19px; }
 
 @media (max-width: 900px) {
   .circle-img { width: 280px; height: 280px; }
@@ -1371,6 +1385,263 @@ a {
     margin-right: 12px;
   }
 }
+
+    .gallery-section { 
+      max-width: auto; 
+      margin: auto; 
+      padding: 40px 20px; 
+        background: #f0bb1c;
+        
+    }
+
+    
+
+    .gallery-section h2 {
+  text-align: left;
+  font-size: 2rem;
+  margin: 40px 0; 
+}
+
+
+
+.gallery-section p {
+  text-align: left;
+  max-width: 700px;
+        margin-bottom: 40px; 
+      color: #000000; 
+
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.gallery-section .highlight {
+  font-weight: bold;
+}
+
+
+    .gallery-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; 
+    }
+    .gallery-item { 
+      background: #fff; 
+      border-radius: 15px; 
+      overflow: hidden; 
+      border: 1px solid #000000; 
+      text-align: center; 
+      transition: transform 0.4s ease; 
+    }
+    .gallery-item:hover { 
+      transform: scale(1.05); 
+    }
+    .gallery-item img { 
+      width: 100%; 
+      aspect-ratio: 1/1; 
+      object-fit: cover; 
+      display: block; 
+      transition: transform 0.4s ease; 
+    }
+    .gallery-item img:hover { 
+      transform: scale(1.1); 
+    }
+    .gallery-caption { 
+      padding: 15px; 
+    }
+    .gallery-caption p { 
+      margin: 6px 0; 
+    }
+    .gallery-caption a { 
+      color: #000000; 
+      text-decoration: none; 
+      font-weight: bold; 
+    }
+    .gallery-caption a:hover { 
+      color: #ff00008c; 
+    }
+
+
+     .see-more-btn3 {
+  font-size: 24px;
+  padding: 14px 36px;
+  background: #000;
+  color: #f0bb1c;
+  border: none;
+  border-radius: 30px;
+  margin: 40px auto;   /* wyśrodkowanie poziome */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.see-more-btn3:hover {
+  background: #000000;
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+}
+
+.gallery-media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-media img,
+.gallery-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-media video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-media img {
+  opacity: 0;
+}
+
+.gallery-item:hover .gallery-media video {
+  opacity: 1;
+}
+
+    @media(max-width: 900px) { 
+      .gallery-grid { grid-template-columns: 1fr 1fr; } 
+    }
+    @media(max-width: 600px) { 
+      .gallery-grid { grid-template-columns: 1fr; } 
+    }
+
+
+    @media(max-width: 768px) {
+  .gallery-item .gallery-media img {
+    display: none; 
+  }
+  .gallery-item .gallery-media video {
+    position: static; 
+    opacity: 1 !important; 
+    pointer-events: auto;
+  }
+}
+
+.see-more-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.video-section4 {
+  background: #fff;
+  padding: 60px 20px;
+  text-align: left;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+.video-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.video-caption {
+  margin-top: 20px;
+}
+
+.video-caption h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.reel-link {
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #000;
+  transition: font-weight 0.3s ease;
+}
+
+.reel-link:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .section-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .video-caption h3 {
+    font-size: 1.2rem;
+  }
+
+  .reel-link {
+    font-size: 1rem;
+  }
+}
+
+.video-overlay05 {
+  position: absolute;
+  bottom: -190px; /* odstęp od dołu */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.video-overlay05 a {
+  font-size: 1.52rem; 
+  font-weight: 600;
+  color: #f0bb1c; 
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block; 
+}
+
+.video-overlay05 a:hover {
+  color: #ffffff; /* biały na hover */
+}
+
+.animated-text {
+  display: inline-block;
+  white-space: pre-wrap;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.animated-text span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 </style>
 </head>
 <body>
@@ -1432,8 +1703,9 @@ a {
     <video src="question-mark.mp4" autoplay muted loop></video>
   </div>
 
-  <h2>Do you have something important to show<br> but don't know how to do it effectively?</h2>
-
+<h2 class="animated-text">
+  Do you have something important to show but don't know how to do it effectively?
+</h2>
   <div class="grid-2x2">
     <div class="grid-item" onclick="location.href='https://link1.pl'">
       <img src="ANIMATED-ICON-LOGO.gif.webp" alt="Animacja reklamowa">
@@ -1454,19 +1726,22 @@ a {
   </div>
 
   <p class="yellow-section-bottom-text">
-        Don’t let your story fade into the background.
+         <h2>Don’t let your story fade into the background.</h2> 
   </p>
 </section>
 
  <section class="white-section">
   <div class="top-row">
     <div class="text-col">
-      <h2><br></br>I’m Paweł Pauksztełło, <br>founder of Samuel Studio.</h2>
+      <h2>
+        I’m Paweł Pauksztełło,<br>
+        founder of Samuel Studio.
+      </h2>
       <p>
-        <br>I help you capture attention and communicate your message clearly.
-        <br>
-        Check out my portfolio and see how my animations work in practice.
-      </p>
+        <div class="separator2"></div>
+        <h6>I help you capture attention and communicate your message clearly.
+        <br><br>Check out <a href="#" class="portfolio-link">my portfolio</a> and see how my animations work in practice.
+      </p></h6>
     </div>
     <div class="video-col">
       <video src="Pawel-Pauksztello-Samuel-Studio-Owner-Founder.mp4" autoplay muted loop playsinline></video>
@@ -1478,46 +1753,54 @@ a {
     </div>
   <div class="text-col" style="margin-top: -50px;">
     <h2><br>No one wants to be ignored.</h2>
-    <p>Well-crafted animation grabs attention, engages your audience, and makes your message unforgettable.<br></p>
+            <div class="separator2"></div>
+
+    <h6><p>Well-crafted animation grabs attention, engages your audience, and makes your message unforgettable.<br></p>
   </div><br>
 </section>
 
 
 
-</section>
-
-  <section class="video-section3">
-    <video src="St-Thomas-Apostol-animated-cover-1.mp4" autoplay muted loop></video>
-    <div class="video-overlay3">
-  <h5 style="color: white;">See My Work in Action</h5>    </div>
-  </section>
-
-
-
-  <section class="yellow-section">
-    <h4 style="font-size: 2rem;">Why Samuel Studio?
-</h4>
-    <p style="max-width: 700px; margin: 20px auto; font-size: 1.2rem;">
-     We create animations that capture attention, explain complex ideas, and help build your brand.
-    </p>
-  </section>
-
 <section class="video-section2">
-  <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
-  <div class="video-overlay2">
-    
-    <h4><li>See My Work in Action.</li> I offer creative solutions for your business needs.</h4>
 
-    <div class="h7">
+  <div class="video-container2">
+<video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop playsinline></video>
+    <div class="video-overlay2">
+      <h4>I offer creative solutions for your business needs.</h4>
+      <div class="separator2"></div>
       <ul>
-        <li>Make your brand memorable and stand out – Animated Logos</li>
-        <li>Simplify complex topics and engage your audience – Explainers</li>
-        <li>Tell your story with motion – Storytelling</li>
-        <li>Enhance your video projects – Animated elements for larger productions</li>
-        <li>Perfect for digital branding and social media – Animated GIFs</li>
-        <li>Grab attention and drive awareness – Promotional Animations</li>
-        <li>Eye-catching visual storytelling for your campaigns – Animated Posters</li>
-        <li>Subtle motion that adds depth – Background Animations</li>
+        <li class="white">
+          • Make your brand memorable and stand out – 
+          <a href="#">Animated Logos</a>
+        </li>
+        <li class="yellow">
+          • Simplify complex topics and engage your audience – 
+          <a href="#">Explainers</a>
+        </li>
+        <li class="white">
+          • Tell your story with motion – 
+          <a href="#">Storytelling</a>
+        </li>
+        <li class="yellow">
+          • Enhance your video projects – 
+          <a href="#">Animated elements for larger productions</a>
+        </li>
+        <li class="white">
+          • Perfect for digital branding and social media – 
+          <a href="#">Animated GIFs</a>
+        </li>
+        <li class="yellow">
+          • Grab attention and drive awareness – 
+          <a href="#">Promotional Animations</a>
+        </li>
+        <li class="white">
+          • Eye-catching visual storytelling for your campaigns – 
+          <a href="#">Animated Posters</a>
+        </li>
+        <li class="yellow">
+          • Subtle motion that adds depth – 
+          <a href="#">Background Animations</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -1569,15 +1852,52 @@ a {
 
 
 
-  <section class="video-section5">
-    <video src="View-of-Checiny.mp4" autoplay muted loop></video>
-    <div class="video-overlay5">
-  <h5 style="color: white;">See My Work in Action</h5>    </div>
-  </section>
+<section class="yellow-section0">
+  <div class="text-section0 top">
+<h2 class="animated-text">
+      Simple, Clear, and Effective Process.</h2>
+    <div class="separator0"></div>
+  </div>
 
+  <div class="carousel-container0" aria-roledescription="carousel">
+    <button class="nav prev" aria-label="Poprzedni slajd">‹</button>
 
+    <div class="carousel-track0">
+      <div class="carousel-slide0 active" data-index="0">
+        <p class="slide-text">I create animation that speaks visually</p>
+        <img src="image1.png" alt="grafika 1" class="circle-img">
+      </div>
 
-  
+      <div class="carousel-slide0" data-index="1">
+        <p class="slide-text">You get a finished film that works.</p>
+        <img src="image2.png" alt="grafika 2" class="circle-img">
+      </div>
+
+      <div class="carousel-slide0" data-index="2">
+        <p class="slide-text">We define the story that you want to tell.</p>
+        <img src="image3.png" alt="grafika 3" class="circle-img">
+      </div>
+
+      <div class="carousel-slide0" data-index="3">
+        <p class="slide-text">Let's create something unforgettable together.</p>
+        <img src="image2.png" alt="grafika 4" class="circle-img">
+      </div>
+    </div>
+
+    <button class="nav next" aria-label="Następny slajd">›</button>
+  </div>
+
+  <button class="see-more-btn2"  
+    onclick="window.location.href='https://www.google.com/maps/place//data=!4m3!3m2!1s0xac688efcb209881f:0x50fac03e7d6b27cb!12e1'">
+    Order today
+  </button>
+
+  <div class="text-section0 bottom">
+    <h2>Let’s create together.</h2>
+    <div class="separator0"></div>
+  </div>
+</section>
+
   <section class="text-section">
     
   <h2>What Clients Say</h2>
@@ -1625,84 +1945,66 @@ a {
   </button>
 </section>
 
-  <section class="yellow-section" id="offer">
-    <h2>Recent Work</h2>
-    <div class="grid-2x2">
-      <div class="grid-item">
-        <video src="Trileas-Animated-Cover.mp4" autoplay muted loop></video>
-        <div class="desc">Trileas logo visualisation</div>
-      </div>
+  <section class="gallery-section">
+        <h2>Recent Work</h2>
+        <div class="separator0"></div>
 
-            <div class="grid-item">
-        <video src="The-Gospel-in-five-minutes-Cover.mp4" autoplay muted loop></video>
-        <div class="desc">The Gospel Explained in Five Minutes</div>
+  <div class="gallery-grid">
+
+    <div class="gallery-item">
+      <div class="gallery-media">
+        <img src="Logo-trileas-cover.png" alt="WORSHIP in the city center 2022 - cover image">
+        <video src="Trileas-Animated-Cover.mp4" muted loop></video>
       </div>
-      <div class="grid-item">
-        <video src="animated-cover-of-modern-3d-animation.mp4" autoplay muted loop></video>
-        <div class="desc">Modern 3D animation</div>
+      <div class="gallery-caption">
+        <p>TRILEAS</p>
+        <a href="#">Logo animation</a>
       </div>
     </div>
-    <button class="see-more-btn">See More</button>
 
-  </section>
-
-  <section class="video-section">
-    <video src="Samuel-Studio-Reel-2024 2.mp4" autoplay muted loop></video>
-    <div class="video-overlay">
-      <h5 style="color: rgb(0, 0, 0);">Animations that works</h5>
-      <p style="font-size: 1.5rem;">We help companies communicate more effectively.<br>
-From concept to finished video</p>
+    <div class="gallery-item">
+      <div class="gallery-media">
+        <img src="The-Gospel-Explained-in-Five-Minutes.jpg" alt="YAGOOSH - Puppeteer cover">
+        <video src="The-Gospel-in-five-minutes-Cover.mp4" muted loop></video>
+      </div>
+      <div class="gallery-caption">
+        <p>BIBLE UNBOUND & Samuel Studio</p>
+        <a href="#">The Gospel Explained in Five Minutes</a>
+      </div>
     </div>
-  </section>
+
+    <div class="gallery-item">
+      <div class="gallery-media">
+        <img src="cover-of-3d-modern-animation_00099.jpg" alt="Bible Unbound - The Bible In a Sentence cover">
+        <video src="animated-cover-of-modern-3d-animation.mp4" muted loop></video>
+      </div>
+      <div class="gallery-caption">
+        <p>Modern visualisation</p>
+        <a href="#">3D Animation</a>
+      </div>
+      </div>
+<div class="see-more-container">
+  <button class="see-more-btn3">See More</button>
+</div>
+    </section>
 
 
-
-
-<section class="yellow-section0">
-  <div class="text-section0 top">
-    <h2>Simple, Clear, and Effective Process.</h2>
-    <div class="separator0"></div>
+<section class="video-section4">
+  <div class="section-header">
+    <h2>Animations that works</h2>
+    <div class="separator2"></div>
   </div>
 
-  <div class="carousel-container0" aria-roledescription="carousel">
-    <button class="nav prev" aria-label="Poprzedni slajd">‹</button>
-
-    <div class="carousel-track0">
-      <div class="carousel-slide0 active" data-index="0">
-        <p class="slide-text">I create animation that speaks visually</p>
-        <img src="image1.png" alt="grafika 1" class="circle-img">
-      </div>
-
-      <div class="carousel-slide0" data-index="1">
-        <p class="slide-text">You get a finished film that works.</p>
-        <img src="image2.png" alt="grafika 2" class="circle-img">
-      </div>
-
-      <div class="carousel-slide0" data-index="2">
-        <p class="slide-text">We define the story that you want to tell.</p>
-        <img src="image3.png" alt="grafika 3" class="circle-img">
-      </div>
-
-      <div class="carousel-slide0" data-index="3">
-        <p class="slide-text">Let's create something unforgettable together.</p>
-        <img src="image2.png" alt="grafika 4" class="circle-img">
-      </div>
-    </div>
-
-    <button class="nav next" aria-label="Następny slajd">›</button>
+  <div class="video-container">
+    <video src="Samuel-Studio-Reel-2025.mp4" autoplay muted loop playsinline></video>
   </div>
 
-  <button class="see-more-btn2"  
-    onclick="window.location.href='https://www.google.com/maps/place//data=!4m3!3m2!1s0xac688efcb209881f:0x50fac03e7d6b27cb!12e1'">
-    Order today
-  </button>
-
-  <div class="text-section0 bottom">
-    <h2>Let’s create together.</h2>
-    <div class="separator0"></div>
+  <div class="video-caption">
+    <h3>Samuel Studio</h3>
+    <a href="#" class="reel-link">Reel</a>
   </div>
 </section>
-  
+
 
 <section class="video-section" id="video">
     <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
@@ -1716,26 +2018,17 @@ From concept to finished video</p>
       <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">Get a Free Consultation</button>
       <button class="btn" onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">Contact me</button>
         </div>
-<div class="video-overlay">
-  <h1><a href="mailto:kontakt@animacja.pl" style="color: inherit; text-decoration: none;">kontakt@animacja.pl</a></h4>
-  <br><br>
-    <h1><a href="tel:+48693733366" style="color: inherit; text-decoration: none;">+48 693 733 366</a></h4>
+<div class="video-overlay05">
+  <h4><a href="mailto:kontakt@animacja.pl">kontakt@animacja.pl</a></h4>
+  <h4><a href="tel:+48693733366">+48 693 733 366</a></h4>
 </div>
-        <div class="separator"></div>
-
-        <div class="buttons">
-        </div>
     </div>
-
 </section>
-
-
-
 
 
   <footer class="footer">
   <div class="footer-subscribe">
-    <h3>CLICK TO SUBSCRIBE</h3>
+    <h5>CLICK TO SUBSCRIBE</h5>
     <div class="footer-buttons">
       <a href="#" class="subscribe-btn">
         <img src="samuelstudio icon.svg" alt="Animator 1"> 
@@ -1849,6 +2142,9 @@ From concept to finished video</p>
   });
 </script>
 
+
+
+
 <script>const hamburger = document.getElementById("hamburger");
 const mobileMenu = document.getElementById("mobileMenu");
 const closeBtn = document.getElementById("closeBtn");
@@ -1867,36 +2163,28 @@ closeBtn.addEventListener("click", () => {
 
 </script>
 
-<script>
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  if(mobileMenu.style.top === '0%') {
-    mobileMenu.style.top = '-100%';
-  } else {
-    mobileMenu.style.top = '0';
-  }
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > lastScroll && currentScroll > 80) {
+      header.style.top = "-100px";
+    } else {
+      header.style.top = "0";
+    }
+
+    lastScroll = currentScroll;
+  });
 });
 </script>
 
-<script>
-let lastScroll = window.pageYOffset || document.documentElement.scrollTop;
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll > lastScroll && currentScroll > 40) {
-    header.classList.add("hidden");
-  } else if (currentScroll < lastScroll) {
-    header.classList.remove("hidden");
-  }
-
-  lastScroll = currentScroll <= 0 ? 0 : currentScroll; 
-});
-</script>
 
 <script>
 document.addEventListener("contextmenu", (e) => {
@@ -1993,6 +2281,64 @@ document.addEventListener('DOMContentLoaded', function () {
   startAutoplay();
 });
 </script>
+
+<script>
+document.querySelectorAll('.gallery-item').forEach(item => {
+  const video = item.querySelector('video');
+
+  item.addEventListener('mouseenter', () => {
+    if (window.innerWidth > 768) {
+      video.play();
+    }
+  });
+
+  item.addEventListener('mouseleave', () => {
+    if (window.innerWidth > 768) {
+      video.pause();
+      video.currentTime = 0;
+    }
+  });
+});
+
+if (window.innerWidth <= 768) {
+  const videos = document.querySelectorAll(".gallery-item video");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.play().catch(err => {
+          console.log("Autoplay blocked:", err);
+        });
+      } else {
+        entry.target.pause();
+        entry.target.currentTime = 0;
+      }
+    });
+  }, { threshold: 0.5 }); 
+  videos.forEach(video => {
+    video.muted = true; 
+    video.setAttribute("playsinline", "true"); 
+    video.setAttribute("autoplay", "true"); // 
+    observer.observe(video);
+  });
+}
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const text = document.querySelector(".animated-text");
+    const words = text.innerHTML.split(" "); // dzielimy po spacji
+    text.innerHTML = "";
+
+    words.forEach((word, i) => {
+      const span = document.createElement("span");
+      span.textContent = word + " ";
+      span.style.animationDelay = `${i * 0.13}s`; // opóźnienie co 0.3s
+      text.appendChild(span);
+    });
+  });
+</script>
+
 
 </body>
 </html>
