@@ -148,9 +148,10 @@ nav#mobile-menu a:hover {
 
 
     .hero{
-      height:92vh;min-height:560px;padding:110px 20px 40px;margin-top:10;
-      background:url('gora.png') center/cover no-repeat;color:var(--bg);
+      height:92vh;min-height:560px;padding:110px 20px 40px;margin-top: 0px;
+      background:url('gora.png') top center/cover no-repeat;color:var(--bg);
       display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
+      padding-top: 120px; 
     }
     .hero .inner{
       max-width:1100px;padding:36px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0, 0, 0, 0));
@@ -179,15 +180,49 @@ nav#mobile-menu a:hover {
   transition: transform 0.3s ease;
   will-change: transform;
 }
-        @media(max-width:600px){
+
+.hero-mobile { display: none; }
+
+        @media(max-width:700px){
+
+                    .hero-desktop { display: none; }
                 .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
-    .intro h2{ font-size:clamp(60px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
-  .hero h1 {
-  font-size: clamp(60px, 6vw, 74px);
-  margin: 0;
-  line-height: 1.1;
-  animation: pulseText 5s ease-in-out infinite;
-}}
+    .intro h2{ font-size:clamp(50px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
+.hero h1 {
+    font-size: clamp(40px, 6vw, 70px);
+    margin-top:160px; /* przesunięcie w dół */
+    line-height: 1.1;
+    animation: pulseText 5s ease-in-out infinite;
+  }
+
+  .hero p {
+    font-size: clamp(23px, 4vw, 20px);
+    max-width: 220px;      /* ogranicza szerokość, wymusza łamanie */
+    margin: 12px auto 0;   /* centrowanie pod h1 */
+    line-height: 1.4;
+    text-align: center;    /* centrowanie tekstu */
+    word-break: break-word;
+  }
+
+    .hero{
+      height:70vh;
+       background-position: calc(50% - 90px) top;
+    }
+
+        .hero .inner{
+      max-width:1100px;padding:36px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0, 0, 0, 0));
+      transform-origin:center;animation:fadeUp .7s ease both;
+    }
+
+
+  .hero-mobile { display: block; }
+
+  .hero-mobile p span {
+    display: block;        /* każda fraza w osobnej linii */
+    margin-bottom: 6px;    /* odstęp między linijkami */
+    text-align: center;    /* centrowanie */
+  }
+}
 
     .portfolio{ max-width:var(--max-width);margin:32px auto;padding:28px 20px;display:grid;gap:24px;grid-template-columns:1fr;justify-items:center }
     .card{ width:100%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform .33s ease,box-shadow .33s ease;border:1px solid rgba(0,0,0,0.04);opacity:0;transform:translateY(10px);animation:cardIn .5s ease forwards }
@@ -470,7 +505,6 @@ main {
       height: 100%;
     }
 
-
   .scene {
     position: relative;
     width: 100%;
@@ -478,88 +512,6 @@ main {
     overflow: visible;
   }
 
-  /* Słońce */
-  .sun {
-    position: absolute;
-    top: -500%;
-    left: 50%;
-    width: clamp(120px, 15vw, 220px);
-    height: clamp(120px, 15vw, 220px);
-    background: radial-gradient(circle at center, #ffec85, #ff9b00);
-    border-radius: 50%;
-    box-shadow: 0 0 60px 30px rgba(255, 200, 0, 0.6),
-                0 0 120px 60px rgba(255, 170, 0, 0.4),
-                0 0 200px 100px rgba(255, 140, 0, 0.2);
-    transform: translateX(-50%);
-    z-index: 1;
-  }
-
-
-  /* Ziemia */
-  .earth {
-    position: absolute;
-    bottom: -650%;
-    left: 50%;
-    width: clamp(40px, 40vw, 10px);
-    transform: translateX(-660%);
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  /* Napisy */
-  .text-left, .text-right {
-    position: absolute;
-    bottom: 20%;
-    font-size: clamp(1rem, 2.5vw, 2rem);
-    color: rgb(0, 0, 0);
-    white-space: nowrap;
-  }
-
-  .text-left {
-    left: 5vw;
-    text-align: left;
-  }
-
-  .text-right {
-    right: 5vw;
-    text-align: right;
-  }
-
-  /* Mobile tweaks */
-  @media (max-width: 600px) {
-    .scene {
-      height: 80vh;
-    }
-    .text-left, .text-right {
-      font-size: clamp(0.9rem, 4vw, 1.5rem);
-    }
-    @media (max-width: 600px) {
-  /* Większe Słońce i Księżyc */
-  .sun {
-    top: 205%; /* niżej żeby bliżej Księżyca */
-    width: clamp(180px, 35vw, 250px);
-    height: clamp(180px, 35vw, 250px);
-        display: none;
-
-  }
-
-  .moon {
-    bottom: 200%; /* wyżej żeby bliżej Słońca */
-    width: clamp(260px, 60vw, 400px);
-  }
-
-  /* Większa Ziemia */
-  .earth {
-    bottom: 400%;
-    width: clamp(560px, 60vw, 400px);
-  }
-
-  /* Napisy też trochę większe */
-  .text-left, .text-right {
-    font-size: clamp(1.2rem, 5vw, 2rem);
-  }
-}
-  }
 
   </style>
 </head>
@@ -580,12 +532,23 @@ main {
     </nav>
   </header>
 
-  <section class="hero" id="hero">
-    <div class="inner">
-      <h1>Grafik z&nbsp;Kielc</h1>
-      <p>Grafiki · tworzenie stron · pasja do technologii</p>
-    </div>
-  </section>
+<section class="hero hero-desktop" id="hero">
+  <div class="inner">
+    <h1>Grafik z&nbsp;Kielc</h1>
+    <p>Grafiki · tworzenie&nbsp;stron · pasja do&nbsp;technologii</p>
+  </div>
+</section>
+
+<section class="hero hero-mobile" id="hero-mobile">
+  <div class="inner">
+    <h1>Grafik z&nbsp;Kielc</h1>
+    <p>
+     Grafiki
+     Tworzenie&nbsp;stron
+     Pasja do&nbsp;technologii
+    </p>
+  </div>
+</section>
 
   <section class="intro">
     <h2>Tworzę nowoczesne i&nbsp;unikalne projekty graficzne oraz&nbsp;strony www</h2>
@@ -628,7 +591,7 @@ main {
 
   <section class="intro">
   <h2 class="side-scroll">
-    Plakaty, okładki, strony www, design, nadruk na&nbsp;koszulkę.
+    Oferuję: Plakaty, okładki, strony www, design, nadruki na&nbsp;koszulkę.
   </h2>
 </section>
   <section id="gallery" class="gallery-slider" aria-label="Prezentacja grafik">
