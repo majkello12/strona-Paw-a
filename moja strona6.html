@@ -7,6 +7,7 @@
      <link rel="logoicon" type="image/png" sizes="32x32" href="logoicon32x32 mbgrafik.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logoicon16x16 mbgrafik.png">
 
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
   <title>MGrafik z Kielc.</title>
 
   <link href="https://fonts.cdnfonts.com/css/geomanist" rel="stylesheet">
@@ -516,6 +517,122 @@ main {
     overflow: visible;
   }
 
+.section-3d {
+  margin: 36px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* elementy jeden pod drugim */
+  text-align: center;
+}
+
+    .viewer-wrapper {
+      width: 100%;
+      max-width: 900px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      --progress-bar-color: #f0bb1c;
+      --progress-bar-height: 4px;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .control-btn {
+      background: linear-gradient(45deg, #f0bb1c, #ffd700);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    .control-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(240, 187, 28, 0.3);
+    }
+
+    .control-btn:active {
+      transform: translateY(0);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .upload-btn {
+      background: linear-gradient(45deg, #333, #555);
+      color: white;
+    }
+
+    .upload-btn:hover {
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    }
+
+
+
+    @media (max-width: 768px) {
+      .viewer-wrapper {
+        max-width: 95%;
+        height: 400px;
+        margin: 0 10px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+      
+      .controls {
+        padding: 0 20px;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(240, 187, 28, 0.3);
+      border-top: 4px solid #f0bb1c;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
   </style>
 </head>
@@ -634,7 +751,7 @@ main {
       <img src="gora.png" alt="Moje zdjęcie" class="about-photo">
       <div class="about-text">
         <h2>Coś&nbsp;o&nbsp;mnie</h2>
-        <p>Nazywam się Michał, jestem grafikiem i web developerem z&nbsp;Kielc. Z pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z&nbsp;użytecznością, tworząc projekty, które przyciągają uwagę i są intuicyjne w obsłudze.</p>
+        <p>Nazywam się Michał, jestem grafikiem i&nbsp;web developerem z&nbsp;Kielc. Z&nbsp;pasją tworzę grafiki, identyfikacje wizualne oraz strony internetowe. Łączę estetykę z&nbsp;użytecznością, tworząc projekty, które przyciągają uwagę i&nbsp;są&nbsp;intuicyjne w&nbsp;obsłudze.</p>
       </div>
     </div>
 
@@ -648,7 +765,7 @@ main {
       </div>
 
       <div class="about-card">
-        <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" alt="Grafiki, które Cię wyróżnią">
+        <img src="grafiki 3d napiss2.png" alt="Grafiki, które Cię wyróżnią">
         <div>
           <h3>Grafiki, które Cię wyróżnią</h3>
           <p class="muted">Unikalne formy i&nbsp;kolory — buduj rozpoznawalność marki.</p>
@@ -656,7 +773,7 @@ main {
       </div>
 
     <div class="about-card">
-  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Kreatywne projekty">
+  <img src="marmur blender.png" alt="Kreatywne projekty">
   <div>
     <h3>Kreatywne projekty</h3>
     <p class="muted">Łączę estetykę z funkcjonalnością, tworząc wyjątkowe doświadczenia wizualne.</p>
@@ -664,7 +781,7 @@ main {
 </div>
 
 <div class="about-card">
-  <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=800&q=80" alt="Nowoczesne technologie">
+  <img src="syntetyk okładka.png" alt="Nowoczesne technologie">
   <div>
     <h3>Nowoczesne technologie</h3>
     <p class="muted">Wykorzystuję najnowsze narzędzia, aby zapewnić stylowy i nowoczesny efekt.</p>
@@ -689,6 +806,83 @@ main {
        </div>
     </section>
 
+<section class="section-3d">  
+  <h1>Interaktywne modele 3D</h1>
+
+  <div class="viewer-wrapper">
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+    </div>
+    <model-viewer 
+      id="modelViewer"
+      src="model3D.glb" 
+      alt="Model 3D" 
+      camera-controls 
+      auto-rotate 
+      rotation-per-second="25deg"
+      camera-orbit="0deg 75deg 2.5m"
+      environment-image="neutral" 
+      shadow-intensity="1" 
+      exposure="1.2"
+      shadow-softness="0.9"
+      autoplay
+      loading="eager">
+    </model-viewer>
+  </div>
+</section>
+
+
+
+<section class="section-3d">  
+
+  <div class="viewer-wrapper">
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+    </div>
+    <model-viewer 
+      id="modelViewer"
+      src="Napis Ping Pong 2025.glb" 
+      alt="Model 3D" 
+      camera-controls 
+      auto-rotate 
+      rotation-per-second="25deg"
+      camera-orbit="0deg 75deg 2.5m"
+      environment-image="neutral" 
+      shadow-intensity="1" 
+      exposure="1.2"
+      shadow-softness="0.9"
+      autoplay
+      loading="eager">
+    </model-viewer>
+  </div>
+</section>
+
+
+<section class="section-3d">  
+
+  <div class="viewer-wrapper">
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+    </div>
+    <model-viewer 
+      id="modelViewer"
+      src="malpki11.glb" 
+      alt="Model 3D" 
+      camera-controls 
+      auto-rotate 
+      rotation-per-second="25deg"
+      camera-orbit="0deg 75deg 2.5m"
+      environment-image="neutral" 
+      shadow-intensity="1" 
+      exposure="1.2"
+      shadow-softness="0.9"
+      autoplay
+      loading="eager">
+    </model-viewer>
+  </div>
+</section>
+
+
 <section class="waves">  
       <h2>Szalone interaktywne projekty?</h2>
 
@@ -705,6 +899,8 @@ main {
 
 <div class="scene2">
 </div></section>
+
+
 
   <section id="kontakt">
     <h2>Kontakt</h2>
@@ -1142,38 +1338,109 @@ generateCarousel();
   requestAnimationFrame(tick);
 </script>
 
+
 <script>
-  const sun = document.querySelector(".sun");
-  const moon = document.querySelector(".moon");
-  const earth = document.querySelector(".earth");
-  const textLeft = document.querySelector(".text-left");
-  const textRight = document.querySelector(".text-right");
+    const modelViewer = document.getElementById('modelViewer');
+    const loading = document.getElementById('loading');
+    const fileInput = document.getElementById('fileInput');
+    
+    let autoRotateEnabled = true;
+    let animationsEnabled = true;
 
-  window.addEventListener("scroll", () => {
-    let scrollY = window.scrollY;
+    // Hide loading when model loads
+    modelViewer.addEventListener('load', () => {
+      loading.style.display = 'none';
+    });
 
-    // Skala bazowa zależna od szerokości ekranu
-    let baseScale = window.innerWidth / 1920;
+    // Show loading when model starts loading
+    modelViewer.addEventListener('progress', (event) => {
+      if (event.detail.totalProgress < 1) {
+        loading.style.display = 'block';
+      }
+    });
 
-    // Słońce
-    let sunScale = baseScale + scrollY * 0.0003;
-    sun.style.transform = `translate(-50%, ${scrollY * 0.2}px) scale(${sunScale})`;
+    // File upload handling
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        loading.style.display = 'block';
+        modelViewer.src = url;
+        
+        // Clean up the previous object URL after some time
+        setTimeout(() => {
+          URL.revokeObjectURL(url);
+        }, 10000);
+      }
+    });
 
-    // Księżyc
-    let moonScale = baseScale + scrollY * 0.0006;
-    moon.style.transform = `translate(-50%, ${scrollY * -0.1}px) scale(${moonScale})`;
+    function toggleAutoRotate() {
+      autoRotateEnabled = !autoRotateEnabled;
+      if (autoRotateEnabled) {
+        modelViewer.setAttribute('auto-rotate', '');
+      } else {
+        modelViewer.removeAttribute('auto-rotate');
+      }
+    }
 
-    // Napisy poruszają się razem z księżycem
-    textLeft.style.transform = `translateY(${scrollY * -0.1}px)`;
-    textRight.style.transform = `translateY(${scrollY * -0.1}px)`;
+    function resetCamera() {
+      modelViewer.cameraOrbit = '0deg 75deg 2.5m';
+      modelViewer.cameraTarget = '0m 0m 0m';
+      modelViewer.fieldOfView = '45deg';
+    }
 
-    // --- Ziemia ---
-    const earthOffsetStart = window.innerHeight * 0.5; 
-    let earthScroll = Math.max(0, scrollY - earthOffsetStart);
-    let earthScale = baseScale + earthScroll * 0.0004;
-    earth.style.transform = `translate(-50%, ${earthScroll * -0.08}px) scale(${earthScale})`;
-  });
-</script>
+    function toggleAnimation() {
+      const availableAnimations = modelViewer.availableAnimations;
+      if (availableAnimations && availableAnimations.length > 0) {
+        animationsEnabled = !animationsEnabled;
+        if (animationsEnabled) {
+          modelViewer.play();
+        } else {
+          modelViewer.pause();
+        }
+      } else {
+        alert('Ten model nie zawiera animacji');
+      }
+    }
 
+    // Error handling
+    modelViewer.addEventListener('error', (event) => {
+      loading.style.display = 'none';
+      alert('Błąd podczas ładowania modelu: ' + event.detail.type);
+    });
+
+    // Drag and drop functionality
+    document.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      document.body.style.backgroundColor = 'rgba(240, 187, 28, 0.1)';
+    });
+
+    document.addEventListener('dragleave', (e) => {
+      if (!e.relatedTarget) {
+        document.body.style.backgroundColor = '';
+      }
+    });
+
+    document.addEventListener('drop', (e) => {
+      e.preventDefault();
+      document.body.style.backgroundColor = '';
+      
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        const file = files[0];
+        if (file.name.endsWith('.glb') || file.name.endsWith('.gltf')) {
+          const url = URL.createObjectURL(file);
+          loading.style.display = 'block';
+          modelViewer.src = url;
+          
+          setTimeout(() => {
+            URL.revokeObjectURL(url);
+          }, 10000);
+        } else {
+          alert('Obsługiwane są tylko pliki .glb i .gltf');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
