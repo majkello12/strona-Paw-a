@@ -548,7 +548,16 @@ main {
       --poster-color: transparent;
       --progress-bar-color: #f0bb1c;
       --progress-bar-height: 4px;
-    }
+  border-radius: 12px; /* opcjonalnie */
+}
+
+model-viewer.black-bg {
+  background-color: #000; /* czarne tło */
+}
+
+model-viewer.white-bg {
+  background-color: #fff; /* białe tło */
+}
 
     .controls {
       margin-top: 20px;
@@ -808,13 +817,12 @@ main {
 
 <section class="section-3d">  
   <h1>Interaktywne modele 3D</h1>
-
   <div class="viewer-wrapper">
-    <div class="loading" id="loading">
+    <div class="loading">
       <div class="spinner"></div>
     </div>
     <model-viewer 
-      id="modelViewer"
+      class="white-bg"
       src="model3D.glb" 
       alt="Model 3D" 
       camera-controls 
@@ -831,16 +839,13 @@ main {
   </div>
 </section>
 
-
-
 <section class="section-3d">  
-
   <div class="viewer-wrapper">
-    <div class="loading" id="loading">
+    <div class="loading">
       <div class="spinner"></div>
     </div>
     <model-viewer 
-      id="modelViewer"
+      class="white-bg"
       src="Napis Ping Pong 2025.glb" 
       alt="Model 3D" 
       camera-controls 
@@ -857,15 +862,13 @@ main {
   </div>
 </section>
 
-
 <section class="section-3d">  
-
   <div class="viewer-wrapper">
-    <div class="loading" id="loading">
+    <div class="loading">
       <div class="spinner"></div>
     </div>
     <model-viewer 
-      id="modelViewer"
+      class="black-bg"
       src="malpki11.glb" 
       alt="Model 3D" 
       camera-controls 
@@ -881,6 +884,7 @@ main {
     </model-viewer>
   </div>
 </section>
+
 
 
 <section class="waves">  
