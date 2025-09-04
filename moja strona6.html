@@ -10,33 +10,43 @@
 <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.4.0/dist/model-viewer.min.js"></script>
   <title>MGrafik z Kielc.</title>
 
-  <link href="https://fonts.cdnfonts.com/css/geomanist" rel="stylesheet">
-  <style>
-    :root{
-      --bg: #ffffff;
-      --text: #000000;
-      --neon-pink: rgb(247,61,191);
-      --neon-cyan: rgb(0,255,255);
-      --glass: rgba(255,255,255,0.88);
-      --muted: rgba(0,0,0,0.06);
-      --radius: 14px;
-      --max-width: 1400px;
-      --gap: 24px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0}
-    body{
-      font-family:'Geomanist', system-ui, -apple-system, "Segoe UI";
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.45;
-      scroll-behavior:smooth;
-    }
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%;height:auto}
+<style>
+  :root{
+    --bg: #ffffff;
+    --text: #000000;
+    --neon-pink: rgb(247,61,191);
+    --neon-cyan: rgb(0,255,255);
+    --glass: rgba(255,255,255,0.88);
+    --muted: rgba(0,0,0,0.06);
+    --radius: 14px;
+    --max-width: 1400px;
+    --gap: 24px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{
+    font-family:'Montserrat', system-ui, -apple-system, "Segoe UI";
+    font-weight:600; /* SemiBold */
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    background:var(--bg);
+    color:var(--text);
+ line-height: 1.45;    scroll-behavior:smooth;
+  }
+
+  /* klasa dla tekstu ze skalowaniem */
+  .scaled-text{
+    display:inline-block;       /* żeby transform działał tylko na tekście */
+    transform: scaleY(1.07);    /* podnosi tekst o 7% */
+    transform-origin: bottom;   /* lepiej wygląda, gdy podstawa liter zostaje */
+  }
+
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%;height:auto}
+
 
     header{
       position:fixed;left:0;right:0;top:0;
@@ -100,13 +110,13 @@ nav#mobile-menu {
   background: linear-gradient(
     270deg, 
     #8b3df2, 
-    #d15dff, 
-    #e091ff, 
+    #ff4867, 
+    #c533ff, 
     #614ED9, 
-    #0B7ABF
+    #37b2ff
   );
   background-size: 400% 400%; /* większy obszar do animacji */
-  animation: gradientMove 5s ease infinite;
+  animation: gradientMove 30s ease infinite;
 
   padding: 40px 20px;
   border-radius: 0;  
@@ -141,7 +151,7 @@ nav#mobile-menu a {
   border-radius: 8px;
   font-weight: 700;
   color: #ffffff;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   text-align: center;
   transition: background 0.2s;
 }
@@ -180,7 +190,7 @@ nav#mobile-menu a:hover {
 }    .hero p{ font-size:clamp(18px,6vw,24px);margin-top:12px;font-weight:400;text-transform:uppercase }
 
     .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
-    .intro h2{ font-size:clamp(110px,3.6vw,134px);line-height:1.18;animation:fadeUp .7s ease both }
+    .intro h2{ font-size:clamp(110px,3.6vw,134px);line-height:1.1;animation:fadeUp .7s ease both }
 .intro h2 {
   transition: transform 0.3s ease;
   will-change: transform;
@@ -194,19 +204,18 @@ nav#mobile-menu a:hover {
                 .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(50px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
 .hero h1 {
-    font-size: clamp(40px, 6vw, 70px);
-    margin-top:160px; /* przesunięcie w dół */
-    line-height: 1.1;
+    font-size: clamp(58px, 6vw, 4px);  /* mniejszy tekst */
+    margin-top: 170px; 
+    line-height: 1.2;                   /* lepsza interlinia */
     animation: pulseText 5s ease-in-out infinite;
   }
 
   .hero p {
-    font-size: clamp(23px, 4vw, 20px);
+    font-size: clamp(13px, 4vw, 18px);
     max-width: 220px;      /* ogranicza szerokość, wymusza łamanie */
     margin: 12px auto 0;   /* centrowanie pod h1 */
     line-height: 1.4;
     text-align: center;    /* centrowanie tekstu */
-    word-break: break-word;
   }
 
     .hero{
@@ -220,16 +229,23 @@ nav#mobile-menu a:hover {
     }
 
 
-  .hero-mobile { display: block; }
+  .hero-mobile { display: block;
+      font-size: clamp(23px, 4vw, 20px);
+ }
 
   .hero-mobile p span {
-    display: block;        /* każda fraza w osobnej linii */
     margin-bottom: 6px;    /* odstęp między linijkami */
     text-align: center;    /* centrowanie */
+        font-size: clamp(13px, 4vw, 20px);
+
   }
 }
 
-    .portfolio{ max-width:var(--max-width);margin:32px auto;padding:28px 20px;display:grid;gap:24px;grid-template-columns:1fr;justify-items:center }
+    .portfolio{ 
+      max-width:var(--max-width);
+      margin:32px auto;padding:28px 20px;
+      display:grid;gap:24px;grid-template-columns:1fr;
+      justify-items:center }
     .card{ width:100%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86));border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:transform .33s ease,box-shadow .33s ease;border:1px solid rgba(0,0,0,0.04);opacity:0;transform:translateY(10px);animation:cardIn .5s ease forwards }
     .card:nth-child(1){ animation-delay:.08s } .card:nth-child(2){ animation-delay:.16s } .card:nth-child(3){ animation-delay:.24s } .card:nth-child(4){ animation-delay:.32s }
     @keyframes cardIn{ to{opacity:1;transform:none} }
@@ -314,13 +330,15 @@ nav#mobile-menu a:hover {
           text-align: center; /* jeśli ma być do lewej na małym ekranie */
   font-size: clamp(1.1rem, 4vw, 2rem);
 
-      max-width:900px;background:rgba(0, 0, 0, 0.26);padding:28px;border-radius:12px;color:#fff;animation:fadeUp .7s both }
+      max-width:900px;background:rgba(0, 0, 0, 0.247);padding:28px;border-radius:12px;color:#fff;animation:fadeUp .7s both }
 
     #about{ max-width:var(--max-width);margin:40px auto;padding:20px; display:grid; grid-template-columns: 1fr; gap:20px }
     .about-row{ display:flex;gap:20px;align-items:center;flex-wrap:wrap }
     .about-photo{ width:220px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.08) }
     .about-text{ flex:1; min-width:260px;padding:18px; background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92)); border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.04) }
-    .about-text h2{ margin:0 0 8px }
+    .about-text h2{ 
+      font-size: clamp(1.1rem, 4vw, 2rem);
+      margin:0 0 8px }
     .about-cards{ display:grid; gap:18px; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); margin-top:18px }
     .about-card{ padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.86)); box-shadow:0 8px 26px rgba(0,0,0,0.06); display:flex;gap:12px;align-items:center }
     .about-card img{ width:56px;height:56px;border-radius:8px;object-fit:cover }
@@ -343,23 +361,31 @@ nav#mobile-menu a:hover {
     .social-icon:hover{ transform: scale(1.3); filter:brightness(1.4) }
 
 
-  footer {
-    color: white; /* kolor tekstu */
-    text-align: center;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, 
-      #f23d4c, 
-      #d15dff, 
-      #ff576d, 
-      #614ED9, 
-      #0B7ABF
-    );
-  }
+footer {
+  position: relative;  /* lub fixed/sticky jeśli chcesz */
+  left: 0;
+  right: 0;
+  width: 100vw;        /* 100% viewport width */
+  margin: 0;
+  padding: 36px 0;     /* usuń boczne paddingi, jeśli chcesz pełną szerokość gradientu */
+  text-align: center;
+  color: #ffffff;
+   overflow: hidden;
 
-    footer{ padding:36px 20px;margin:0 auto 40px; 
-        color:#ffffff;overflow:hidden;;background-size:300% 300%;
-        animation:footerGradient 9s ease infinite;box-shadow:0 20px 80px rgba(0, 0, 0, 0.267) }
+  background: linear-gradient(to right, 
+    #f23d4c, 
+    #d15dff, 
+    #ff1333, 
+    #715bff, 
+    #0B7ABF
+  );
+  background-size: 300% 300%;
+  animation: footerGradient 19s ease infinite;
+
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.267);
+
+}
+
     @keyframes footerGradient{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
     .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:18px }
     .footer-links a{ color:#ffffff;font-weight:500 }
@@ -376,6 +402,7 @@ nav#mobile-menu a:hover {
 
     .side-scroll {
   transition: transform 0.3s ease;
+
   will-change: transform;
 }
 
@@ -473,6 +500,8 @@ main {
     }
     .last h2 {
         margin-bottom: 20px;
+                font-size: 48px;
+
     }
 
             .about:hover{
@@ -494,7 +523,24 @@ main {
 
 
         .waves {
-        text-align: center;}
+        text-align: center;
+}
+
+.wave-title {
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 104px;
+}
+
+
+.wave-title.medium {
+  font-size: clamp(8px, 5vw, 58px);
+  margin-top: 100px;
+}
+
+.wave-title.large {
+  font-size: clamp(40px, 6vw, 70px);
+}
 
 
         #waves-header {
@@ -502,6 +548,7 @@ main {
       top: 0; left: 0;
       width: 100%; height: 300px;
       overflow: hidden;
+      
     }
 
     canvas {
@@ -525,6 +572,8 @@ main {
   align-items: center;
   flex-direction: column; /* elementy jeden pod drugim */
   text-align: center;
+              font-size: 48px;
+
 }
 
     .viewer-wrapper {
@@ -534,14 +583,16 @@ main {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0);
       border-radius: 20px;
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 2px solid rgb(255, 255, 255);
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 
+
+    
     model-viewer {
       width: 100%;
       height: 100%;
@@ -681,15 +732,13 @@ model-viewer.white-bg {
 </section>
 
   <section class="intro">
-    <h2>Tworzę nowoczesne i&nbsp;unikalne projekty graficzne oraz&nbsp;strony www</h2>
-  </section>
-
+ <h2><span class="scaled-text">Tworzę nowoczesne i&nbsp;unikalne projekty graficzne oraz&nbsp;strony www</span></h2>
   <section id="portfolio" class="portfolio" aria-label="portfolio">
     <article class="card">
       <img src="app01.jpg" alt="Projekt: Strona responsywna">
       <div class="card-body">
         <h3>Strona responsywna</h3>
-        <p>Nowoczesny projekt strony internetowej — design, UX i wdrożenie.</p>
+        <p>Nowoczesny projekt strony internetowej — design, UX i&nbsp;wdrożenie.</p>
       </div>
     </article>
 
@@ -697,7 +746,7 @@ model-viewer.white-bg {
       <img src="korona model.png" alt="Projekt: Model 3D & grafika">
       <div class="card-body">
         <h3>Model 3D & grafika</h3>
-        <p>Wizualizacje 3D i fotorealistyczne grafiki produktowe.</p>
+        <p>Wizualizacje 3D i&nbsp;fotorealistyczne grafiki produktowe.</p>
       </div>
     </article>
 
@@ -705,7 +754,7 @@ model-viewer.white-bg {
       <img src="grafiki 3d napiss2.png" alt="Projekt: Branding & logo">
       <div class="card-body">
         <h3>Branding & logo</h3>
-        <p>Identyfikacje wizualne, logotypy i materiał reklamowy.</p>
+        <p>Identyfikacje wizualne, logotypy i&nbsp;materiał reklamowy.</p>
       </div>
     </article>
 
@@ -713,15 +762,14 @@ model-viewer.white-bg {
       <img src="appp1.png" alt="Projekt: Grafiki 3D">
       <div class="card-body">
         <h3>Grafiki 3D</h3>
-        <p>Animacje i grafiki 3D przygotowane pod social media i&nbsp;kampanie.</p>
+        <p>Animacje i&nbsp;grafiki 3D przygotowane pod social media i&nbsp;kampanie.</p>
       </div>
     </article>
   </section>
 
 
   <section class="intro">
-  <h2 class="side-scroll">
-    Oferuję: Plakaty, okładki, strony www, design, nadruki na&nbsp;koszulkę.
+ <h2><span class="scaled-text">Oferuję: Plakaty, okładki, strony www, design, nadruki na&nbsp;koszulkę.</span></h2>    
   </h2>
 </section>
   <section id="gallery" class="gallery-slider" aria-label="Prezentacja grafik">
@@ -751,7 +799,7 @@ model-viewer.white-bg {
   <section class="section-image-text">
     <div class="content">
       <h2>Zróbmy razem dobry projekt !</h2>
-      <p>Od pomysłu, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i skuteczny rezultat.</p>
+      <p>Od pomysłu, po wdrożenie — oferuję kompleksowe podejście, które gwarantuje efektowny i&nbsp;skuteczny rezultat.</p>
     </div>
   </section>
 
@@ -769,7 +817,7 @@ model-viewer.white-bg {
         <img src="appp5.jpg" alt="Oryginalne logo">
         <div>
           <h3>Oryginalne logo</h3>
-          <p class="muted">Projekty które przyciągają uwagę — nietypowe układy i efekty animacji.</p>
+          <p class="muted">Projekty które przyciągają uwagę — nietypowe układy i&nbsp;efekty animacji.</p>
         </div>
       </div>
 
@@ -785,7 +833,7 @@ model-viewer.white-bg {
   <img src="marmur blender.png" alt="Kreatywne projekty">
   <div>
     <h3>Kreatywne projekty</h3>
-    <p class="muted">Łączę estetykę z funkcjonalnością, tworząc wyjątkowe doświadczenia wizualne.</p>
+    <p class="muted">Łączę estetykę z&nbsp;funkcjonalnością, tworząc wyjątkowe doświadczenia wizualne.</p>
   </div>
 </div>
 
@@ -793,7 +841,7 @@ model-viewer.white-bg {
   <img src="syntetyk okładka.png" alt="Nowoczesne technologie">
   <div>
     <h3>Nowoczesne technologie</h3>
-    <p class="muted">Wykorzystuję najnowsze narzędzia, aby zapewnić stylowy i nowoczesny efekt.</p>
+    <p class="muted">Wykorzystuję najnowsze narzędzia, aby zapewnić stylowy i&nbsp;nowoczesny efekt.</p>
   </div>
 </div>
   </section>
@@ -841,7 +889,7 @@ model-viewer.white-bg {
 
 <section class="section-3d">  
   <div class="viewer-wrapper">
-    <div class="loading">
+    <div class="loading" id="loading">
       <div class="spinner"></div>
     </div>
     <model-viewer 
@@ -864,7 +912,7 @@ model-viewer.white-bg {
 
 <section class="section-3d">  
   <div class="viewer-wrapper">
-    <div class="loading">
+    <div class="loading" id="loading">
       <div class="spinner"></div>
     </div>
     <model-viewer 
@@ -887,9 +935,9 @@ model-viewer.white-bg {
 
 <section class="section-3d">  
   <div class="viewer-wrapper">
-    <div class="loading">
-      <div class="spinner"></div>
-    </div>
+<div class="loading" id="loading">
+  <div class="spinner"></div>
+</div>
     <model-viewer 
       class="black-bg"
       src="malpki model wireframes.glb" 
@@ -908,24 +956,38 @@ model-viewer.white-bg {
   </div>
 </section>
 
-
-
-<section class="waves">  
-      <h2>Szalone interaktywne projekty?</h2>
-
-  <div id="waves-container">
-  </div>
-</section>
-
-
-<section class="waves">  
-      <h2>To tutaj</h2>
-
-
+<div class="loading" id="loading">
+  <div class="spinner"></div>
 </div>
 
-<div class="scene2">
-</div></section>
+<model-viewer
+  id="modelViewer"
+  class="black-bg"
+  src="malpki11.glb"
+  alt="Model 3D"
+  camera-controls
+  auto-rotate
+  rotation-per-second="25deg"
+  camera-orbit="0deg 75deg 2.5m"
+  environment-image="neutral"
+  shadow-intensity="1"
+  exposure="1.2"
+  shadow-softness="0.9"
+  autoplay
+  loading="eager">
+</model-viewer>
+
+
+
+<section class="waves">  
+  <h2 class="wave-title large">Szalone interaktywne projekty?</h2>
+  <div id="waves-container"></div>
+</section>
+
+<section class="waves">  
+  <h2 class="wave-title medium">To tutaj</h2>
+  <div class="scene2"></div>
+</section>
 
 
 
