@@ -694,6 +694,37 @@ model-viewer.white-bg {
       100% { transform: rotate(360deg); }
     }
 
+
+    .card {
+  width: 300px;
+  margin: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card-image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card img:first-child {
+  width: 100%;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Overlay jako PNG */
+.overlay {
+  position: absolute;
+  top: 20px;   /* pozycja overlay */
+  left: -9px;
+  width: 5px;  /* początkowy rozmiar overlay */
+  height: 5px;
+  object-fit: contain;
+  pointer-events: none;
+  transition: transform 0.2s ease-out;
+}
   </style>
 </head>
 <body>
@@ -758,13 +789,17 @@ model-viewer.white-bg {
       </div>
     </article>
 
-    <article class="card">
-      <img src="appp1.png" alt="Projekt: Grafiki 3D">
-      <div class="card-body">
-        <h3>Grafiki 3D</h3>
-        <p>Animacje i&nbsp;grafiki 3D przygotowane pod social media i&nbsp;kampanie.</p>
-      </div>
-    </article>
+<article class="card">
+  <div class="card-image-wrapper">
+    <img src="appp1.png" alt="Projekt: Grafiki 3D">
+    <img src="appp1overlay.png" class="overlay" alt="Overlay">
+  </div>
+  <div class="card-body">
+    <h3>Grafiki 3D</h3>
+    <p>Animacje i&nbsp;grafiki 3D przygotowane pod social media i&nbsp;kampanie.</p>
+  </div>
+</article>
+
   </section>
 
 
@@ -1531,5 +1566,14 @@ generateCarousel();
       }
     });
   </script>
+  <script>const overlay = document.querySelector('.overlay');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const scale = 0.5 + scrollY / 1900; // regulujesz tempo powiększania
+  overlay.style.transform = `scale(${scale})`;
+});
+</script>
+
 </body>
 </html>
