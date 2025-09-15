@@ -92,7 +92,7 @@ header.transparent {
     1px 1px 0 #000,
    -1px 1px 0 #000,
     1px -1px 0 #000,
-   -1px -1px 0 #000; /* prosty czarny obrys */
+   -1px -1px 0 #000; 
 }
     .logo:hover{
       color:var(--neon-pink);
@@ -140,6 +140,12 @@ nav#mobile-menu {
   left: 0;
   width: 100%;       
   height: 100vh;     
+    text-shadow:
+    1.4px 1.4px 0 #000,
+   -1.4px 1.4px 0 #000,
+    1.4px -1.4px 0 #000,
+   -1.4px -1.4px 0 #000; 
+   
   background: linear-gradient(
     270deg, 
     #8b3df2, 
@@ -203,6 +209,11 @@ nav#mobile-menu a:hover {
       max-width:1100px;padding:36px;border-radius:16px;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0, 0, 0, 0));
       transform-origin:center;animation:fadeUp .7s ease both;
       padding-top: 500px;
+        text-shadow:
+    1px 1px 0 #000,
+   -1px 1px 0 #000,
+    1px -1px 0 #000,
+   -1px -1px 0 #000; 
     }
     @keyframes fadeUp{ from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
 .hero h1 {
@@ -210,6 +221,11 @@ nav#mobile-menu a:hover {
   margin: 0;
   line-height: 1.1;
   animation: pulseText 5s ease-in-out infinite;
+    text-shadow:
+    1px 1px 0 #000,
+   -1px 1px 0 #000,
+    1px -1px 0 #000,
+   -1px -1px 0 #000; 
 }
 
 @keyframes pulseText {
@@ -369,6 +385,11 @@ nav#mobile-menu a:hover {
   color: var(--bg);
   border-radius: 19px;
   margin: 18px 20px;
+    text-shadow:
+    1px 1px 0 #000,
+   -1px 1px 0 #000,
+    1px -1px 0 #000,
+   -1px -1px 0 #000; 
 }
     .section-image-text .content{ 
           text-align: center; /* jeśli ma być do lewej na małym ekranie */
@@ -417,7 +438,11 @@ footer {
   text-align: center;
   color: #ffffff;
    overflow: hidden;
-
+  text-shadow:
+    1px 1px 0 #000,
+   -1px 1px 0 #000,
+    1px -1px 0 #000,
+   -1px -1px 0 #000; 
   background: linear-gradient(to right, 
     #f23d4c, 
     #d15dff, 
@@ -431,9 +456,9 @@ footer {
 }
 
     @keyframes footerGradient{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
-    .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin: 0 0 18px 0; }
-    .footer-links a{ color:#ffffff;font-weight:500 }
-    .copyright{ font-size:.95rem; color:#fff; opacity:.98; text-align:center;  margin: 0;}
+    .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin: 0 0 18px 0 }
+    .footer-links a{ color:#ffffff;font-weight:500;  }
+    .copyright{ font-size:.95rem; color:#fff; opacity:.98; text-align:center;  margin: 0 }
     .muted{ color:rgba(0,0,0,0.62) }
 
     @media(max-width:600px){
