@@ -26,7 +26,12 @@
   }
 
   *{box-sizing:border-box}
-  html,body{height:100%;margin:0}
+html, body {
+  height: 100%;
+  margin: 0;         /* usuwa domyślny margines przeglądarek */
+  padding: 0;        /* usuwa padding */
+  box-sizing: border-box;
+}
   body{
     font-family:'Montserrat', system-ui, -apple-system, "Segoe UI";
     font-weight:600; /* SemiBold */
@@ -34,8 +39,11 @@
     -moz-osx-font-smoothing:grayscale;
     background:var(--bg);
     color:var(--text);
- line-height: 1.45;    scroll-behavior:smooth;
+ line-height: 1.45;    
+ scroll-behavior:smooth;
   }
+
+  
 
   /* klasa dla tekstu ze skalowaniem */
   .scaled-text{
@@ -48,20 +56,44 @@
   img{display:block;max-width:100%;height:auto}
 
 
-    header{
-      position:fixed;left:0;right:0;top:0;
-      display:flex;align-items:center;justify-content:space-between;
-      padding:12px 24px;gap:12px;
-      backdrop-filter:blur(6px) saturate(140%);
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  gap: 12px;
+  backdrop-filter: blur(4px) saturate(140%);
       background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border-bottom:1px solid rgba(0,0,0,0.06);
-      z-index:1200;
-    }
+  z-index: 1200;
+  transition: transform 0.3s ease;
+}
 
-    .logo{
-      font-size:28px;font-weight:800;color:var(--bg);cursor:pointer;
-      transition:color .35s ease, text-shadow .35s ease;
-    }
+header.hide {
+  transform: translateY(-100%);
+}
+
+header.transparent {
+  background: transparent;
+}
+
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--bg);
+  cursor: pointer;
+  transition: color .35s ease, text-shadow .35s ease;
+
+  text-shadow:
+    1px 1px 0 #000,
+   -1px 1px 0 #000,
+    1px -1px 0 #000,
+   -1px -1px 0 #000; /* prosty czarny obrys */
+}
     .logo:hover{
       color:var(--neon-pink);
       text-shadow:0 0 6px rgba(255,150,211,.6), 0 0 18px rgba(255,0,200,.35);
@@ -88,6 +120,7 @@
   border-radius: 3px;
   background: #fff;
   transition: all .36s cubic-bezier(.22,.9,.38,1);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.94); /* delikatny czarny obrys */
 }
 
 .hamburger.active span:nth-child(1) {
@@ -117,7 +150,6 @@ nav#mobile-menu {
   );
   background-size: 400% 400%; /* większy obszar do animacji */
   animation: gradientMove 30s ease infinite;
-
   padding: 40px 20px;
   border-radius: 0;  
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -258,6 +290,17 @@ nav#mobile-menu a:hover {
     @media(min-width:769px){ .portfolio{ grid-template-columns: repeat(2, 1fr) } }
     @media(min-width:1201px){ .portfolio{ grid-template-columns: repeat(4, 1fr) } }
 
+
+    @media (max-width: 480px) {
+  .portfolio {
+    padding: 0 5px;
+    gap: 10px;
+  }
+  .card {
+    max-width: 100%; /* pełna szerokość ekranu */
+  }
+}
+
     .gallery-slider{ max-width:var(--max-width);margin:20px auto;padding:10px;position:relative;overflow:hidden;border-radius:12px }
     .slides{ position:relative;height:480px;}
     .slide{ position:absolute;inset:0;opacity:0;transition:opacity .9s ease;display:flex;align-items:center;justify-content:center }
@@ -296,8 +339,9 @@ nav#mobile-menu a:hover {
   .laptop-text {
     text-align: center; /* jeśli ma być do lewej na małym ekranie */
     max-width: 100%;
-  }
-}
+  margin-bottom: 30px; /* 👈 lekki odstęp pod tekstem */
+}  }
+
 .video-inside {
   position: absolute;
   top: 26%;
@@ -365,9 +409,11 @@ footer {
   position: relative;  /* lub fixed/sticky jeśli chcesz */
   left: 0;
   right: 0;
-  width: 100vw;        /* 100% viewport width */
+  width: 100%;   
+  max-width: 100%; 
   margin: 0;
   padding: 36px 0;     /* usuń boczne paddingi, jeśli chcesz pełną szerokość gradientu */
+  box-sizing: border-box;
   text-align: center;
   color: #ffffff;
    overflow: hidden;
@@ -381,16 +427,13 @@ footer {
   );
   background-size: 300% 300%;
   animation: footerGradient 19s ease infinite;
-
   box-shadow: 0 20px 80px rgba(0, 0, 0, 0.267);
-
 }
 
     @keyframes footerGradient{ 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
-    .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:18px }
+    .footer-links{ display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin: 0 0 18px 0; }
     .footer-links a{ color:#ffffff;font-weight:500 }
-    .copyright{ font-size:.95rem; color:#fff; opacity:.98; text-align:center }
-
+    .copyright{ font-size:.95rem; color:#fff; opacity:.98; text-align:center;  margin: 0;}
     .muted{ color:rgba(0,0,0,0.62) }
 
     @media(max-width:600px){
@@ -421,8 +464,18 @@ footer {
   opacity: 0;
 }
 
+.email wbr {
+  display: none; /* domyślnie nie łamie */
+}
+
+@media (max-width: 480px) {
+  .email wbr {
+    display: inline; /* na małych ekranach pozwalamy na złamanie */
+  }
+}
+
 .carousel-slider img {
-  width: 28vw;
+  width: 100%;
   height: 50vw;
   max-width: 290px;
   max-height: 420px;
@@ -473,10 +526,31 @@ main {
 }
 
 @media (max-width: 768px) {
+
+  .carousel {
+  max-width: 1100px;
+  width: 100%;
+  overflow: hidden;
+  margin: 50px auto;
+    margin-top: 0px;  
+  margin-bottom: -50px; 
+}
   .carousel-slider img {
-    width: 40vw;
+    width: 45vw;
     height: 70vw;
-  }}
+  }
+
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    max-width: 100%;   /* 🔹 usuwa ograniczenie szerokości */
+    width: 100%;       /* 🔹 pełna szerokość */
+    margin: 0;         /* 🔹 usuwa marginesy boczne */
+  }
+
+
+}
 
   @media (max-width: 780px) {
     .last h2 {
@@ -548,14 +622,43 @@ main {
       top: 0; left: 0;
       width: 100%; height: 300px;
       overflow: hidden;
-      
-    }
+      }
 
     canvas {
       display: block;
       width: 100%;
       height: 100%;
     }
+
+
+      @media (max-width: 780px) {
+  .wave-title {
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 54px;
+}
+.wave-title.medium {
+  font-size: clamp(8px, 5vw, 58px);
+  margin-top: 50px;
+}
+    canvas {
+      width: 100%;
+      height: 150%;
+    }
+
+      #waves-header {
+    position: relative; 
+    width: 100%;
+    height: 400px; 
+    overflow: hidden;
+  }
+
+    .waves {
+    padding: 10px;
+    border-radius: 20px;
+  }
+}
+
 
   .scene {
     position: relative;
@@ -572,7 +675,7 @@ main {
   align-items: center;
   flex-direction: column; /* elementy jeden pod drugim */
   text-align: center;
-              font-size: 48px;
+  font-size: 48px;
 
 }
 
@@ -671,8 +774,8 @@ model-viewer.white-bg {
       }
     }
 
-    /* Loading animation */
     .loading {
+     display: none;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -714,17 +817,32 @@ model-viewer.white-bg {
   border-radius: 12px 12px 0 0;
 }
 
-/* Overlay jako PNG */
+
 .overlay {
   position: absolute;
-  top: 20px;   /* pozycja overlay */
-  left: -9px;
-  width: 5px;  /* początkowy rozmiar overlay */
-  height: 5px;
-  object-fit: contain;
+  top: 0;
+  left: 0;
+  width: 100%;      /* 🔹 pełny rozmiar obrazu bazowego */
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
+  transform-origin: center center; /* 🔹 powiększanie od środka */
   transition: transform 0.2s ease-out;
 }
+
+.overlay-shift {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transform-origin: center center;
+  transform: scale(1.4) translateX(-20px); 
+  transition: transform 0.3s ease-out;
+}
+
   </style>
 </head>
 <body>
@@ -762,25 +880,38 @@ model-viewer.white-bg {
   </div>
 </section>
 
+
+
+
   <section class="intro">
  <h2><span class="scaled-text">Tworzę nowoczesne i&nbsp;unikalne projekty graficzne oraz&nbsp;strony www</span></h2>
   <section id="portfolio" class="portfolio" aria-label="portfolio">
-    <article class="card">
-      <img src="app01.jpg" alt="Projekt: Strona responsywna">
-      <div class="card-body">
-        <h3>Strona responsywna</h3>
-        <p>Nowoczesny projekt strony internetowej — design, UX i&nbsp;wdrożenie.</p>
-      </div>
-    </article>
 
-    <article class="card">
+<a href="https://majkello12.github.io/strona-Paw-a/Fotografstrona.html" target="_blank" class="card-link">
+  <article class="card">
+    <img src="app01.jpg" alt="Projekt: Strona responsywna">
+    <div class="card-body">
+      <h3>Strona responsywna</h3>
+      <p>Nowoczesny projekt strony internetowej — design, UX i&nbsp;wdrożenie.</p>
+    </div>
+  </article>
+</a>
+
+<a href="https://www.behance.net/gallery/228204879/3D-Projects" target="_blank" class="card-link">
+  <article class="card">
+    <div class="card-image-wrapper">
       <img src="korona model.png" alt="Projekt: Model 3D & grafika">
-      <div class="card-body">
-        <h3>Model 3D & grafika</h3>
-        <p>Wizualizacje 3D i&nbsp;fotorealistyczne grafiki produktowe.</p>
-      </div>
-    </article>
+      <img src="koronaoverlay.png" class="overlay-shift" alt="Overlay przesuwany">
+    </div>
+    <div class="card-body">
+      <h3>Model 3D & grafika</h3>
+      <p>Wizualizacje 3D i&nbsp;fotorealistyczne grafiki produktowe.</p>
+    </div>
+  </article>
+</a>
 
+<a href="https://www.behance.net/michabaran3
+" target="_blank" class="card-link">
     <article class="card">
       <img src="grafiki 3d napiss2.png" alt="Projekt: Branding & logo">
       <div class="card-body">
@@ -788,18 +919,20 @@ model-viewer.white-bg {
         <p>Identyfikacje wizualne, logotypy i&nbsp;materiał reklamowy.</p>
       </div>
     </article>
+</a>
 
-<article class="card">
-  <div class="card-image-wrapper">
-    <img src="appp1.png" alt="Projekt: Grafiki 3D">
-    <img src="appp1overlay.png" class="overlay" alt="Overlay">
-  </div>
-  <div class="card-body">
-    <h3>Grafiki 3D</h3>
-    <p>Animacje i&nbsp;grafiki 3D przygotowane pod social media i&nbsp;kampanie.</p>
-  </div>
-</article>
-
+<a href="https://www.behance.net/gallery/228204879/3D-Projects" target="_blank" class="card-link">
+  <article class="card">
+    <div class="card-image-wrapper">
+      <img src="appp1.png" alt="Projekt: Grafiki 3D">
+      <img src="appp1overlay.png" class="overlay" alt="Overlay">
+    </div>
+    <div class="card-body">
+      <h3>Grafiki 3D</h3>
+      <p>Animacje i&nbsp;grafiki 3D przygotowane pod social media i&nbsp;kampanie.</p>
+    </div>
+  </article>
+</a>
   </section>
 
 
@@ -821,7 +954,7 @@ model-viewer.white-bg {
   <section class="laptop-section">
       <div class="laptop-text">
     <h2>Lekcje z&nbsp;programów graficznych,</h2>
-    <h3>PS, Ai, Blender</h3>
+    <h2>PS, Ai, Blender</h2>
   </div>
     <div class="laptop-card">
       <img src="laptop.jpg" alt="Mockup laptop" class="mockup">
@@ -898,10 +1031,11 @@ model-viewer.white-bg {
        </div>
     </section>
 
+
 <section class="section-3d">  
   <h1>Interaktywne modele 3D</h1>
   <div class="viewer-wrapper">
-    <div class="loading">
+    <div class="loading" id="loading">
       <div class="spinner"></div>
     </div>
     <model-viewer 
@@ -1035,8 +1169,9 @@ model-viewer.white-bg {
   <img src="ikonamail.svg" class="default" alt="Ikona e-mail" width="40" height="40">
   <img src="ikonamail2.svg" class="hover" alt="Ikona e-mail hover" width="40" height="40">
   <div>
-    <div style="font-weight:800">michalbarangrafik@gmail.com</div>
-    <div class="muted" style="font-size:13px">Wyślij wiadomość</div>
+<div class="email" style="font-weight:800">
+  michalbarangrafik<wbr>@gmail.com
+</div>    <div class="muted" style="font-size:13px">Wyślij wiadomość</div>
   </div>
 </a>
 
@@ -1566,6 +1701,7 @@ generateCarousel();
       }
     });
   </script>
+
   <script>const overlay = document.querySelector('.overlay');
 
 window.addEventListener('scroll', () => {
@@ -1573,6 +1709,77 @@ window.addEventListener('scroll', () => {
   const scale = 0.5 + scrollY / 1900; // regulujesz tempo powiększania
   overlay.style.transform = `scale(${scale})`;
 });
+</script>
+
+<script>
+  const overlayShift = document.querySelector('.overlay-shift');
+
+  // 🔹 parametry początkowe
+  const baseScale = 0.5;       // początkowa skala (np. 70%)
+  const maxScale = 1.4;        // maksymalna skala (np. 150%)
+  const baseX = 0;             // początkowe przesunięcie X (px)
+  const maxTranslateX = -150;  // maksymalne przesunięcie w lewo (px)
+  const baseY = -20;             // początkowe przesunięcie Y (px)
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    // obliczamy progres (0 → 1)
+    const progress = Math.min(scrollY / 1000, 1); 
+
+    // interpolacja skali (od baseScale do maxScale)
+    const scale = baseScale + (maxScale - baseScale) * progress;
+
+    // interpolacja przesunięcia X (od baseX do maxTranslateX)
+    const translateX = baseX + (maxTranslateX - baseX) * progress;
+
+    // interpolacja Y (na razie stałe, ale możesz dodać np. maxTranslateY)
+    const translateY = baseY;
+
+    overlayShift.style.transform = 
+      `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+  });
+</script>
+
+
+<script>
+  let lastScrollTop = 0;
+  const header = document.querySelector("header");
+
+  window.addEventListener("scroll", () => {
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // scroll w dół
+      header.classList.add("hide");
+    } else {
+      // scroll w górę
+      header.classList.remove("hide");
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // zabezpieczenie
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let lastScrollTop = 0;
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        // przewijanie w dół → chowamy i dajemy transparent
+        header.classList.add("hide", "transparent");
+      } else {
+        // przewijanie w górę → pokazujemy i przywracamy gradient
+        header.classList.remove("hide", "transparent");
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  });
 </script>
 
 </body>
