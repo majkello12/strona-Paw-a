@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Model 3D – ruch po osi X przy scrollu</title>
+
+  <!-- Załaduj bibliotekę model-viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      height: 400vh; /* dużo scrolla, żeby było widać efekt */
+    }
+
+    header {
+      text-align: center;
+      padding: 40px;
+      font-size: 1.4rem;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100vh;
+      display: block;
+      background: radial-gradient(circle at center, #000 60%, #111);
+    }
+  </style>
+</head>
+<body>
+  <header>Przewijaj stronę – model przesuwa się po osi X 🧠</header>
+
+  <model-viewer id="model" 
+    src="malpki%20model%20wireframes.glb"
+    alt="Model 3D"
+    camera-controls
+    environment-image="neutral"
+    exposure="1.2"
+    shadow-intensity="1"
+    auto-rotate
+    camera-orbit="0deg 75deg 2.5m"
+    autoplay>
+  </model-viewer>
+
+  <script>
+    const modelViewer = document.getElementById('model');
+
+    // Czekamy aż model się załaduje, żeby uzyskać dostęp do sceny
+    modelViewer.addEventListener('load', () => {
+      const model = modelViewer.model; // 3D scene graph
+
+      // Ustawiamy pozycję początkową
+      model.position.x = 0;
+
+      // Reagujemy na przewijanie strony
+      window.addEventListener('scroll', () => {
+        const scrollMax = document.body.scrollHeight - window.innerHeight;
+        const scrollProgress = window.scrollY / scrollMax; // od 0 do 1
+        const maxX = 2; // jak daleko model się przesuwa w jednostkach sceny
+        model.position.x = (scrollProgress - 0.5) * 2 * maxX;
+      });
+    });
+  </script>
+</body>
+</html>

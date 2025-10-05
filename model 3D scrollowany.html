@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Model 3D — przesuwanie po osi X przy scroll</title>
+
+  <!-- model-viewer (Google) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <style>
+    :root { --card-w: 420px; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #f4f6f8;
+      color: #111;
+      -webkit-font-smoothing:antialiased;
+    }
+    header { text-align:center; padding:32px 16px; }
+    header h1 { margin:0; font-size:20px; font-weight:600; }
+
+    .spacer { height:120vh; }
+
+    /* karta */
+    .card {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+    }
+
+    .viewer-outer {
+      width:100%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:visible; /* wrapper będzie translokowany */
+    }
+
+    /* ten element będzie przesuwany po X */
+    .viewer-wrapper {
+      width: var(--card-w);
+      height: var(--card-w);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 8px 24px rgba(15,20,30,0.12);
+      will-change: transform;
+      /* lekki easing (render smoothing) */
+      transition: transform 0.12s linear;
+      position: relative;
+    }
+
+    model-viewer {
+      width:100%;
+      height:100%;
+      display:block;
+      background: linear-gradient(180deg,#000,#111);
+    }
+
+    .loading {
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2;
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+    }
+
+    .spinner {
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      border:4px solid rgba(255,255,255,0.2);
+      border-top-color: #fff;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .card-body { text-align:center; }
+    .card h3 { margin:0; font-size:20px; }
+    .card p { margin:6px 0 0; color:#555; }
+
+    footer { height:60vh; }
+    @media (max-width:520px) {
+      :root { --card-w: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  </header>
+
+  <div class="spacer"></div>
+
+  <article class="card">
+    <div class="viewer-outer">
+      <div class="viewer-wrapper" id="viewerWrapper">
+        <div class="loading" id="loading"><div class="spinner"></div></div>
+
+        <model-viewer
+          id="modelViewer"
+          src="malpki%20model%20wireframes.glb"
+          alt="Model 3D"
+          camera-controls
+          auto-rotate
+          environment-image="neutral"
+          shadow-intensity="1"
+          exposure="1.2"
+          loading="eager">
+        </model-viewer>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <h3>Branding & logo</h3>
+      <p>Identyfikacje wizualne</p>
+    </div>
+  </article>
+
+  <div class="spacer"></div>
+  <footer></footer>
+
+  <script>
+    // elementy
+    const wrapper = document.getElementById('viewerWrapper');
+    const modelViewer = document.getElementById('modelViewer');
+    const loading = document.getElementById('loading');
+
+    // pokaż/ukryj loader podczas ładowania
+    modelViewer.addEventListener('load', () => { loading.style.display = 'none'; });
+    modelViewer.addEventListener('progress', (e) => {
+      if (e.detail && e.detail.totalProgress < 1) loading.style.display = 'flex';
+    });
+    modelViewer.addEventListener('error', (e) => {
+      loading.style.display = 'none';
+      console.error('model-viewer error', e);
+    });
+
+    // optymalny update scroll (rAF)
+    let latestScroll = 0;
+    let ticking = false;
+
+    function onScroll() {
+      latestScroll = window.scrollY;
+      requestTick();
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+      }
+      ticking = true;
+    }
+
+    function update() {
+      const docHeight = document.documentElement.scrollHeight;
+      const winH = window.innerHeight;
+      const maxScroll = Math.max(1, docHeight - winH);
+      const progress = Math.min(1, Math.max(0, latestScroll / maxScroll)); // 0..1
+
+      // mapa: progress 0 -> -maxShift, progress 0.5 -> 0, progress 1 -> +maxShift
+      const maxShift = Math.min(window.innerWidth * 0.45, 520); // max przesunięcie
+      const shift = (progress * 2 - 1) * maxShift;
+
+      // ustaw transformację (przesunięcie po osi X)
+      wrapper.style.transform = `translateX(${shift}px) translateZ(0)`;
+
+      ticking = false;
+    }
+
+    // eventy
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => requestAnimationFrame(update), { passive: true });
+
+    // ustaw początkową pozycję
+    requestAnimationFrame(update);
+  </script>
+</body>
+</html>
