@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zdrowie i Choroby</title>
+  <title>Parkinson Polska</title>
   <style>
     * {
       margin: 0;
@@ -14,7 +14,7 @@
 
     body {
       background: #fff;
-      color: #333;
+      color: #000000;
       line-height: 1.6;
     }
 
@@ -23,7 +23,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: linear-gradient(90deg, #0d98ba, #2ecc71);
+      background: linear-gradient(90deg, #5c65af, #29327d);
       color: white;
       display: flex;
       align-items: center;
@@ -71,7 +71,7 @@
       width: 100%;
       height: 100vh;
       background: white;
-      color: #0d98ba;
+      color: #29327d;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -86,7 +86,7 @@
 
     nav a {
       text-decoration: none;
-      color: #0d98ba;
+      color: #217137;
       font-size: 2rem;
       margin: 20px 0;
       transition: color 0.3s;
@@ -100,8 +100,8 @@
       position: absolute;
       top: 20px;
       right: 30px;
-      font-size: 2rem;
-      color: #0d98ba;
+      font-size: 22rem;
+      color: #217137;
       cursor: pointer;
       border: none;
       background: none;
@@ -117,12 +117,12 @@
     }
 
     section:nth-child(even) {
-      background: #f7f7f7;
+      background: #ffffff;
     }
 
     section h2 {
       font-size: 4rem;
-      color: #0d98ba;
+      color: #217137;
       margin-bottom: 20px;
     }
 
@@ -130,7 +130,6 @@
       max-width: 100%;
       border-radius: 10px;
       margin: 20px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     footer {
@@ -179,6 +178,49 @@
         display: none;
       }
     }
+
+      #sport p {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 17px;
+    line-height: 1.7;
+    color: #000000; 
+    text-align: justify; 
+    margin-top: 15px;
+  }
+
+    footer {
+      background: linear-gradient(90deg, #5c65af, #29327d);
+    color: #f0f0f0;          
+    text-align: center;      
+    padding: 20px 10px;       
+    font-family: 'Roboto', sans-serif; 
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+
+   .footer-links {
+    margin-bottom: 10px;
+  }
+
+  .footer-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: #4db6ac; /* delikatny kolor podświetlenia przy najechaniu */
+  }
+
+  footer p {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.8;
+  }
   </style>
 </head>
 <body>
@@ -202,8 +244,12 @@
 
 
 <section id="sport">
+  <img src="Ping Pong Parkinson.jpg">
+
   <h2>Sport</h2>
-<img src="inkiipow-7h9wGq4IUdE-unsplash.jpg">
+  <img src="druzyna.jpg">
+  <img src="druzyna2.jpg">
+
 <p>Aktywność fizyczna odgrywa niezwykle ważną rolę w życiu osób z chorobą Parkinsona. Regularny ruch pomaga utrzymać sprawność mięśni, poprawia koordynację i równowagę, a także wspiera ogólne samopoczucie. Ćwiczenia takie jak nordic walking, joga, pływanie czy taniec mogą znacząco spowolnić postęp objawów choroby. Warto dobierać aktywność do swoich możliwości i konsultować plan ćwiczeń z fizjoterapeutą.</p>
 </section>
 
@@ -255,7 +301,10 @@
   </div>
 </section>
 
+<footer>
+  <p>© 2025 Parkinson Polska – Wszystkie prawa zastrzeżone</p>
 
+</footer>
 
   <script>
     const hamburger = document.getElementById("hamburger");
