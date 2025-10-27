@@ -28,13 +28,13 @@
   *{box-sizing:border-box}
 html, body {
   height: 100%;
-  margin: 0;         /* usuwa domyślny margines przeglądarek */
-  padding: 0;        /* usuwa padding */
+  margin: 0;        
+  padding: 0;       
   box-sizing: border-box;
 }
   body{
     font-family:'Montserrat', system-ui, -apple-system, "Segoe UI";
-    font-weight:600; /* SemiBold */
+    font-weight:600; 
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     background:var(--bg);
@@ -45,11 +45,10 @@ html, body {
 
   
 
-  /* klasa dla tekstu ze skalowaniem */
   .scaled-text{
-    display:inline-block;       /* żeby transform działał tylko na tekście */
-    transform: scaleY(1.07);    /* podnosi tekst o 7% */
-    transform-origin: bottom;   /* lepiej wygląda, gdy podstawa liter zostaje */
+    display:inline-block;      
+    transform: scaleY(1.07);    
+    transform-origin: bottom;   
   }
 
   a{color:inherit;text-decoration:none}
@@ -111,7 +110,7 @@ header.transparent {
   grid-auto-rows: 1fr;
   gap: 6px;
   cursor: pointer;
-  z-index: 1001; /* żeby zawsze było na wierzchu */
+  z-index: 1001; 
   position: relative;
 }
 
@@ -120,7 +119,7 @@ header.transparent {
   border-radius: 3px;
   background: #fff;
   transition: all .36s cubic-bezier(.22,.9,.38,1);
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.94); /* delikatny czarny obrys */
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.94); 
 }
 
 .hamburger.active span:nth-child(1) {
@@ -154,7 +153,7 @@ nav#mobile-menu {
     #614ED9, 
     #37b2ff
   );
-  background-size: 400% 400%; /* większy obszar do animacji */
+  background-size: 400% 400%; 
   animation: gradientMove 30s ease infinite;
   padding: 40px 20px;
   border-radius: 0;  
@@ -233,7 +232,7 @@ nav#mobile-menu a:hover {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2); /* lekko większe, np. 3% */
+    transform: scale(1.2); 
   }
 }    .hero p{ font-size:clamp(18px,6vw,24px);margin-top:12px;font-weight:400;text-transform:uppercase }
 
@@ -252,18 +251,18 @@ nav#mobile-menu a:hover {
                 .intro{ max-width:var(--max-width);margin:36px auto;padding:0 20px;text-align:center }
     .intro h2{ font-size:clamp(50px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
 .hero h1 {
-    font-size: clamp(58px, 6vw, 4px);  /* mniejszy tekst */
+    font-size: clamp(58px, 6vw, 4px);  
     margin-top: 170px; 
-    line-height: 1.2;                   /* lepsza interlinia */
+    line-height: 1.2;                   
     animation: pulseText 5s ease-in-out infinite;
   }
 
   .hero p {
     font-size: clamp(13px, 4vw, 18px);
-    max-width: 220px;      /* ogranicza szerokość, wymusza łamanie */
-    margin: 12px auto 0;   /* centrowanie pod h1 */
+    max-width: 220px;     
+    margin: 12px auto 0;  
     line-height: 1.4;
-    text-align: center;    /* centrowanie tekstu */
+    text-align: center;    
   }
 
     .hero{
@@ -282,8 +281,8 @@ nav#mobile-menu a:hover {
  }
 
   .hero-mobile p span {
-    margin-bottom: 6px;    /* odstęp między linijkami */
-    text-align: center;    /* centrowanie */
+    margin-bottom: 6px;    
+    text-align: center;    
         font-size: clamp(13px, 4vw, 20px);
 
   }
@@ -313,7 +312,7 @@ nav#mobile-menu a:hover {
     gap: 10px;
   }
   .card {
-    max-width: 100%; /* pełna szerokość ekranu */
+    max-width: 100%; 
   }
 }
 
@@ -333,8 +332,8 @@ nav#mobile-menu a:hover {
     .laptop-card{ width:100%;position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.84));box-shadow:0 16px 60px rgba(0,0,0,0.10);border:1px solid rgba(0,0,0,0.05) }
     .laptop-card .mockup{ width:100%;display:block;height:auto }
     .laptop-text {
-  text-align: left;        /* wyrównanie do lewej */
-  max-width: 300px;        /* żeby na dużych ekranach nie było za szerokie */
+  text-align: left;        
+  max-width: 300px;       
 }
 
 .laptop-text h2 {
@@ -349,13 +348,13 @@ nav#mobile-menu a:hover {
 
 @media (max-width: 768px) {
   .laptop-section {
-    flex-direction: column; /* elementy jeden pod drugim */
-    text-align: center;     /* możesz też ustawić left, jeśli chcesz */
+    flex-direction: column; 
+    text-align: center;     
   }
   .laptop-text {
-    text-align: center; /* jeśli ma być do lewej na małym ekranie */
+    text-align: center; 
     max-width: 100%;
-  margin-bottom: 30px; /* 👈 lekki odstęp pod tekstem */
+  margin-bottom: 30px;
 }  }
 
 .video-inside {
@@ -373,7 +372,7 @@ nav#mobile-menu a:hover {
 .video-inside video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* dopasowanie wypełniające */
+  object-fit: cover; 
   display: block;
 }
 .section-image-text { 
@@ -392,7 +391,7 @@ nav#mobile-menu a:hover {
    -1px -1px 0 #000; 
 }
     .section-image-text .content{ 
-          text-align: center; /* jeśli ma być do lewej na małym ekranie */
+          text-align: center; 
   font-size: clamp(1.1rem, 4vw, 2rem);
 
       max-width:900px;background:rgba(0, 0, 0, 0.247);padding:28px;border-radius:12px;color:#fff;animation:fadeUp .7s both }
@@ -415,7 +414,7 @@ nav#mobile-menu a:hover {
   background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
   border-radius: 16px;
   box-shadow: 0 14px 50px rgba(0,0,0,0.06);
-  text-align: center; /* <-- dodaj to */
+  text-align: center; 
 }    #kontakt h2{ font-size:clamp(22px,3vw,34px);margin:0 0 6px }
     #kontakt p{ margin:10px 0 18px;color:rgba(0,0,0,0.8) }
     .contact-row{ display:flex;gap:18px;flex-wrap:wrap;justify-content:center }
@@ -427,13 +426,13 @@ nav#mobile-menu a:hover {
 
 
 footer {
-  position: relative;  /* lub fixed/sticky jeśli chcesz */
+  position: relative;  
   left: 0;
   right: 0;
   width: 100%;   
   max-width: 100%; 
   margin: 0;
-  padding: 36px 0;     /* usuń boczne paddingi, jeśli chcesz pełną szerokość gradientu */
+  padding: 36px 0;    
   box-sizing: border-box;
   text-align: center;
   color: #ffffff;
@@ -490,12 +489,12 @@ footer {
 }
 
 .email wbr {
-  display: none; /* domyślnie nie łamie */
+  display: none; 
 }
 
 @media (max-width: 480px) {
   .email wbr {
-    display: inline; /* na małych ekranach pozwalamy na złamanie */
+    display: inline; 
   }
 }
 
@@ -569,9 +568,9 @@ main {
 
 @media (max-width: 768px) {
   .carousel {
-    max-width: 100%;   /* 🔹 usuwa ograniczenie szerokości */
-    width: 100%;       /* 🔹 pełna szerokość */
-    margin: 0;         /* 🔹 usuwa marginesy boczne */
+    max-width: 100%;  
+    width: 100%;     
+    margin: 0;        
   }
 
 
@@ -698,7 +697,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* elementy jeden pod drugim */
+  flex-direction: column; 
   text-align: center;
   font-size: 48px;
 
@@ -727,15 +726,15 @@ main {
       --poster-color: transparent;
       --progress-bar-color: #f0bb1c;
       --progress-bar-height: 4px;
-  border-radius: 12px; /* opcjonalnie */
+  border-radius: 12px; 
 }
 
 model-viewer.black-bg {
-  background-color: #000; /* czarne tło */
+  background-color: #000; 
 }
 
 model-viewer.white-bg {
-  background-color: #fff; /* białe tło */
+  background-color: #fff; 
 }
 
     .controls {
@@ -847,11 +846,11 @@ model-viewer.white-bg {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;      /* 🔹 pełny rozmiar obrazu bazowego */
+  width: 100%;     
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  transform-origin: center center; /* 🔹 powiększanie od środka */
+  transform-origin: center center; 
   transition: transform 0.2s ease-out;
 }
 
@@ -867,6 +866,86 @@ model-viewer.white-bg {
   transform: scale(1.4) translateX(-20px); 
   transition: transform 0.3s ease-out;
 }
+
+
+.qr-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f9f9f9;
+}
+
+.qr-section h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.qr-section p {
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 30px;
+  justify-items: center;
+  align-items: start;
+  margin: 0 auto;
+  max-width: 1000px; 
+}
+
+@media (max-width: 900px) {
+  .qr-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 1 kolumna na telefonach */
+@media (max-width: 600px) {
+  .qr-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.qr-item {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+  min-height: 320px;
+}
+
+.qr-item img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.qr-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+
+.qr-item h3 {
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.qr-item p {
+  font-size: 0.9em;
+  color: #666;
+}
+
 
   </style>
 </head>
@@ -996,6 +1075,52 @@ model-viewer.white-bg {
     </div>
   </section>
 
+
+<section class="qr-section" id="qr">
+  <h2>Kody QR</h2>
+  <p>Zeskanuj jeden z poniższych kodów, aby szybko przejść do wybranej strony:</p>
+
+  <div class="qr-grid">
+    <div class="qr-item">
+      <a href="https://majkello12.github.io/strona-Paw-a/moja%20strona6.html" target="_blank"></a>
+      <img src="qr moja strona.png" alt="Kod QR - Rezerwacja" />
+      </a>
+      <h3>Michał Baran Grafik</h3>
+      <p>Strona internetowa</p>
+    </div>
+
+  <div class="qr-grid">
+    <div class="qr-item">
+      <a href="http://www.kuklik.com.pl/" target="_blank"></a>
+      <img src="mancowaqr.png" alt="Kod QR - Rezerwacja" />
+      </a>
+      <h3>Mancowa Checz</h3>
+      <p>Strona internetowa</p>
+    </div>
+
+
+      <div class="qr-grid">
+    <div class="qr-item">
+      <a href="https://samuelstudio.com/Wieswycinanki4.html" target="_blank"></a>
+      <img src="wycinanki.png" alt="Kod QR - WhatsApp" />
+      </a>
+      <h3>Animowane wycinanki</h3>
+      <p>Strona internetowa</p>
+    </div>
+
+
+      <div class="qr-grid">
+    <div class="qr-item">
+      <a href="https://majkello12.github.io/strona-Paw-a/Strona%20kosmiczna%20muzyczna%2007.html" target="_blank"></a>
+      <img src="strona3.png" alt="Kod QR - Lokalizacja" />
+      </a>
+      <h3>Michał Baran Music</h3>
+      <p>Strona internetowa</p>
+    </div>
+ </div>
+</section>
+
+
   <section id="about">
     <div class="about-row">
       <img src="gora.png" alt="Moje zdjęcie" class="about-photo">
@@ -1039,6 +1164,8 @@ model-viewer.white-bg {
 </div>
   </section>
 
+
+  
 
   <section class="last" id="ostatnie">
     <h2>Ostatnie realizacje:</h2>
@@ -1265,7 +1392,6 @@ document.querySelectorAll('video[autoplay]').forEach(v => {
   v.play().catch(() => {});
 });
 
-// Zapobiega "wiszącym spójnikom" w tekstach
 (function noWidows() {
   const selectors = 'h1,h2,h3,h4,p,li,blockquote,button,a,span,label';
   document.querySelectorAll(selectors).forEach(el => {
@@ -1278,7 +1404,6 @@ document.querySelectorAll('video[autoplay]').forEach(v => {
   });
 })();
 
-// Efekt przesuwania w intro
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.intro h2').forEach(el => {
     const rect = el.getBoundingClientRect();
@@ -1292,7 +1417,6 @@ window.addEventListener('scroll', () => {
       v.play().catch(()=>{});
     });
 
-// Slider oparty na klasie .slide (prosty, niestylizowany)
 (function sliderInit() {
   const slides = document.querySelectorAll('.slide');
   let idx = 0;
@@ -1304,7 +1428,6 @@ window.addEventListener('scroll', () => {
   }, 3000);
 })();
 
-// Obsługa klawisza Escape
 (function focusClicks() {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
@@ -1314,7 +1437,6 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-// Efekt przesuwania w bok dla elementów .side-scroll
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.side-scroll').forEach(el => {
     const rect = el.getBoundingClientRect();
@@ -1323,7 +1445,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Inicjalizacja Swipera dla gallery-slider
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof Swiper !== 'undefined') {
     new Swiper('.gallery-slider', {
@@ -1441,7 +1562,6 @@ generateCarousel();
 </script>
 
 <script>
-  // --- Klasy Grad i Noise ---
   class Grad {
     constructor(x, y, z) { this.x = x; this.y = y; this.z = z; }
     dot2(x, y) { return this.x * x + this.y * y; }
@@ -1494,7 +1614,6 @@ generateCarousel();
     }
   }
 
-  // --- Konfiguracja fal ---
   const config = {
     lineColor: "#fff",
     backgroundColor: "rgba(255,255,255,0.2)",
@@ -1509,7 +1628,6 @@ generateCarousel();
     maxCursorMove: 120
   };
 
-  // --- Canvas i logika ---
   const container = document.getElementById("waves-container");
   const canvas = document.createElement("canvas");
   container.appendChild(canvas);
@@ -1631,19 +1749,16 @@ generateCarousel();
     let autoRotateEnabled = true;
     let animationsEnabled = true;
 
-    // Hide loading when model loads
     modelViewer.addEventListener('load', () => {
       loading.style.display = 'none';
     });
 
-    // Show loading when model starts loading
     modelViewer.addEventListener('progress', (event) => {
       if (event.detail.totalProgress < 1) {
         loading.style.display = 'block';
       }
     });
 
-    // File upload handling
     fileInput.addEventListener('change', (event) => {
       const file = event.target.files[0];
       if (file) {
@@ -1651,7 +1766,6 @@ generateCarousel();
         loading.style.display = 'block';
         modelViewer.src = url;
         
-        // Clean up the previous object URL after some time
         setTimeout(() => {
           URL.revokeObjectURL(url);
         }, 10000);
@@ -1687,13 +1801,11 @@ generateCarousel();
       }
     }
 
-    // Error handling
     modelViewer.addEventListener('error', (event) => {
       loading.style.display = 'none';
       alert('Błąd podczas ładowania modelu: ' + event.detail.type);
     });
 
-    // Drag and drop functionality
     document.addEventListener('dragover', (e) => {
       e.preventDefault();
       document.body.style.backgroundColor = 'rgba(240, 187, 28, 0.1)';
@@ -1731,7 +1843,7 @@ generateCarousel();
 
 window.addEventListener('scroll', () => {
   const scrollY = window.scrollY;
-  const scale = 0.5 + scrollY / 1900; // regulujesz tempo powiększania
+  const scale = 0.5 + scrollY / 1900; 
   overlay.style.transform = `scale(${scale})`;
 });
 </script>
@@ -1739,26 +1851,21 @@ window.addEventListener('scroll', () => {
 <script>
   const overlayShift = document.querySelector('.overlay-shift');
 
-  // 🔹 parametry początkowe
-  const baseScale = 0.5;       // początkowa skala (np. 70%)
-  const maxScale = 1.4;        // maksymalna skala (np. 150%)
-  const baseX = 0;             // początkowe przesunięcie X (px)
-  const maxTranslateX = -150;  // maksymalne przesunięcie w lewo (px)
-  const baseY = -20;             // początkowe przesunięcie Y (px)
+  const baseScale = 0.5;      
+  const maxScale = 1.4;       
+  const baseX = 0;            
+  const maxTranslateX = -150;  
+  const baseY = -20;            
 
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
 
-    // obliczamy progres (0 → 1)
     const progress = Math.min(scrollY / 1000, 1); 
 
-    // interpolacja skali (od baseScale do maxScale)
     const scale = baseScale + (maxScale - baseScale) * progress;
 
-    // interpolacja przesunięcia X (od baseX do maxTranslateX)
     const translateX = baseX + (maxTranslateX - baseX) * progress;
 
-    // interpolacja Y (na razie stałe, ale możesz dodać np. maxTranslateY)
     const translateY = baseY;
 
     overlayShift.style.transform = 
@@ -1775,14 +1882,12 @@ window.addEventListener('scroll', () => {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
-      // scroll w dół
       header.classList.add("hide");
     } else {
-      // scroll w górę
       header.classList.remove("hide");
     }
 
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // zabezpieczenie
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
   });
 </script>
 
@@ -1795,10 +1900,8 @@ window.addEventListener('scroll', () => {
       let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop > lastScrollTop && scrollTop > 50) {
-        // przewijanie w dół → chowamy i dajemy transparent
         header.classList.add("hide", "transparent");
       } else {
-        // przewijanie w górę → pokazujemy i przywracamy gradient
         header.classList.remove("hide", "transparent");
       }
 
