@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="logoicon" type="image/png" sizes="32x32" href="logoicon32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logoicon16x16.png">
-  <title>About</title>
+  <title>O mnie</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -14,13 +14,12 @@
       padding: 0;
       box-sizing: border-box;
     }
-
-
     body { 
       font-family: 'Roboto', sans-serif; 
       background: #ffffff; 
       color: #040404; 
-      letter-spacing: 0.4px;
+
+        letter-spacing: 0.4px;
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
@@ -104,6 +103,8 @@
   .text-section h2 {
     text-align: left;
       font-size: 1.7rem;
+
+        margin-left: 0%;
 margin-bottom: 10%;
   }
 
@@ -147,7 +148,7 @@ margin-top: 6%;
   max-width: 500px;
   margin: auto;
   overflow: hidden;
-  border: 1px solid #000;
+  border: 1px solid #000; /* <-- to działa na div */
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -156,7 +157,7 @@ margin-top: 6%;
 
 .opinie-carousel:hover {
   transform: scale(1.011);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15); /
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15); /* efekt uniesienia przy hover */
 }
 
 
@@ -200,7 +201,27 @@ margin-top: 6%;
 .next { right: 10px; }
 
 
+.see-more-btn3 {
+  font-size: 24px;
+  padding: 14px 36px;
+  background: #000;
+  color: #f0bb1c;
+  border: none;
+  border-radius: 30px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 0%;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.4s ease, background 0.3s ease;  
+  display: inline-block; 
+}
 
+.see-more-btn3:hover {
+  background: #000000;
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+}
 
 
 .text-section a {
@@ -274,42 +295,6 @@ margin-top: 6%;
 }
 
 
-.review-btn2 {
-  font-size: 24px;
-  padding: 14px 36px;
-  background: #000;
-  color: #f0bb1c;
-  border: none;
-  border-radius: 30px;
-  margin-left: 12%;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: transform 0.4s ease, background 0.3s ease;  
-  display: inline-block; 
-}
-
-@media (max-width: 768px) {
-  .review-btn2 {
-    display: block;   
-    align-items: center;
-    align-content: center;
-    align-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-}
-
-
-.review-btn2:hover {
-  background: #000000;
-  transform: scale(1.1);
-  transition: transform 0.4s ease;
-}
-
-.review-btn2:active {
-  transform: scale(0.97);
-  box-shadow: 0 3px 8px rgba(0, 123, 255, 0.2);
-}
 
 
 .about-container {
@@ -352,6 +337,7 @@ margin-top: 6%;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    display: ;
   }
 
   .about-text {
@@ -370,7 +356,13 @@ margin-top: 6%;
     width: 100%;
     text-align: center;
   }
-}
+
+.see-more-btn3 {
+  padding: 14px 79px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: -15%;
+}}
 
 
 .inline-image {
@@ -406,6 +398,7 @@ margin-top: 6%;
       margin-bottom: 21%;
 }    
 .text-section h2 {
+  margin-bottom: -9%;
   margin-top: 4%;
 }}
 
@@ -426,14 +419,9 @@ margin-top: 6%;
     margin-left: 30%;
 }
 
+.review-btn {
+}}
 
-
-    header,
-header *,
-.hamburger,
-.hamburger * {
-  box-sizing: content-box !important;
-}
 
 
 </style>
@@ -441,54 +429,55 @@ header *,
 </head>
 <body>
 
-  <div id="header-placeholder"></div>
+<div id="headerpl-placeholder"></div>
 
 
 <section class="text-section">
   <div class="about-container">
     <div class="about-text">
-      <h2>Hello and welcome</h2>
+      <h2>Witaj na mojej stronie</h2>
       <div class="separator"></div>
 
       <p>
-        My name&nbsp;is <strong>Paweł Pauksztełło</strong>, and&nbsp;I’m&nbsp;a&nbsp;motion designer from&nbsp;Poland. 
-        I&nbsp;create animations that help businesses, organizations, and&nbsp;individuals communicate their messages clearly and&nbsp;effectively. 
-        Whether you&nbsp;need to&nbsp;explain a&nbsp;concept, promote an&nbsp;event, or&nbsp;tell a&nbsp;story, 
-        I&nbsp;deliver high-quality animations that engage and&nbsp;inform.
-      </p>
+        Nazywam się <strong>Paweł Pauksztełło</strong> i&nbsp;jestem motion designerem z&nbsp;Polski.  
+  Tworzę animacje, które pomagają firmom, organizacjom i&nbsp;osobom prywatnym komunikować swoje przekazy w&nbsp;sposób jasny i&nbsp;skuteczny.  
+  Niezależnie od&nbsp;tego, czy&nbsp;potrzebujesz wyjaśnić jakiś koncept, promować wydarzenie czy&nbsp;opowiedzieć historię,  
+  dostarczam wysokiej jakości animacje, które angażują i&nbsp;informują.
+</p>
 
-      <p>
-        Many people struggle to&nbsp;present their ideas in&nbsp;a&nbsp;way that captures attention and&nbsp;makes an&nbsp;impact. 
-        Animation solves this problem by&nbsp;turning information into a&nbsp;visual experience that is&nbsp;easy to&nbsp;understand and&nbsp;remember. 
-        I&nbsp;focus on&nbsp;creating animations that support my&nbsp;clients’ goals—whether in&nbsp;education, marketing, or&nbsp;storytelling. 
-        See examples of&nbsp;my&nbsp;work: 
-        <a href="work.html" class="highlight-link">Portfolio</a>
-      </p>
+<p>
+  Wiele osób ma trudność z&nbsp;przedstawieniem swoich pomysłów w&nbsp;sposób, który przyciąga uwagę i&nbsp;robi wrażenie.  
+  Animacja rozwiązuje ten problem, przekształcając informacje w&nbsp;wizualne doświadczenie, które jest łatwe do&nbsp;zrozumienia i&nbsp;zapamiętania.  
+  Skupiam się na&nbsp;tworzeniu animacji wspierających cele moich klientów — niezależnie od&nbsp;tego, czy&nbsp;działają w&nbsp;edukacji, marketingu, czy&nbsp;opowiadaniu historii.  
+  Zobacz przykłady moich prac:  
+  <a href="portfolio.html" class="highlight-link">Portfolio</a>
+</p>
 
-      <p>
-        I&nbsp;also specialize in&nbsp;visualizing Christian themes, helping churches and&nbsp;faith-based organizations 
-        share their messages in&nbsp;a&nbsp;meaningful way. 
-        <a href="christian-animations.html" class="highlight-link">Christian Animation</a>
+<p>
+  Specjalizuję się także w&nbsp;wizualizowaniu motywów chrześcijańskich, pomagając kościołom i&nbsp;organizacjom religijnym  
+  przekazywać ich przesłanie w&nbsp;sposób pełen znaczenia.
+        <a href="christian-animations.html" class="highlight-link">Animacja Chrześcijańska</a>
       </p>
 
 
           <img src="fotopawla.jpg" alt="Paweł Pauksztełło - Motion Designer" class="inline-image">
 
       <p>
-        Outside of&nbsp;work, I&nbsp;spend time with&nbsp;my&nbsp;wife and&nbsp;three sons. 
-        I’m also involved in&nbsp;my&nbsp;parish as&nbsp;a&nbsp;lector and&nbsp;help organize Worship events in&nbsp;my&nbsp;city.
+         Poza pracą spędzam czas z&nbsp;moją żoną i&nbsp;trzema synami.  
+  Jestem również zaangażowany w&nbsp;życie mojej parafii jako lektor oraz pomagam organizować wydarzenia uwielbieniowe w&nbsp;moim mieście.
+</p>
+
+<p>
+  Potrzebujesz animacji, która uczyni Twój przekaz jasnym i&nbsp;angażującym — współpracujmy!
       </p>
 
-      <p>
-        If you need an animation that makes your message clear and&nbsp;engaging, let’s&nbsp;work together!
-      </p>
-
-      <div class="review-container2">
-      <button class="review-btn2" onclick="window.location.href='contact.html'">
-          Contact Me
+      <div class="see-more-container">
+        <button class="see-more-btn3" onclick="window.location.href='contactpl.html'">
+          Skontaktuj się
         </button>
       </div>
     </div>
+
     <div class="about-image">
       <img src="fotopawla.jpg" alt="Paweł Pauksztełło - Motion Designer">
     </div>
@@ -502,7 +491,7 @@ header *,
 
 
     <div class="section-header9">
-    <h2>What Clients Say</h2>
+    <h2>Opinie klientów</h2>
     <div class="separator8"></div>
   </div>
 
@@ -541,72 +530,20 @@ header *,
 
 <div class="review-container">
   <button class="review-btn" onclick="window.location.href='https://www.google.com/maps/place/Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach/@46.423669,-84.4270629,3z/data=!4m18!1m9!3m8!1s0xac688efcb209881f:0x50fac03e7d6b27cb!2sSamuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach!8m2!3d46.423669!4d-84.4270629!9m1!1b1!16s%2Fg%2F11lzkl8mz_!3m7!1s0xac688efcb209881f:0x50fac03e7d6b27cb!8m2!3d46.423669!4d-84.4270629!9m1!1b1!16s%2Fg%2F11lzkl8mz_?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D'">
-    Write a review
+    Napisz recenzje
   </button>
 </div>
 </section>
 
+<div id="footerpl-placeholder"></div>
 
-<div id="footer-placeholder"></div>
-
-
-<script>
-document.addEventListener("contextmenu", (e) => {
-  e.preventDefault();
-});
-
-document.addEventListener("keydown", (e) => {
-  if (
-    (e.ctrlKey && (e.key === "s" || e.key === "u")) ||
-    (e.ctrlKey && e.shiftKey && e.key === "I")
-  ) {
-    e.preventDefault();
-  }
-});
-</script>
-
-<script>
-  document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-  });
-</script>
-
-<script>
-document.addEventListener('keydown', function(e) {
-  if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c')) {
-    e.preventDefault();
-  }
-});
-</script>
-
-<script>
-const track = document.querySelector('.opinie-track');
-const slides = document.querySelectorAll('.opinia');
-const prevBtn = document.querySelector('.prev');
-const nextBtn = document.querySelector('.next');
-let currentIndex = 0;
-
-function showSlide(index) {
-  if (index < 0) index = slides.length - 1;
-  if (index >= slides.length) index = 0;
-  currentIndex = index;
-  track.style.transform = `translateX(-${index * 100}%)`;
-}
-
-prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
-nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
-
-setInterval(() => {
-  showSlide(currentIndex + 1);
-}, 4000);
-</script>
 
 
 <script>
-  fetch("header.html")
+  fetch("headerpl.html")
     .then(response => response.text())
     .then(html => {
-      const placeholder = document.getElementById("header-placeholder");
+      const placeholder = document.getElementById("headerpl-placeholder");
       const shadowRoot = placeholder.attachShadow({ mode: "open" });
       shadowRoot.innerHTML = html;
 
@@ -643,12 +580,13 @@ window.addEventListener("scroll", () => {
 </script>
 
 <script>
-  fetch("footer.html")
+  fetch("footerpl.html")
     .then(response => response.text())
     .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
+      document.getElementById("footerpl-placeholder").innerHTML = data;
     });
 </script>
+
 
 
 </body>

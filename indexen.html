@@ -1,197 +1,38 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="logoicon" type="image/png" sizes="32x32" href="logoicon32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logoicon16x16.png">
   <title>Samuel Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-
-
-body {
-  font-family: "Source Sans 3", sans-serif; 
-  letter-spacing: 0.4px;
+   
+    body { 
+      font-family: 'Roboto', sans-serif; 
+      background: #fff; 
+      color: #333; 
+      margin: 0; 
+      padding: 0; 
+        letter-spacing: 0.4px;
   font-weight: 400;
   font-style: normal;
-  background: #fff;
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
   height: 100%;
-}
-
-h3, .gallery-section h2, .section-header h2, 
-.text-section, .text-section0, .separator, .separator0, 
-.separator2, .reel-link, .video-overlay2 {
-  margin-left: 14%; 
-}
-
-@media (max-width: 768px) {
-  h3,
-  .gallery-section h2,
-  .section-header h2,
-  .text-section,
-  .text-section0,
-  .separator,
-  .separator0,
-  .separator2,
-  .reel-link,
-  .video-overlay2 {
-    margin-left: 5%;
-  }
-}
-
-
-header {
-  background-color: #f0bb1c;
-  height: 90px;
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  top: 0;
-  width: 100%;
-z-index: 1000;
-  transition: top 0.4s ease; 
-}
-header.hidden {
-  top: -100px;
-  opacity: 0; 
-}
-
-
-.logo-container {
-  display: flex;
-  align-items: center;  
-  justify-content: center;
-  overflow: visible;
-    margin: 0;
-    z-index: 1050;
-}
-
-.logo-container img {
- width: auto;
- display: block;
-   height: 90px;  
-  width: auto;
-}
-
-
-@media (max-width: 768px) {
-
-  .logo-container img {
-    max-height: 200px;
-  }
-}
-
-    .center-links {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      flex-wrap: wrap;
-    }
-
-    .center-links a {
-      color: #000000;
-      text-decoration: none;
-      font-size: 22px;
-      font-weight: 700;
-      padding: 1px 26px;
-      transition: color 0.3s;
-    }
-    .center-links a:hover {
-      color: #ffffff;
-        transform: scale(1.05);
-
+      user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
     }
 
 
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 22px;
-  cursor: pointer;
-  z-index: 1100;
-}
-
-.hamburger span {
-  display: block;
-  height: 3px;
-  background: #000;
-  border-radius: 2px;
-  transition: all 0.4s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-.mobile-menu {
-  position: fixed;
-  top: -100%;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: #f0bb1c;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: top 0.5s ease;
-  z-index: 1050;
-}
-
-.mobile-menu a {
-  font-size: 1.5rem;
-  margin: 15px 0;
-  text-decoration: none;
-  color: #000;
-      font-weight: 600;
-      padding: 1px 6px;
-      transition: color 0.3s;
-}
-
-    .mobile-menu a:hover {
-      color: #ffffff;
-    }
-
-
-
-@media (max-width: 768px) {
-  .center-links {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
-}
-
-.break-desktop {
-  display: none;
-}
-
-@media (min-width: 769px) {
-  .break-desktop {
-    display: inline;
-  }
-}
 img {
   -webkit-user-drag: none;
   -webkit-user-select: none;
@@ -207,114 +48,41 @@ img {
   .line-break-sm {
     display: inline;
   }
-  .white-section {
-  background: rgb(255, 255, 255);
-  padding: 80px 20px;
+
 }
 
 .text-video-container {
   display: flex;
   justify-content: center; 
   align-items: flex-start; 
-  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   flex-wrap: wrap; 
 }
 .bottom-video {
-  margin-top: 5px;
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
   
   }
 .bottom-video video {
   width: 10%;
   border-radius: 20px;
  }
-}
 
-.white-section {
-  background: #fff;
-  padding: 80px 20px;
-}
-
-.white-section .top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-
-
-.white-section .video-col video {
-  width: 100%;
-  height: auto;
-}
-
-.video-col2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1000px;
-  overflow: hidden;
-  margin-top: -40px; 
-  margin-bottom: -130px;
-  margin: -40px auto -130px auto; 
-}
-
-.video-col2 video {
-  width: 100%;
-  height: auto;
-  max-height: 80vh;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-@media (max-width: 768px) {
-
-.video-col2 video {
-  margin-top: 400px; 
-  margin-bottom: 130px;
-  margin: -40px auto -130px auto; 
-}
-.text-col22 {
-    order: 2;
- margin-top: 60%;
-    text-align: left;
-}}
 
 .separator2 {
   width: 180px;
   height: 7px;
   background-color: #f0bb1c;
-  margin-top: 30px;
-  margin-bottom: 50px;
   transform: scaleX(0);
   transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
 }
 
 
-@media (max-width: 768px) {
-  .white-section .top-row {
-    flex-direction: column;
-    text-align: left;
-  }
-
-}
-
 .separator8 {
   width: 180px;
   height: 7px;
   background-color: #f0bb1c;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  margin-left: 15%;
   transform: scaleX(0);
   transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
@@ -324,9 +92,6 @@ img {
   width: 180px;
   height: 7px;
   background-color: #f0bb1c;
-  margin-top: 30px;
-  margin-bottom: 50px;
-    margin-left: 0px;  
   transform: scaleX(0);
   transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
@@ -337,19 +102,11 @@ img {
   width: 180px;
   height: 7px;
   background-color: #f0bb1c;
-  margin-top: 30px;
-  margin-bottom: 50px;
-    margin-left: -51%;  
-  transform: scaleX(0);
-  animation: drawLine 4s ease-in-out infinite;
 }
 .separator8 {
   width: 180px;
   height: 7px;
   background-color: #f0bb1c;
-  margin-top: 30px;
-  margin-bottom: 50px;
-  margin-left: 10%;
   transform: scaleX(0);
   transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
@@ -364,14 +121,11 @@ img {
 
 .text-1,
 .text-3 {
-  margin-top: 70px;
-  margin-left: 14%;
   font-size: 22px;
 }
 
 .text-2,
 .text-4 {
-  margin-left: 10%; 
   font-size: 22px;
 }
 
@@ -380,88 +134,41 @@ img {
   .text-3,
     .text-2,
 .text-4 {
-    margin-left: 20px;
-      margin-top: 70px;
-
-    margin-right: 20px;
     font-size: 22px;
   }}
 
 
-  :root {
-  --section-left-margin: 14%; 
-  --section-left-margin-mobile: 5%;
-}
-
-.white-section {
-  background: #fff;
-  padding: 80px 20px;
-}
-
-.white-section .top-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.left-margin {
-  margin-left: var(--section-left-margin);
-}
 
 .separator {
   width: 180px;
   height: 7px;
   background-color: #f0bb1c;
-  margin: 30px 0 50px 0;
   transform: scaleX(0);
   transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
 }
 
-@media (max-width: 768px) {
-  .left-margin {
-    margin-left: var(--section-left-margin-mobile);
-    margin-right: var(--section-left-margin-mobile);
-  }
-
-  .white-section .top-row {
-    flex-direction: column;
-    text-align: left;
-  }
-}
 
 
-.para-top {
-  margin-left: -38%;   
-}
-
-.para-bottom {
-  margin-left: 14%;   /
-  margin-right: 10%;
-}
-
-@media (max-width: 768px) {
-  .para-top {
-    margin-left: 0%;
-    margin-right: 5%;
-  }
-  .para-bottom {
-    margin-left: 6%;
-        margin-top: 0%;
-
-  }
+.separator00 {
+  width: 180px;
+  height: 7px;
+  background-color: #f0bb1c;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: drawLine 4s ease-in-out infinite;
+  margin-top: 7%;
+  margin-bottom: 7%;
+  margin-left: 25%;
 }
 
 
     .video-section {
       position: relative;
       width: 100%;
-   height: 115ch;
-
+      height: 95ch;
       overflow: hidden;
+      
     }
     .video-section video {
       position: absolute;
@@ -470,91 +177,99 @@ img {
       transform: translate(-50%, -50%);
       object-fit: cover;
       z-index: 0;
-    }
+        }
+
+
     .video-overlay {
       position: relative;
       z-index: 1;
       text-align: center;
-      padding-top: 190px;
-    }
+      padding-top: 210px;
+          }
     .video-overlay h1 {
-      font-size: 49px;
-       letter-spacing: 0px;
-           margin-bottom: 100px;
-           margin-top: -10px;
+      font-size: 3rem;
+      letter-spacing: 0px;
       color: #f0bb1c;
     }
 
     .video-overlay .btn {
-      padding: 12px 29px;
-          flex: 1 1 300px;     
-    max-width: 350px;     
-    min-width: 300px;    
+    padding: 12px 29px;
+    flex: 1 1 300px;     
+    margin: 20px 0;
+    max-width: 350px;    
+    min-width: 350px;    
     text-align: center;
-      background: #f0bb1c;
-      color: rgb(29, 29, 29);
-      border-radius: 65px;
-      font-size: 25px;
-      font-weight: 500;
-      font-family: 'Roboto', sans-serif;
-      transition: transform 0.4s ease;
-      margin: 20px 15px 0 0;      
-      cursor: pointer;
+    background: #f0bb1c;
+    color: rgb(29, 29, 29);
+    border-radius: 65px;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    transition: transform 0.4s ease;
+    cursor: pointer;
     }
 
     @media (max-width: 768px) {
-    .video-overlay h1 {
-    font-size: 1.6rem;
-text-align: center;
-  }
 
-  .video-overlay h4 {
-    font-size: 1.1rem;
-    
-  }
-
-
-   .video-overlay .btn {
-  margin: 10 auto;
-   }
+.separator00 {
+  margin-left: 14%;
 }
 
-        .video-overlay .btn:hover {
-              font-family: 'Roboto', sans-serif;
-                    background: #e2af16;
-        transform: scale(1.1);
+          .video-overlay {
+      padding-top: 170px;
+      padding-bottom: 150px;
+          }
+
+    .video-overlay h1 {
+    font-size: 2.4rem;
+        margin-left: 10%;  
+                margin-right: 10%;  
+    text-align: center;
+   }  .video-overlay h4 {
+    font-size: 1.4rem;
+            margin-left: 10%;  
+                margin-right: 10%;  
+
+      }
+
+   .video-overlay .btn {
+    margin-left: 0;  
+        padding: 12px 20px;
+            max-width: 350px;    
+    min-width: 270px;    
+
+
+   }}
+
+   .video-overlay .btn:hover {
+    font-family: 'Roboto', sans-serif;
+    background: #e2af16;
+    transform: scale(1.1);
     }
     
-
-
 
 .video-overlay .separator {
     width: 150px;           
     height: 7px;             
     background-color: #f0bb1c; 
-        margin: 0 auto 40px;
-
-margin-top: 5ch;  
-
     transform: scaleX(0);
+    align-items: center;
     transform-origin: center;
-animation: drawLine 5s ease-in-out infinite;}
-
-
+     margin: 0 auto;
+     margin-top: 35px;
+     margin-bottom: 35px;
+animation: drawLine 4s ease-in-out infinite;}
 
 @media (max-width: 700px) {
     .video-overlay .separator {
         width: 120px;
-        margin-top: 6ch;  
-    }
-}
+    }}
 
 
     .video-section3 {
       position: relative;
       width: 100%;
-   height: 80ch;
-
+      height: 80ch;
       overflow: hidden;
     }
     .video-section3 video {
@@ -577,11 +292,9 @@ animation: drawLine 5s ease-in-out infinite;}
       width: 100%;
       height: 60vh;
       overflow: hidden;
-        padding: 0;           
   margin: 0;    
     flex-direction: column;
   align-items: center; 
-  padding: 5rem;
      }
     .video-hero .video-wrapper {
   height: 300px;
@@ -604,7 +317,6 @@ animation: drawLine 5s ease-in-out infinite;}
 
 .content {
   text-align: center;
-  margin-top: 5rem;
     margin-bottom: 0;    
 
 }
@@ -642,7 +354,6 @@ animation: drawLine 5s ease-in-out infinite;}
   left: 50%;
   color: rgb(0, 0, 0);
   text-align: center;
-  padding: 20px;
   z-index: 2;
   max-width: 90%;
 }
@@ -655,7 +366,6 @@ animation: drawLine 5s ease-in-out infinite;}
   color: #f0bb1c;
   border: none;
   border-radius: 30px;
-  margin-top: 40px;
   cursor: pointer;
   transition: background 0.3s ease;
 }
@@ -665,7 +375,6 @@ animation: drawLine 5s ease-in-out infinite;}
   transform: scale(1.1);
   transition: transform 0.4s ease;
 }
-
 
 
 .nav.menu {
@@ -680,8 +389,6 @@ animation: drawLine 5s ease-in-out infinite;}
    h2 {
       color: #050505;
        font-size: 33px;
-      margin-bottom: 30px;
-        margin-top: -15px; 
 
     }
 
@@ -697,95 +404,80 @@ animation: drawLine 5s ease-in-out infinite;}
   font-size: 22px;
   color: black;
   border-radius: 38px;
-        margin-bottom: 20px;
-
-
 
 }
     h6 {
       color: #050505;
        font-size: 33px;
-      margin-bottom: 30px;
-        margin-top: -15px; 
-        margin-left: 14%;
+            position: absolute; 
+    z-index: 10; 
     }
 
     h4 {
-       font-size: 31px;
+       font-size: 2rem;
        color: rgb(255, 255, 255);
-   margin-top: -80px;
+       margin: 35px 0;
       }
 
       @media (max-width: 768px) {
       h6 {
-       font-size: 21px;
+       font-size: 1.7rem;
         font-weight: 600;
        color: rgb(0, 0, 0);
-          margin-bottom: 4px;
-          margin-left: 5%;
-       margin-top: -9px;
-}}
+}
+}
    
 .yellow-section {
   font-family: 'Roboto', sans-serif;
   background: #f0bb1c;
-  padding: 160px 0px 60px;
   align-items: center;
-}
+    padding: 1px 0px 60px;
 
-.yellow-section h2 {
-  margin-bottom: 80px; 
-margin-left: -38%;           font-size: 31px;
-}
-
-.yellow-section-bottom-text {
-  margin-top: 60px; 
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: rgb(29, 29, 29);
-}
-
-@media (max-width: 768px) {
-  .yellow-section h2 {
-    margin-bottom: 40px; 
-        font-size: 1.2rem;
-        margin-left: -0%;
   }
-    }
+
     #oferta.yellow-section {
     background-color: hsl(43, 91%, 54%);
   }
 
   .yellow-section h2.yellow-h2 {
-    margin-top: -190px;
-    margin-left: 15%; 
-  font-size: clamp(14px, 3vw, 36px); 
+
+      font-size: 2rem;
+  padding-top: 10%;
+  padding-right: 5%;
+}
+  .yellow-section h2.yellow2-h2 {
+      font-size: 2rem;
+    padding-top: 3%;
 }
 
-  .yellow-section h2.yellow2-h2 {
-   margin-left: 15%;
-   margin-top: 80px;
-  font-size: clamp(14px, 3vw, 36px); 
+
+.yellow-section h2 {
+font-size: 31px;
 }
+
+.yellow-section-bottom-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: rgb(29, 29, 29);
+}
+
 
 @media (max-width: 768px) {
-
   .yellow-section h2.yellow-h2 {
-   margin-left: 44px;
-   margin-bottom: -50px;
-  font-size: clamp(22px, 3vw, 28px); 
+     font-size: 1.4rem; 
+       padding-top: 24%;
 }
 
   .yellow-section h2.yellow2-h2 {
-   margin-left: 35px;
-   margin-top: 60px;
-  font-size: clamp(22px, 3vw, 28px); 
+        font-size: 1.4rem; 
+               padding-top: 4%;
+               padding-bottom: 6%;
 }
 }
 
     .ellipse-video {
       position: absolute;
-      top: 830px;
+      top: 770px;
       left: 50%;
       transform: translateX(-50%);
       width: 200px;
@@ -794,6 +486,7 @@ margin-left: -38%;           font-size: 31px;
       border-radius: 90%/100%;
       z-index: 2;
     }
+    
     .ellipse-video video {
       width: 100%;
       height: 100%;
@@ -802,7 +495,7 @@ margin-left: -38%;           font-size: 31px;
 
     @media (max-width: 768px) {
         .ellipse-video {
-      top: 830px;
+      top: 760px;
     }}
 
 .grid-2x2 {
@@ -818,7 +511,6 @@ margin-left: -38%;           font-size: 31px;
 
 .grid-item {
   background: #fff;
-  padding: 15px;
   border-radius: 39px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   max-width: 400px;
@@ -837,12 +529,10 @@ margin-left: -38%;           font-size: 31px;
 }
 
 .grid-item .desc {
-  margin-top: 10px;
   font-weight: 500;
   color: #000;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .grid-2x2 {
     display: grid;
@@ -850,7 +540,6 @@ margin-left: -38%;           font-size: 31px;
     column-gap: 0;               
     row-gap: 20px;              
     max-width: 90%;
-    margin: 120px auto 0 auto;
     justify-items: center;
     padding: 0 20px;
   }
@@ -873,7 +562,6 @@ margin-left: -38%;           font-size: 31px;
     }
     #kontakt h2 {
       font-size: 2rem;
-      margin-bottom: 15px;
     }
     #kontakt p {
       font-size: 1.1rem;
@@ -904,165 +592,28 @@ a {
 }
 
 
-
-
-.footer {
-  background: #f0bb1c;
-  color: #000000;
-  text-align: center;
-  padding: 30px 20px;
-}
-
-
-.footer-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px; 
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.subscribe-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px; 
-  padding: 10px 25px;
-border: 1px solid #000000;  background: #ffffff;
-  color: #000000;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 120px;
-  transition: 0.3s;
-}
-
-.subscribe-btn img {
-  width: 28px;
-  height: 28px;
-}
-
-.subscribe-btn:hover {
-  background: #000000;
-  color: #ffffff;
-  transform: scale(1.05);
-}
-
-.footer-nav {
-    margin: 15px 0;
-  }
-
-.footer-nav a {
-  margin: 0 15px;
-  color: #000000;
-  font-variant: small-caps;
-  font-weight: bold;
-  font-size: 20px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-nav a:hover {
-  color: #fff;
-  }
-
-   @media (max-width: 700px) {
-  .footer-nav {
-  margin: 5px 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: nowrap;  
-}
-
-.footer-nav a {
-  margin: 0 10px;
-  color: #000000;
-  font-weight: bold;
-  font-size: clamp(16px, 4vw, 20px); 
-  text-decoration: none;
-  white-space: nowrap; 
-}}
-
-.footer-socials {
-  display: flex;             
-  justify-content: center;
-  align-items: flex-end;  
-  
-  gap: 16px;
-  height: 40px;           
-}
-
-.footer-socials a {
-  display: flex;           
-  align-items: flex-end;  
-   
-  justify-content: center;
-  height: 100%;            
-}
-
-.footer-socials a img {
-  width: 38px;
-  height: 32px;
-   max-height: 100%;        
-  width: auto;
-  margin: 0 16px;
-    fill: #ffffff;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.footer-socials a:hover img {
-  transform: scale(1.2);
- filter: brightness(0) saturate(100%);}
-
- @media (max-width: 600px) {
-  .footer-socials {
-    gap: 3px;
-  }
-  .footer-socials a img {
-    width: 28px;
-    height: 24px;
-  }
-}
-
-
-.footer-bottom {
-  border-top: 1px solid #000000;
-  margin-top: 20px;
-  padding-top: 12px;
-  font-size: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.footer-bottom a {
-  color: #000000;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-bottom a:hover {
-  color: #000000;
-}    
-
 .opinie-carousel {
   position: relative;
   max-width: 500px;
   margin: auto;
+  margin-bottom: 50px;
   overflow: hidden;
-  border-radius: 12px;
+  border: 1px solid #000; 
+  border-radius: 14px;
   background: #fff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.412s ease;
-
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.opinie-carousel :hover {
-  transform: scale(1.009);
+.opinie-carousel:hover {
+  transform: scale(1.011);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15); 
 }
 
 
 .opinie-track {
   display: flex;
-  transition: transform 0.6s ease;
+   transition: transform 0.6s ease-in-out; 
 }
 
 .opinia {
@@ -1079,7 +630,6 @@ border: 1px solid #000000;  background: #ffffff;
 @media (max-width: 768px) {
   .opinie-carousel {
     max-width: 90%; 
-    margin: 0 auto; 
     padding: 0 10px; 
   }
 }
@@ -1102,7 +652,6 @@ border: 1px solid #000000;  background: #ffffff;
 
       .text-section { 
       max-width: 1200px; 
-      padding: 40px 0px; 
       transition: transform 0.9s ease;
     }
 
@@ -1110,18 +659,15 @@ border: 1px solid #000000;  background: #ffffff;
     .text-section h2 {
   text-align: left;
   font-size: 2rem;
-  margin-bottom: 10px;
 }
 
 .text-section .separator {
   width: 220px;            
   height: 8px;            
   background-color: #f0bb1c;
-    margin-bottom: 18px;
-    margin-top: 18px;
   transform: scaleX(0);
   transform-origin: center;
-  animation: drawLine 7s ease-in-out infinite;
+  animation: drawLine 4s ease-in-out infinite;
 }
 
 
@@ -1133,44 +679,40 @@ border: 1px solid #000000;  background: #ffffff;
 
 .text-section .separator {
   width: 250px;             
-  height: 8px;         
+  height: 8px; 
 }}
 
-.text-section .highlight {
-  font-weight: bold;
-}
 
 .logo-carousel {
   position: relative;
-  width: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  overflow: hidden;
+  width: auto;         
+  margin: 0 auto;    
+  overflow: hidden; 
 }
 
 .logo-track {
   display: flex;
-  animation: slide 40s infinite; 
+  animation: slide 60s infinite; 
 }
 
-.logo-track.animate {
-  animation: slide-desktop 40s infinite;
-}
+
 
 .logo-track a {
-  flex: 0 0 25%; 
-  display: flex;
+ flex: 0 0 calc(100% / 4);  
+ display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  padding-top: 0%;
+   box-sizing: border-box;
+  margin-bottom: 40px;
 }
 
 .logo-track img {
-  max-height: 80px;
-  max-width: 100%;
+  max-height: 280px;
+  max-width: 90%;
   object-fit: contain;
   transition: transform 0.3s;
-    margin-bottom: 70px;
 
 }
 
@@ -1179,23 +721,27 @@ border: 1px solid #000000;  background: #ffffff;
 }
 
 @keyframes slide {
-  0%, 5%   { transform: translateX(0); }
-  10%, 15% { transform: translateX(-25%); }
-  20%, 25% { transform: translateX(-50%); }
-  30%, 35% { transform: translateX(-75%); }
-  40%, 45% { transform: translateX(-100%); }
-  50%, 55% { transform: translateX(-125%); }
-  60%, 65% { transform: translateX(-150%); }
-  70%, 75% { transform: translateX(-175%); }
-  80%, 85% { transform: translateX(-200%); }
-  90%, 95% { transform: translateX(-225%); }
-  100%     { transform: translateX(-250%); }
+  0%, 3%    { transform: translateX(0); }
+  6%, 10%    { transform: translateX(-25%); }
+  13%, 16%  { transform: translateX(-50%); }
+  19%, 23%  { transform: translateX(-75%); }
+  26%, 29%  { transform: translateX(-100%); }
+  32%, 35%  { transform: translateX(-125%); }
+  39%, 43%  { transform: translateX(-150%); }
+  46%, 49%  { transform: translateX(-175%); }
+  53%, 57%  { transform: translateX(-200%); }
+  61%, 65%  { transform: translateX(-225%); }
+  69%, 73%  { transform: translateX(-250%); }
+  77%, 81%  { transform: translateX(-275%); }
+  85%, 89%  { transform: translateX(-300%); }
+  93%, 97%  { transform: translateX(-325%); }
+  100%, 100%  { transform: translateX(-350%); } 
 }
 
 
 @media (max-width: 760px) {
   .logo-track {
-    animation: slide-mobile 40s infinite;
+    animation: slide-mobile 60s infinite;
   }
 
   .logo-track a {
@@ -1204,41 +750,35 @@ border: 1px solid #000000;  background: #ffffff;
   }
 
   @keyframes slide-mobile {
-    0%, 5%   { transform: translateX(0); }
-    10%, 15% { transform: translateX(-100%); }
-    20%, 25% { transform: translateX(-200%); }
-    30%, 35% { transform: translateX(-300%); }
-    40%, 45% { transform: translateX(-400%); }
-    50%, 55% { transform: translateX(-500%); }
-    60%, 65% { transform: translateX(-600%); }
-    70%, 75% { transform: translateX(-700%); }
-    80%, 85% { transform: translateX(-800%); }
-    90%, 95% { transform: translateX(-900%); }
-    100%     { transform: translateX(-1000%); }
-  }
+  0%, 3%    { transform: translateX(0); }
+  6%, 10%    { transform: translateX(-100%); }
+  13%, 16%  { transform: translateX(-200%); }
+  19%, 23%  { transform: translateX(-300%); }
+  26%, 29%  { transform: translateX(-400%); }
+  32%, 35%  { transform: translateX(-500%); }
+  39%, 43%  { transform: translateX(-600%); }
+  46%, 49%  { transform: translateX(-700%); }
+  53%, 57%  { transform: translateX(-800%); }
+  61%, 65%  { transform: translateX(-900%); }
+  69%, 73%  { transform: translateX(-1000%); }
+  77%, 81%  { transform: translateX(-1100%); }
+  85%, 89%  { transform: translateX(-1200%); }
+  93%, 97%  { transform: translateX(-1300%); }
+  100%, 100%  { transform: translateX(-1400%); } }
 }
 
 
 .video-section2 {
   width: 100%;
-    height: 80vw; 
   box-sizing: border-box;
+    min-height: 100vh;
+     position: relative;
 }
-@media (max-width: 768px) {
-
-.video-container2 {
-  margin-bottom: 200%;
-    height: auto;
-  }
-.video-section2 {
-  width: 100%;
-    height: 190vw;
-  box-sizing: border-box;
-  }}
 
 
 .video-container2 {
   position: relative;
+  width: 100%;
   height: 100%;
   margin: 0 auto;   
   overflow: hidden;
@@ -1247,45 +787,39 @@ border: 1px solid #000000;  background: #ffffff;
 .video-container2 video {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
   display: block;
-}
-
-.video-overlay2 {
   position: absolute;
   top: 0;
   left: 0;
-  margin-top: 140px;
+  z-index: -1;
+}
+
+.video-overlay2 {
+  position: relative;  
   width: 100%;
-  height: 100%;
-      padding: 40px 20px 80px 12px; 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;    
+  align-items: flex-start;
   text-align: left;
-  line-height: 2.2;
+  line-height: 1.4;
+  box-sizing: border-box;
+  padding: 40px 20px 80px; 
   z-index: 2;
-  box-sizing: border-box; 
+  background: rgba(0, 0, 0, 0.178); 
 }
 .video-overlay2 h4 {
   color: #f0bb1c;
-    padding: 0px 30px 20px 0px; 
-  font-size: 2.31rem;
-  font-weight: 900;
-  margin-bottom: 25px;
+ font-size: 2rem;  
 }
 
 .video-overlay2 ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .video-overlay2 li {
-  font-size: 1.7rem;
-  margin: 40px 0; 
-
-  line-height: 1.5;
+  font-size: 1.5rem;
+  line-height: 2.95;
   opacity: 0;
   animation: fadeSlideIn 0.6s ease forwards;
 }
@@ -1307,7 +841,7 @@ border: 1px solid #000000;  background: #ffffff;
 
 
 @keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(100px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -1321,66 +855,72 @@ border: 1px solid #000000;  background: #ffffff;
 .video-overlay2 li:nth-child(8) { animation-delay: 1.6s; }
 
 
+
+@media (max-width: 768px) {
+
+.video-container2 {
+    height: auto;
+  }
+  .video-section2 {
+    min-height: 100vh; 
+    height: auto; 
+  }
+  .video-overlay2 {
+    padding: 20px 15px 60px; 
+  }}
+
+
+
 .yellow-section0{
   background: #f0bb1c;
   text-align: left;
-  padding: 90px;
-  margin-left: -5%;
   color: #000;
   display:flex;
   flex-direction:column;
   align-items: left;
+  box-sizing: border-box; 
 }
 
 
 @media (max-width: 768px) {
 .video-overlay2 {
-  padding: 20px 40px 0px; 
-    margin-top: 110px;        
-    margin-left: 2px;
-    align-items: center;    
-    text-align: left;
-    height: auto;  
   }
 
   .video-overlay2 h4 {
-    font-size: 1.1em;  
-    margin-bottom: -9px;
+   font-size: 1.7rem;    
   }
 
   .video-overlay2 li {
-    font-size: 1rem;
-    line-height: 1.4;
-    margin: 12px 0;     
+  font-size: clamp(22px, 3vw, 28px);     
+  line-height: 1.38;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 8%;
   }
 .yellow-section0{
-  margin-left: -15%;
+  text-align: center;
   color: #000;
+  padding: 20px;
 }}
 
 .video-overlay2 li:last-child {
-  margin-bottom: 80px; 
 }
 
 @media (max-width: 768px) {
   .video-overlay2 li:last-child {
-    margin-bottom: 40px;
   }
 }
 
 .text-section0 h2 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 600;
-  margin-left: 2%;
-    text-align: left;}
-
+}
 
 .separator0 {
   width: 180px;
   height: 7px;
   background-color: #ffffff; 
-  margin: 0px 50 0 6vw;
-transform-origin: left;
+  transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
 }
 
@@ -1389,8 +929,7 @@ transform-origin: left;
   width: 180px;
   height: 7px;
   background-color: #ffffff; 
-  margin-top: 0px;
-transform-origin: left;
+  transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
 }}
 
@@ -1404,171 +943,46 @@ transform-origin: left;
   width: 180px;
   height: 7px;
   background-color: #ffffff; 
-  margin-left: 2%;
-transform-origin: left;
+  margin-top: 40px;
+  align-items: center;
+  transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
 }
 
-.separator11 {
-  width: 180px;
-  height: 7px;
-  background-color: #f0bb1c;
-  margin-left: 14%;
-  margin-top: 5%;
-  margin-bottom: 3%;
-transform-origin: left;
-  animation: drawLine 4s ease-in-out infinite;
-}
 
 @media (max-width: 768px) {
 .separator9 {
   width: 180px;
   height: 7px;
+  align-items: center;
   background-color: #ffffff; 
-  margin-top: 0px;
-    margin-left: 5%;
-
 transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
 }
-.separator11 {
+}
+
+
+.separator90 {
   width: 180px;
   height: 7px;
-  margin-left: 5%;
-  margin-top: 5%;
-  margin-bottom: 10%;
+  background-color: #ffffff; 
 transform-origin: left;
   animation: drawLine 4s ease-in-out infinite;
-}}
-
-
-.carousel-container0 {
-  position: relative;
-  width: 100%;
-  max-width: 1300px;
-  margin: 0px 0 0 0vw;
-  margin-bottom: 70px;
-  display: flex;
 }
-
-.carousel-track0 {
-  width: 100%;
-  margin-top: 50px;
-}
-
-.carousel-slide0 {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 26px;
-}
-
-.carousel-slide0.active {
-  display: flex;
-}
-
-.slide-text {
-  font-size: 1.4rem;
-  text-align: center;
-  align-items: center;
-  font-weight: 500;
-  max-width: 80%;
-}
-
-.circle-img {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.651);
-  transition: transform 0.5s ease;
-}
-
-.circle-img:hover {
-  transform: scale(1.3);
-}
-
-.see-more-btn2 {
-  font-size: 24px;
-  padding: 12px 32px;
-  background: rgb(0, 0, 0);
-  color: #f0bb1c;
-  border: none;
-  border-radius: 30px;
-  margin: 36px auto 0;
-  margin-bottom: 50px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.see-more-btn2:hover {
-  transform: scale(1.05);
-}
-
-.nav {
-  position: absolute;
-  top: 65%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0);
-  color: #000000;
-  border: none;
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  font-size: 52px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-}
-.nav:active { transform: translateY(-50%) scale(1.98); }
-.nav.prev { left: 219px; }
-.nav.next { right: 219px; }
 
 @media (max-width: 768px) {
-.carousel-container0 {
-  position: relative;
-  width: 100%;
-  max-width: 1300px;
-  margin: 0px 0 0 0vw;
-  margin-bottom: 70px;
-  display: flex;
-}
-
-
-  .carousel-container0 .prev {
-    left: 15%;   }
-  .carousel-container0 .next {
-    right: 5%;  
-  }
-}
-
-@media (max-width: 900px) {
-  .circle-img { width: 280px; height: 280px; }
-}
-@media (max-width: 700px) {
-  .text-section0 h2 { font-size: 1.6rem; margin-left: 15px;}
-  .circle-img { width: 200px; height: 200px; }
-  .nav.prev { left: 6px; }
-  .nav.next { right: 6px; }
-  .nav { font-size: 35px; }
-  .see-more-btn { font-size: 18px; padding: 10px 28px; }
-}
-
+.separator90 {
+}}
 
     .gallery-section { 
       max-width: auto; 
-      margin: auto; 
-      padding: 40px 20px; 
+      padding: 20px;
         background: #f0bb1c;
             }
 
     .gallery-section h2 {
   text-align: left;
   font-size: 2rem;
-    margin: 40px 0; 
-    margin-left: 14%;
 }
 
 
@@ -1576,44 +990,38 @@ transform-origin: left;
 .gallery-section p {
   text-align: left;
   max-width: 700px;
-        margin-bottom: 40px; 
       color: #000000; 
 
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
-
-        .gallery-section1 { 
+.gallery-section1 { 
       max-width: auto; 
-      margin: auto; 
-      padding: 40px 20px; 
         background: #f0bb1c;
             }
 
 @media (max-width: 700px) {
     .gallery-section h2 {
-margin-left: 13px;}}
-
-
+font-size: 1.7rem;}}
 
 
 .gallery-section1 p {
   text-align: left;
   max-width: 700px;
-        margin-bottom: 50px; 
       color: #000000; 
 
-  font-size: 1.41rem;
+  font-size: 1.4rem;
   line-height: 1.4;
 }
 
 
     .gallery-grid { 
-      margin-top: 40px;
       display: grid; 
       grid-template-columns: repeat(3, 1fr); 
       gap: 20px; 
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
         .gallery-grid1 { 
@@ -1626,37 +1034,20 @@ margin-left: 13px;}}
   margin: 0 auto;    
   margin-bottom: 10px;
     }
+    
     .gallery-item { 
       background: #fff; 
       border-radius: 15px; 
       overflow: hidden; 
       border: 1px solid #000000; 
       text-align: left; 
-      transition: transform 0.4s ease; 
-
+      transition: transform 0.3s ease; 
     }
 
-        .gallery-item1 { 
-      background: #f0bb1c;
-      border-radius: 15px; 
-      overflow: hidden; 
-      text-align: left; 
-      width: 350px;   
-  height: 450px; 
-      transition: transform 0.4s ease; 
-        padding: 15px;
-  max-width: 350px; 
-    margin-bottom: 50px;
-
+        .gallery-item:hover { 
+      transform: scale(1.03); 
     }
 
-    .gallery-item:hover { 
-      transform: scale(1.05); 
-    }
-
-        .gallery-item1:hover { 
-      transform: scale(1.05); 
-    }
 
     .gallery-item img { 
       width: 100%; 
@@ -1665,23 +1056,25 @@ margin-left: 13px;}}
       display: block; 
       transition: transform 0.4s ease; 
     }
-    .gallery-item img:hover { 
-      transform: scale(1.1); 
-    }
+
     .gallery-caption { 
       padding: 15px; 
+      
     }
     .gallery-caption p { 
       margin: 6px 0; 
+      
 
     }
     .gallery-caption a { 
       color: #000000; 
       text-decoration: none; 
       font-weight: bold; 
+     transition: color 0.2s ease;
+
     }
     .gallery-caption a:hover { 
-      color: #ff00008c; 
+      color: #f0bb1c;
     }
 
 
@@ -1692,35 +1085,49 @@ margin-left: 13px;}}
   color: #f0bb1c;
   border: none;
   border-radius: 30px;
-  margin: 50px 0 50px 260px; 
-  margin-left: 300px;
   cursor: pointer;
-    white-space: nowrap;
-
-  transition: background 0.3s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: transform 0.4s ease, background 0.3s ease;  
   display: inline-block; 
 }
 
 .see-more-btn3:hover {
   background: #000000;
+  color: #ffffff;
   transform: scale(1.1);
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, color 0.5s ease;
 }
 
-@media (max-width: 700px) {
+.see-more-btn4 {
+   position: absolute;
+  font-size: 24px;
+  padding: 14px 36px;
+  margin-left: 50%;
+  right: 10%;   
 
-.see-more-btn3 {
-  padding: 14px 79px;
-  background: #000;
+  background: #ffffff;
   color: #f0bb1c;
   border: none;
   border-radius: 30px;
-  margin: 50px 0 50px 50px; 
-  margin-left: 10%;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.3s ease;
+  transition: transform 0.4s ease, background 0.3s ease;  
   display: inline-block; 
+}
+
+.see-more-btn4:hover {
+  background: #000000;
+  color: #f0bb1c;
+  transform: scale(1.1);
+  transition: transform 0.4s ease, color 0.5s ease;
+}
+
+@media (max-width: 768px) {
+
+.see-more-btn3 {
+  padding: 14px 39px;
+
 }}
 
 
@@ -1778,54 +1185,40 @@ margin-left: 13px;}}
   }
 }
 
-.see-more-container {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
 .video-section4 {
   background: #fff;
-  padding: 60px 20px;
   text-align: left;
 }
 
 .section-header h2 {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 
 .section-header8 h2 {
   font-size: 2rem;
   font-weight: bold;
-margin-left: 15%;
-  margin-bottom: 10px;
 }
 
 .section-header9 h2 {
   font-size: 2rem;
   font-weight: bold;
-margin-left: 15%;
-  margin-bottom: 10px;
 }
 
 .section-header6 h2 {
   font-size: 2rem;
   font-weight: bold;
-margin-left: 14%;
-  margin-bottom: 10px;
 }
 
 .video-caption h3 {
   font-size: 2rem;
   font-weight: bold;
   color: #000000;
-  margin-bottom: 10px;
-  margin-top: 2%;
 }
 .reel-link {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   text-decoration: none;
   color: #000;
   transition: font-weight 0.3s ease;}
@@ -1835,7 +1228,8 @@ margin-left: 14%;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 12px;
+    padding: 0 30px; 
+  box-sizing: border-box; 
 }
 
 .video-container video {
@@ -1844,20 +1238,18 @@ margin-left: 14%;
   display: block;
   align-items: center;
   object-fit: cover;
-  border-radius: 15px;  /* zaokrąglenie rogów wideo */
+  border-radius: 15px;  
   border: 1px solid #000;   
 }
 
 
     @media(max-width: 768px) {
 .section-header9 h2 {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bold;
-margin-left: 9%;
 }
 .section-header6 h2 {
-margin-left: 5%;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
 .video-container {
@@ -1874,17 +1266,14 @@ margin-left: 5%;
   display: block;
   object-fit: cover;
     border: 1px solid #000;   
-
 }
 
 .video-caption {
-  margin-top: 20px;
 }
 
 .video-caption h3 {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
 }
 
 .reel-link {
@@ -1901,14 +1290,12 @@ margin-left: 5%;
 
 @media (max-width: 768px) {
   .section-header h2 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
 
   .video-caption h3 {
     font-size: 1.2rem;
   }
-
-
 }}
 
 .video-overlay05 {
@@ -1921,8 +1308,9 @@ margin-left: 5%;
 }
 
 .video-overlay05 a {
-  font-size: 1.9rem; 
-  font-weight: 600;
+    font-size: 30px;
+
+  font-weight: 400;
   color: #ffffff; 
   text-decoration: none;
   transition: color 0.4s ease;
@@ -1940,162 +1328,724 @@ margin-left: 5%;
   }
 
   .video-overlay05 a {
-    font-size: 1.32rem;  
-    margin-top: 20px;
+    font-size: 1.4rem;  
+      font-weight: 400;
+
+  }}
+
+
+.gallery-grid-offerta {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+gap: 6rem;
+  width: 60%;
+  height: 60%;
+  margin: 4rem auto 0 auto;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid-offerta {
+    grid-template-columns: 1fr;
+      width: 85%;
+  height: 85%;
   }
 }
 
-.animated-text {
-  display: inline-block;
-  white-space: pre-wrap;
+.gallery-item-offerta {
+  border: 2px solid #000;      
+  border-radius: 22px;
+  overflow: hidden;
+    width: 100%;
+
+  display: flex;
+  flex-direction: column;       
+  align-items: stretch;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item-offerta:hover {
+   transform: scale(1.03);
+}
+
+.gallery-media-offerta {
+  width: 100%;
+  display: block;
+}
+
+.gallery-media-offerta img,
+.gallery-media-offerta video {
+  width: 100%;
+  height: auto;                
+  display: block;
+  border-bottom: 1px solid #000; 
+}
+
+.gallery-caption-offerta {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 3rem;
+  min-height: 250px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.gallery-caption-offerta p {
+  margin: 0;
+  color: #000;
+  font-size: 1.7rem;
+  font-weight: 400;
+    line-height: 1.3;    
+
+}
+
+@media (max-width: 768px) {
+
+  .gallery-caption-offerta {
+  padding: 3rem;
+  min-height: 100px;
+}
+
+.gallery-caption-offerta p {
+  margin: 0;
+  color: #000;
+  font-size: 1.3rem;
+  font-weight: 400;
+}}
+
+
+
+.carousel-container0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px; 
+  margin: 0 auto;   
+  gap: 20px;
+}
+
+.carousel-track0 {
+  display: flex;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-slide0 {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  text-align: center;
+  display: none;
+}
+
+.carousel-slide0.active {
+  display: block;
+}
+
+.slide-text {
+  font-size: 1.3rem;
+  text-align: center;
+  align-items: center;
+  font-weight: 500;
+  max-width: 1000%;
+  margin-top: 50px;
+  margin-bottom: 70px;
+}
+
+.circle-img {
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.651);
+  transition: transform 0.5s ease;
+}
+
+.circle-img:hover {
+  transform: scale(1.3);
+}
+
+.nav {
+  display: none;
+  background: none;
+  border: none;
   font-size: 2rem;
+  cursor: pointer;
+}
+
+
+.order-section {
+            background: #f0bb1c;
+}
+
+  .order-section .order-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+ 
+
+.see-more-container {
+  text-align: center;
+}
+
+.see-more-container1 {
+}
+
+
+.see-more-container1 .see-more-btn3 {
+margin-bottom: 50px;
+}
+
+  .carousel-track0 {
+    display: flex;
+    justify-content: center;
+    gap: 80px; 
+    overflow: visible;
+  }
+
+  .carousel-slide0 {
+    display: block;
+    flex: 1 1 30%;
+  }
+
+  .carousel-slide0 img {
+    max-width: 220px;
+  }
+
+
+@media (max-width: 768px) {
+
+
+  .slide-text {
+
+  margin-top: 9px;
+  margin-bottom: 30px;
+}
+
+
+  .see-more-container {
+  text-align: left;
+}
+
+  .see-more-container1 .see-more-btn3 {
+}
+
+ .text-section0 .separator9 {
+    align-items: center;
+    transform-origin: center;
+  }
+
+  .carousel-container0 {
+}
+
+.carousel-slide0 {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  text-align: center;
+  display: none; 
+}
+
+.carousel-slide0.active {
+  display: block; 
+}
+
+.nav {
+  display: block; 
+}
+.slide-text {
+  font-size: 1.4rem;
+  text-align: center;
+  align-items: center;
+  font-weight: 500;
+  max-width: 1000%;
+}
+.circle-img {
+      margin-left: 0;
+      margin-bottom: -40px;
+
+}
+
+.order-section .order-content {
+  display: block;
+  text-align: center;
+      padding-right: 0%;
+    padding-left: 0%;
+    padding-bottom: 15%;
+    padding-top: 10%;
+}
+
+.order-section .text-section0 h2 {
+  text-align: center;
+    font-size: 1.7rem;
+}
+
+.order-section .separator9 {
+    align-items: center;
+    transform-origin: center;
+}
+
+   .order-section .see-more-btn3 {
+}
+
+
+  .carousel-track0 {
+    overflow: visible;
+  }
+
+  .nav 
+  { font-size: 45px;
+margin-top: 36%;}}
+  
+
+
+.highlight-link {
+  font-weight: bold;         
+  text-decoration: none;      
+  color: #222;             
+  display: inline-block;      
+  position: relative;         
+  transition: transform 0.3s ease;
+}
+
+.highlight-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;               
+  width: 0;                   
+  height: 2px;                
+  background-color: currentColor; 
+  transition: width 0.3s ease;
+}
+
+.highlight-link:hover {
+  transform: scale(1.02);     
+}
+
+.highlight-link:hover::after {
+  width: 100%;                
+}
+
+
+.gallery-caption-offerta p {
+  transition: opacity 0.6s ease-in-out;
+}
+.video-section:first-of-type h1 {
+}
+.video-section:last-of-type h1 {
+}
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-only { display: none; }
+  .mobile-only { display: block; }
+}
+
+
+
+.white-section {
+  width: 100%;
+  padding: 10px 0; 
+  box-sizing: border-box;
+  background-color: #fff;
+  padding-right: 3%;
+}
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+}
+
+.text-col-left-margin {
+  flex: 1 1 500px; 
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.text-col-left-margin h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-left: 25%;
+}
+
+
+.para-top {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-left: 25%;
+
+}
+
+.highlight-link {
+  color: #f0bb1c;
+  text-decoration: none;
   font-weight: bold;
-  line-height: 1.4;
+  transition: color 0.4s ease;
 }
 
-.animated-text span {
-  display: inline-block;
-  opacity: 0;
-vertical-align: bottom;
-  transform: translateY(40px);
-  animation: fadeUp 0.6s ease forwards;
+.highlight-link:hover {
+  color: #000;
 }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+.video-col {
+  flex: 1 1 500px;
+  text-align: left; 
+  box-sizing: border-box;
+}
+
+.video-col video {
+  width: 70%;
+  margin: auto;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.video-col video:hover {
+  transform: scale(1.03);
+}
+
+
+
+@media (max-width: 768px) {
+
+  .top-row {
+    flex-direction: column;
+    gap: 20px;
+  display:block;
+    margin-top: 15%;
+
+}
+
+  .video-col {
+    margin-bottom: -40px;
+
+      }
+
+  .text-col-left-margin h2 {
+    font-size: 1.7rem;
+      margin-left: 14%;
+           margin-right: 10%;
+  }
+  .para-top {
+    font-size: 1.4rem;
+      margin-left: 14%;
+     margin-right: 10%;
   }
 }
 
+
+
+.video-col2 {
+  width: 80%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+  margin: 0 auto;    
+
+}
+
+.video-col2 video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+    justify-content: center; 
+
+}
+
+@media (max-width: 768px) {
+
+.video-col2 {
+  width: 90%;
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  justify-content: center; 
+}}
+
+
+.text-col22 {
+  margin-right: 10%;
+  margin-bottom: 5%;
+  display: flex;
+  flex-direction: column; 
+  gap: 15px; 
+  
+}
+
+.text-col22 h6 {
+  font-size: 2rem;
+  margin-left: 12.7%;
+
+}
+
+.para-bottom {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-top: 5%;
+  margin-left: 14%;
+
+}
+
+
+@media (max-width: 768px) {
+.text-col22 {
+          margin-bottom: 15%;
+            margin-left: 12%;
+
+ gap: 80px;
+}
+
+.text-col22 h6 {
+      font-size: 1.7rem;
+     margin-right: 10%;
+                   margin-left: 3%;
+}
+
+
+.para-bottom {
+    font-size: 1.4rem;
+    margin-top: 40%;
+        margin-bottom: 15%;
+              margin-left: 3%;
+
+    }
+}
+
+
+
+
+.yellow-h2,
+.section-header9,
+.gallery-section h2,
+.text-section0,
+.separator0,
+.section-header6 h2,
+.separator2,
+.separator90,
+.yellow-h2,
+.yellow2-h2,
+.see-more-btn3,
+.video-caption {  
+  margin: 40px 0;
+  margin-left: 12%;
+  margin-right: 10%;
+}
+
+
+.separator7
+{
+  margin-top: 20px;
+  margin-left: 12%;
+  margin-right: 10%;
+  margin-bottom: 50px;
+}
+
+
+
+
+
+.separator8
+{
+  margin: 40px 0;
+}
+
+
+.video-overlay2 h4 {
+  margin-top: 90px;
+    margin-left: 12%;
+    margin-right: 11%;
+}
+.video-overlay2 li {
+      margin-left: 12%;
+          margin-right: 10%;
+
+
+}
+
+
+@media (max-width: 768px) {
+.separator9 {
+  margin: 40px auto;
+}
+
+.text-section0 {
+    margin: 40px 0;
+  margin-left: 0%;
+}
+
+.gallery-section .see-more-btn3 {
+  margin-left: 0%;
+}
+
+
+
+.order-section .see-more-btn4 {
+     position: static;
+
+ display: block;   
+  margin: 20px auto;
+}
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1366px) {
+  .text-col-left-margin h2 {
+      margin-left: 12%;
+  }
+  .para-top {
+      margin-left: 12%;
+      margin-right: 10%;
+  }
+
+  .separator00 {
+          margin-left: 12%;
+  }
+  .para-bottom {
+      margin-left: 13%;
+      margin-right: 10%;
+  }
+.text-col22 h6 {
+     margin-right: 10%;
+                   margin-left: 12%;
+}
+}
+
+.btn {
+  display: inline-block;
+  background: #ff4747;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none; 
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff2020;
+  text-decoration: none; 
+}
+
+
+header,
+header *,
+.hamburger,
+.hamburger * {
+  box-sizing: content-box !important;
+}
 
 
 </style>
 </head>
 <body>
    
-
-<header>
-<div class="logo-container">
-  <img src="logosamuelstudio2025.svg" alt="Logo" style="width:90px; height:90px;" />
-</div>
+<div id="header-placeholder"></div>
 
 
-
-  <nav class="center-links">
-    <a href="https://samuelstudio.com">Home</a>
-    <a href="https://samuelstudio.com/work">Work</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="indexpl.html" title="Polska wersja" class="lang-switch">
-      <img src="plflag.svg" alt="Polska wersja" style="width:35px; vertical-align:middle;">
-    </a>
-  </nav>
-
-  <div class="hamburger" id="hamburger">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="https://samuelstudio.com">Home</a>
-    <a href="https://samuelstudio.com/work">Work</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="indexpl.html" title="Polska wersja" class="lang-switch">
-      <img src="plflag.svg" alt="Polska wersja" style="width:35px; vertical-align:middle;">
-    </a>
-  </div>
-</header>
 
 <section class="video-section" id="video">
     <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
     <div class="video-overlay">
-        <h1>Reach your audience more effectively</h1>
-        <h4>Animations that stand out and engage.</h4>
+<h1>Reach your audience effectively.</h1>
+<h4>2D and 3D animations that capture attention and build engagement.</h4>
 
         <div class="separator" style="background-color: #ffffff;"></div>
 <div class="buttons">
-  <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">
+  <button class="btn" onclick="document.querySelector('.yellow-section0').scrollIntoView({ behavior: 'smooth' })">
     See How it Works
   </button>
+</div>
   <button class="btn" 
           style="background:#fff; color:#000000;" 
-          onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">
+          onclick="document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' })">
     Explore Examples
   </button>
 </div>
     </div>
 </section>
 
-  
 
 <section class="yellow-section" id="oferta">
   <div class="ellipse-video">
     <video src="question-mark.mp4" autoplay muted loop></video>
   </div>
 
+  <h2 class="yellow-h2">Do you have something important&nbsp;to&nbsp;show but&nbsp;don't&nbsp;know&nbsp;how to&nbsp;do&nbsp;it&nbsp;effectively?</h2>
+    <div class="separator90"></div>
+  
+  <div class="gallery-grid gallery-grid-offerta">
 
+    <div class="gallery-item-offerta">
+      <div class="gallery-media-offerta">
+        <img src="SQUARE 1.gif" alt="WORSHIP in the city center 2022 - cover image">
+      </div>
+      <div class="gallery-caption-offerta">
+        <p>You don’t have an&nbsp;animated logo to make your brand stand out.</p>
+      </div>
+    </div>
 
+    <div class="gallery-item-offerta">
+      <div class="gallery-media-offerta">
+        <img src="SQUARE 2.gif" alt="YAGOOSH - Puppeteer cover">
+      </div>
+      <div class="gallery-caption-offerta">
+        <p>Your lectures don’t capture your audience's attention.</p>
+      </div>
+    </div>
 
-<section class="yellow-section" id="oferta">
-  <div class="ellipse-video">
-    <video src="question-mark.mp4" autoplay muted loop></video>
+    <div class="gallery-item-offerta">
+      <div class="gallery-media-offerta">
+        <img src="SQUARE 3.gif" alt="Bible Unbound - The Bible In a Sentence cover">
+      </div>
+      <div class="gallery-caption-offerta">
+        <p>You find it hard to explain complex topics in an engaging way.</p>
+      </div>
+    </div>
+
+    <div class="gallery-item-offerta">
+      <div class="gallery-media-offerta">
+        <img src="SQUARE 4.gif" alt="Bible Unbound - The Bible In a Sentence cover">
+      </div>
+      <div class="gallery-caption-offerta">
+        <p>Low attendance at your events makes you feel unappreciated.</p>
+      </div>
+    </div>
   </div>
 
-<h2 class="yellow-h2">Do you have something important to show but don't know how to do&nbsp;it&nbsp;effectively?</h2>
-  <div class="grid-2x2">
-    <div class="grid-item" onclick="location.href='https://link1.pl'">
-      <img src="ANIMATED-ICON-LOGO1.gif.webp" alt="Animacja reklamowa">
-      <div class="desc">You don’t have an animated logo to make your brand stand out.</div>
-    </div>
-    <div class="grid-item" onclick="location.href='https://link2.pl'">
-      <img src="Animated-Icon-Audience1.gif.webp" alt="Animacja produktowa">
-      <div class="desc">Your lectures don’t capture your audience's attention.</div>
-    </div>
-    <div class="grid-item" onclick="location.href='https://link3.pl'">
-      <img src="Animated-Icon-Eye1.gif.webp" alt="Spot reklamowy">
-      <div class="desc">You find it hard to explain complex topics in an engaging way.</div>
-    </div>
-    <div class="grid-item" onclick="location.href='https://link3.pl'">
-      <img src="Animated-Icon-Attendance1.gif.webp" alt="Spot reklamowy">
-      <div class="desc">Low attendance at your events makes you feel unappreciated.</div>
-    </div>
-  </div>  
-  
-  <h2 class="yellow2-h2">Don’t let your story fade into the background.</h2>
-  </section>
+  <h2 class="yellow2-h2">Don’t let your story fade into&nbsp;the&nbsp;background.</h2>
+   <div class="separator90"></div>
+</section>
 
 
 <section class="white-section">
   <div class="top-row">
-    <div class="text-col left-margin">
+    <div class="text-col-left-margin">
       <h2>I’m Paweł Pauksztełło,<br>founder of Samuel Studio.</h2>
-      <div class="separator"></div>
+      <div class="separator00"></div>
       <p class="para-top">
         I help you capture attention and communicate your message clearly.
-        Check out <a href="#" class="portfolio-link">my portfolio</a> and see how my animations work in practice.
+        Check out <a href="work.html" class="highlight-link">my portfolio</a> and see how my animations work in practice.
       </p>
     </div>
-
     <div class="video-col">
-      <video src="Pawel-Pauksztello-Samuel-Studio-Owner-Founder.mp4" autoplay muted loop playsinline></video>
+      <video id="myVideo" src="Pawel-Pauksztello-Samuel-Studio-Owner-Founder.mp4" autoplay muted loop playsinline></video>
     </div>
-  </div>
-
-  <div class="video-col2">
-    <video src="Is-This-Your-Story.mp4" autoplay muted loop playsinline></video>
-  </div>
-
-  <div class="text-col22">
-    <h6>No one wants to be ignored.</h6>
-    <div class="separator11"></div>
-    <p class="para-bottom">
-      Well-crafted animation grabs attention, engages your audience, and makes your message unforgettable.
-    </p>
-  </div>
+  </div> 
 </section>
+
+
+<section class="video-text-section"> <div class="video-col2"> 
+  <video src="yourstory.mp4" autoplay muted loop playsinline></video> 
+</div> <div class="text-col22"> 
+  <h6>No one wants to be ignored.</h6> 
+  
+<p class="para-bottom"> Well-crafted animation grabs attention, engages your audience, and makes your message unforgettable. 
+  </p> </div> </section>
 
 
 
@@ -2106,40 +2056,38 @@ vertical-align: bottom;
     <div class="video-overlay2">
       <h4>I offer creative solutions for your business needs.</h4>
       <div class="separator7"></div>
-      <ul>
-        <li class="white">
-          • Make your brand memorable and stand out – 
-          <a href="#">Animated Logos</a>
-        </li>
-        <li class="yellow">
-          • Simplify complex topics and engage your audience – 
-          <a href="#">Explainers</a>
-        </li>
-        <li class="white">
-          • Tell your story with motion – 
-          <a href="#">Storytelling</a>
-        </li>
-        <li class="yellow">
-          • Enhance your video projects – 
-          <a href="#">Animated elements for larger productions</a>
-        </li>
-        <li class="white">
-          • Perfect for digital branding and social media – 
-          <a href="#">Animated GIFs</a>
-        </li>
-        <li class="yellow">
-          • Grab attention and drive awareness – 
-          <a href="#">Promotional Animations</a>
-        </li>
-        <li class="white">
-          • Eye-catching visual storytelling for your campaigns – 
-          <a href="#">Animated Posters</a>
-        </li>
-        <li class="yellow">
-          • Subtle motion that adds depth – 
-          <a href="#">Background Animations</a>
-        </li>
-      </ul>
+<li class="white">
+  Make your brand memorable and stand out 
+  <a href="#">– Animated Logos</a>
+</li>
+<li class="yellow">
+  Simplify complex topics and engage your audience 
+  <a href="#">– Explainers</a>
+</li>
+<li class="white">
+  Tell your story with motion
+  <a href="#">– Storytelling</a>
+</li>
+<li class="yellow">
+  Enhance your video projects
+  <a href="#">– Animated elements for larger productions</a>
+</li>
+<li class="white">
+  Perfect for digital branding and social media
+  <a href="#">– Animated GIFs</a>
+</li>
+<li class="yellow">
+  Grab attention and drive awareness
+  <a href="#">– Promotional Animations</a>
+</li>
+<li class="white">
+  Eye-catching visual storytelling for your campaigns
+  <a href="#">– Animated Posters</a>
+</li>
+<li class="yellow">
+  Subtle motion that adds depth
+  <a href="#">– Background Animations</a>
+</li>
     </div>
   </div>
 </section>
@@ -2157,34 +2105,63 @@ vertical-align: bottom;
 
   <div class="logo-carousel">
     <div class="logo-track">
-      <a href="https://firma1.pl" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
+      <a href="https://uwielbienie.kielce.pl/" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
       <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"></a>
       <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3"></a>
       <a href="https://e-religijne.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 4"></a>
       <a href="https://facebook.com/Chrzescijanskie.Granie" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 5"></a>
       <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 6"></a>
-      <a href="https://firma7.pl" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
+      <a href="https://www.thebibleunbound.com/" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
       <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 8"></a>
       <a href="https://firma6.pl" target="_blank"><img src="FAMILY-FILM-LOGO-230x300.png.webp" alt="Firma 6"></a>
       <a href="https://e-religijne.pl" target="_blank"><img src="Redeemified_Logo-300x169.jpg.webp" alt="Firma 4"></a>
-      <a href="https://e-religijne.pl" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
-      <a href="https://e-religijne.pl" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
+      <a href="https://alfabravo.pl/" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
+      <a href="https://modlitwawdrodze.pl/" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
       <a href="https://e-religijne.pl" target="_blank"><img src="30052508_10155961110891636_7592915301371484606_o-300x300.jpg" alt="Firma 4"></a>
-      <a href="https://e-religijne.pl" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
-      <a href="https://firma1.pl" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
+      <a href="https://4-eco.pl/" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+      <a href="https://uwielbienie.kielce.pl/" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
       <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"></a>
       <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3"></a>
       <a href="https://e-religijne.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 4"></a>
       <a href="https://facebook.com/Chrzescijanskie.Granie" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 5"></a>
       <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 6"></a>
-      <a href="https://firma7.pl" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
+      <a href="https://www.thebibleunbound.com/" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
       <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 8"></a>
       <a href="https://firma6.pl" target="_blank"><img src="FAMILY-FILM-LOGO-230x300.png.webp" alt="Firma 6"></a>
       <a href="https://e-religijne.pl" target="_blank"><img src="Redeemified_Logo-300x169.jpg.webp" alt="Firma 4"></a>
-      <a href="https://e-religijne.pl" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
-      <a href="https://e-religijne.pl" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
+      <a href="https://alfabravo.pl/" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
+      <a href="https://modlitwawdrodze.pl/" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
       <a href="https://e-religijne.pl" target="_blank"><img src="30052508_10155961110891636_7592915301371484606_o-300x300.jpg" alt="Firma 4"></a>
-      <a href="https://e-religijne.pl" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+      <a href="https://4-eco.pl/" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+      <a href="https://uwielbienie.kielce.pl/" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
+      <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"></a>
+      <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 4"></a>
+      <a href="https://facebook.com/Chrzescijanskie.Granie" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 5"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 6"></a>
+      <a href="https://www.thebibleunbound.com/" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
+      <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 8"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="FAMILY-FILM-LOGO-230x300.png.webp" alt="Firma 6"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="Redeemified_Logo-300x169.jpg.webp" alt="Firma 4"></a>
+      <a href="https://alfabravo.pl/" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
+      <a href="https://modlitwawdrodze.pl/" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="30052508_10155961110891636_7592915301371484606_o-300x300.jpg" alt="Firma 4"></a>
+      <a href="https://4-eco.pl/" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+      <a href="https://uwielbienie.kielce.pl/" target="_blank"><img src="LOGO-UwCM-a-300x164.png" alt="Firma 1"></a>
+      <a href="https://dwaprzymierza.pl/" target="_blank"><img src="logo_dwaprzymierza2019-01-300x214.jpg.webp" alt="Firma 2"></a>
+      <a href="https://muzeum.torun.pl/" target="_blank"><img src="logo-muzeum-okregowe-w-toruniu-300x72.png.webp" alt="Firma 3"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="logo-e1649182133913-300x76.jpg.webp" alt="Firma 4"></a>
+      <a href="https://facebook.com/Chrzescijanskie.Granie" target="_blank"><img src="fundacja_chg_logo-560x280-1-300x150.jpg.webp" alt="Firma 5"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="CM.-Stories-logo-300x170.jpg.webp" alt="Firma 6"></a>
+      <a href="https://www.thebibleunbound.com/" target="_blank"><img src="Logo-Style-3-300x300.png.webp" alt="Firma 7"></a>
+      <a href="https://www.trileas.com/" target="_blank"><img src="TRILEAS-logo-300x246.png.webp" alt="Firma 8"></a>
+      <a href="https://firma6.pl" target="_blank"><img src="FAMILY-FILM-LOGO-230x300.png.webp" alt="Firma 6"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="Redeemified_Logo-300x169.jpg.webp" alt="Firma 4"></a>
+      <a href="https://alfabravo.pl/" target="_blank"><img src="ALFA-BRAVO-LOGO.png" alt="Firma 4"></a>
+      <a href="https://modlitwawdrodze.pl/" target="_blank"><img src="Modlitwa-w-drodze-logo-1-300x133.png.webp" alt="Firma 4"></a>
+      <a href="https://e-religijne.pl" target="_blank"><img src="30052508_10155961110891636_7592915301371484606_o-300x300.jpg" alt="Firma 4"></a>
+      <a href="https://4-eco.pl/" target="_blank"><img src="4-eco-logo-300x137.png.webp" alt="Firma 4"></a>
+
     </div>
   </div>
 </section>
@@ -2193,8 +2170,7 @@ vertical-align: bottom;
 
 <section class="yellow-section0">
   <div class="text-section0">
-<h2>
-      Simple, Clear, and Effective Process.</h2>
+    <h2>Simple, Clear, and&nbsp;Effective Process.</h2>
     <div class="separator9"></div>
   </div>
 
@@ -2208,38 +2184,38 @@ vertical-align: bottom;
       </div>
 
       <div class="carousel-slide0" data-index="1">
-        <p class="slide-text">You get a finished film that works.</p>
+        <p class="slide-text">You get a&nbsp;finished film that works.</p>
         <img src="image2.png" alt="grafika 2" class="circle-img">
       </div>
 
       <div class="carousel-slide0" data-index="2">
-        <p class="slide-text">We define the story that you want to tell.</p>
+        <p class="slide-text">We define the story that you want to&nbsp;tell.</p>
         <img src="image3.png" alt="grafika 3" class="circle-img">
-      </div>
-
-      <div class="carousel-slide0" data-index="3">
-        <p class="slide-text">Let's create something unforgettable together.</p>
-        <img src="image2.png" alt="grafika 4" class="circle-img">
       </div>
     </div>
 
     <button class="nav next" aria-label="Następny slajd">›</button>
   </div>
-
-  <div class="text-section0">
-    <h2>Let’s create together.</h2>
-    <div class="separator9" ></div>
-  </div>
-    <div class="see-more-container">
-   <button class="see-more-btn3" onclick="window.location.href='twoj-link.html'">
-    Order today
-</div>
 </section>
+
+<section class="order-section">
+  <div class="order-content">
+    <div class="text-section0">
+      <h2>Let’s create together.</h2>
+      <div class="separator9"></div>
+    </div>
+      <button class="see-more-btn4" onclick="window.location.href='https://samuelstudio.com/contact'">
+        Order today
+      </button>
+    </div>
+  </div>
+</section>
+
 
 
   </section>
 
-<section style="padding: 60px 0 0 0px; background: #f9f9f9;">
+<section style="padding: 20px 0 0 0px; background: #ffffff;">
 
 
     <div class="section-header9">
@@ -2280,27 +2256,29 @@ vertical-align: bottom;
     <button class="arrow next">&#10095;</button>
   </div>
 
-  <div class="see-more-container">
-   <button class="see-more-btn3" onclick="window.location.href='twoj-link.html'">
+  <div class="see-more-container1">
+   <button class="see-more-btn3" onclick="window.location.href='https://www.google.com/maps/place/Samuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach/@46.423669,-84.4270629,3z/data=!4m18!1m9!3m8!1s0xac688efcb209881f:0x50fac03e7d6b27cb!2sSamuel+Studio+%E2%80%93+Filmy+Animowane+i+Animacje+2D,+3D+w+Kielcach!8m2!3d46.423669!4d-84.4270629!9m1!1b1!16s%2Fg%2F11lzkl8mz_!3m7!1s0xac688efcb209881f:0x50fac03e7d6b27cb!8m2!3d46.423669!4d-84.4270629!9m1!1b1!16s%2Fg%2F11lzkl8mz_?entry=ttu&g_ep=EgoyMDI1MDkxNy4wIKXMDSoASAFQAw%3D%3D'">
     Write a review
 </div>
 </section>
 
-  <section class="gallery-section">
+
+
+  <section id="gallery" class="gallery-section">
         <h2>Recent Work</h2>
         <div class="separator0"></div>
 
 
   <div class="gallery-grid">
-
     <div class="gallery-item">
+      
       <div class="gallery-media">
         <img src="Logo-trileas-cover.png" alt="WORSHIP in the city center 2022 - cover image">
         <video src="Trileas-Animated-Cover.mp4" muted loop></video>
       </div>
       <div class="gallery-caption">
         <p>TRILEAS</p>
-        <a href="#">Logo animation</a>
+        <a href="#trileas.html">Logo animation</a>
       </div>
     </div>
 
@@ -2311,7 +2289,7 @@ vertical-align: bottom;
       </div>
       <div class="gallery-caption">
         <p>BIBLE UNBOUND & Samuel Studio</p>
-        <a href="#">The Gospel Explained in Five Minutes</a>
+        <a href="#gospel.html">The Gospel Explained in Five Minutes</a>
       </div>
     </div>
 
@@ -2326,7 +2304,7 @@ vertical-align: bottom;
       </div>
       </div>
 <div class="see-more-container">
-  <button class="see-more-btn3">See More</button>
+  <a href="https://samuelstudio.com/work" class="see-more-btn3">See More</a>
 </div>
     </section>
 
@@ -2350,83 +2328,26 @@ vertical-align: bottom;
 
 <section class="video-section" id="video">
     <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
-    <div class="video-overlay">
-        <h1>Ready to create something extraordinary?</h1>
-        <h4>Let’s work together and bring your ideas to&nbsp;life. Contact me today.</h4>
+<div class="video-overlay" style="padding-top: 130px; padding-bottom: 1000px;">
+
+          <h1>Ready to create something extraordinary?</h1>
+        <h4>Let’s work together and bring your ideas to&nbsp;life. </h4>
 
         <div class="separator" style="background-color: #ffffff;"></div>
 
-        <div class="buttons">
-      <button class="btn" onclick="document.getElementById('oferta').scrollIntoView({ behavior: 'smooth' })">Get a Free Consultation</button>
-        <button class="btn" 
-          style="background:#fff; color:#000000;" 
-          onclick="document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' })">
-  Contact Me
-  </button>
-        </div>
-<div class="video-overlay05">
-  <h4><a href="mailto:kontakt@animacja.pl">pawel@samuelstudio.com</a></h4>
-  <h4><a href="tel:+48693733366">+48 693 733 366</a></h4>
+<div class="buttons">
+  <a href="contact.html" class="btn">Get a Free Consultation</a>
+  <a href="contact.html" class="btn" style="background:#fff; color:#000;">Contact Me Today</a>
 </div>
-    </div>
+<button class="btn" 
+  style="background:#fff; color:#000000;" 
+  onclick="window.location.href='tel:+48693733366'">
+  Call Me Now
+</button>
+</div>
 </section>
 
-
-  <footer class="footer">
-  <div class="footer-subscribe">
-    <h5>CLICK TO SUBSCRIBE</h5>
-    <div class="footer-buttons">
-      <a href="#" class="subscribe-btn">
-        <img src="samuelstudio icon.svg" alt="Animator 1"> 
-        YT Samuel Studio
-      </a>
-      <a href="#" class="subscribe-btn">
-        <img src="explainers icon.svg" alt="Animator 2"> 
-        YT Explainers in Animation</a>
-    </div>
-  </div>
-
-  <nav class="footer-nav">
-    <a href="https://samuelstudio.com">Home</a>
-    <a href="https://samuelstudio.com/work">Work</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-
-  <div class="footer-socials">
-    <a href="https://www.linkedin.com" target="_blank">
-      <img src="linked icon.svg" alt="LinkedIn">
-    </a>
-    <a href="https://www.youtube.com" target="_blank">
-      <img src="yt icon.svg" alt="YouTube">
-    </a>
-    <a href="https://www.facebook.com" target="_blank">
-      <img src="fb icon.svg" alt="Facebook">
-    </a>
-    <a href="https://www.instagram.com" target="_blank">
-      <img src="insta icon.svg" alt="Instagram">
-    </a>
-    <a href="indexpl.html" title="English version" class="lang-switch">
-      <img src="plflag.svg" alt="English" style="width:35px; vertical-align:middle;">
-    </a>
-  </div>
-
-  <div class="footer-bottom">
-    <a href="privacy.html">Privacy Policy</a>
-    <span>Copyright © 2025 | Useful Animated Movie</span>
-  </div>
-</footer>
-
-
-<script>
-  const slider = document.getElementById('opinieSlider');
-  let index = 0;
-
-  setInterval(() => {
-    index = (index + 1) % slider.children.length;
-    slider.style.transform = `translateX(-${index * 100}%)`;
-  }, 4000);
-</script>
+<div id="footer-placeholder"></div>
 
   <script>
     function toggleMenu() {
@@ -2439,40 +2360,8 @@ vertical-align: bottom;
     });
 
   </script>
-      <script>
-  document.addEventListener('contextmenu', event => event.preventDefault());
-</script>
-<script>
-  const scrollTopBtn = document.getElementById("scrollTopBtn");
+    
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      scrollTopBtn.style.display = "block";
-    } else {
-      scrollTopBtn.style.display = "none";
-    }
-  });
-
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
-<script>
-  let lastScrollTop = 0;
-  const navMenu = document.querySelector('.nav.menu');
-
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-      navMenu.style.top = "-100px";
-    } else if (scrollTop < lastScrollTop) {
-      navMenu.style.top = "0";
-    }
-
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-  });
-</script>
 <script>
   const hoverVideos = document.querySelectorAll('video.hover-video');
 
@@ -2489,47 +2378,6 @@ vertical-align: bottom;
 </script>
 
 
-
-
-<script>const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-const closeBtn = document.getElementById("closeBtn");
-
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  setTimeout(() => {
-    mobileMenu.style.top = mobileMenu.style.top === "0%" ? "-100%" : "0%";
-  }, 1); // 
-});
-
-closeBtn.addEventListener("click", () => {
-  hamburger.classList.remove("active");
-  mobileMenu.style.top = "-100%"; 
-});
-
-</script>
-
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector("header");
-  let lastScroll = 0;
-  const threshold = 80; // od ilu px zaczyna się chowanie
-
-  window.addEventListener("scroll", () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > lastScroll && currentScroll > threshold) {
-      header.classList.add("hidden");
-    } else {
-      header.classList.remove("hidden");
-    }
-
-    lastScroll = currentScroll;
-  });
-});
-</script>
 
 
 <script>
@@ -2565,7 +2413,7 @@ nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
 
 setInterval(() => {
   showSlide(currentIndex + 1);
-}, 5000);
+}, 4000);
 </script>
 
 <script>
@@ -2670,23 +2518,173 @@ if (window.innerWidth <= 768) {
 }
 </script>
 
+
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const text = document.querySelector(".animated-text");
-    const words = text.innerHTML.split(" "); 
-    text.innerHTML = "";
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
 
-words.forEach((word, i) => {
-  const span = document.createElement("span");
-  span.textContent = word;
-  span.style.animationDelay = `${i * 0.13}s`;
-  text.appendChild(span);
-
-  if (i < words.length - 1) {
-    text.appendChild(document.createTextNode(" "));
+<script>
+document.addEventListener('keydown', function(e) {
+  if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c')) {
+    e.preventDefault();
   }
 });
+</script>
+
+<script>
+const futureTexts = [
+  "You will have an animated logo that will make your brand stand out.",
+  "Your lectures will capture your audience's attention.",
+  "You will explain complex topics in an engaging way.",
+  "Your events will have high attendance and make you feel appreciated."
+];
+
+document.querySelectorAll('.gallery-item-offerta').forEach((item, idx) => {
+  const caption = item.querySelector('.gallery-caption-offerta p');
+  if (!caption) return;
+  const original = caption.textContent;
+
+
+
+  if (window.innerWidth > 768) {
+    item.addEventListener('mouseenter', () => {
+      caption.style.opacity = '0';
+      setTimeout(() => {
+        caption.textContent = futureTexts[idx] || original;
+        caption.style.opacity = '1';
+      }, 300);
+    });
+
+
+      item.addEventListener('mouseenter', () => {
+    caption.style.opacity = '0';
+    setTimeout(() => {
+      caption.textContent = futureTexts[idx] || original;
+      caption.style.opacity = '1';
+    }, 180);
   });
+
+
+    item.addEventListener('mouseleave', () => {
+      caption.style.opacity = '0';
+      setTimeout(() => {
+        caption.textContent = original;
+        caption.style.opacity = '1';
+      }, 180);
+    });
+  }
+
+  if (window.innerWidth <= 768) {
+    let showingFuture = false;
+    setInterval(() => {
+      caption.style.opacity = '0';
+      setTimeout(() => {
+        caption.textContent = showingFuture ? original : futureTexts[idx] || original;
+        caption.style.opacity = '1';
+        showingFuture = !showingFuture;
+      }, 300);
+    }, 4000); 
+  }
+});
+</script>
+
+<script>
+const video = document.getElementById('myVideo');
+
+video.playbackRate = 1;
+
+video.addEventListener('timeupdate', () => {
+  if(video.currentTime >= 5 && video.currentTime < 9) {
+    video.currentTime = 10;
+  }
+
+  if(video.currentTime >= 14) {
+    video.currentTime = 3;
+  }
+});
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = [
+      'trileas.html',     
+      'gospel.html',      
+      'modern3d.html'      
+    ];
+
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    galleryItems.forEach((item, index) => {
+      item.style.cursor = 'pointer'; 
+      item.addEventListener('click', () => {
+        if (links[index]) {
+          window.location.href = links[index];
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('load', () => {
+    const pos = sessionStorage.getItem('scrollPosition');
+    if (pos) window.scrollTo(0, pos);
+  });
+</script>
+
+
+
+
+
+<script>
+  fetch("header.html")
+    .then(response => response.text())
+    .then(html => {
+      const placeholder = document.getElementById("header-placeholder");
+      const shadowRoot = placeholder.attachShadow({ mode: "open" });
+      shadowRoot.innerHTML = html;
+
+      const header = shadowRoot.getElementById("mainHeader");
+      const hamburger = shadowRoot.getElementById("hamburger");
+      const mobileMenu = shadowRoot.getElementById("mobileMenu");
+
+      let lastScroll = 0;
+      const headerHeight = header.offsetHeight;
+
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentScroll > lastScroll && currentScroll > 60) {
+    header.style.transform = `translateY(-${header.offsetHeight + 20}px)`;
+  } else {
+    header.style.transform = "translateY(0)";
+  }
+
+  lastScroll = currentScroll;
+});
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+      });
+
+      mobileMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+          hamburger.classList.remove("active");
+          mobileMenu.classList.remove("active");
+        });
+      });
+    });
+</script>
+
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
 </script>
 
 

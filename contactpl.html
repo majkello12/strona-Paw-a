@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="logoicon" type="image/png" sizes="32x32" href="logoicon32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="logoicon16x16.png">
-  <title>Contact</title>
+  <title>Kontakt</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -14,7 +14,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body { 
       font-family: 'Roboto', sans-serif; 
       background: #fff; 
@@ -31,6 +30,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
     }
+
 
 .text-section { 
   max-width: 1200px; 
@@ -344,41 +344,32 @@
   margin-top: 10%;
 }}
 
-    header,
-header *,
-.hamburger,
-.hamburger * {
-  box-sizing: content-box !important;
-}
-
-
 </style>
   
 </head>
 <body>
 
-<div id="header-placeholder"></div>
+<div id="headerpl-placeholder"></div>
+
 
 <section class="text-section">
-  <h2>Contact</h2>
+  <h2>Kontakt</h2>
   <div class="separator"></div>
 
 <p>
-You can contact me by&nbsp;e&#8209;mail. Provide a&nbsp;brief explanation of&nbsp;what 
-animation you need and your timeline, theme, language and style. 
-After agreeing on&nbsp;them, I&nbsp;will start working on&nbsp;the project. 
-I’ll keep you updated on&nbsp;the graphics progress and also send you small 
-test animations to&nbsp;make sure I’m on&nbsp;the right track. I&nbsp;will 
-send the&nbsp;finished product your way.
+Możesz skontaktować się ze mną przez e-mail. Podaj krótki opis animacji, której potrzebujesz, oraz informacje o&nbsp;terminie, tematyce, języku i&nbsp;stylu.
+Po uzgodnieniu szczegółów rozpocznę pracę nad projektem.
+Będę informować Cię o&nbsp;postępach w&nbsp;tworzeniu grafiki i&nbsp;przesyłać krótkie próbki animacji, aby upewnić się, że idę w&nbsp;dobrym kierunku.
+Gotowy produkt prześlę Ci po zakończeniu prac.
 </p>
 <p><strong>Paweł Pauksztełło</strong></p>  <p>
     <a href="https://www.google.com/maps/place/Samuel+Studio/@46.423669,-84.4270629,3z/data=!3m1!4b1!4m6!3m5!1s0xac688efcb209881f:0x50fac03e7d6b27cb!8m2!3d46.423669!4d-84.4270629!16s%2Fg%2F11lzkl8mz_?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
-      Samuel Studio – Animation & Motion Design Kielce
+      Samuel Studio – Animacja & Motion Design Kielce
     </a>
   </p>
 
   <p>
-    <a href="mailto:pawel.samuelstudio@gmail.com"> 
+    <a href="mailto:pawel.samuelstudio@gmail.com">
       pawel.samuelstudio<wbr>@gmail.com
     </a>
   </p>
@@ -400,31 +391,31 @@ send the&nbsp;finished product your way.
       <input type="hidden" name="_template" value="table">
 
       <div class="form-group">
-        <label for="firstName">First Name</label>
+        <label for="firstName">Imię</label>
         <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
       </div>
 
       <div class="form-group">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">Nazwisko</label>
         <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
       </div>
 
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">E-mail</label>
         <input type="email" id="email" name="email" placeholder="Write your e-mail address" required>
       </div>
 
       <div class="form-group">
-        <label for="message">Comment or Message</label>
+        <label for="message">Wiadomość</label>
         <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
       </div>
 
       <div class="form-checkbox">
         <input type="checkbox" id="privacy" required>
-        <label for="privacy">I agree to the Privacy Policy</label>
+        <label for="privacy">Zgadzam się z polityką prywatności</label>
       </div>
 
-      <button type="submit" class="submit-btn">Send Message</button>
+      <button type="submit" class="submit-btn">Wyślij wiadomość</button>
     </form>
 
     <p id="formStatus" style="display:none; text-align:center; margin-top:1rem;"></p>
@@ -432,7 +423,9 @@ send the&nbsp;finished product your way.
   </div>
 </section>
 
-<div id="footer-placeholder"></div>
+
+<div id="footerpl-placeholder"></div>
+
 
 
 <script>
@@ -501,11 +494,13 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 });
 </script>
 
+
+
 <script>
-  fetch("header.html")
+  fetch("headerpl.html")
     .then(response => response.text())
     .then(html => {
-      const placeholder = document.getElementById("header-placeholder");
+      const placeholder = document.getElementById("headerpl-placeholder");
       const shadowRoot = placeholder.attachShadow({ mode: "open" });
       shadowRoot.innerHTML = html;
 
@@ -541,15 +536,13 @@ window.addEventListener("scroll", () => {
     });
 </script>
 
-
 <script>
-  fetch("footer.html")
+  fetch("footerpl.html")
     .then(response => response.text())
     .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
+      document.getElementById("footerpl-placeholder").innerHTML = data;
     });
 </script>
-
 
 </body>
 </html>
