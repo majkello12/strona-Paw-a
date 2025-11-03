@@ -68,7 +68,7 @@
   grid-auto-rows: 1fr;
   gap: 6px;
   cursor: pointer;
-  z-index: 1001; /* żeby zawsze było na wierzchu */
+  z-index: 1001; 
   position: relative;
 }
 
@@ -104,7 +104,7 @@ nav#mobile-menu {
     #614ED9, 
     #0B7ABF
   );
-  background-size: 400% 400%; /* większy obszar do animacji */
+  background-size: 400% 400%; 
   animation: gradientMove 5s ease infinite;
 
   padding: 40px 20px;
@@ -174,7 +174,7 @@ nav#mobile-menu a:hover {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2); /* lekko większe, np. 3% */
+    transform: scale(1.2); 
   }
 }    .hero p{ font-size:clamp(18px,6vw,24px);margin-top:12px;font-weight:400;text-transform:uppercase }
 
@@ -194,17 +194,17 @@ nav#mobile-menu a:hover {
     .intro h2{ font-size:clamp(50px,3.6vw,34px);line-height:1.18;animation:fadeUp .7s ease both }
 .hero h1 {
     font-size: clamp(40px, 6vw, 70px);
-    margin-top:160px; /* przesunięcie w dół */
+    margin-top:160px; 
     line-height: 1.1;
     animation: pulseText 5s ease-in-out infinite;
   }
 
   .hero p {
     font-size: clamp(23px, 4vw, 20px);
-    max-width: 220px;      /* ogranicza szerokość, wymusza łamanie */
-    margin: 12px auto 0;   /* centrowanie pod h1 */
+    max-width: 220px;     
+    margin: 12px auto 0;  
     line-height: 1.4;
-    text-align: center;    /* centrowanie tekstu */
+    text-align: center;    
     word-break: break-word;
   }
 
@@ -222,9 +222,9 @@ nav#mobile-menu a:hover {
   .hero-mobile { display: block; }
 
   .hero-mobile p span {
-    display: block;        /* każda fraza w osobnej linii */
-    margin-bottom: 6px;    /* odstęp między linijkami */
-    text-align: center;    /* centrowanie */
+    display: block;        
+    margin-bottom: 6px;    
+    text-align: center;    
   }
 }
 
@@ -257,8 +257,8 @@ nav#mobile-menu a:hover {
     .laptop-card{ width:100%;position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.84));box-shadow:0 16px 60px rgba(0,0,0,0.10);border:1px solid rgba(0,0,0,0.05) }
     .laptop-card .mockup{ width:100%;display:block;height:auto }
     .laptop-text {
-  text-align: left;        /* wyrównanie do lewej */
-  max-width: 300px;        /* żeby na dużych ekranach nie było za szerokie */
+  text-align: left;        
+  max-width: 300px;       
 }
 
 .laptop-text h2 {
@@ -273,11 +273,11 @@ nav#mobile-menu a:hover {
 
 @media (max-width: 768px) {
   .laptop-section {
-    flex-direction: column; /* elementy jeden pod drugim */
-    text-align: center;     /* możesz też ustawić left, jeśli chcesz */
+    flex-direction: column; 
+    text-align: center;    
   }
   .laptop-text {
-    text-align: center; /* jeśli ma być do lewej na małym ekranie */
+    text-align: center; 
     max-width: 100%;
   }
 }
@@ -296,7 +296,7 @@ nav#mobile-menu a:hover {
 .video-inside video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* dopasowanie wypełniające */
+  object-fit: cover; 
   display: block;
 }
 .section-image-text { 
@@ -310,7 +310,7 @@ nav#mobile-menu a:hover {
   margin: 18px 20px;
 }
     .section-image-text .content{ 
-          text-align: center; /* jeśli ma być do lewej na małym ekranie */
+          text-align: center; 
   font-size: clamp(1.1rem, 4vw, 2rem);
 
       max-width:900px;background:rgba(0, 0, 0, 0.26);padding:28px;border-radius:12px;color:#fff;animation:fadeUp .7s both }
@@ -343,7 +343,7 @@ nav#mobile-menu a:hover {
 
 
   footer {
-    color: white; /* kolor tekstu */
+    color: white; 
     text-align: center;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -592,7 +592,7 @@ main {
 
   <section class="intro">
   <h2 class="side-scroll">
-  I offer: Posters, album covers, websites, design, T-shirt prints.  </h2>
+  I offer: Posters, album covers, websites, design, T&#8209;shirt prints.  </h2>
 </section>
   <section id="gallery" class="gallery-slider" aria-label="Prezentacja grafik">
     <div class="slides">
@@ -777,7 +777,6 @@ document.querySelectorAll('video[autoplay]').forEach(v => {
   v.play().catch(() => {});
 });
 
-// Zapobiega "wiszącym spójnikom" w tekstach
 (function noWidows() {
   const selectors = 'h1,h2,h3,h4,p,li,blockquote,button,a,span,label';
   document.querySelectorAll(selectors).forEach(el => {
@@ -790,7 +789,6 @@ document.querySelectorAll('video[autoplay]').forEach(v => {
   });
 })();
 
-// Efekt przesuwania w intro
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.intro h2').forEach(el => {
     const rect = el.getBoundingClientRect();
@@ -804,7 +802,6 @@ window.addEventListener('scroll', () => {
       v.play().catch(()=>{});
     });
 
-// Slider oparty na klasie .slide (prosty, niestylizowany)
 (function sliderInit() {
   const slides = document.querySelectorAll('.slide');
   let idx = 0;
@@ -816,7 +813,6 @@ window.addEventListener('scroll', () => {
   }, 3000);
 })();
 
-// Obsługa klawisza Escape
 (function focusClicks() {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
@@ -826,7 +822,6 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-// Efekt przesuwania w bok dla elementów .side-scroll
 window.addEventListener('scroll', () => {
   document.querySelectorAll('.side-scroll').forEach(el => {
     const rect = el.getBoundingClientRect();
@@ -835,7 +830,6 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// Inicjalizacja Swipera dla gallery-slider
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof Swiper !== 'undefined') {
     new Swiper('.gallery-slider', {
@@ -953,7 +947,6 @@ generateCarousel();
 </script>
 
 <script>
-  // --- Klasy Grad i Noise ---
   class Grad {
     constructor(x, y, z) { this.x = x; this.y = y; this.z = z; }
     dot2(x, y) { return this.x * x + this.y * y; }
@@ -1006,7 +999,6 @@ generateCarousel();
     }
   }
 
-  // --- Konfiguracja fal ---
   const config = {
     lineColor: "#fff",
     backgroundColor: "rgba(255,255,255,0.2)",
@@ -1021,7 +1013,6 @@ generateCarousel();
     maxCursorMove: 120
   };
 
-  // --- Canvas i logika ---
   const container = document.getElementById("waves-container");
   const canvas = document.createElement("canvas");
   container.appendChild(canvas);
@@ -1144,22 +1135,17 @@ generateCarousel();
   window.addEventListener("scroll", () => {
     let scrollY = window.scrollY;
 
-    // Skala bazowa zależna od szerokości ekranu
     let baseScale = window.innerWidth / 1920;
 
-    // Słońce
     let sunScale = baseScale + scrollY * 0.0003;
     sun.style.transform = `translate(-50%, ${scrollY * 0.2}px) scale(${sunScale})`;
 
-    // Księżyc
     let moonScale = baseScale + scrollY * 0.0006;
     moon.style.transform = `translate(-50%, ${scrollY * -0.1}px) scale(${moonScale})`;
 
-    // Napisy poruszają się razem z księżycem
     textLeft.style.transform = `translateY(${scrollY * -0.1}px)`;
     textRight.style.transform = `translateY(${scrollY * -0.1}px)`;
 
-    // --- Ziemia ---
     const earthOffsetStart = window.innerHeight * 0.5; 
     let earthScroll = Math.max(0, scrollY - earthOffsetStart);
     let earthScale = baseScale + earthScroll * 0.0004;
