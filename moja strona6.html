@@ -148,13 +148,13 @@ nav#mobile-menu {
   background: linear-gradient(
     270deg, 
     #8b3df2, 
-    #ff4867, 
+    #7238a1, 
     #c533ff, 
     #614ED9, 
     #37b2ff
   );
   background-size: 400% 400%; 
-  animation: gradientMove 30s ease infinite;
+  animation: gradientMove 50s ease infinite;
   padding: 40px 20px;
   border-radius: 0;  
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -190,11 +190,11 @@ nav#mobile-menu a {
   color: #ffffff;
   font-size: 2.2rem;
   text-align: center;
-  transition: background 0.2s;
+  transition: background 0.82s;
 }
 
 nav#mobile-menu a:hover {
-  background: var(--muted, #000000);
+  color: rgb(185, 185, 185);
 }
 
 
@@ -914,13 +914,12 @@ model-viewer.white-bg {
 
 
 #footer-container {
-    width: 100vw; 
+  width: 96vw; /* pełna szerokość okna */
   margin: 0;
   padding: 0;
   position: relative;
   left: 50%;
-  transform: translateX(-50%); 
-  display: block;
+  transform: translateX(-50%);
 }
 
 
@@ -1058,9 +1057,18 @@ model-viewer.white-bg {
   <p>Zeskanuj jeden z poniższych kodów, aby szybko przejść do wybranej strony:</p>
 
   <div class="qr-grid">
+
+    <div class="qr-item">
+      <a href="https://samuelstudio.com.html" target="_blank">
+        <img src="Samuel Studio_qrcode.png" alt="Kod QR - Rezerwacja" />
+      </a>
+      <h3>Samuel Studio</h3>
+      <p>Strona internetowa</p>
+    </div>
+
     <div class="qr-item">
       <a href="https://majkello12.github.io/strona-Paw-a/moja%20strona6.html" target="_blank">
-        <img src="qr moja strona.png" alt="Kod QR - Rezerwacja" />
+        <img src="Michał Grafik_qrcode.png" alt="Kod QR - Rezerwacja" />
       </a>
       <h3>Michał Baran Grafik</h3>
       <p>Strona internetowa</p>
@@ -1068,7 +1076,7 @@ model-viewer.white-bg {
 
     <div class="qr-item">
       <a href="http://www.kuklik.com.pl/" target="_blank">
-        <img src="mancowaqr.png" alt="Kod QR - Rezerwacja" />
+        <img src="Mancowa Checz_qrcode.png" alt="Kod QR - Rezerwacja" />
       </a>
       <h3>Mancowa Checz</h3>
       <p>Strona internetowa</p>
@@ -1076,7 +1084,7 @@ model-viewer.white-bg {
 
     <div class="qr-item">
       <a href="https://samuelstudio.com/Wieswycinanki4.html" target="_blank">
-        <img src="wycinanki.png" alt="Kod QR - WhatsApp" />
+        <img src="Strona z wycinankami interaktywnymi_qrcode.png" alt="Kod QR - WhatsApp" />
       </a>
       <h3>Animowane wycinanki</h3>
       <p>Strona internetowa</p>
@@ -1084,7 +1092,7 @@ model-viewer.white-bg {
 
     <div class="qr-item">
       <a href="https://majkello12.github.io/strona-Paw-a/Strona%20kosmiczna%20muzyczna%2007.html" target="_blank">
-        <img src="strona3.png" alt="Kod QR - Lokalizacja" />
+        <img src="Michał Baran Music_qrcode.png" alt="Kod QR - Lokalizacja" />
       </a>
       <h3>Michał Baran Music</h3>
       <p>Strona internetowa</p>
@@ -1092,7 +1100,7 @@ model-viewer.white-bg {
 
     <div class="qr-item">
       <a href="https://majkello12.github.io/strona-Paw-a/Fotorgafff6.html" target="_blank">
-        <img src="fotografstrona.png" alt="Kod QR - Lokalizacja" />
+        <img src="Fotograf strona_qrcode.png" alt="Kod QR - Lokalizacja" />
       </a>
       <h3>Fotograf strona</h3>
       <p>Strona internetowa</p>
