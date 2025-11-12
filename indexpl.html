@@ -2018,7 +2018,7 @@ Zobacz, jak to działa
       <div class="separator00"></div>
       <p class="para-top">
         Pomogę Ci przyciągnąć uwagę i&nbsp;przekazać Twój komunikat w&nbsp;sposób jasny i&nbsp;czytelny.
-        Zobacz <a href="work.html" class="highlight-link">moje portfolio</a> i&nbsp;przekonaj się, jak moje animacje działają w&nbsp;praktyce.
+        Zobacz <a href="realizacje.html" class="highlight-link">moje portfolio</a> i&nbsp;przekonaj się, jak moje animacje działają w&nbsp;praktyce.
       </p>
     </div>
     <div class="video-col">
@@ -2281,8 +2281,8 @@ Zobacz, jak to działa
     <video src="animated-diagonal-light-rays-background-samuel-studio.mp4" autoplay muted loop></video>
 <div class="video-overlay" style="padding-top: 130px; padding-bottom: 1000px;">
 
-          <h1>Ready to create something extraordinary?</h1>
-        <h4>Let’s work together and bring your ideas to&nbsp;life. </h4>
+          <h1>Gotowy, aby stworzyć coś wyjątkowego?</h1>
+        <h4>Pracuj ze mną, <br>a&nbsp;Ja ożywię Twoje pomysły. </h4>
 
         <div class="separator" style="background-color: #ffffff;"></div>
 
@@ -2621,20 +2621,7 @@ video.addEventListener('timeupdate', () => {
       const hamburger = shadowRoot.getElementById("hamburger");
       const mobileMenu = shadowRoot.getElementById("mobileMenu");
 
-      let lastScroll = 0;
-      const headerHeight = header.offsetHeight;
 
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (currentScroll > lastScroll && currentScroll > 60) {
-    header.style.transform = `translateY(-${header.offsetHeight + 20}px)`;
-  } else {
-    header.style.transform = "translateY(0)";
-  }
-
-  lastScroll = currentScroll;
-});
       hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("active");
         mobileMenu.classList.toggle("active");
