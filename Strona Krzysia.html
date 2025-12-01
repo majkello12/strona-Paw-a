@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRZYSZTOF ZIÓŁKOWSKI – Strona Oficjalna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      padding: 20px 50px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+
+    nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 40px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+            font-size: 1.1rem;
+
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ff0066;
+      left: 0; bottom: -4px;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 25px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-links {
+      transition: max-height 0.5s ease;
+    }
+
+@media (max-width: 770px) {
+  nav ul {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    gap: 40px;
+    padding: 0;
+  }
+
+  nav ul.show {
+    transform: translateY(0);
+    opacity: 1;
+    max-height: 400px; 
+    padding: 20px 0;
+  }
+
+  .hamburger {
+    display: flex;  
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+  }
+
+  nav ul li {
+    padding: 10px 0;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: #f1c40f;
+  }
+}
+
+    .hero {
+      height: 100vh;
+background: url('Tło Krzysia2.png') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 5rem;
+      font-weight: 800;
+      letter-spacing: 10px;
+      color: #fff;
+      z-index: 2;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .bio {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      padding: 100px 10%;
+      flex-wrap: wrap;
+      background: #111;
+    }
+
+    .bio img {
+      width: 350px;
+      border-radius: 20px;
+      opacity: 0;
+      transform: translateX(-80px);
+      transition: all 1s ease;
+    }
+
+    .bio-text {
+      max-width: 600px;
+      opacity: 0;
+      transform: translateX(80px);
+      transition: all 1s ease;
+    }
+
+    .bio.show img {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .bio.show .bio-text {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .video-section {
+      padding: 100px 10%;
+      text-align: center;
+      background: #000;
+    }
+
+    .video-section iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 15px;
+      border: none;
+      box-shadow: 0 0 30px rgba(255,255,255,0.1);
+    }
+
+    .social {
+      background: #111;
+      padding: 100px 10%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .social-item {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(80px);
+      transition: all 1s ease;
+    }
+
+    .social.show .social-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .social-item i {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      transition: transform 0.3s;
+    }
+
+    .social-item:hover i {
+      transform: scale(1.2);
+      color: #ff0066;
+    }
+
+    .social-item p {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    footer {
+      position: relative;
+      background: #000;
+      text-align: center;
+      padding-top: 100px;
+      overflow: hidden;
+    }
+
+    footer svg {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+    }
+
+    footer p {
+      color: #aaa;
+      padding: 30px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 3.5rem; }
+      .bio { flex-direction: column; text-align: center; }
+      .bio img { width: 80%; }
+    }
+
+    .video-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 27px;      
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">KRZYSZTOF ZIÓŁKOWSKI</div>
+    <nav>
+      <ul>
+        
+        <li><a href="#biografia">Biografia</a></li>
+        <li><a href="Strona Krzysia Muzyka.html#muzyka">Muzyka</a></li>
+        <li><a href="#wideo">Wideo</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+
+
+  <section class="hero">
+    <h1>KRZYSZTOF ZIÓŁKOWSKI</h1>
+  </section>
+
+<section id="biografia" class="bio">
+    <img src="Krzysiu.png" alt="Artysta">
+    <div class="bio-text">
+      <h2>O Mnie</h2>
+      <p>KRZYSZTOF ZIÓŁKOWSKI to wyjątkowy kompozytor, instrumentalista, kreatywny twórca. Tworzy unikalne kompozycje a Jego muzyka, pełna pasji i nieoczywistych rozwiązań porusza słuchaczy wciągając ich w świat dźwięków, które mają w sobie coś epickiego. Jako artysta nie boi się eksperymentować, wciąż poszukując nowych środków wyrazu, by zaskakiwać i inspirować swoją twórczością.</p>
+    </div>
+  </section>
+
+<section id="wideo" class="video-section">
+  <h2>Ostatni klip</h2>
+  <div style="
+    position:relative;
+    max-width:900px;          
+    margin:auto;
+    aspect-ratio:16/9;        
+    overflow:hidden;
+  ">
+    <iframe 
+      class="video-frame"
+      src="https://www.youtube-nocookie.com/embed/pHnFsrgMvrs"
+      title="Film promocyjny 1"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      style="width:100%; height:100%;">
+    </iframe>
+  </div>
+    </section>
+
+
+<section id="kontakt" class="social">
+    <div class="social-item"><i class="fab fa-instagram"></i><p>Instagram</p></div>
+    <div class="social-item"><i class="fab fa-facebook"></i><p>Facebook</p></div>
+    <div class="social-item"><i class="fab fa-tiktok"></i><p>TikTok</p></div>
+    <div class="social-item"><i class="fab fa-spotify"></i><p>Spotify</p></div>
+    <div class="social-item"><i class="fab fa-youtube"></i><p>YouTube</p></div>
+    <div class="social-item"><i class="fab fa-apple"></i><p>Apple Music</p></div>
+  </section>
+
+  <footer>
+    <p>© 2025 KRZYSZTOF ZIÓŁKOWSKI – Wszystkie prawa zastrzeżone</p>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navUl = document.querySelector('nav ul');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navUl.classList.toggle('show');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.bio, .social').forEach(el => observer.observe(el));
+  </script>
+
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navUl = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    navUl.classList.toggle('show');
+  });
+</script>
+
+</body>
+</html>
