@@ -102,56 +102,88 @@
     }
 
 @media (max-width: 770px) {
+
   nav ul {
-    position: absolute;
-    top: 80px;
+    position: fixed !important;
+    top: 0 !important;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    height: 100vh;
+
+    background: rgba(0, 0, 0, 0.93);
+    backdrop-filter: blur(6px);
+
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    max-height: 0;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
     transform: translateY(-100%);
     opacity: 0;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-    gap: 40px;
-    padding: 0;
+    pointer-events: none;
+
+    z-index: 9998;
+    transition: transform 0.45s ease, opacity 0.45s ease;
   }
 
   nav ul.show {
     transform: translateY(0);
     opacity: 1;
-    max-height: 400px; 
-    padding: 20px 0;
+    pointer-events: all;
   }
 
   .hamburger {
-    display: flex;  
+    display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
     cursor: pointer;
+    z-index: 9999; /* ponad menu */
+    position: relative;
   }
 
   .hamburger span {
-    width: 25px;
+    width: 30px;
     height: 3px;
     background-color: white;
+    border-radius: 2px;
+    transition: 0.3s ease;
   }
 
-  nav ul li {
-    padding: 10px 0;
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
   }
 
   nav ul li a {
     color: white;
+    font-size: 2rem;
     text-decoration: none;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
+    transition: 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
   }
+
+  nav ul.show li a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  nav ul.show li:nth-child(1) a { transition-delay: 0.1s; }
+  nav ul.show li:nth-child(2) a { transition-delay: 0.2s; }
+  nav ul.show li:nth-child(3) a { transition-delay: 0.3s; }
+  nav ul.show li:nth-child(4) a { transition-delay: 0.4s; }
 
   nav ul li a:hover {
     color: #f1c40f;
+    transform: scale(1.1);
   }
 }
 
@@ -458,16 +490,6 @@ html {
 
     document.querySelectorAll('.bio, .social').forEach(el => observer.observe(el));
   </script>
-
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const navUl = document.querySelector('nav ul');
-
-  hamburger.addEventListener('click', () => {
-    navUl.classList.toggle('show');
-  });
-</script>
 
 </body>
 </html>
