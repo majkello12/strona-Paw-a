@@ -354,10 +354,10 @@ html {
     <nav>
       <ul>
         
-        <li><a href="#biografia">Biografia</a></li>
+        <li><a href="Strona Krzysia.html#biografia">Biografia</a></li>
         <li><a href="Strona Krzysia Muzyka.html#muzyka">Muzyka</a></li>
-        <li><a href="#wideo">Wideo</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="Strona Krzysia.html#wideo">Wideo</a></li>
+        <li><a href="Strona Krzysia.html#kontakt">Kontakt</a></li>
       </ul>
     </nav>
     <div class="hamburger" id="hamburger">
@@ -460,6 +460,24 @@ function fixPolishTypography(selector) {
 }
 
 fixPolishTypography(".bio-text p");
+</script>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navUL = document.querySelector("nav ul");
+const links = document.querySelectorAll("nav ul li a");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navUL.classList.toggle("show");
+});
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navUL.classList.remove("show");
+  });
+});
 </script>
 
 </body>
