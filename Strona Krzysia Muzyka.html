@@ -228,6 +228,7 @@ background: url('Tło Krzysia2.png') center/cover no-repeat;
       padding: 100px 10%;
       flex-wrap: wrap;
       background: #111;
+      overflow: hidden;
     }
 
     .bio img {
@@ -329,7 +330,7 @@ background: url('Tło Krzysia2.png') center/cover no-repeat;
     }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 3.5rem; }
+      .hero h1 { font-size: 2.5rem; }
       .bio { flex-direction: column; text-align: center; }
       .bio img { width: 80%; }
     }
@@ -344,10 +345,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
-
-
   </style>
 </head>
 <body>
@@ -360,7 +357,7 @@ html {
         <li><a href="Strona Krzysia.html#biografia">Biografia</a></li>
         <li><a href="#muzyka">Muzyka</a></li>
         <li><a href="Strona Krzysia.html#wideo">Wideo</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="Strona Krzysia.html#biografia">Kontakt</a></li>
       </ul>
     </nav>
     <div class="hamburger" id="hamburger">
@@ -369,6 +366,8 @@ html {
   </header>
 
 
+
+  
 
   <section class="hero">
     <h1>KRZYSZTOF ZIÓŁKOWSKI</h1>
@@ -396,6 +395,7 @@ html {
     </iframe>
   </div>
 
+<br>
 
     <div style="
     position:relative;
@@ -415,6 +415,7 @@ html {
     </iframe>
   </div>
 
+<br>
 
     <div style="
     position:relative;
@@ -433,7 +434,7 @@ html {
       style="width:100%; height:100%;">
     </iframe>
   </div>
-
+<br>
 
     <div style="
     position:relative;
@@ -470,13 +471,14 @@ html {
     <p>© 2025 KRZYSZTOF ZIÓŁKOWSKI – Wszystkie prawa zastrzeżone</p>
   </footer>
 
-  <script>
-    const hamburger = document.getElementById('hamburger');
-    const navUl = document.querySelector('nav ul');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navUl.classList.toggle('show');
-    });
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navUl = document.querySelector('nav ul');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navUl.classList.toggle('show');
+  });
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -490,6 +492,52 @@ html {
 
     document.querySelectorAll('.bio, .social').forEach(el => observer.observe(el));
   </script>
+
+
+<script>
+const PL_SHORT_WORDS = [
+  "i", "a", "o", "u", "w", "z",
+  "do", "na", "za", "po", "od", "bez",
+  "ku", "we"
+];
+
+function fixPolishTypography(selector) {
+  document.querySelectorAll(selector).forEach(el => {
+    let text = el.innerHTML;
+
+    PL_SHORT_WORDS.forEach(word => {
+      const regex = new RegExp(`\\b${word} `, "gi");
+      text = text.replace(regex, match => match.trim() + "&nbsp;");
+    });
+
+    text = text.replace(/ (\S+)$/, "&nbsp;$1");
+
+    el.innerHTML = text;
+  });
+}
+
+fixPolishTypography(".bio-text p");
+</script>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navUL = document.querySelector("nav ul");
+const links = document.querySelectorAll("nav ul li a");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navUL.classList.toggle("show");
+});
+
+links.forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navUL.classList.remove("show");
+  });
+});
+</script>
+
+
 
 </body>
 </html>
