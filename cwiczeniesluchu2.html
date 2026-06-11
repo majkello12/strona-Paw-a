@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trening słuchu - Pro</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#1e1b4b,#7c3aed);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+background:white;
+width:100%;
+max-width:750px;
+padding:30px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 20px 40px #0005;
+}
+
+.counter{
+position:fixed;
+top:20px;
+right:20px;
+background:white;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+}
+
+button{
+border:0;
+cursor:pointer;
+border-radius:12px;
+transition:.2s;
+}
+
+button:hover{transform:scale(1.05)}
+
+.play{
+background:#059669;
+color:white;
+padding:15px 30px;
+font-size:18px;
+margin:10px;
+}
+
+.degree{
+width:65px;
+height:65px;
+margin:6px;
+font-size:22px;
+background:#e5e7eb;
+}
+
+#result{
+font-size:22px;
+font-weight:bold;
+min-height:40px;
+margin-top:15px;
+}
+
+.correct{color:#16a34a}
+.wrong{color:#dc2626}
+
+.settings{
+margin-top:25px;
+background:#f3f4f6;
+padding:20px;
+border-radius:20px;
+}
+
+input[type=range]{width:80%}
+
+select{
+padding:10px;
+font-size:16px;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="counter" id="counter">Runda 1 / 20</div>
+
+<div class="container">
+
+<h1>🎵 Trening słuchu PRO</h1>
+
+<p>Dron gra cały czas. Zgadnij stopień w skali.</p>
+
+<button class="play" onclick="playNote()">▶ Graj</button>
+
+<div id="buttons"></div>
+
+<div id="result"></div>
+
+<p>Punkty: <span id="score">0</span></p>
+
+<div class="settings">
+
+<p>🎚 Dron</p>
+<input id="droneVol" type="range" min="0" max="100" value="20">
+
+<p>🎚 Dźwięk</p>
+<input id="noteVol" type="range" min="0" max="100" value="60">
+
+<p>🎲 Losowy dron</p>
+<label>
+<input type="checkbox" id="randomDrone">
+Włącz
+</label>
+
+<p>🎹 Tonacja</p>
+<select id="key"></select>
+
+</div>
+
+</div>
+
+<script>
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+/* 12 tonacji */
+const keys = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","H"];
+
+/* skala durowa */
+const major = [0,2,4,5,7,9,11];
+
+let currentKey = "C";
+
+let scale = [];
+let droneFreq = 130.81;
+
+/* audio */
+let droneOsc, droneGain;
+let noteOsc, noteGain;
+
+/* game */
+let round = 1;
+let score = 0;
+let correct = 1;
+let answered = false;
+
+const MAX = 20;
+
+/* ================= SCALE ================= */
+
+function midiToFreq(m){
+return 440 * Math.pow(2,(m-69)/12);
+}
+
+function generateScale(){
+
+let root = 60 + keys.indexOf(currentKey);
+
+scale = major.map(i => midiToFreq(root + i));
+
+droneFreq = midiToFreq(root - 12);
+}
+
+/* ================= DRON ================= */
+
+function startDrone(){
+
+if(droneOsc){
+try{droneOsc.stop();}catch(e){}
+}
+
+droneOsc = audioCtx.createOscillator();
+droneGain = audioCtx.createGain();
+
+const filter = audioCtx.createBiquadFilter();
+filter.type="lowpass";
+filter.frequency.value=500;
+
+droneOsc.type="sawtooth";
+droneOsc.frequency.value = droneFreq;
+
+droneOsc.connect(filter);
+filter.connect(droneGain);
+droneGain.connect(audioCtx.destination);
+
+droneGain.gain.value = document.getElementById("droneVol").value/100;
+
+droneOsc.start();
+}
+
+/* live drone volume */
+document.getElementById("droneVol").oninput = e=>{
+if(droneGain){
+droneGain.gain.setTargetAtTime(
+e.target.value/100,
+audioCtx.currentTime,
+0.05
+);
+}
+};
+
+/* ================= NOTE ================= */
+
+function playNote(){
+
+if(audioCtx.state==="suspended") audioCtx.resume();
+
+if(noteOsc){
+try{noteOsc.stop();}catch(e){}
+}
+
+noteOsc = audioCtx.createOscillator();
+noteGain = audioCtx.createGain();
+
+noteOsc.type="triangle";
+noteOsc.frequency.value = scale[correct-1];
+
+noteOsc.connect(noteGain);
+noteGain.connect(audioCtx.destination);
+
+noteGain.gain.value =
+document.getElementById("noteVol").value/100;
+
+noteOsc.start();
+
+noteGain.gain.setTargetAtTime(
+0.0001,
+audioCtx.currentTime+2.5,
+0.2
+);
+
+noteOsc.stop(audioCtx.currentTime+3);
+}
+
+/* live note volume */
+document.getElementById("noteVol").oninput = e=>{
+if(noteGain){
+noteGain.gain.setTargetAtTime(
+e.target.value/100,
+audioCtx.currentTime,
+0.05
+);
+}
+};
+
+/* ================= GAME ================= */
+
+function createButtons(){
+
+const box=document.getElementById("buttons");
+
+for(let i=1;i<=7;i++){
+
+let b=document.createElement("button");
+b.className="degree";
+b.textContent=i;
+
+b.onclick=()=>answer(i);
+
+box.appendChild(b);
+
+}
+}
+
+function next(){
+
+if(round>MAX){
+end();
+return;
+}
+
+answered=false;
+correct=Math.floor(Math.random()*7)+1;
+
+document.getElementById("counter").textContent=
+`Runda ${round} / ${MAX}`;
+
+document.getElementById("result").textContent="";
+}
+
+function answer(n){
+
+if(answered) return;
+answered=true;
+
+let r=document.getElementById("result");
+
+if(n===correct){
+score++;
+document.getElementById("score").textContent=score;
+r.className="correct";
+r.textContent="✅ dobrze!";
+}else{
+r.className="wrong";
+r.textContent="❌ było "+correct;
+}
+
+round++;
+
+setTimeout(next,1200);
+}
+
+function end(){
+
+document.querySelector(".container").innerHTML=`
+<h1>🎉 Koniec</h1>
+<h2>${score}/${MAX}</h2>
+<button onclick="location.reload()">Restart</button>
+`;
+
+document.getElementById("counter").style.display="none";
+}
+
+/* ================= INIT ================= */
+
+function init(){
+
+const select = document.getElementById("key");
+
+keys.forEach(k=>{
+let o=document.createElement("option");
+o.value=k;
+o.textContent=k+" dur";
+select.appendChild(o);
+});
+
+select.onchange=()=>{
+
+currentKey=select.value;
+generateScale();
+
+if(!document.getElementById("randomDrone").checked){
+startDrone();
+}
+
+};
+
+/* RANDOM DRONE */
+document.getElementById("randomDrone").onchange=()=>{
+
+generateScale();
+startDrone();
+
+};
+
+/* FIRST INIT */
+generateScale();
+startDrone();
+createButtons();
+next();
+
+}
+
+init();
+
+</script>
+
+</body>
+</html>
