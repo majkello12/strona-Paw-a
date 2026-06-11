@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Trening słuchu - Gama C-dur</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,#312e81,#7c3aed);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial,sans-serif;
+}
+
+
+.round-counter{
+
+    position:fixed;
+    top:20px;
+    right:20px;
+
+    background:white;
+    padding:12px 18px;
+    border-radius:15px;
+
+    font-weight:bold;
+
+    box-shadow:0 5px 15px #0004;
+}
+
+
+
+.container{
+
+    background:white;
+
+    width:90%;
+    max-width:700px;
+
+    padding:30px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px #0005;
+}
+
+
+
+h1{
+    color:#222;
+}
+
+
+button{
+
+    border:none;
+    cursor:pointer;
+
+    border-radius:15px;
+
+    transition:.2s;
+
+}
+
+
+button:hover{
+
+    transform:scale(1.07);
+
+}
+
+
+
+.play{
+
+    background:#059669;
+
+    color:white;
+
+    padding:15px 30px;
+
+    font-size:20px;
+
+}
+
+
+
+.degree{
+
+    width:70px;
+    height:70px;
+
+    margin:8px;
+
+    font-size:24px;
+
+    background:#e5e7eb;
+
+}
+
+
+
+.degree:hover{
+
+    background:#c7d2fe;
+
+}
+
+
+
+#result{
+
+    margin-top:25px;
+
+    min-height:40px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+
+
+.correct{
+
+    color:#16a34a;
+
+}
+
+
+
+.wrong{
+
+    color:#dc2626;
+
+}
+
+
+
+.score{
+
+    margin-top:20px;
+
+    font-size:22px;
+
+}
+
+
+.summary h1{
+
+    font-size:40px;
+
+}
+
+
+.big-score{
+
+    font-size:70px;
+
+    font-weight:bold;
+
+    color:#4f46e5;
+
+}
+
+
+.restart{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:15px 30px;
+
+    font-size:20px;
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="round-counter" id="roundCounter">
+Runda 1 / 20
+</div>
+
+
+
+<div class="container" id="game">
+
+
+<h1>🎵 Gama C-dur - trening słuchu</h1>
+
+
+<p>
+Posłuchaj niskiego dźwięku C jako podstawy.
+<br>
+Rozpoznaj, który stopień gamy C-dur został dodany.
+</p>
+
+
+
+<button class="play" onclick="playNotes()">
+▶ Graj
+</button>
+
+
+
+<div id="buttons"></div>
+
+
+
+<div id="result"></div>
+
+
+<div class="score">
+
+Punkty:
+<span id="score">0</span>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+const audioCtx =
+new (window.AudioContext || window.webkitAudioContext)();
+
+
+
+/*
+    Składniki gamy C-dur
+
+    C3 = dron
+    C4-H4 = dźwięki do rozpoznania
+*/
+
+
+const scale={
+
+1:261.63,
+2:293.66,
+3:329.63,
+4:349.23,
+5:392.00,
+6:440.00,
+7:493.88
+
+};
+
+
+const droneFreq=130.81;
+
+
+const maxRounds=20;
+
+
+let round=1;
+
+let score=0;
+
+let correctDegree=1;
+
+let answered=false;
+
+
+
+let activeNodes=[];
+
+
+
+function stopAllSounds(){
+
+    activeNodes.forEach(node=>{
+
+        try{
+            node.stop();
+        }
+        catch(e){}
+
+    });
+
+
+    activeNodes=[];
+
+}
+
+
+
+
+
+/*
+    Generator dźwięku
+*/
+
+function createTone(freq,time,duration,type,volume,filter=false){
+
+
+    let osc=audioCtx.createOscillator();
+
+    let gain=audioCtx.createGain();
+
+
+
+    osc.frequency.value=freq;
+
+    osc.type=type;
+
+
+
+    if(filter){
+
+        let filt=audioCtx.createBiquadFilter();
+
+        filt.type="lowpass";
+
+        filt.frequency.value=700;
+
+
+        osc.connect(filt);
+
+        filt.connect(gain);
+
+    }
+
+    else{
+
+        osc.connect(gain);
+
+    }
+
+
+
+    gain.connect(audioCtx.destination);
+
+
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        time
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        time+0.1
+    );
+
+
+    gain.gain.setValueAtTime(
+        volume,
+        time+duration-0.15
+    );
+
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        time+duration
+    );
+
+
+
+    osc.start(time);
+
+    osc.stop(time+duration);
+
+
+
+    activeNodes.push(osc);
+
+}
+
+
+
+
+/*
+    Główne zadanie
+*/
+
+
+function playNotes(){
+
+
+    stopAllSounds();
+
+
+
+    let now=audioCtx.currentTime;
+
+
+
+    // DRON C3
+
+    createTone(
+        droneFreq,
+        now,
+        4,
+        "sawtooth",
+        0.08,
+        true
+    );
+
+
+
+    // SYNTEZATOR - składnik gamy
+
+
+    createTone(
+
+        scale[correctDegree],
+
+        now,
+
+        3,
+
+        "triangle",
+
+        0.25,
+
+        false
+
+    );
+
+
+}
+
+
+
+
+
+function createButtons(){
+
+
+let box=document.getElementById("buttons");
+
+
+for(let i=1;i<=7;i++){
+
+
+let b=document.createElement("button");
+
+
+b.className="degree";
+
+b.innerHTML=i;
+
+
+b.onclick=function(){
+
+checkAnswer(i);
+
+};
+
+
+box.appendChild(b);
+
+
+}
+
+
+
+}
+
+
+
+
+function updateRound(){
+
+
+document.getElementById("roundCounter").innerHTML=
+
+"Runda "+round+" / "+maxRounds;
+
+
+}
+
+
+
+
+
+function nextQuestion(){
+
+
+if(round>maxRounds){
+
+showSummary();
+
+return;
+
+}
+
+
+
+answered=false;
+
+
+
+correctDegree=
+
+Math.floor(Math.random()*7)+1;
+
+
+
+document.getElementById("result").innerHTML="";
+
+
+
+updateRound();
+
+
+
+setTimeout(playNotes,100);
+
+
+}
+
+
+
+
+
+
+function checkAnswer(answer){
+
+
+
+if(answered)return;
+
+
+answered=true;
+
+
+
+let result=document.getElementById("result");
+
+
+
+if(answer===correctDegree){
+
+
+score++;
+
+
+document.getElementById("score").innerHTML=score;
+
+
+
+result.className="correct";
+
+result.innerHTML=
+"✅ Dobrze! Stopień "+correctDegree;
+
+
+
+playCorrect();
+
+
+}
+
+else{
+
+
+result.className="wrong";
+
+
+result.innerHTML=
+
+"❌ Źle! To był stopień "+correctDegree;
+
+
+
+playWrong();
+
+
+
+}
+
+
+
+round++;
+
+setTimeout(()=>{
+
+    nextQuestion();
+
+    playNotes();
+
+},1600);
+
+
+
+}
+
+
+
+
+
+
+function playCorrect(){
+
+
+stopAllSounds();
+
+
+let t=audioCtx.currentTime;
+
+
+createTone(523,t,0.15,"triangle",0.2);
+
+createTone(659,t+0.15,0.15,"triangle",0.2);
+
+createTone(784,t+0.3,0.25,"triangle",0.2);
+
+
+
+}
+
+
+
+
+function playWrong(){
+
+
+stopAllSounds();
+
+
+let t=audioCtx.currentTime;
+
+
+createTone(220,t,0.25,"sawtooth",0.2);
+
+createTone(150,t+0.25,0.35,"sawtooth",0.2);
+
+
+}
+
+
+
+
+
+function showSummary(){
+
+
+stopAllSounds();
+
+
+
+let percent=Math.round(
+score/maxRounds*100
+);
+
+
+
+document.getElementById("game").innerHTML=`
+
+<div class="summary">
+
+<h1>🎉 Koniec</h1>
+
+<div class="big-score">
+
+${score}/${maxRounds}
+
+</div>
+
+
+<h2>
+Skuteczność: ${percent}%
+</h2>
+
+
+<p>
+Dziękujemy za trening słuchu.
+</p>
+
+
+<button class="restart"
+onclick="location.reload()">
+
+🔄 Jeszcze raz
+
+</button>
+
+
+</div>
+
+
+`;
+
+
+
+document.getElementById("roundCounter").style.display="none";
+
+
+}
+
+
+
+
+createButtons();
+
+nextQuestion();
+
+
+
+</script>
+
+
+</body>
+</html>
